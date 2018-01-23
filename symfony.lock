@@ -77,6 +77,9 @@
     "psr/simple-cache": {
         "version": "1.0.0"
     },
+    "symfony/browser-kit": {
+        "version": "v4.0.3"
+    },
     "symfony/cache": {
         "version": "v4.0.3"
     },
@@ -96,6 +99,9 @@
         "version": "v4.0.3"
     },
     "symfony/dependency-injection": {
+        "version": "v4.0.3"
+    },
+    "symfony/dom-crawler": {
         "version": "v4.0.3"
     },
     "symfony/dotenv": {
@@ -139,6 +145,15 @@
     },
     "symfony/lts": {
         "version": "4-dev"
+    },
+    "symfony/phpunit-bridge": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "179470cb6492db92dffee208cfdb436f175c93b4"
+        }
     },
     "symfony/polyfill-mbstring": {
         "version": "v1.6.0"
