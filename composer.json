@@ -8,6 +8,8 @@
         "greenter/greenter": "^2.1",
         "greenter/htmltopdf": "^1.0",
         "greenter/report": "^1.2",
+        "greenter/validator": "^1.1",
+        "nelmio/cors-bundle": "^1.5",
         "symfony/console": "^4.0",
         "symfony/flex": "^1.0",
         "symfony/framework-bundle": "^4.0",

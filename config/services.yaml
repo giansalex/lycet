@@ -1,6 +1,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    locale: 'en'
 
 services:
     # default configuration for services in *this* file
@@ -22,6 +23,31 @@ services:
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
+
+    Greenter\Report\XmlUtils:
+        autowire: true
+
+    Greenter\Report\HtmlReport:
+        arguments:
+            - ''
+            - cache: '%kernel.cache_dir%'
+              strict_variables: true
+
+    Greenter\Report\PdfReport:
+        arguments: ['@Greenter\Report\HtmlReport']
+        calls:
+            - [setBinPath, ['%env(WKHTMLTOPDF_PATH)%']]
+
+    Greenter\Validator\SymfonyValidator:
+        autowire: true
+
+    Greenter\Validator\DocumentValidatorInterface: '@Greenter\Validator\SymfonyValidator'
+
+    Greenter\Report\ReportInterface: '@Greenter\Report\PdfReport'
+
+    Greenter\See:
+        calls:
+            - [setCachePath, ['%kernel.cache_dir%']]
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
