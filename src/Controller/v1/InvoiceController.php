@@ -8,6 +8,8 @@
 
 namespace App\Controller\v1;
 
+use Greenter\Model\Company\Company;
+use Greenter\Model\Sale\Invoice;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,6 +28,10 @@ class InvoiceController extends AbstractController
      */
     public function index(): Response
     {
-        return new Response('Hello Invoice');
+        $inv = new Invoice();
+        $inv->setCompany((new Company())->setRuc('20123'));
+        $inv->setSerie('F001');
+
+        return $this->json($inv);
     }
 }
