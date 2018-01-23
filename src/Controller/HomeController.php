@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Administrador
  * Date: 23/01/2018
- * Time: 02:04 PM
+ * Time: 02:04 PM.
  */
 
 namespace App\Controller;
@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class HomeController
+ * Class HomeController.
  */
 class HomeController
 {
