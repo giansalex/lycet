@@ -8,6 +8,7 @@
 
 namespace App\Controller\v1;
 
+use App\Service\RequestParserInterface;
 use Greenter\Model\Response\BillResult;
 use Greenter\Model\Sale\Invoice;
 use Greenter\Report\HtmlReport;
@@ -18,8 +19,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\Normalizer\ContextAwareDenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 /**
  * Class InvoiceController.
@@ -29,9 +28,9 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 class InvoiceController extends AbstractController
 {
     /**
-     * @var ContextAwareDenormalizerInterface
+     * @var RequestParserInterface
      */
-    private $denormalizer;
+    private $parser;
     /**
      * @var See
      */
@@ -49,16 +48,16 @@ class InvoiceController extends AbstractController
      * InvoiceController constructor.
      * @param See $see
      * @param DocumentValidatorInterface $validator
-     * @param ContextAwareDenormalizerInterface $denormalizer
+     * @param RequestParserInterface $parser
      * @param HtmlReport $report
      */
     public function __construct(
         See $see,
         DocumentValidatorInterface $validator,
-        ContextAwareDenormalizerInterface $denormalizer,
+        RequestParserInterface $parser,
         HtmlReport $report)
     {
-        $this->denormalizer = $denormalizer;
+        $this->parser = $parser;
         $this->see = $see;
         $this->validator = $validator;
         $this->report = $report;
@@ -72,16 +71,8 @@ class InvoiceController extends AbstractController
      */
     public function index(Request $request): Response
     {
-        $context = array(ObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true);
-
-        $data = $request->getContent();
-        $decode = json_decode($data, true);
-
         /**@var $invoice Invoice */
-        $invoice = $this->denormalizer->denormalize(
-            $decode,
-            Invoice::class, null, $context
-        );
+        $invoice = $this->parser->getObject($request, Invoice::class);
 
         /**@var $errors \Symfony\Component\Validator\ConstraintViolationList */
         $errors = $this->validator->validate($invoice);
@@ -107,16 +98,8 @@ class InvoiceController extends AbstractController
      */
     public function xml(Request $request): Response
     {
-        $context = array(ObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true);
-
-        $data = $request->getContent();
-        $decode = json_decode($data, true);
-
         /**@var $invoice Invoice */
-        $invoice = $this->denormalizer->denormalize(
-            $decode,
-            Invoice::class, null, $context
-        );
+        $invoice = $this->parser->getObject($request, Invoice::class);
 
         /**@var $errors \Symfony\Component\Validator\ConstraintViolationList */
         $errors = $this->validator->validate($invoice);
@@ -139,16 +122,8 @@ class InvoiceController extends AbstractController
      */
     public function pdf(Request $request): Response
     {
-        $context = array(ObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true);
-
-        $data = $request->getContent();
-        $decode = json_decode($data, true);
-
         /**@var $invoice Invoice */
-        $invoice = $this->denormalizer->denormalize(
-            $decode,
-            Invoice::class, null, $context
-        );
+        $invoice = $this->parser->getObject($request, Invoice::class);
 
         /**@var $errors \Symfony\Component\Validator\ConstraintViolationList */
         $errors = $this->validator->validate($invoice);
