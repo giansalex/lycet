@@ -45,12 +45,6 @@ services:
 
     Greenter\Report\ReportInterface: '@Greenter\Report\PdfReport'
 
-    App\Controller\v1\InvoiceController:
-        arguments:
-          - '@Greenter\See'
-          - '@Greenter\Validator\SymfonyValidator'
-          - '@phpdoc_serializer'
-
     phpdoc_serializer:
         class: Symfony\Component\Serializer\Serializer
         factory: 'App\Factory\AppSerializerFactory:createSerializer'
