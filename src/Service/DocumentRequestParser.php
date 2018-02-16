@@ -10,21 +10,21 @@ namespace App\Service;
 
 use Greenter\Model\DocumentInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Serializer\Normalizer\ContextAwareDenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 class DocumentRequestParser implements RequestParserInterface
 {
     /**
-     * @var ContextAwareDenormalizerInterface
+     * @var DenormalizerInterface
      */
     private $denormalizer;
 
     /**
      * DocumentRequestParser constructor.
-     * @param ContextAwareDenormalizerInterface $denormalizer
+     * @param DenormalizerInterface $denormalizer
      */
-    public function __construct(ContextAwareDenormalizerInterface $denormalizer)
+    public function __construct(DenormalizerInterface $denormalizer)
     {
         $this->denormalizer = $denormalizer;
     }

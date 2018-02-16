@@ -49,6 +49,8 @@ services:
         class: Symfony\Component\Serializer\Serializer
         factory: 'App\Factory\AppSerializerFactory:createSerializer'
 
+    Symfony\Component\Serializer\Normalizer\DenormalizerInterface: '@phpdoc_serializer'
+
     Greenter\See:
         calls:
             - [setCachePath, ['%kernel.cache_dir%']]
