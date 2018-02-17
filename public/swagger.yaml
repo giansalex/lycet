@@ -33,7 +33,7 @@ paths:
       tags:
         - invoice
       summary: Enviar una Factura o Boleta
-      description: Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF
+      description: 'Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF'
       operationId: sendInvoice
       parameters:
         - name: pdf
@@ -46,7 +46,7 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/Invoice'
-      consumes: 
+      consumes:
         - application/json
       produces:
         - application/json
@@ -79,7 +79,7 @@ paths:
       tags:
         - note
       summary: Envia nota de credito o debito
-      description: Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF
+      description: 'Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF'
       operationId: sendNote
       parameters:
         - name: pdf
@@ -92,7 +92,7 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/Note'
-      consumes: 
+      consumes:
         - application/json
       produces:
         - application/json
@@ -125,7 +125,7 @@ paths:
       tags:
         - summary
       summary: Enviar una Resumen diario de Boletas
-      description: Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF
+      description: 'Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF'
       operationId: sendSummary
       parameters:
         - name: pdf
@@ -138,7 +138,7 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/Summary'
-      consumes: 
+      consumes:
         - application/json
       produces:
         - application/json
@@ -190,7 +190,7 @@ paths:
       tags:
         - voided
       summary: Enviar una Comunicación de Bajas
-      description: Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF
+      description: 'Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF'
       operationId: sendVoided
       parameters:
         - name: pdf
@@ -203,7 +203,7 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/Voided'
-      consumes: 
+      consumes:
         - application/json
       produces:
         - application/json
@@ -255,7 +255,7 @@ paths:
       tags:
         - despatch
       summary: Enviar una Guía de Remisión
-      description: Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF
+      description: 'Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF'
       operationId: sendDespatch
       parameters:
         - name: pdf
@@ -268,7 +268,7 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/Despatch'
-      consumes: 
+      consumes:
         - application/json
       produces:
         - application/json
@@ -301,7 +301,7 @@ paths:
       tags:
         - retention
       summary: Enviar un Comprobante de Retencion
-      description: Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF
+      description: 'Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF'
       operationId: sendRetention
       parameters:
         - name: pdf
@@ -314,7 +314,7 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/Retention'
-      consumes: 
+      consumes:
         - application/json
       produces:
         - application/json
@@ -347,7 +347,7 @@ paths:
       tags:
         - peception
       summary: Enviar un Comprobante de Percepcion
-      description: Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF
+      description: 'Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF'
       operationId: sendPerception
       parameters:
         - name: pdf
@@ -360,7 +360,7 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/Perception'
-      consumes: 
+      consumes:
         - application/json
       produces:
         - application/json
@@ -393,7 +393,7 @@ paths:
       tags:
         - reversion
       summary: Enviar un Resumen de Reversiones
-      description: Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF
+      description: 'Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF'
       operationId: sendReversion
       parameters:
         - name: pdf
@@ -406,7 +406,7 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/Reversion'
-      consumes: 
+      consumes:
         - application/json
       produces:
         - application/json
@@ -1203,14 +1203,14 @@ definitions:
         type: string
       cdrResponse:
         $ref: '#/definitions/CdrResponse'
-  
   DocumentResponse:
     type: object
     properties:
       xml:
         type: string
-      pdf:
+      hash:
         type: string
+        description: Resumen de la Firma Digital
       sunatResponse:
         $ref: '#/definitions/BillResult'
   SummaryResponse:
@@ -1218,7 +1218,8 @@ definitions:
     properties:
       xml:
         type: string
-      pdf:
+      hash:
         type: string
+        description: Resumen de la Firma Digital
       sunatResponse:
         $ref: '#/definitions/SummaryResult'
