@@ -16,6 +16,9 @@
         <env name="SHELL_VERBOSITY" value="-1" />
         <!-- define your env variables for the test env here -->
         <env name="CORS_ALLOW_ORIGIN" value="*" />
+        <env name="CLIENT_TOKEN" value="123456" />
+        <env name="SOL_USER" value="20000000001MODDATOS" />
+        <env name="SOL_PASS" value="moddatos" />
     </php>
 
     <testsuites>
