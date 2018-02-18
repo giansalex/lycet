@@ -9,7 +9,7 @@
 namespace App\Controller\v1;
 
 use App\Service\DocumentRequestInterface;
-use Greenter\Model\Summary\Summary;
+use Greenter\Model\Voided\Voided;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,7 +34,7 @@ class VoidedController extends AbstractController
     public function __construct(DocumentRequestInterface $document)
     {
         $this->document = $document;
-        $this->document->setDocumentType(Summary::class);
+        $this->document->setDocumentType(Voided::class);
     }
 
     /**
