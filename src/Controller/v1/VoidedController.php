@@ -1,25 +1,26 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Administrador
- * Date: 23/01/2018
- * Time: 02:06 PM.
+ * User: Giansalex
+ * Date: 17/02/2018
+ * Time: 23:41
  */
 
 namespace App\Controller\v1;
 
 use App\Service\DocumentRequestInterface;
-use Greenter\Model\Sale\Invoice;
+use Greenter\Model\Summary\Summary;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class InvoiceController.
+ * Class VoidedController.
  *
- * @Route("/api/v1/invoice")
+ * @Route("/api/v1/voided")
  */
-class InvoiceController extends AbstractController
+class VoidedController extends AbstractController
 {
     /**
      * @var DocumentRequestInterface
@@ -33,7 +34,7 @@ class InvoiceController extends AbstractController
     public function __construct(DocumentRequestInterface $document)
     {
         $this->document = $document;
-        $this->document->setDocumentType(Invoice::class);
+        $this->document->setDocumentType(Summary::class);
     }
 
     /**
@@ -64,5 +65,27 @@ class InvoiceController extends AbstractController
     public function pdf(): Response
     {
         return $this->document->pdf();
+    }
+
+    /**
+     * @Route("/status", methods={"GET"})
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function status(Request $request): Response
+    {
+        $ticket = $request->query->get('ticket');
+        if (empty($ticket)) {
+            return new Response('Ticket Requerido', 400);
+        }
+        $see = $this->document->getSee();
+        $result = $see->getStatus($ticket);
+
+        if ($result->isSuccess()) {
+            $result->setCdrZip(base64_encode($result->getCdrZip()));
+        }
+
+        return $this->json($result);
     }
 }

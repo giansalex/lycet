@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Administrador
- * Date: 23/01/2018
- * Time: 02:06 PM.
+ * User: Giansalex
+ * Date: 17/02/2018
+ * Time: 23:41
  */
 
 namespace App\Controller\v1;
@@ -15,11 +15,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class InvoiceController.
+ * Class NoteController.
  *
- * @Route("/api/v1/invoice")
+ * @Route("/api/v1/note")
  */
-class InvoiceController extends AbstractController
+class NoteController extends AbstractController
 {
     /**
      * @var DocumentRequestInterface
