@@ -3,6 +3,8 @@
 parameters:
     locale: 'es'
     token: '%env(CLIENT_TOKEN)%'
+    cert_path: '%env(CERT_PATH)%'
+    logo_path: '%env(LOGO_PATH)%'
 
 services:
     # default configuration for services in *this* file
@@ -42,9 +44,15 @@ services:
     Greenter\Validator\SymfonyValidator:
         autowire: true
 
-    Greenter\Validator\DocumentValidatorInterface: '@Greenter\Validator\SymfonyValidator'
+    App\Service\AppDocumentValidator:
+        autowire: true
 
+    App\Service\DocumentRequest:
+        autowire: true
+
+    Greenter\Validator\DocumentValidatorInterface: '@App\Service\AppDocumentValidator'
     Greenter\Report\ReportInterface: '@Greenter\Report\PdfReport'
+    App\Service\DocumentRequestInterface: 'App\Service\DocumentRequest'
 
     phpdoc_serializer:
         class: Symfony\Component\Serializer\Serializer
