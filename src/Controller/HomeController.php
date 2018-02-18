@@ -25,7 +25,10 @@ class HomeController
     public function index(Request $request): Response
     {
         $pathDocs = $request->getUriForPath('/swagger');
-        $content = $this->getWithReplace(__DIR__.'/../../views/welcome.html', 'lycet.api', $pathDocs);
+        $content = $this->getWithReplace(
+            __DIR__.'/../../views/welcome.html',
+            'lycet.api',
+            $pathDocs);
 
         return new Response($content, 200, ['Content-Type', 'text/html']);
     }
@@ -37,8 +40,11 @@ class HomeController
      */
     public function swagger(Request $request): Response
     {
-        $rootUrl = $request->getUriForPath('');
-        $content = $this->getWithReplace(__DIR__.'/../../public/swagger.yaml', 'lycet.api', $rootUrl);
+        $rootUrl = $request->getHttpHost().$request->getBasePath();
+        $content = $this->getWithReplace(
+            __DIR__.'/../../public/swagger.yaml',
+            'lycet.api',
+            $rootUrl);
 
         return new Response($content, 200, ['Content-Type' => 'text/yaml']);
     }
