@@ -19,10 +19,15 @@ class HomeController
 {
     /**
      * @Route("/")
+     * @param Request $request
+     * @return Response
      */
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        return new Response('<h1>LYCET</h1><p>A REST API based on Greenter</p>');
+        $pathDocs = $request->getUriForPath('/swagger');
+        $content = $this->getWithReplace(__DIR__.'/../../views/welcome.html', 'lycet.api', $pathDocs);
+
+        return new Response($content, 200, ['Content-Type', 'text/html']);
     }
 
     /**
@@ -33,10 +38,15 @@ class HomeController
     public function swagger(Request $request): Response
     {
         $rootUrl = $request->getUriForPath('');
-        $path = __DIR__.'/../../public/swagger.yaml';
-        $content = file_get_contents($path);
-        $content = str_replace('lycet.api', $rootUrl, $content);
+        $content = $this->getWithReplace(__DIR__.'/../../public/swagger.yaml', 'lycet.api', $rootUrl);
 
         return new Response($content, 200, ['Content-Type' => 'text/yaml']);
+    }
+
+    private function getWithReplace($path, $oldValue, $newValue)
+    {
+        $content = file_get_contents($path);
+
+        return str_replace($oldValue, $newValue, $content);
     }
 }

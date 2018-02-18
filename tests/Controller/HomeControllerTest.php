@@ -20,4 +20,15 @@ class HomeControllerTest extends WebTestCase
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }
+
+    public function testSwagger()
+    {
+        $client = static::createClient();
+        $client->request('GET', '/swagger');
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertContains('text/yaml', $response->headers->get('Content-Type'));
+    }
 }
