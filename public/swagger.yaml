@@ -1,9 +1,10 @@
 swagger: '2.0'
 info:
-  description: Lycet API REST - Facturación Electrónica.
+  description: Lycet API REST based on Greenter - Facturación Electrónica.
   version: '1.0'
   title: Lycet
   contact:
+    name: Giancarlos Salas
     email: giansalex@gmail.com
 host: lycet.api
 basePath: /api/v1
@@ -33,13 +34,9 @@ paths:
       tags:
         - invoice
       summary: Enviar una Factura o Boleta
-      description: 'Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF'
+      description: 'Retorna la respuesta de SUNAT y el XML firmado'
       operationId: sendInvoice
       parameters:
-        - name: pdf
-          in: query
-          description: Generar PDF
-          type: boolean
         - name: body
           in: body
           description: Comprobante
@@ -55,6 +52,13 @@ paths:
           description: Operacion exitosa
           schema:
             $ref: '#/definitions/DocumentResponse'
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
+          
   /invoice/xml:
     post:
       tags:
@@ -74,18 +78,45 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
+  /invoice/pdf:
+    post:
+      tags:
+        - invoice
+      summary: Generar el PDF de una factura o boleta
+      description: Retorna el Pdf
+      operationId: getInvoicePdf
+      parameters:
+        - name: body
+          in: body
+          description: Comprobante
+          required: true
+          schema:
+            $ref: '#/definitions/Invoice'
+      produces:
+        - application/pdf
+      responses:
+        '200':
+          description: Operacion exitosa
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
   /note/send:
     post:
       tags:
         - note
       summary: Envia nota de credito o debito
-      description: 'Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF'
+      description: 'Retorna la respuesta de SUNAT y el XML firmado'
       operationId: sendNote
       parameters:
-        - name: pdf
-          in: query
-          description: Generar PDF
-          type: boolean
         - name: body
           in: body
           description: Comprobante
@@ -101,6 +132,12 @@ paths:
           description: Operacion exitosa
           schema:
             $ref: '#/definitions/DocumentResponse'
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
   /note/xml:
     post:
       tags:
@@ -120,18 +157,45 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
+  /note/pdf:
+    post:
+      tags:
+        - note
+      summary: Generar el PDF de una nota de crédito o débito
+      description: Retorna el PDF
+      operationId: getNotePdf
+      parameters:
+        - name: body
+          in: body
+          description: Comprobante
+          required: true
+          schema:
+            $ref: '#/definitions/Invoice'
+      produces:
+        - application/pdf
+      responses:
+        '200':
+          description: Operacion exitosa
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
   /summary/send:
     post:
       tags:
         - summary
       summary: Enviar una Resumen diario de Boletas
-      description: 'Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF'
+      description: 'Retorna la respuesta de SUNAT y el XML firmado'
       operationId: sendSummary
       parameters:
-        - name: pdf
-          in: query
-          description: Generar PDF
-          type: boolean
         - name: body
           in: body
           description: Comprobante
@@ -147,6 +211,12 @@ paths:
           description: Operacion exitosa
           schema:
             $ref: '#/definitions/SummaryResponse'
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
   /summary/xml:
     post:
       tags:
@@ -166,6 +236,37 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
+  /summary/pdf:
+    post:
+      tags:
+        - summary
+      summary: Generar el PDF de un resumen diario
+      description: Retorna el PDF
+      operationId: getSummaryPdf
+      parameters:
+        - name: body
+          in: body
+          description: Comprobante
+          required: true
+          schema:
+            $ref: '#/definitions/Summary'
+      produces:
+        - application/pdf
+      responses:
+        '200':
+          description: Operacion exitosa
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
   /summary/status:
     get:
       tags:
@@ -190,13 +291,9 @@ paths:
       tags:
         - voided
       summary: Enviar una Comunicación de Bajas
-      description: 'Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF'
+      description: 'Retorna la respuesta de SUNAT y el XML firmado'
       operationId: sendVoided
       parameters:
-        - name: pdf
-          in: query
-          description: Generar PDF
-          type: boolean
         - name: body
           in: body
           description: Comprobante
@@ -212,6 +309,12 @@ paths:
           description: Operacion exitosa
           schema:
             $ref: '#/definitions/SummaryResponse'
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
   /voided/xml:
     post:
       tags:
@@ -231,6 +334,37 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
+  /voided/pdf:
+    post:
+      tags:
+        - voided
+      summary: Generar el PDF de una Comunicación de Bajas
+      description: Retorna el PDF
+      operationId: getVoidedPdf
+      parameters:
+        - name: body
+          in: body
+          description: Comprobante
+          required: true
+          schema:
+            $ref: '#/definitions/Voided'
+      produces:
+        - application/pdf
+      responses:
+        '200':
+          description: Operacion exitosa
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
   /voided/status:
     get:
       tags:
@@ -255,13 +389,9 @@ paths:
       tags:
         - despatch
       summary: Enviar una Guía de Remisión
-      description: 'Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF'
+      description: 'Retorna la respuesta de SUNAT y el XML firmado'
       operationId: sendDespatch
       parameters:
-        - name: pdf
-          in: query
-          description: Generar PDF
-          type: boolean
         - name: body
           in: body
           description: Comprobante
@@ -277,6 +407,12 @@ paths:
           description: Operacion exitosa
           schema:
             $ref: '#/definitions/DocumentResponse'
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
   /despatch/xml:
     post:
       tags:
@@ -296,18 +432,45 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
+  /despatch/Pdf:
+    post:
+      tags:
+        - despatch
+      summary: Generar el Pdf de una Guía de Remisión
+      description: Retorna el Pdf
+      operationId: getDespatchPdf
+      parameters:
+        - name: body
+          in: body
+          description: Comprobante
+          required: true
+          schema:
+            $ref: '#/definitions/Despatch'
+      produces:
+        - application/Pdf
+      responses:
+        '200':
+          description: Operacion exitosa
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
   /retention/send:
     post:
       tags:
         - retention
       summary: Enviar un Comprobante de Retencion
-      description: 'Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF'
+      description: 'Retorna la respuesta de SUNAT y el XML firmado'
       operationId: sendRetention
       parameters:
-        - name: pdf
-          in: query
-          description: Generar PDF
-          type: boolean
         - name: body
           in: body
           description: Comprobante
@@ -323,6 +486,12 @@ paths:
           description: Operacion exitosa
           schema:
             $ref: '#/definitions/DocumentResponse'
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
   /retention/xml:
     post:
       tags:
@@ -342,18 +511,45 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
+  /retention/pdf:
+    post:
+      tags:
+        - retention
+      summary: Generar el pdf de un Comprobante de Retencion
+      description: Retorna el pdf
+      operationId: getRetentionpdf
+      parameters:
+        - name: body
+          in: body
+          description: Comprobante
+          required: true
+          schema:
+            $ref: '#/definitions/Retention'
+      produces:
+        - application/pdf
+      responses:
+        '200':
+          description: Operacion exitosa
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
   /peception/send:
     post:
       tags:
         - peception
       summary: Enviar un Comprobante de Percepcion
-      description: 'Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF'
+      description: 'Retorna la respuesta de SUNAT y el XML firmado'
       operationId: sendPerception
       parameters:
-        - name: pdf
-          in: query
-          description: Generar PDF
-          type: boolean
         - name: body
           in: body
           description: Comprobante
@@ -369,6 +565,12 @@ paths:
           description: Operacion exitosa
           schema:
             $ref: '#/definitions/DocumentResponse'
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
   /peception/xml:
     post:
       tags:
@@ -388,18 +590,45 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
+  /peception/pdf:
+    post:
+      tags:
+        - peception
+      summary: Generar el pdf de un Comprobante de Percepcion
+      description: Retorna el pdf
+      operationId: getPerceptionpdf
+      parameters:
+        - name: body
+          in: body
+          description: Comprobante
+          required: true
+          schema:
+            $ref: '#/definitions/Perception'
+      produces:
+        - application/pdf
+      responses:
+        '200':
+          description: Operacion exitosa
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
   /reversion/send:
     post:
       tags:
         - reversion
       summary: Enviar un Resumen de Reversiones
-      description: 'Retorna la respuesta de SUNAT, el XML y opcionalmente el PDF'
+      description: 'Retorna la respuesta de SUNAT y el XML firmado'
       operationId: sendReversion
       parameters:
-        - name: pdf
-          in: query
-          description: Generar PDF
-          type: boolean
         - name: body
           in: body
           description: Comprobante
@@ -415,6 +644,12 @@ paths:
           description: Operacion exitosa
           schema:
             $ref: '#/definitions/SummaryResponse'
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
   /reversion/xml:
     post:
       tags:
@@ -434,6 +669,37 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
+  /reversion/pdf:
+    post:
+      tags:
+        - voided
+      summary: Generar el pdf de un Resumen de Reversiones
+      description: Retorna el pdf
+      operationId: getReversionpdf
+      parameters:
+        - name: body
+          in: body
+          description: Comprobante
+          required: true
+          schema:
+            $ref: '#/definitions/Reversion'
+      produces:
+        - application/pdf
+      responses:
+        '200':
+          description: Operacion exitosa
+        400:
+          description: Error de Validación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ValidationResponse'
   /reversion/status:
     get:
       tags:
@@ -1223,3 +1489,10 @@ definitions:
         description: Resumen de la Firma Digital
       sunatResponse:
         $ref: '#/definitions/SummaryResult'
+  ValidationResponse:
+    type: object
+    properties:
+      message:
+        type: string
+      field:
+        type: string
