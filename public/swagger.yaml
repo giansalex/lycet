@@ -28,13 +28,15 @@ tags:
 schemes:
   - http
   - https
+security:
+  - ApiToken: []
 paths:
   /invoice/send:
     post:
       tags:
         - invoice
       summary: Enviar una Factura o Boleta
-      description: 'Retorna la respuesta de SUNAT y el XML firmado'
+      description: Retorna la respuesta de SUNAT y el XML firmado
       operationId: sendInvoice
       parameters:
         - name: body
@@ -52,13 +54,12 @@ paths:
           description: Operacion exitosa
           schema:
             $ref: '#/definitions/DocumentResponse'
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
             items:
               $ref: '#/definitions/ValidationResponse'
-          
   /invoice/xml:
     post:
       tags:
@@ -78,7 +79,7 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -103,7 +104,7 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -114,7 +115,7 @@ paths:
       tags:
         - note
       summary: Envia nota de credito o debito
-      description: 'Retorna la respuesta de SUNAT y el XML firmado'
+      description: Retorna la respuesta de SUNAT y el XML firmado
       operationId: sendNote
       parameters:
         - name: body
@@ -132,7 +133,7 @@ paths:
           description: Operacion exitosa
           schema:
             $ref: '#/definitions/DocumentResponse'
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -157,7 +158,7 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -182,7 +183,7 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -193,7 +194,7 @@ paths:
       tags:
         - summary
       summary: Enviar una Resumen diario de Boletas
-      description: 'Retorna la respuesta de SUNAT y el XML firmado'
+      description: Retorna la respuesta de SUNAT y el XML firmado
       operationId: sendSummary
       parameters:
         - name: body
@@ -211,7 +212,7 @@ paths:
           description: Operacion exitosa
           schema:
             $ref: '#/definitions/SummaryResponse'
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -236,7 +237,7 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -261,7 +262,7 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -291,7 +292,7 @@ paths:
       tags:
         - voided
       summary: Enviar una Comunicación de Bajas
-      description: 'Retorna la respuesta de SUNAT y el XML firmado'
+      description: Retorna la respuesta de SUNAT y el XML firmado
       operationId: sendVoided
       parameters:
         - name: body
@@ -309,7 +310,7 @@ paths:
           description: Operacion exitosa
           schema:
             $ref: '#/definitions/SummaryResponse'
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -334,7 +335,7 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -359,7 +360,7 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -389,7 +390,7 @@ paths:
       tags:
         - despatch
       summary: Enviar una Guía de Remisión
-      description: 'Retorna la respuesta de SUNAT y el XML firmado'
+      description: Retorna la respuesta de SUNAT y el XML firmado
       operationId: sendDespatch
       parameters:
         - name: body
@@ -407,7 +408,7 @@ paths:
           description: Operacion exitosa
           schema:
             $ref: '#/definitions/DocumentResponse'
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -432,7 +433,7 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -457,7 +458,7 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -468,7 +469,7 @@ paths:
       tags:
         - retention
       summary: Enviar un Comprobante de Retencion
-      description: 'Retorna la respuesta de SUNAT y el XML firmado'
+      description: Retorna la respuesta de SUNAT y el XML firmado
       operationId: sendRetention
       parameters:
         - name: body
@@ -486,7 +487,7 @@ paths:
           description: Operacion exitosa
           schema:
             $ref: '#/definitions/DocumentResponse'
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -511,7 +512,7 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -536,7 +537,7 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -547,7 +548,7 @@ paths:
       tags:
         - peception
       summary: Enviar un Comprobante de Percepcion
-      description: 'Retorna la respuesta de SUNAT y el XML firmado'
+      description: Retorna la respuesta de SUNAT y el XML firmado
       operationId: sendPerception
       parameters:
         - name: body
@@ -565,7 +566,7 @@ paths:
           description: Operacion exitosa
           schema:
             $ref: '#/definitions/DocumentResponse'
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -590,7 +591,7 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -615,7 +616,7 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -626,7 +627,7 @@ paths:
       tags:
         - reversion
       summary: Enviar un Resumen de Reversiones
-      description: 'Retorna la respuesta de SUNAT y el XML firmado'
+      description: Retorna la respuesta de SUNAT y el XML firmado
       operationId: sendReversion
       parameters:
         - name: body
@@ -644,7 +645,7 @@ paths:
           description: Operacion exitosa
           schema:
             $ref: '#/definitions/SummaryResponse'
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -669,7 +670,7 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -694,7 +695,7 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
-        400:
+        '400':
           description: Error de Validación
           schema:
             type: array
@@ -719,6 +720,12 @@ paths:
           description: Operacion exitosa
           schema:
             $ref: '#/definitions/StatusResult'
+securityDefinitions:
+  ApiToken:
+    name: token
+    type: apiKey
+    in: query
+    description: Api Token
 definitions:
   Address:
     type: object
