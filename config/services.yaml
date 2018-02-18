@@ -1,7 +1,8 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: 'en'
+    locale: 'es'
+    token: '%env(CLIENT_TOKEN)%'
 
 services:
     # default configuration for services in *this* file
@@ -55,5 +56,8 @@ services:
         calls:
             - [setCachePath, ['%kernel.cache_dir%']]
 
+    App\EventSubscriber\TokenSubscriber:
+        arguments:
+            $token: '%token%'
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
