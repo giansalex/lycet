@@ -28,7 +28,7 @@ services:
         tags: ['controller.service_arguments']
 
     Greenter\Report\XmlUtils:
-        autowire: true
+        public: true
 
     Greenter\Report\HtmlReport:
         arguments:
@@ -51,8 +51,11 @@ services:
         autowire: true
 
     Greenter\Validator\DocumentValidatorInterface: '@App\Service\AppDocumentValidator'
-    Greenter\Report\ReportInterface: '@Greenter\Report\PdfReport'
-    App\Service\DocumentRequestInterface: 'App\Service\DocumentRequest'
+    Greenter\Report\ReportInterface:
+        alias: Greenter\Report\PdfReport
+        public: true
+
+    App\Service\DocumentRequestInterface: '@App\Service\DocumentRequest'
 
     phpdoc_serializer:
         class: Symfony\Component\Serializer\Serializer
@@ -61,6 +64,7 @@ services:
     Symfony\Component\Serializer\Normalizer\DenormalizerInterface: '@phpdoc_serializer'
 
     Greenter\See:
+        public: true
         calls:
             - [setCachePath, ['%kernel.cache_dir%']]
 

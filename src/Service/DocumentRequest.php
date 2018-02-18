@@ -9,6 +9,9 @@
 namespace App\Service;
 
 use Greenter\Model\DocumentInterface;
+use Greenter\Model\Response\BaseResult;
+use Greenter\Model\Response\BillResult;
+use Greenter\Model\Response\SummaryResult;
 use Greenter\Report\ReportInterface;
 use Greenter\Report\XmlUtils;
 use Greenter\See;
@@ -84,8 +87,9 @@ class DocumentRequest implements DocumentRequestInterface
         }
 
         $see = $this->getSeeWithCert();
-
         $result = $see->send($document);
+
+        $this->toBase64Zip($result);
         $xml = $see->getFactory()->getLastXml();
 
         $data = [
@@ -233,5 +237,19 @@ class DocumentRequest implements DocumentRequestInterface
         $utils = $this->container->get(XmlUtils::class);
 
         return $utils->getHashSign($xml);
+    }
+
+    /**
+     * @param $result
+     */
+    private function toBase64Zip(BaseResult $result): void
+    {
+        if ($result->isSuccess() && !($result instanceof SummaryResult)) {
+            /**@var $result BillResult */
+            $zip = $result->getCdrZip();
+            if ($zip) {
+                $result->setCdrZip(base64_encode($zip));
+            }
+        }
     }
 }
