@@ -457,16 +457,16 @@
         },
         {
             "name": "greenter/core",
-            "version": "v1.2.4",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giansalex/greenter-core.git",
-                "reference": "3e07b9d876e5752f0cc284c9a7152bceadad388b"
+                "reference": "f265aa0cfbedd82c58835dc0dd21def618b20549"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giansalex/greenter-core/zipball/3e07b9d876e5752f0cc284c9a7152bceadad388b",
-                "reference": "3e07b9d876e5752f0cc284c9a7152bceadad388b",
+                "url": "https://api.github.com/repos/giansalex/greenter-core/zipball/f265aa0cfbedd82c58835dc0dd21def618b20549",
+                "reference": "f265aa0cfbedd82c58835dc0dd21def618b20549",
                 "shasum": ""
             },
             "require": {
@@ -495,7 +495,7 @@
                 "greenter",
                 "sunat"
             ],
-            "time": "2018-01-28T01:42:54+00:00"
+            "time": "2018-02-18T23:56:43+00:00"
         },
         {
             "name": "greenter/greenter",
@@ -747,20 +747,20 @@
         },
         {
             "name": "greenter/xml",
-            "version": "v1.2.4",
+            "version": "v1.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giansalex/greenter-xml.git",
-                "reference": "18c7ed47f3081719b1a370ab1f8b05acda9737dd"
+                "reference": "d42b4fffc2b01fdf314ee127c7cb1c1e7a40b0c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giansalex/greenter-xml/zipball/18c7ed47f3081719b1a370ab1f8b05acda9737dd",
-                "reference": "18c7ed47f3081719b1a370ab1f8b05acda9737dd",
+                "url": "https://api.github.com/repos/giansalex/greenter-xml/zipball/d42b4fffc2b01fdf314ee127c7cb1c1e7a40b0c1",
+                "reference": "d42b4fffc2b01fdf314ee127c7cb1c1e7a40b0c1",
                 "shasum": ""
             },
             "require": {
-                "greenter/core": "^1.2",
+                "greenter/core": "^1.3",
                 "php": ">=5.5.9",
                 "twig/twig": "~1.0"
             },
@@ -792,7 +792,7 @@
                 "greenter",
                 "xml"
             ],
-            "time": "2018-02-02T02:21:33+00:00"
+            "time": "2018-02-19T22:19:45+00:00"
         },
         {
             "name": "greenter/xmldsig",
@@ -909,16 +909,16 @@
         },
         {
             "name": "mikehaertl/phpwkhtmltopdf",
-            "version": "2.3.0",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mikehaertl/phpwkhtmltopdf.git",
-                "reference": "a53d5917362e132a6f22cc6e03252017fc32fd50"
+                "reference": "45974cc1f0b99a8200aeedac6b692934a8a592cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikehaertl/phpwkhtmltopdf/zipball/a53d5917362e132a6f22cc6e03252017fc32fd50",
-                "reference": "a53d5917362e132a6f22cc6e03252017fc32fd50",
+                "url": "https://api.github.com/repos/mikehaertl/phpwkhtmltopdf/zipball/45974cc1f0b99a8200aeedac6b692934a8a592cd",
+                "reference": "45974cc1f0b99a8200aeedac6b692934a8a592cd",
                 "shasum": ""
             },
             "require": {
@@ -954,7 +954,7 @@
                 "wkhtmltoimage",
                 "wkhtmltopdf"
             ],
-            "time": "2017-12-31T09:18:19+00:00"
+            "time": "2018-02-18T10:54:00+00:00"
         },
         {
             "name": "nelmio/cors-bundle",
