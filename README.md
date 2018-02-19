@@ -7,6 +7,7 @@ Lycet is a REST API based on [greenter](https://github.com/giansalex/greenter) a
 - Php >=7.1 or above
 - Php Extensions (gd, soap, xml, openssl, zlib)
 - WkhtmltoPdf executable (PDf report)
+- Pem Certificate
 
 ### Steps
 
@@ -17,7 +18,7 @@ cd lycet
 composer install --no-dev -o
 ```
 
-**Configure Settings**
+**Configure Settings**   
 In `.env`  file in project root directory, change these settings.
 ```
 ###> greenter/greenter ###
@@ -30,7 +31,7 @@ SOL_PASS=moddatos
 ###< greenter/greenter ###
 ```
 
-**Run**
+**Run**    
 Using Php Built-in Web Server.
 ```
 php -S 0.0.0.0:8000 -t public
@@ -38,5 +39,5 @@ php -S 0.0.0.0:8000 -t public
 Go http://localhost:8000/
 
 ### Docs
-View [swagger documentation](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/giansalex/lycet/master/public/swagger.yaml), you can create a client with [swagger editor](http://editor.swagger.io/) and [swagger.yaml](https://raw.githubusercontent.com/giansalex/lycet/master/public/swagger.yaml).
+View [swagger documentation](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/giansalex/lycet/master/public/swagger.yaml), you can create a client with [swagger editor](http://editor.swagger.io/?url=https://raw.githubusercontent.com/giansalex/lycet/master/public/swagger.yaml).
 
