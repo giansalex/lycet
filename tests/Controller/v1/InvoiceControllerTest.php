@@ -57,7 +57,7 @@ class InvoiceControllerTest extends WebTestCase
     {
         $data = file_get_contents(__DIR__.'/../../Resources/documents/invoice.json');
 
-        $client = static::createClient();
+        $client = $this->getClientConfigured();
 
         $client->request(
             'POST',
