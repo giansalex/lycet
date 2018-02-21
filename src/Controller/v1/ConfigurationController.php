@@ -46,8 +46,11 @@ class ConfigurationController extends AbstractController
         $data = json_decode($request->getContent(), true);
 
         foreach ($data as $key => $value) {
-            $fileContent = base64_decode($value);
+            if (empty($value)) {
+                continue;
+            }
 
+            $fileContent = base64_decode($value);
             $this->fileStore->store($key, $fileContent);
         }
 
