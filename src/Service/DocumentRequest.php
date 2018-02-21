@@ -17,7 +17,6 @@ use Greenter\Report\XmlUtils;
 use Greenter\See;
 use Greenter\Validator\DocumentValidatorInterface;
 use Psr\Container\ContainerInterface;
-use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
@@ -191,8 +190,8 @@ class DocumentRequest implements DocumentRequestInterface
     private function getSeeWithCert()
     {
         $see = $this->getSee();
-        $path = $this->getParameter('cert_path');
-        $see->setCertificate(file_get_contents($path));
+        $data = $this->getParameter('certificate');
+        $see->setCertificate($data);
 
         return $see;
     }
@@ -225,9 +224,8 @@ class DocumentRequest implements DocumentRequestInterface
 
     private function getParameter($key): string
     {
-        /**@var $container Container */
-        $container = $this->container;
-        $value = $container->getParameter($key);
+        $config = $this->container->get(ConfigProviderInterface::class);
+        $value = $config->get($key);
 
         return $value;
     }
