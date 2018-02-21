@@ -3,8 +3,7 @@
 parameters:
     locale: 'es'
     token: '%env(CLIENT_TOKEN)%'
-    cert_path: '%env(CERT_PATH)%'
-    logo_path: '%env(LOGO_PATH)%'
+    data_path: '%kernel.project_dir%/data'
 
 services:
     # default configuration for services in *this* file
@@ -67,6 +66,13 @@ services:
         public: true
         calls:
             - [setCachePath, ['%kernel.cache_dir%']]
+
+    App\Service\FileConfigProvider:
+        arguments: ['%data_path%']
+
+    App\Service\ConfigProviderInterface:
+        alias: App\Service\FileConfigProvider
+        public: true
 
     App\EventSubscriber\TokenSubscriber:
         arguments:
