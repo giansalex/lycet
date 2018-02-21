@@ -8,22 +8,18 @@
 
 namespace App\Tests\Controller\v1;
 
+use App\Service\ConfigProviderInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class InvoiceControllerTest extends WebTestCase
 {
-    protected function setUp()
-    {
-        $path = __DIR__.'/../../Resources/SFSCert.pem';
-        putenv('CERT_PATH='.$path);
-    }
-
     /**
      * @expectedException \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException
      */
     public function testSendAccessDenied()
     {
-        $client = static::createClient();
+        $client = $this->getClientConfigured();
+
         $client->request(
             'POST',
             '/api/v1/invoice/send');
@@ -37,7 +33,7 @@ class InvoiceControllerTest extends WebTestCase
     {
         $data = file_get_contents(__DIR__.'/../../Resources/documents/invoice.json');
 
-        $client = static::createClient();
+        $client = $this->getClientConfigured();
 
         $client->request(
             'POST',
@@ -78,5 +74,29 @@ class InvoiceControllerTest extends WebTestCase
         $doc = new \DOMDocument();
         $doc->loadXML($result);
         $this->assertEquals('Invoice', $doc->documentElement->nodeName);
+    }
+
+    /**
+     * @return ConfigProviderInterface
+     */
+    private function getFileConfig()
+    {
+        $stub = $this->getMockBuilder(ConfigProviderInterface::class)
+                    ->getMock();
+
+        $path = __DIR__.'/../../Resources/SFSCert.pem';
+
+        $stub->method('get')
+            ->willReturn(file_get_contents($path));
+
+        /**@var $stub ConfigProviderInterface*/
+        return $stub;
+    }
+
+    private function getClientConfigured()
+    {
+        $client = static::createClient();
+        $client->getContainer()->set(ConfigProviderInterface::class, $this->getFileConfig());
+        return $client;
     }
 }
