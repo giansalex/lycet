@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  description: Lycet API REST based on Greenter - Facturación Electrónica.
+  description: Lycet API REST basado en Greenter - Facturación Electrónica.
   version: '1.0'
   title: Lycet
   contact:
@@ -25,6 +25,8 @@ tags:
     description: Comprobante de Percepciones
   - name: reversion
     description: Comunicacion de Reversiones
+  - name: configuration
+    description: Configuraciones
 schemes:
   - http
   - https
@@ -720,6 +722,26 @@ paths:
           description: Operacion exitosa
           schema:
             $ref: '#/definitions/StatusResult'
+  /configuration/:
+    post:
+      tags:
+        - configuration
+      summary: Guarda el certificado y logo
+      description: Guarda archivos de configuración
+      operationId: saveConfiguration
+      parameters:
+        - name: body
+          in: body
+          description: archivos en base64
+          required: true
+          schema:
+            $ref: '#/definitions/FilesData'
+      consumes:
+        - application/json
+      responses:
+        '200':
+          description: Operacion exitosa
+
 securityDefinitions:
   ApiToken:
     name: token
@@ -1503,3 +1525,12 @@ definitions:
         type: string
       field:
         type: string
+  FilesData:
+    type: object
+    properties:
+      certificate:
+        type: string
+        description: certificado PEM en formato base64
+      logo:
+        type: string
+        description: logo png en formato base64
