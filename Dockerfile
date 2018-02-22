@@ -1,4 +1,4 @@
-FROM php:7.0-apache
+FROM php:7.1-apache
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends wkhtmltopdf wget libxml2-dev php-soap zlib1g-dev git zip unzip libfreetype6-dev libjpeg62-turbo-dev && \
