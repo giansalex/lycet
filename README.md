@@ -24,8 +24,6 @@ In `.env`  file in project root directory, change these settings.
 ###> greenter/greenter ###
 WKHTMLTOPDF_PATH=full/path/wkhtmltopdf.exe
 CLIENT_TOKEN=123456
-LOGO_PATH=full/path/logo.png
-CERT_PATH=full/path/cert.pem
 SOL_USER=20000000001MODDATOS
 SOL_PASS=moddatos
 ###< greenter/greenter ###
