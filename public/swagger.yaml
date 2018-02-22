@@ -548,7 +548,7 @@ paths:
   /peception/send:
     post:
       tags:
-        - peception
+        - perception
       summary: Enviar un Comprobante de Percepcion
       description: Retorna la respuesta de SUNAT y el XML firmado
       operationId: sendPerception
@@ -577,7 +577,7 @@ paths:
   /peception/xml:
     post:
       tags:
-        - peception
+        - perception
       summary: Generar el XML de un Comprobante de Percepcion
       description: Retorna el XML
       operationId: getPerceptionXml
@@ -602,7 +602,7 @@ paths:
   /peception/pdf:
     post:
       tags:
-        - peception
+        - perception
       summary: Generar el pdf de un Comprobante de Percepcion
       description: Retorna el pdf
       operationId: getPerceptionpdf
