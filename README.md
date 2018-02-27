@@ -6,7 +6,7 @@ Lycet is a REST API based on [greenter](https://github.com/giansalex/greenter) a
 ### Requirements
 - Php >=7.1 or above
 - Php Extensions (gd, soap, xml, openssl, zlib)
-- WkhtmltoPdf executable (PDf report)
+- WkhtmltoPdf executable (PDF report)
 - Pem Certificate
 
 ### Steps
