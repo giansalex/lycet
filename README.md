@@ -15,7 +15,7 @@ Lycet is an API REST based on [greenter](https://github.com/giansalex/greenter) 
 ```
 git clone https://github.com/giansalex/lycet
 cd lycet
-composer install --no-dev -o
+composer install -o
 ```
 
 **Configure Settings**   
