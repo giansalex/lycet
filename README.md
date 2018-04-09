@@ -36,6 +36,15 @@ php -S 0.0.0.0:8000 -t public
 ```
 Go http://localhost:8000/
 
+
+### Docker
+Deploy on Docker.
+```
+git clone https://github.com/giansalex/lycet
+cd lycet
+docker build -t lycet .
+```
+
 ### Docs
 View [swagger documentation](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/giansalex/lycet/master/public/swagger.yaml), you can create a client using [swagger editor](http://editor.swagger.io/?url=https://raw.githubusercontent.com/giansalex/lycet/master/public/swagger.yaml).
 
