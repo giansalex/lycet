@@ -28,6 +28,7 @@ SOL_USER=20000000001MODDATOS
 SOL_PASS=moddatos
 ###< greenter/greenter ###
 ```
+Use [lycet-ui-config](https://giansalex.github.io/lycet-ui-config/) for configure Logo and Certificate.
 
 **Run**    
 Using Php Built-in Web Server.
