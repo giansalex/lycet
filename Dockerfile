@@ -27,6 +27,7 @@ ENV SOL_USER 20000000001MODDATOS
 ENV SOL_PASS moddatos
 ENV CORS_ALLOW_ORIGIN *
 
+RUN echo 'PassEnv APP_ENV APP_SECRET' > /etc/apache2/conf-enabled/expose-env.conf 
 COPY docker/config/opcache.ini $PHP_INI_DIR/conf.d/
 COPY docker/config/php.ini /usr/local/etc/php/
 COPY . /var/www/html/
