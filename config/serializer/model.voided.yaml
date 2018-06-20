@@ -1,0 +1,10 @@
+Greenter\Model\Voided\Voided:
+    properties:
+        fecGeneracion:
+            type: DateTime
+        fecComunicacion:
+            type: DateTime
+        company:
+            type: Greenter\Model\Company\Company
+        details:
+            type: array<Greenter\Model\Voided\VoidedDetail>
