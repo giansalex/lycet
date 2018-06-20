@@ -7,7 +7,7 @@ jms_serializer:
         directories:
             GreenterCore:
                 namespace_prefix: "Greenter\\Model"
-                path: "%kernel.root_dir%/config/serializer"
+                path: "%kernel.project_dir%/config/serializer"
 #    metadata:
 #        auto_detection: false
 #        directories:
