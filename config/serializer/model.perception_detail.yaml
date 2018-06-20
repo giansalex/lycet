@@ -1,0 +1,10 @@
+Greenter\Model\Perception\PerceptionDetail:
+    properties:
+        fechaEmision:
+            type: DateTime
+        cobros:
+            type: array<Greenter\Model\Retention\Payment>
+        fechaPercepcion:
+            type: DateTime
+        tipoCambio:
+            type: Greenter\Model\Retention\Exchange
