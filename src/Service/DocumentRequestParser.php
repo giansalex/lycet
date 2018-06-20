@@ -9,24 +9,23 @@
 namespace App\Service;
 
 use Greenter\Model\DocumentInterface;
+use JMS\Serializer\SerializerInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 class DocumentRequestParser implements RequestParserInterface
 {
     /**
-     * @var DenormalizerInterface
+     * @var SerializerInterface
      */
-    private $denormalizer;
+    private $serializer;
 
     /**
      * DocumentRequestParser constructor.
-     * @param DenormalizerInterface $denormalizer
+     * @param SerializerInterface $serializer
      */
-    public function __construct(DenormalizerInterface $denormalizer)
+    public function __construct(SerializerInterface $serializer)
     {
-        $this->denormalizer = $denormalizer;
+        $this->serializer = $serializer;
     }
 
     /**
@@ -36,14 +35,13 @@ class DocumentRequestParser implements RequestParserInterface
      */
     function getObject(Request $request, string $class): DocumentInterface
     {
-        $context = array(ObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true);
-
         $data = $request->getContent();
         $decode = json_decode($data, true);
 
-        $document = $this->denormalizer->denormalize(
+        $document = $this->serializer->deserialize(
             $decode,
-            $class, null, $context
+            $class,
+            'json'
         );
 
         return $document;

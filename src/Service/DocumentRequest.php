@@ -196,11 +196,10 @@ class DocumentRequest implements DocumentRequestInterface
         return $see;
     }
 
-    private function json($data, int $status = 200, array $headers = [], array $context = [])
+    private function json($data, int $status = 200, array $headers = [])
     {
-        $json = $this->container->get('serializer')->serialize($data, 'json', array_merge(array(
-            'json_encode_options' => JsonResponse::DEFAULT_ENCODING_OPTIONS,
-        ), $context));
+
+        $json = $this->container->get('serializer')->serialize($data, 'json');
 
         return new JsonResponse($json, $status, $headers, true);
     }
