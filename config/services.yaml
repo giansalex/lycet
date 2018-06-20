@@ -56,11 +56,7 @@ services:
 
     App\Service\DocumentRequestInterface: '@App\Service\DocumentRequest'
 
-    phpdoc_serializer:
-        class: Symfony\Component\Serializer\Serializer
-        factory: 'App\Factory\AppSerializerFactory:createSerializer'
-
-    Symfony\Component\Serializer\Normalizer\DenormalizerInterface: '@phpdoc_serializer'
+    serializer: '@JMS\Serializer\SerializerInterface'
 
     Greenter\See:
         public: true
