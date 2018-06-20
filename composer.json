@@ -11,13 +11,11 @@
         "greenter/validator": "^1.2",
         "jms/serializer-bundle": "^2.4",
         "nelmio/cors-bundle": "^1.5",
-        "phpdocumentor/reflection-docblock": "^4.3",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/console": "^4.0",
         "symfony/flex": "^1.0",
         "symfony/framework-bundle": "^4.0",
         "symfony/lts": "^4@dev",
-        "symfony/serializer-pack": "^1.0",
         "symfony/yaml": "^4.0"
     },
     "require-dev": {
