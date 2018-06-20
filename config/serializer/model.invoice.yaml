@@ -1,0 +1,28 @@
+Greenter\Model\Sale\Invoice:
+    properties:
+        fechaEmision:
+            type: DateTime
+        company:
+            type: Greenter\Model\Company\Company
+        client:
+            type: Greenter\Model\Client\Client
+        details:
+            type: array<Greenter\Model\Sale\SaleDetail>
+        legends:
+            type: array<Greenter\Model\Sale\Legend>
+        guias:
+            type: array<Greenter\Model\Sale\Document>
+        relDocs:
+            type: array<Greenter\Model\Sale\Document>
+        fecVencimiento:
+            type: DateTime
+        perception:
+            type: Greenter\Model\Sale\SalePerception
+        anticipos:
+            type: array<Greenter\Model\Sale\Prepayment>
+        detraccion:
+            type: Greenter\Model\Sale\Detraction
+        guiaEmbebida:
+            type: Greenter\Model\Sale\EmbededDespatch
+        seller:
+            type: Greenter\Model\Client\Client
