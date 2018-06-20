@@ -2,6 +2,12 @@ jms_serializer:
     visitors:
         xml:
             format_output: '%kernel.debug%'
+    metadata:
+        auto_detection: false
+        directories:
+            GreenterCore:
+                namespace_prefix: "Greenter\\Model"
+                path: "%kernel.root_dir%/config/serializer"
 #    metadata:
 #        auto_detection: false
 #        directories:
