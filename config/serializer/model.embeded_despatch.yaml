@@ -1,0 +1,8 @@
+Greenter\Model\Sale\EmbededDespatch:
+    properties:
+        llegada:
+            type: Greenter\Model\Despatch\Direction
+        partida:
+            type: Greenter\Model\Despatch\Direction
+        transportista:
+            type: Greenter\Model\Client\Client
