@@ -1,0 +1,10 @@
+Greenter\Model\Retention\RetentionDetail:
+    properties:
+        fechaEmision:
+            type: DateTime
+        pagos:
+            type: array<Greenter\Model\Retention\Payment>
+        fechaRetencion:
+            type: DateTime
+        tipoCambio:
+            type: Greenter\Model\Retention\Exchange
