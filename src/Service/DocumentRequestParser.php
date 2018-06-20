@@ -36,10 +36,9 @@ class DocumentRequestParser implements RequestParserInterface
     function getObject(Request $request, string $class): DocumentInterface
     {
         $data = $request->getContent();
-        $decode = json_decode($data, true);
 
         $document = $this->serializer->deserialize(
-            $decode,
+            $data,
             $class,
             'json'
         );
