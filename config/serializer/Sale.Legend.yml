@@ -1,0 +1,6 @@
+Greenter\Model\Sale\Legend:
+    properties:
+        code:
+            type: string
+        value:
+            type: string

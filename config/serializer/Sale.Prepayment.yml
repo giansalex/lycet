@@ -1,0 +1,8 @@
+Greenter\Model\Sale\Prepayment:
+    properties:
+        tipoDocRel:
+            type: string
+        nroDocRel:
+            type: string
+        total:
+            type: float

@@ -1,0 +1,10 @@
+Greenter\Model\Voided\VoidedDetail:
+    properties:
+        tipoDoc:
+            type: string
+        serie:
+            type: string
+        correlativo:
+            type: string
+        desMotivoBaja:
+            type: string

@@ -1,0 +1,28 @@
+Greenter\Model\Despatch\Despatch:
+    properties:
+        tipoDoc:
+            type: string
+        serie:
+            type: string
+        correlativo:
+            type: string
+        observacion:
+            type: string
+        fechaEmision:
+            type: DateTime
+        company:
+            type: Greenter\Model\Company\Company
+        destinatario:
+            type: Greenter\Model\Client\Client
+        tercero:
+            type: Greenter\Model\Client\Client
+        envio:
+            type: Greenter\Model\Despatch\Shipment
+        docBaja:
+            type: Greenter\Model\Sale\Document
+        relDoc:
+            type: Greenter\Model\Sale\Document
+        details:
+            type: array<Greenter\Model\Despatch\DespatchDetail>
+        name:
+            type: string

@@ -1,0 +1,42 @@
+Greenter\Model\Sale\BaseSale:
+    properties:
+        tipoDoc:
+            type: string
+        serie:
+            type: string
+        correlativo:
+            type: string
+        fechaEmision:
+            type: DateTime
+        client:
+            type: Greenter\Model\Client\Client
+        company:
+            type: Greenter\Model\Company\Company
+        tipoMoneda:
+            type: string
+        sumOtrosCargos:
+            type: float
+        mtoOperGravadas:
+            type: float
+        mtoOperInafectas:
+            type: float
+        mtoOperExoneradas:
+            type: float
+        mtoIGV:
+            type: float
+        mtoISC:
+            type: float
+        mtoOtrosTributos:
+            type: float
+        mtoImpVenta:
+            type: float
+        details:
+            type: array<Greenter\Model\Sale\SaleDetail>
+        legends:
+            type: array<Greenter\Model\Sale\Legend>
+        guias:
+            type: array<Greenter\Model\Sale\Document>
+        relDocs:
+            type: array<Greenter\Model\Sale\Document>
+        name:
+            type: string

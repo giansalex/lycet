@@ -1,0 +1,10 @@
+Greenter\Model\Retention\Exchange:
+    properties:
+        monedaRef:
+            type: string
+        monedaObj:
+            type: string
+        factor:
+            type: float
+        fecha:
+            type: DateTime

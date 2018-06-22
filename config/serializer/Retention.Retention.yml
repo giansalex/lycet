@@ -1,0 +1,26 @@
+Greenter\Model\Retention\Retention:
+    properties:
+        serie:
+            type: string
+        correlativo:
+            type: string
+        fechaEmision:
+            type: DateTime
+        proveedor:
+            type: Greenter\Model\Client\Client
+        company:
+            type: Greenter\Model\Company\Company
+        regimen:
+            type: string
+        tasa:
+            type: float
+        impRetenido:
+            type: float
+        impPagado:
+            type: float
+        observacion:
+            type: string
+        details:
+            type: array<Greenter\Model\Retention\RetentionDetail>
+        name:
+            type: string

@@ -1,0 +1,34 @@
+Greenter\Model\Summary\SummaryDetail:
+    properties:
+        tipoDoc:
+            type: string
+        serieNro:
+            type: string
+        clienteTipo:
+            type: string
+        clienteNro:
+            type: string
+        docReferencia:
+            type: Greenter\Model\Sale\Document
+        percepcion:
+            type: Greenter\Model\Summary\SummaryPerception
+        estado:
+            type: string
+        total:
+            type: float
+        mtoOperGravadas:
+            type: float
+        mtoOperInafectas:
+            type: float
+        mtoOperExoneradas:
+            type: float
+        mtoOperGratuitas:
+            type: float
+        mtoOtrosCargos:
+            type: float
+        mtoIGV:
+            type: float
+        mtoISC:
+            type: float
+        mtoOtrosTributos:
+            type: float

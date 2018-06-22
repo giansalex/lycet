@@ -1,0 +1,14 @@
+Greenter\Model\Client\Client:
+    properties:
+        tipoDoc:
+            type: string
+        numDoc:
+            type: string
+        rznSocial:
+            type: string
+        address:
+            type: Greenter\Model\Company\Address
+        email:
+            type: string
+        telephone:
+            type: string

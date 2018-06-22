@@ -1,0 +1,16 @@
+Greenter\Model\Company\Address:
+    properties:
+        ubigueo:
+            type: string
+        codigoPais:
+            type: string
+        departamento:
+            type: string
+        provincia:
+            type: string
+        distrito:
+            type: string
+        urbanizacion:
+            type: string
+        direccion:
+            type: string

@@ -1,0 +1,26 @@
+Greenter\Model\Perception\Perception:
+    properties:
+        serie:
+            type: string
+        correlativo:
+            type: string
+        fechaEmision:
+            type: DateTime
+        company:
+            type: Greenter\Model\Company\Company
+        proveedor:
+            type: Greenter\Model\Client\Client
+        regimen:
+            type: string
+        tasa:
+            type: float
+        impPercibido:
+            type: float
+        impCobrado:
+            type: float
+        observacion:
+            type: string
+        details:
+            type: array<Greenter\Model\Perception\PerceptionDetail>
+        name:
+            type: string

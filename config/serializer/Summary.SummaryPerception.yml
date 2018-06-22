@@ -1,0 +1,12 @@
+Greenter\Model\Summary\SummaryPerception:
+    properties:
+        codReg:
+            type: string
+        tasa:
+            type: float
+        mtoBase:
+            type: float
+        mto:
+            type: float
+        mtoTotal:
+            type: float

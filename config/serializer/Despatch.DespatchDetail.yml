@@ -1,0 +1,12 @@
+Greenter\Model\Despatch\DespatchDetail:
+    properties:
+        codigo:
+            type: string
+        descripcion:
+            type: string
+        unidad:
+            type: string
+        cantidad:
+            type: float
+        codProdSunat:
+            type: string

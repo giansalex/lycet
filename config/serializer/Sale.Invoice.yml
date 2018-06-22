@@ -1,0 +1,26 @@
+Greenter\Model\Sale\Invoice:
+    properties:
+        tipoOperacion:
+            type: string
+        fecVencimiento:
+            type: DateTime
+        sumDsctoGlobal:
+            type: float
+        mtoDescuentos:
+            type: float
+        mtoOperGratuitas:
+            type: float
+        totalAnticipos:
+            type: float
+        perception:
+            type: Greenter\Model\Sale\SalePerception
+        compra:
+            type: string
+        anticipos:
+            type: array<Greenter\Model\Sale\Prepayment>
+        detraccion:
+            type: Greenter\Model\Sale\Detraction
+        guiaEmbebida:
+            type: Greenter\Model\Sale\EmbededDespatch
+        seller:
+            type: Greenter\Model\Client\Client

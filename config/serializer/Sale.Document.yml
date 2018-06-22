@@ -1,0 +1,6 @@
+Greenter\Model\Sale\Document:
+    properties:
+        tipoDoc:
+            type: string
+        nroDoc:
+            type: string

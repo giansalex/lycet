@@ -1,0 +1,8 @@
+Greenter\Model\Retention\Payment:
+    properties:
+        moneda:
+            type: string
+        importe:
+            type: float
+        fecha:
+            type: DateTime

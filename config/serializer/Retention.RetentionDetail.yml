@@ -1,0 +1,22 @@
+Greenter\Model\Retention\RetentionDetail:
+    properties:
+        tipoDoc:
+            type: string
+        numDoc:
+            type: string
+        fechaEmision:
+            type: DateTime
+        impTotal:
+            type: float
+        moneda:
+            type: string
+        pagos:
+            type: array<Greenter\Model\Retention\Payment>
+        fechaRetencion:
+            type: DateTime
+        impRetenido:
+            type: float
+        impPagar:
+            type: float
+        tipoCambio:
+            type: Greenter\Model\Retention\Exchange

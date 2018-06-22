@@ -1,0 +1,4 @@
+Greenter\Model\Voided\Reversion:
+    properties:
+        xmlId:
+            type: string

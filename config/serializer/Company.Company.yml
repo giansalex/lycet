@@ -1,0 +1,14 @@
+Greenter\Model\Company\Company:
+    properties:
+        ruc:
+            type: string
+        razonSocial:
+            type: string
+        nombreComercial:
+            type: string
+        address:
+            type: Greenter\Model\Company\Address
+        email:
+            type: string
+        telephone:
+            type: string

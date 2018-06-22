@@ -1,0 +1,6 @@
+Greenter\Model\Despatch\Direction:
+    properties:
+        ubigueo:
+            type: string
+        direccion:
+            type: string

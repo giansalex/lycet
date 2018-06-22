@@ -1,0 +1,30 @@
+Greenter\Model\Sale\SaleDetail:
+    properties:
+        unidad:
+            type: string
+        cantidad:
+            type: float
+        codProducto:
+            type: string
+        codProdSunat:
+            type: string
+        descripcion:
+            type: string
+        mtoValorUnitario:
+            type: float
+        descuento:
+            type: float
+        igv:
+            type: float
+        tipAfeIgv:
+            type: string
+        isc:
+            type: float
+        tipSisIsc:
+            type: string
+        mtoPrecioUnitario:
+            type: float
+        mtoValorVenta:
+            type: float
+        mtoValorGratuito:
+            type: float

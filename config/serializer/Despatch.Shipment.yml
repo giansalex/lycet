@@ -1,0 +1,28 @@
+Greenter\Model\Despatch\Shipment:
+    properties:
+        codTraslado:
+            type: string
+        desTraslado:
+            type: string
+        indTransbordo:
+            type: bool
+        pesoTotal:
+            type: float
+        undPesoTotal:
+            type: string
+        numBultos:
+            type: int
+        modTraslado:
+            type: string
+        fecTraslado:
+            type: DateTime
+        numContenedor:
+            type: string
+        codPuerto:
+            type: string
+        transportista:
+            type: Greenter\Model\Despatch\Transportist
+        llegada:
+            type: Greenter\Model\Despatch\Direction
+        partida:
+            type: Greenter\Model\Despatch\Direction

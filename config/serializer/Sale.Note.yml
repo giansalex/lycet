@@ -1,0 +1,14 @@
+Greenter\Model\Sale\Note:
+    properties:
+        codMotivo:
+            type: string
+        desMotivo:
+            type: string
+        tipDocAfectado:
+            type: string
+        numDocfectado:
+            type: string
+        mtoOperGratuitas:
+            type: float
+        perception:
+            type: Greenter\Model\Sale\SalePerception

@@ -1,0 +1,8 @@
+Greenter\Model\Sale\Detraction:
+    properties:
+        percent:
+            type: float
+        mount:
+            type: float
+        valueRef:
+            type: float
