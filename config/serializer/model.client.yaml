@@ -1,4 +1,0 @@
-Greenter\Model\Client\Client:
-    properties:
-        address:
-            type: Greenter\Model\Company\Address

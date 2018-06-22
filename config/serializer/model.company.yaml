@@ -1,4 +1,0 @@
-Greenter\Model\Company\Company:
-    properties:
-        address:
-            type: Greenter\Model\Company\Address

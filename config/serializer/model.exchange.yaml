@@ -1,4 +1,0 @@
-Greenter\Model\Retention\Exchange:
-    properties:
-        fecha:
-            type: DateTime

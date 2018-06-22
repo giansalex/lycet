@@ -1,6 +1,0 @@
-Greenter\Model\Summary\SummaryDetail:
-    properties:
-        docReferencia:
-            type: Greenter\Model\Sale\Document
-        percepcion:
-            type: Greenter\Model\Summary\SummaryPerception

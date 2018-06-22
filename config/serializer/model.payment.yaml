@@ -1,4 +1,0 @@
-Greenter\Model\Retention\Payment:
-    properties:
-        fecha:
-            type: DateTime

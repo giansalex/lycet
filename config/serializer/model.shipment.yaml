@@ -1,8 +1,0 @@
-Greenter\Model\Despatch\Shipment:
-    properties:
-        fecTraslado:
-            type: DateTime
-        llegada:
-            type: Greenter\Model\Despatch\Direction
-        partida:
-            type: Greenter\Model\Despatch\Direction
