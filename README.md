@@ -27,6 +27,9 @@ WKHTMLTOPDF_PATH=full/path/wkhtmltopdf.exe
 CLIENT_TOKEN=123456
 SOL_USER=20000000001MODDATOS
 SOL_PASS=moddatos
+FE_URL=https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService
+RE_URL=https://e-beta.sunat.gob.pe/ol-ti-itemision-otroscpe-gem-beta/billService
+GUIA_URL=https://e-beta.sunat.gob.pe/ol-ti-itemision-guia-gem-beta/billService
 ###< greenter/greenter ###
 ```
 Use [lycet-ui-config](https://giansalex.github.io/lycet-ui-config/) for configure Logo and Certificate.
