@@ -85,7 +85,7 @@ class DocumentRequest implements DocumentRequestInterface
             return $this->json($errors, 400);
         }
 
-        $see = $this->getSeeWithCert();
+        $see = $this->getSee();
         $result = $see->send($document);
 
         $this->toBase64Zip($result);
@@ -115,7 +115,7 @@ class DocumentRequest implements DocumentRequestInterface
             return $this->json($errors, 400);
         }
 
-        $see = $this->getSeeWithCert();
+        $see = $this->getSee();
 
         $xml  = $see->getXmlSigned($document);
 
@@ -167,7 +167,9 @@ class DocumentRequest implements DocumentRequestInterface
         $user = getenv('SOL_USER');
         $pass = getenv('SOL_PASS');
         $see = $this->container->get(See::class);
+        $data = $this->getParameter('certificate');
         $see->setCredentials($user, $pass);
+        $see->setCertificate($data);
 
         return $see;
     }
@@ -187,18 +189,8 @@ class DocumentRequest implements DocumentRequestInterface
         return $this->container->get(ReportInterface::class);
     }
 
-    private function getSeeWithCert()
-    {
-        $see = $this->getSee();
-        $data = $this->getParameter('certificate');
-        $see->setCertificate($data);
-
-        return $see;
-    }
-
     private function json($data, int $status = 200, array $headers = [])
     {
-
         $json = $this->container->get('serializer')->serialize($data, 'json');
 
         return new JsonResponse($json, $status, $headers, true);
