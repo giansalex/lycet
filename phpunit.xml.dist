@@ -20,6 +20,9 @@
         <env name="CLIENT_TOKEN" value="123456" />
         <env name="SOL_USER" value="20000000001MODDATOS" />
         <env name="SOL_PASS" value="moddatos" />
+        <env name="FE_URL" value="https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService" />
+        <env name="RE_URL" value="https://e-beta.sunat.gob.pe/ol-ti-itemision-otroscpe-gem-beta/billService" />
+        <env name="GUIA_URL" value="https://e-beta.sunat.gob.pe/ol-ti-itemision-guia-gem-beta/billService" />
     </php>
 
     <testsuites>

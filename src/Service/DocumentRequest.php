@@ -193,7 +193,7 @@ class DocumentRequest implements DocumentRequestInterface
                 break;
         }
 
-        return $this->getParameter($key);
+        return getenv($key);
     }
 
     /**
