@@ -2,7 +2,6 @@
 [![Travis-CI](https://img.shields.io/travis/giansalex/lycet.svg?branch=master&style=flat-square)](https://travis-ci.org/giansalex/lycet)
 
 Lycet is an API REST based on [greenter](https://github.com/giansalex/greenter) and Symfony Framework v4.
-> This project is for developer testing, the service is Beta by default.
 
 ### Requirements
 - Php 7.1 or above
