@@ -1,4 +1,5 @@
 {
+    "name": "greenter/lycet",
     "type": "project",
     "license": "proprietary",
     "require": {
@@ -13,6 +14,7 @@
         "nelmio/cors-bundle": "^1.5",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/console": "^4.0",
+        "symfony/dotenv": "^4.0",
         "symfony/flex": "^1.0",
         "symfony/framework-bundle": "^4.0",
         "symfony/lts": "^4@dev",
@@ -20,7 +22,6 @@
     },
     "require-dev": {
         "symfony/browser-kit": "^4.0",
-        "symfony/dotenv": "^4.0",
         "symfony/phpunit-bridge": "^4.0"
     },
     "config": {
@@ -62,7 +63,6 @@
     },
     "extra": {
         "symfony": {
-            "id": "01C4J0HBEQAZN54N98ZM53P2R9",
             "allow-contrib": false
         }
     }
