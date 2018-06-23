@@ -26,6 +26,9 @@ ENV CLIENT_TOKEN 123456
 ENV SOL_USER 20000000001MODDATOS
 ENV SOL_PASS moddatos
 ENV CORS_ALLOW_ORIGIN *
+ENV FE_URL https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService
+ENV RE_URL https://e-beta.sunat.gob.pe/ol-ti-itemision-otroscpe-gem-beta/billService
+ENV GUIA_URL https://e-beta.sunat.gob.pe/ol-ti-itemision-guia-gem-beta/billService
 
 RUN echo 'PassEnv APP_ENV APP_SECRET' > /etc/apache2/conf-enabled/expose-env.conf 
 COPY docker/config/opcache.ini $PHP_INI_DIR/conf.d/
