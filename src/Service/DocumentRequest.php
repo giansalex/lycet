@@ -8,10 +8,14 @@
 
 namespace App\Service;
 
+use Greenter\Model\Despatch\Despatch;
 use Greenter\Model\DocumentInterface;
+use Greenter\Model\Perception\Perception;
 use Greenter\Model\Response\BaseResult;
 use Greenter\Model\Response\BillResult;
 use Greenter\Model\Response\SummaryResult;
+use Greenter\Model\Retention\Retention;
+use Greenter\Model\Voided\Reversion;
 use Greenter\Report\ReportInterface;
 use Greenter\Report\XmlUtils;
 use Greenter\See;
@@ -170,8 +174,26 @@ class DocumentRequest implements DocumentRequestInterface
         $data = $this->getParameter('certificate');
         $see->setCredentials($user, $pass);
         $see->setCertificate($data);
+        $see->setService($this->getUrlService());
 
         return $see;
+    }
+
+    private function getUrlService()
+    {
+        $key = 'FE_URL';
+        switch ($this->className) {
+            case Perception::class:
+            case Retention::class:
+            case Reversion::class:
+                $key = 'RE_URL';
+                break;
+            case Despatch::class:
+                $key = 'GUIA_URL';
+                break;
+        }
+
+        return $this->getParameter($key);
     }
 
     /**
