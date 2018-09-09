@@ -57,7 +57,9 @@ services:
 
     App\Service\DocumentRequestInterface: '@App\Service\DocumentRequest'
 
-    serializer: '@JMS\Serializer\SerializerInterface'
+    serializer:
+        alias: 'jms_serializer'
+        public: true
 
     Greenter\See:
         public: true
