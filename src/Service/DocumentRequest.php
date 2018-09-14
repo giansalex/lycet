@@ -16,6 +16,7 @@ use Greenter\Model\Response\BillResult;
 use Greenter\Model\Response\SummaryResult;
 use Greenter\Model\Retention\Retention;
 use Greenter\Model\Voided\Reversion;
+use Greenter\Report\PdfReport;
 use Greenter\Report\ReportInterface;
 use Greenter\Report\XmlUtils;
 use Greenter\See;
@@ -154,7 +155,13 @@ class DocumentRequest implements DocumentRequestInterface
             ]
         ];
 
-        $pdf  = $this->getReport()->render($document, $parameters);
+        $report = $this->getReport();
+        $pdf = $report->render($document, $parameters);
+        if ($pdf === false) {
+            $message = $this->tryGetError($report);
+
+            return $this->json(['message' => $message], 500);
+        }
 
         return $this->file($pdf, $document->getName().'.pdf', 'application/pdf');
     }
@@ -262,5 +269,14 @@ class DocumentRequest implements DocumentRequestInterface
                 $result->setCdrZip(base64_encode($zip));
             }
         }
+    }
+
+    private function tryGetError($pdfService)
+    {
+        if (!($pdfService instanceof PdfReport)) {
+            return 'No se pudo generar el reporte desde ' . get_class($pdfService);
+        }
+
+        return $pdfService->getExporter()->getError();
     }
 }
