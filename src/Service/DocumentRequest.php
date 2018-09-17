@@ -141,8 +141,7 @@ class DocumentRequest implements DocumentRequestInterface
         if (count($errors)) {
             return $this->json($errors, 400);
         }
-        $path = $this->getParameter('logo_path');
-        $logo = $path ? file_get_contents($path) : '';
+        $logo = $this->getParameter('logo');
 
         $parameters = [
             'system' => [
