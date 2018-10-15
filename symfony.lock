@@ -188,9 +188,6 @@
     "symfony/http-kernel": {
         "version": "v4.0.3"
     },
-    "symfony/lts": {
-        "version": "4-dev"
-    },
     "symfony/phpunit-bridge": {
         "version": "3.3",
         "recipe": {

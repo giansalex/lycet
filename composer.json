@@ -3,13 +3,13 @@
     "type": "project",
     "license": "proprietary",
     "require": {
-        "php": "^7.1.0",
+        "php": "^7.1",
         "ext-gd": "*",
         "ext-iconv": "*",
-        "greenter/greenter": "^2.1",
-        "greenter/htmltopdf": "^1.0",
-        "greenter/report": "^1.3",
-        "greenter/validator": "^1.2",
+        "greenter/greenter": "^3.0",
+        "greenter/htmltopdf": "^2.1",
+        "greenter/report": "^2.1",
+        "greenter/validator": "^2.1",
         "jms/serializer-bundle": "^2.4",
         "nelmio/cors-bundle": "^1.5",
         "sensio/framework-extra-bundle": "^5.1",
@@ -17,7 +17,6 @@
         "symfony/dotenv": "^4.1",
         "symfony/flex": "^1.0",
         "symfony/framework-bundle": "^4.0",
-        "symfony/lts": "^4@dev",
         "symfony/yaml": "^4.1"
     },
     "require-dev": {
