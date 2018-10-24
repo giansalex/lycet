@@ -741,7 +741,6 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
-
 securityDefinitions:
   ApiToken:
     name: token
@@ -1474,6 +1473,7 @@ definitions:
         $ref: '#/definitions/Error'
       cdrZip:
         type: string
+        format: byte
       cdrResponse:
         $ref: '#/definitions/CdrResponse'
   SummaryResult:
@@ -1496,6 +1496,7 @@ definitions:
         type: string
       cdrZip:
         type: string
+        format: byte
       cdrResponse:
         $ref: '#/definitions/CdrResponse'
   DocumentResponse:
