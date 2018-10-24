@@ -22,6 +22,8 @@ Greenter\Model\Summary\SummaryDetail:
             type: float
         mtoOperExoneradas:
             type: float
+        mtoOperExportacion:
+            type: float
         mtoOperGratuitas:
             type: float
         mtoOtrosCargos:

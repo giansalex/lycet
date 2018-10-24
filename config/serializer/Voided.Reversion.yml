@@ -2,3 +2,15 @@ Greenter\Model\Voided\Reversion:
     properties:
         xmlId:
             type: string
+        correlativo:
+            type: string
+        fecGeneracion:
+            type: DateTime
+        fecComunicacion:
+            type: DateTime
+        company:
+            type: Greenter\Model\Company\Company
+        details:
+            type: array<Greenter\Model\Voided\VoidedDetail>
+        name:
+            type: string

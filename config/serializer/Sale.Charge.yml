@@ -1,0 +1,10 @@
+Greenter\Model\Sale\Charge:
+    properties:
+        codTipo:
+            type: string
+        factor:
+            type: string
+        monto:
+            type: float
+        montoBase:
+            type: float

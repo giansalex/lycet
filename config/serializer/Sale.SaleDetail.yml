@@ -8,6 +8,8 @@ Greenter\Model\Sale\SaleDetail:
             type: string
         codProdSunat:
             type: string
+        codProdGS1:
+            type: string
         descripcion:
             type: string
         mtoValorUnitario:
@@ -22,9 +24,31 @@ Greenter\Model\Sale\SaleDetail:
             type: float
         tipSisIsc:
             type: string
+        totalImpuestos:
+            type: float
         mtoPrecioUnitario:
             type: float
         mtoValorVenta:
             type: float
         mtoValorGratuito:
             type: float
+        mtoBaseIgv:
+            type: float
+        porcentajeIgv:
+            type: float
+        mtoBaseIsc:
+            type: float
+        porcentajeIsc:
+            type: float
+        mtoBaseOth:
+            type: float
+        porcentajeOth:
+            type: float
+        otroTributo:
+            type: float
+        cargos:
+            type: array<Greenter\Model\Sale\Charge>
+        descuentos:
+            type: array<Greenter\Model\Sale\Charge>
+        atributos:
+            type: array<Greenter\Model\Sale\DetailAttribute>

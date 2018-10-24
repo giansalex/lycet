@@ -14,13 +14,73 @@ Greenter\Model\Sale\Invoice:
             type: float
         perception:
             type: Greenter\Model\Sale\SalePerception
-        compra:
-            type: string
+        guiaEmbebida:
+            type: Greenter\Model\Sale\EmbededDespatch
         anticipos:
             type: array<Greenter\Model\Sale\Prepayment>
         detraccion:
             type: Greenter\Model\Sale\Detraction
-        guiaEmbebida:
-            type: Greenter\Model\Sale\EmbededDespatch
         seller:
             type: Greenter\Model\Client\Client
+        buyer:
+            type: Greenter\Model\Client\Client
+        descuentos:
+            type: array<Greenter\Model\Sale\Charge>
+        cargos:
+            type: array<Greenter\Model\Sale\Charge>
+        mtoCargos:
+            type: float
+        valorVenta:
+            type: float
+        tipoDoc:
+            type: string
+        serie:
+            type: string
+        correlativo:
+            type: string
+        fechaEmision:
+            type: DateTime
+        client:
+            type: Greenter\Model\Client\Client
+        company:
+            type: Greenter\Model\Company\Company
+        tipoMoneda:
+            type: string
+        sumOtrosCargos:
+            type: float
+        mtoOperGravadas:
+            type: float
+        mtoOperInafectas:
+            type: float
+        mtoOperExoneradas:
+            type: float
+        mtoOperExportacion:
+            type: float
+        mtoIGV:
+            type: float
+        mtoISC:
+            type: float
+        mtoOtrosTributos:
+            type: float
+        mtoImpVenta:
+            type: float
+        details:
+            type: array<Greenter\Model\Sale\SaleDetail>
+        legends:
+            type: array<Greenter\Model\Sale\Legend>
+        guias:
+            type: array<Greenter\Model\Sale\Document>
+        relDocs:
+            type: array<Greenter\Model\Sale\Document>
+        compra:
+            type: string
+        mtoBaseIsc:
+            type: float
+        mtoBaseOth:
+            type: float
+        totalImpuestos:
+            type: float
+        ublVersion:
+            type: string
+        name:
+            type: string

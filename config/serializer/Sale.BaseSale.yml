@@ -22,6 +22,8 @@ Greenter\Model\Sale\BaseSale:
             type: float
         mtoOperExoneradas:
             type: float
+        mtoOperExportacion:
+            type: float
         mtoIGV:
             type: float
         mtoISC:
@@ -38,5 +40,15 @@ Greenter\Model\Sale\BaseSale:
             type: array<Greenter\Model\Sale\Document>
         relDocs:
             type: array<Greenter\Model\Sale\Document>
+        compra:
+            type: string
+        mtoBaseIsc:
+            type: float
+        mtoBaseOth:
+            type: float
+        totalImpuestos:
+            type: float
+        ublVersion:
+            type: string
         name:
             type: string

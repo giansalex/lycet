@@ -1,0 +1,14 @@
+Greenter\Model\Sale\DetailAttribute:
+    properties:
+        code:
+            type: string
+        name:
+            type: string
+        value:
+            type: string
+        fecInicio:
+            type: DateTime
+        fecFin:
+            type: DateTime
+        duracion:
+            type: int

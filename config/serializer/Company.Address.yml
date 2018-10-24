@@ -14,3 +14,5 @@ Greenter\Model\Company\Address:
             type: string
         direccion:
             type: string
+        codLocal:
+            type: string
