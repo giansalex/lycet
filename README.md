@@ -3,22 +3,22 @@
 
 Lycet es un API REST basado en [greenter](https://github.com/giansalex/greenter) y Symfony Framework v4, UBL 2.1 es soportado.
 
-### Requerimientos
+## Requerimientos
 - Php 7.1 o superior
 - Php Extensions habilitadas (gd, soap, xml, openssl, zlib)
 - WkhtmltoPdf executable (PDF report)
 - Pem Certificate - [convert pfx to pem](https://github.com/giansalex/xmldsig/blob/master/CONVERT.md)
 
-### Pasos
+## Pasos
 
-**Instalar Lycet**
+### Instalar Lycet
 ```
 git clone https://github.com/giansalex/lycet
 cd lycet
 composer install -o
 ```
 
-**Configurafiones**   
+### Configuraciones  
 En el archivo `.env` ubicado en la raiz del proyecto, cambiar estas configuraciones de acuerdo a su necesidad.
 ```
 ###> greenter/greenter ###
@@ -32,9 +32,18 @@ GUIA_URL=https://e-beta.sunat.gob.pe/ol-ti-itemision-guia-gem-beta/billService
 ###< greenter/greenter ###
 ```
 
-Usar [lycet-ui-config](https://giansalex.github.io/lycet-ui-config/) para configurar el Logo y Certificado.
+### Archivos Requeridos
+Se necesita almacenar el certificado y logo en la carpeta `/data`, los archivos deben tener nombres especificos que se indican
+a continuación.
+```
+/data
+├── cert.pem
+├── logo.png
+```
+También puede usar [lycet-ui-config](https://giansalex.github.io/lycet-ui-config/) como interfaz de usuario, siendo mas útil
+esta opción cuando emplea contenedores.
 
-**Ejecutar**    
+### Ejecutar    
 Usando Php Built-in Web Server.
 ```
 php -S 0.0.0.0:8000 -t public
