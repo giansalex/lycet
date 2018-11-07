@@ -807,6 +807,12 @@ definitions:
       descuento:
         type: number
         format: float
+      mtoBaseIgv:
+        type: number
+        format: float
+      porcentajeIgv:
+        type: number
+        format: float
       igv:
         type: number
         format: float
@@ -910,6 +916,8 @@ definitions:
   Invoice:
     type: object
     properties:
+      ublVersion:
+        type: string
       tipoDoc:
         type: string
       serie:
@@ -999,6 +1007,8 @@ definitions:
   Note:
     type: object
     properties:
+      ublVersion:
+          type: string
       tipoDoc:
         type: string
       serie:
@@ -1473,7 +1483,7 @@ definitions:
         $ref: '#/definitions/Error'
       cdrZip:
         type: string
-        format: byte
+        format: base64
       cdrResponse:
         $ref: '#/definitions/CdrResponse'
   SummaryResult:
@@ -1496,7 +1506,7 @@ definitions:
         type: string
       cdrZip:
         type: string
-        format: byte
+        format: base64
       cdrResponse:
         $ref: '#/definitions/CdrResponse'
   DocumentResponse:
