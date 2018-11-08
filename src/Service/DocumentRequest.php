@@ -85,10 +85,10 @@ class DocumentRequest implements DocumentRequestInterface
        $document = $this->getDocument();
 
         /**@var $errors array */
-        $errors = $this->validator->validate($document);
-        if (count($errors)) {
-            return $this->json($errors, 400);
-        }
+//        $errors = $this->validator->validate($document);
+//        if (count($errors)) {
+//            return $this->json($errors, 400);
+//        }
 
         $see = $this->getSee();
         $result = $see->send($document);
@@ -115,10 +115,10 @@ class DocumentRequest implements DocumentRequestInterface
         $document = $this->getDocument();
 
         /**@var $errors array */
-        $errors = $this->validator->validate($document);
-        if (count($errors)) {
-            return $this->json($errors, 400);
-        }
+//        $errors = $this->validator->validate($document);
+//        if (count($errors)) {
+//            return $this->json($errors, 400);
+//        }
 
         $see = $this->getSee();
 
