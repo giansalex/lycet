@@ -1483,7 +1483,7 @@ definitions:
         $ref: '#/definitions/Error'
       cdrZip:
         type: string
-        format: base64
+        format: byte
       cdrResponse:
         $ref: '#/definitions/CdrResponse'
   SummaryResult:
