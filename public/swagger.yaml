@@ -765,6 +765,8 @@ definitions:
         type: string
       direccion:
         type: string
+      codLocal:
+        type: string
   Client:
     type: object
     properties:
@@ -776,6 +778,10 @@ definitions:
         type: string
       address:
         $ref: '#/definitions/Address'
+      email:
+        type: string
+      telephone:
+        type: string
   Company:
     type: object
     properties:
@@ -787,6 +793,40 @@ definitions:
         type: string
       address:
         $ref: '#/definitions/Address'
+      email:
+        type: string
+      telephone:
+        type: string
+  Charge:
+    type: object
+    properties:
+      codTipo:
+        type: string
+      factor:
+        type: string
+      monto:
+        type: number
+        format: float
+      montoBase:
+        type: number
+        format: float
+  DetailAttribute:
+    type: object
+    properties:
+      code:
+        type: string
+      name:
+        type: string
+      value:
+        type: string
+      fecInicio:
+        type: string
+        format: date-time
+      fecFin:
+        type: string
+        format: date-time
+      duracion:
+        type: integer
   SaleDetail:
     type: object
     properties:
@@ -798,6 +838,8 @@ definitions:
       codProducto:
         type: string
       codProdSunat:
+        type: string
+      codProdGS1:
         type: string
       descripcion:
         type: string
@@ -817,6 +859,9 @@ definitions:
         format: float
       tipSisIsc:
         type: string
+      totalImpuestos:
+        type: number
+        format: float
       mtoPrecioUnitario:
         type: number
         format: float
@@ -826,6 +871,39 @@ definitions:
       mtoValorGratuito:
         type: number
         format: float
+      mtoBaseIgv:
+        type: number
+        format: float
+      porcentajeIgv:
+        type: number
+        format: float
+      mtoBaseIsc:
+        type: number
+        format: float
+      porcentajeIsc:
+        type: number
+        format: float
+      mtoBaseOth:
+        type: number
+        format: float
+      porcentajeOth:
+        type: number
+        format: float
+      otroTributo:
+        type: number
+        format: float
+      cargos:
+        type: array
+        items:
+          $ref: '#/definitions/Charge'
+      descuentos:
+        type: array
+        items:
+          $ref: '#/definitions/Charge'
+      atributos:
+        type: array
+        items:
+          $ref: '#/definitions/DetailAttribute'
   Legend:
     type: object
     properties:
@@ -845,6 +923,9 @@ definitions:
     properties:
       codReg:
         type: string
+      porcentaje:
+        type: number
+        format: float
       mtoBase:
         type: number
         format: float
@@ -852,28 +933,6 @@ definitions:
         type: number
         format: float
       mtoTotal:
-        type: number
-        format: float
-  Prepayment:
-    type: object
-    properties:
-      tipoDocRel:
-        type: string
-      nroDocRel:
-        type: string
-      total:
-        type: number
-        format: float
-  Detraction:
-    type: object
-    properties:
-      percent:
-        type: number
-        format: float
-      mount:
-        type: number
-        format: float
-      valueRef:
         type: number
         format: float
   Direction:
@@ -907,6 +966,34 @@ definitions:
         format: float
       undPesoBruto:
         type: string
+  Prepayment:
+    type: object
+    properties:
+      tipoDocRel:
+        type: string
+      nroDocRel:
+        type: string
+      total:
+        type: number
+        format: float
+  Detraction:
+    type: object
+    properties:
+      percent:
+        type: number
+        format: float
+      mount:
+        type: number
+        format: float
+      ctaBanco:
+        type: string
+      codMedioPago:
+        type: string
+      codBienDetraccion:
+        type: string
+      valueRef:
+        type: number
+        format: float
   Invoice:
     type: object
     properties:
@@ -937,6 +1024,9 @@ definitions:
       mtoOperExoneradas:
         type: number
         format: float
+      mtoOperExportacion:
+        type: number
+        format: float
       mtoIGV:
         type: number
         format: float
@@ -965,7 +1055,18 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Document'
-      name:
+      compra:
+        type: string
+      mtoBaseIsc:
+        type: number
+        format: float
+      mtoBaseOth:
+        type: number
+        format: float
+      totalImpuestos:
+        type: number
+        format: float
+      ublVersion:
         type: string
       tipoOperacion:
         type: string
@@ -986,16 +1087,30 @@ definitions:
         format: float
       perception:
         $ref: '#/definitions/SalePerception'
-      compra:
-        type: string
+      guiaEmbebida:
+        $ref: '#/definitions/EmbededDespatch'
       anticipos:
         type: array
         items:
           $ref: '#/definitions/Prepayment'
       detraccion:
         $ref: '#/definitions/Detraction'
-      guiaEmbebida:
-        $ref: '#/definitions/EmbededDespatch'
+      seller:
+        $ref: '#/definitions/Client'
+      descuentos:
+        type: array
+        items:
+          $ref: '#/definitions/Charge'
+      cargos:
+        type: array
+        items:
+          $ref: '#/definitions/Charge'
+      mtoCargos:
+        type: number
+        format: float
+      valorVenta:
+        type: number
+        format: float
   Note:
     type: object
     properties:
@@ -1026,6 +1141,9 @@ definitions:
       mtoOperExoneradas:
         type: number
         format: float
+      mtoOperExportacion:
+        type: number
+        format: float
       mtoIGV:
         type: number
         format: float
@@ -1054,7 +1172,18 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Document'
-      name:
+      compra:
+        type: string
+      mtoBaseIsc:
+        type: number
+        format: float
+      mtoBaseOth:
+        type: number
+        format: float
+      totalImpuestos:
+        type: number
+        format: float
+      ublVersion:
         type: string
       codMotivo:
         type: string
@@ -1115,6 +1244,9 @@ definitions:
       mtoOperExoneradas:
         type: number
         format: float
+      mtoOperExportacion:
+        type: number
+        format: float
       mtoOperGratuitas:
         type: number
         format: float
@@ -1122,6 +1254,9 @@ definitions:
         type: number
         format: float
       mtoIGV:
+        type: number
+        format: float
+      mtoIvap:
         type: number
         format: float
       mtoISC:
@@ -1141,14 +1276,14 @@ definitions:
       fecResumen:
         type: string
         format: date-time
+      moneda:
+        type: string
       company:
         $ref: '#/definitions/Company'
       details:
         type: array
         items:
           $ref: '#/definitions/SummaryDetail'
-      name:
-        type: string
   VoidedDetail:
     type: object
     properties:
@@ -1177,10 +1312,169 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/VoidedDetail'
-      name:
+  Reversion:
+    type: object
+    properties:
+      correlativo:
         type: string
-      xmlId:
+      fecGeneracion:
         type: string
+        format: date-time
+      fecComunicacion:
+        type: string
+        format: date-time
+      company:
+        $ref: '#/definitions/Company'
+      details:
+        type: array
+        items:
+          $ref: '#/definitions/VoidedDetail'
+  Payment:
+    type: object
+    properties:
+      moneda:
+        type: string
+      importe:
+        type: number
+        format: float
+      fecha:
+        type: string
+        format: date-time
+  Exchange:
+    type: object
+    properties:
+      monedaRef:
+        type: string
+      monedaObj:
+        type: string
+      factor:
+        type: number
+        format: float
+      fecha:
+        type: string
+        format: date-time
+  PerceptionDetail:
+    type: object
+    properties:
+      tipoDoc:
+        type: string
+      numDoc:
+        type: string
+      fechaEmision:
+        type: string
+        format: date-time
+      impTotal:
+        type: number
+        format: float
+      moneda:
+        type: string
+      cobros:
+        type: array
+        items:
+          $ref: '#/definitions/Payment'
+      fechaPercepcion:
+        type: string
+        format: date-time
+      impPercibido:
+        type: number
+        format: float
+      impCobrar:
+        type: number
+        format: float
+      tipoCambio:
+        $ref: '#/definitions/Exchange'
+  Perception:
+    type: object
+    properties:
+      serie:
+        type: string
+      correlativo:
+        type: string
+      fechaEmision:
+        type: string
+        format: date-time
+      company:
+        $ref: '#/definitions/Company'
+      proveedor:
+        $ref: '#/definitions/Client'
+      regimen:
+        type: string
+      tasa:
+        type: number
+        format: float
+      impPercibido:
+        type: number
+        format: float
+      impCobrado:
+        type: number
+        format: float
+      observacion:
+        type: string
+      details:
+        type: array
+        items:
+          $ref: '#/definitions/PerceptionDetail'
+  RetentionDetail:
+    type: object
+    properties:
+      tipoDoc:
+        type: string
+      numDoc:
+        type: string
+      fechaEmision:
+        type: string
+        format: date-time
+      impTotal:
+        type: number
+        format: float
+      moneda:
+        type: string
+      pagos:
+        type: array
+        items:
+          $ref: '#/definitions/Payment'
+      fechaRetencion:
+        type: string
+        format: date-time
+      impRetenido:
+        type: number
+        format: float
+      impPagar:
+        type: number
+        format: float
+      tipoCambio:
+        $ref: '#/definitions/Exchange'
+  Retention:
+    type: object
+    properties:
+      serie:
+        type: string
+      correlativo:
+        type: string
+      fechaEmision:
+        type: string
+        format: date-time
+      proveedor:
+        $ref: '#/definitions/Client'
+      company:
+        $ref: '#/definitions/Company'
+      regimen:
+        type: string
+      tasa:
+        type: number
+        format: float
+      impRetenido:
+        type: number
+        format: float
+      impPagado:
+        type: number
+        format: float
+      observacion:
+        type: string
+      details:
+        type: array
+        items:
+          $ref: '#/definitions/RetentionDetail'
   Transportist:
     type: object
     properties:
@@ -1271,179 +1565,6 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/DespatchDetail'
-      name:
-        type: string
-  Payment:
-    type: object
-    properties:
-      moneda:
-        type: string
-      importe:
-        type: number
-        format: float
-      fecha:
-        type: string
-        format: date-time
-  Exchange:
-    type: object
-    properties:
-      monedaRef:
-        type: string
-      monedaObj:
-        type: string
-      factor:
-        type: number
-        format: float
-      fecha:
-        type: string
-        format: date-time
-  RetentionDetail:
-    type: object
-    properties:
-      tipoDoc:
-        type: string
-      numDoc:
-        type: string
-      fechaEmision:
-        type: string
-        format: date-time
-      impTotal:
-        type: number
-        format: float
-      moneda:
-        type: string
-      pagos:
-        type: array
-        items:
-          $ref: '#/definitions/Payment'
-      fechaRetencion:
-        type: string
-        format: date-time
-      impRetenido:
-        type: number
-        format: float
-      impPagar:
-        type: number
-        format: float
-      tipoCambio:
-        $ref: '#/definitions/Exchange'
-  Retention:
-    type: object
-    properties:
-      serie:
-        type: string
-      correlativo:
-        type: string
-      fechaEmision:
-        type: string
-        format: date-time
-      proveedor:
-        $ref: '#/definitions/Client'
-      company:
-        $ref: '#/definitions/Company'
-      regimen:
-        type: string
-      tasa:
-        type: number
-        format: float
-      impRetenido:
-        type: number
-        format: float
-      impPagado:
-        type: number
-        format: float
-      observacion:
-        type: string
-      details:
-        type: array
-        items:
-          $ref: '#/definitions/RetentionDetail'
-      name:
-        type: string
-  PerceptionDetail:
-    type: object
-    properties:
-      tipoDoc:
-        type: string
-      numDoc:
-        type: string
-      fechaEmision:
-        type: string
-        format: date-time
-      impTotal:
-        type: number
-        format: float
-      moneda:
-        type: string
-      cobros:
-        type: array
-        items:
-          $ref: '#/definitions/Payment'
-      fechaPercepcion:
-        type: string
-        format: date-time
-      impPercibido:
-        type: number
-        format: float
-      impCobrar:
-        type: number
-        format: float
-      tipoCambio:
-        $ref: '#/definitions/Exchange'
-  Perception:
-    type: object
-    properties:
-      serie:
-        type: string
-      correlativo:
-        type: string
-      fechaEmision:
-        type: string
-        format: date-time
-      company:
-        $ref: '#/definitions/Company'
-      proveedor:
-        $ref: '#/definitions/Client'
-      regimen:
-        type: string
-      tasa:
-        type: number
-        format: float
-      impPercibido:
-        type: number
-        format: float
-      impCobrado:
-        type: number
-        format: float
-      observacion:
-        type: string
-      details:
-        type: array
-        items:
-          $ref: '#/definitions/PerceptionDetail'
-      name:
-        type: string
-  Reversion:
-    type: object
-    properties:
-      correlativo:
-        type: string
-      fecGeneracion:
-        type: string
-        format: date-time
-      fecComunicacion:
-        type: string
-        format: date-time
-      company:
-        $ref: '#/definitions/Company'
-      details:
-        type: array
-        items:
-          $ref: '#/definitions/VoidedDetail'
-      name:
-        type: string
-      xmlId:
-        type: string
   Error:
     type: object
     properties:
@@ -1454,6 +1575,8 @@ definitions:
   CdrResponse:
     type: object
     properties:
+      accepted:
+        type: boolean
       id:
         type: string
       code:
@@ -1488,17 +1611,17 @@ definitions:
   StatusResult:
     type: object
     properties:
+      cdrZip:
+        type: string
+        format: byte
+      cdrResponse:
+        $ref: '#/definitions/CdrResponse'
       success:
         type: boolean
       error:
         $ref: '#/definitions/Error'
       code:
         type: string
-      cdrZip:
-        type: string
-        format: byte
-      cdrResponse:
-        $ref: '#/definitions/CdrResponse'
   DocumentResponse:
     type: object
     properties:
