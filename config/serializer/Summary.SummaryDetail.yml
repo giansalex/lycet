@@ -30,6 +30,8 @@ Greenter\Model\Summary\SummaryDetail:
             type: float
         mtoIGV:
             type: float
+        mtoIvap:
+            type: float
         mtoISC:
             type: float
         mtoOtrosTributos:

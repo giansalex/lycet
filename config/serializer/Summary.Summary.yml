@@ -6,6 +6,8 @@ Greenter\Model\Summary\Summary:
             type: DateTime
         fecResumen:
             type: DateTime
+        moneda:
+            type: string
         company:
             type: Greenter\Model\Company\Company
         details:

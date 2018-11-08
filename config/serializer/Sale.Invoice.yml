@@ -22,8 +22,6 @@ Greenter\Model\Sale\Invoice:
             type: Greenter\Model\Sale\Detraction
         seller:
             type: Greenter\Model\Client\Client
-        buyer:
-            type: Greenter\Model\Client\Client
         descuentos:
             type: array<Greenter\Model\Sale\Charge>
         cargos:
