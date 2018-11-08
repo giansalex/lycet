@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   description: Lycet API REST basado en Greenter - Facturación Electrónica.
-  version: '1.0'
+  version: '1.1'
   title: Lycet
   contact:
     name: Giancarlos Salas
