@@ -12,16 +12,16 @@
         "greenter/validator": "^2.1",
         "jms/serializer-bundle": "^2.4",
         "nelmio/cors-bundle": "^1.5",
-        "sensio/framework-extra-bundle": "^5.1",
-        "symfony/console": "^4.1",
-        "symfony/dotenv": "^4.1",
-        "symfony/flex": "^1.0",
+        "sensio/framework-extra-bundle": "^5.2",
+        "symfony/console": "^4.2",
+        "symfony/dotenv": "^4.2",
+        "symfony/flex": "^1.1",
         "symfony/framework-bundle": "^4.0",
-        "symfony/yaml": "^4.1"
+        "symfony/yaml": "^4.2"
     },
     "require-dev": {
-        "symfony/browser-kit": "^4.1",
-        "symfony/phpunit-bridge": "^4.1"
+        "symfony/browser-kit": "^4.2",
+        "symfony/phpunit-bridge": "^4.2"
     },
     "config": {
         "preferred-install": {
