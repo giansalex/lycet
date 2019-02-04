@@ -2063,16 +2063,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.2.2",
+            "version": "v4.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "b0a03c1bb0fcbe288629956cf2f1dd3f1dc97522"
+                "reference": "1f0ad51dfde4da8a6070f06adc58b4e37cbb37a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/b0a03c1bb0fcbe288629956cf2f1dd3f1dc97522",
-                "reference": "b0a03c1bb0fcbe288629956cf2f1dd3f1dc97522",
+                "url": "https://api.github.com/repos/symfony/console/zipball/1f0ad51dfde4da8a6070f06adc58b4e37cbb37a4",
+                "reference": "1f0ad51dfde4da8a6070f06adc58b4e37cbb37a4",
                 "shasum": ""
             },
             "require": {
@@ -2084,6 +2084,9 @@
                 "symfony/dependency-injection": "<3.4",
                 "symfony/process": "<3.3"
             },
+            "provide": {
+                "psr/log-implementation": "1.0"
+            },
             "require-dev": {
                 "psr/log": "~1.0",
                 "symfony/config": "~3.4|~4.0",
@@ -2093,7 +2096,7 @@
                 "symfony/process": "~3.4|~4.0"
             },
             "suggest": {
-                "psr/log-implementation": "For using the console logger",
+                "psr/log": "For using the console logger",
                 "symfony/event-dispatcher": "",
                 "symfony/lock": "",
                 "symfony/process": ""
@@ -2128,7 +2131,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2019-01-04T15:13:53+00:00"
+            "time": "2019-01-25T14:35:16+00:00"
         },
         {
             "name": "symfony/contracts",
