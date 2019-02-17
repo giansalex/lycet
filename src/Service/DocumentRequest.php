@@ -18,7 +18,6 @@ use Greenter\Model\Retention\Retention;
 use Greenter\Model\Voided\Reversion;
 use Greenter\Report\PdfReport;
 use Greenter\Report\ReportInterface;
-use Greenter\Report\Resolver\TemplateResolverInterface;
 use Greenter\Report\XmlUtils;
 use Greenter\See;
 use Greenter\Validator\DocumentValidatorInterface;
@@ -155,7 +154,6 @@ class DocumentRequest implements DocumentRequestInterface
             ]
         ];
 
-        $template = $this->getTemplate($document);
         $report = $this->getReport();
         $pdf = $report->render($document, $parameters);
         if ($pdf === false) {
@@ -217,13 +215,6 @@ class DocumentRequest implements DocumentRequestInterface
     private function getReport()
     {
         return $this->container->get(ReportInterface::class);
-    }
-
-    private function getTemplate($document)
-    {
-        $resolver = $this->container->get(TemplateResolverInterface::class);
-
-        return $resolver->getTemplate($document);
     }
 
     private function json($data, int $status = 200, array $headers = [])
