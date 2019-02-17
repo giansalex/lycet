@@ -27,6 +27,13 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
+    Greenter\Report\Resolver\DefaultTemplateResolver:
+        autowire: true
+
+    Greenter\Report\Resolver\TemplateResolverInterface:
+        alias: Greenter\Report\Resolver\DefaultTemplateResolver
+        public: true
+
     Greenter\Report\XmlUtils:
         public: true
 
@@ -37,7 +44,7 @@ services:
               strict_variables: true
 
     Greenter\Report\PdfReport:
-        arguments: ['@Greenter\Report\HtmlReport']
+        arguments: ['@App\Service\HtmlReportDecorator']
         calls:
             - [setBinPath, ['%env(WKHTMLTOPDF_PATH)%']]
 
