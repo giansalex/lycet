@@ -1,8 +1,8 @@
 nelmio_cors:
         defaults:
             allow_credentials: false
-            # allow_origin: ['%env(CORS_ALLOW_ORIGIN)%']
-            allow_origin: ['*']
+            allow_origin: ['%env(CORS_ALLOW_ORIGIN)%']
+#            allow_origin: ['*']
             allow_headers: ['*']
             allow_methods: []
             expose_headers: []
