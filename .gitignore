@@ -1,5 +1,7 @@
 /.idea/
 .php_cs.cache
+/data
+!/data/.htaccess
 
 ###> symfony/framework-bundle ###
 .env
