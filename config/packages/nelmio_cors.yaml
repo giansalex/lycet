@@ -8,7 +8,7 @@ nelmio_cors:
             expose_headers: []
             max_age: 0
             hosts: []
-            origin_regex: false
+            origin_regex: true
         paths:
             '^/api':
                 allow_methods: ['POST', 'GET']
