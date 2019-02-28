@@ -27,6 +27,8 @@ tags:
     description: Comunicacion de Reversiones
   - name: configuration
     description: Configuraciones
+  - name: sale
+    description: Ventas en General
 schemes:
   - http
   - https
@@ -741,6 +743,26 @@ paths:
       responses:
         '200':
           description: Operacion exitosa
+  /sale/qr:
+    post:
+      tags:
+        - sale
+      summary: Generar el QR de una Venta
+      description: Retorna la imagen del QR
+      operationId: getSaleQr
+      parameters:
+        - name: body
+          in: body
+          description: Comprobante
+          required: true
+          schema:
+            $ref: '#/definitions/QrParameter'
+      produces:
+        - image/png
+      responses:
+        '200':
+          description: Operacion exitosa
+
 securityDefinitions:
   ApiToken:
     name: token
@@ -1658,3 +1680,33 @@ definitions:
       logo:
         type: string
         description: logo png en formato base64
+  QrParameter:
+    type: object
+    properties:
+      ruc:
+        type: string
+        description: ruc del emisor
+      tipo:
+        type: string
+        description: tipo de comprobante
+      serie:
+        type: string
+      numero:
+        type: string
+      emision:
+        type: string
+        format: date
+        description: fecha de emisión
+      igv:
+        type: number
+        format: float
+      total:
+        type: number
+        format: float
+        description: total importe de venta
+      clienteTipo:
+        type: string
+        description: Tipo de documento del cliente
+      clienteNumero:
+        type: string
+        description: Numero de documento del cliente
