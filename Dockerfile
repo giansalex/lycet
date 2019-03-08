@@ -41,8 +41,8 @@ COPY . /var/www/html/
 VOLUME /var/www/html/data
 WORKDIR /var/www/html
 
-RUN chmod -R 777 ./data && chmod -R 777 ./var && \
-    composer install --no-interaction --no-dev --optimize-autoloader && \
+RUN composer install --no-interaction --no-dev --optimize-autoloader && \
     php bin/console cache:clear --env=prod --no-debug  && \
     composer dump-autoload --optimize --no-dev --classmap-authoritative && \
-    composer dump-env prod
+    composer dump-env prod && \
+    chmod -R 777 ./data && chmod -R 777 ./var
