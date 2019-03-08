@@ -12,3 +12,4 @@ vendor
 .php_cs.dist
 .php_cs.cache
 phpunit.xml.dist
+*.md
