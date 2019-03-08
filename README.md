@@ -57,7 +57,10 @@ Deploy on Docker.
 git clone https://github.com/giansalex/lycet
 cd lycet
 docker build -t lycet .
+docker run -p 8000:80 --name lycet_app lycet 
 ```
+
+Abrir el navegador, y dirígete a http://localhost:8000/public
 
 ### Docs
 Ver [swagger documentation](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/giansalex/lycet/master/public/swagger.yaml), puedes crear un cliente en [swagger editor](http://editor.swagger.io/?url=https://raw.githubusercontent.com/giansalex/lycet/master/public/swagger.yaml), para tu lenguaje de preferencia.
