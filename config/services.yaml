@@ -54,9 +54,6 @@ services:
         calls:
             - [setBinPath, ['%env(WKHTMLTOPDF_PATH)%']]
 
-    Greenter\Validator\SymfonyValidator:
-        autowire: true
-
     App\Service\AppDocumentValidator:
         autowire: true
 

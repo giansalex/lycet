@@ -20,7 +20,6 @@ use Greenter\Report\PdfReport;
 use Greenter\Report\ReportInterface;
 use Greenter\Report\XmlUtils;
 use Greenter\See;
-use Greenter\Validator\DocumentValidatorInterface;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -41,10 +40,6 @@ class DocumentRequest implements DocumentRequestInterface
      */
     private $requestStack;
     /**
-     * @var DocumentValidatorInterface
-     */
-    private $validator;
-    /**
      * @var RequestParserInterface
      */
     private $parser;
@@ -55,12 +50,10 @@ class DocumentRequest implements DocumentRequestInterface
 
     public function __construct(
         RequestStack $requestStack,
-        DocumentValidatorInterface $validator,
         RequestParserInterface $parser,
         ContainerInterface $container)
     {
         $this->requestStack = $requestStack;
-        $this->validator = $validator;
         $this->parser = $parser;
         $this->container = $container;
     }
@@ -137,10 +130,10 @@ class DocumentRequest implements DocumentRequestInterface
         $document = $this->getDocument();
 
         /**@var $errors array */
-        $errors = $this->validator->validate($document);
-        if (count($errors)) {
-            return $this->json($errors, 400);
-        }
+//        $errors = $this->validator->validate($document);
+//        if (count($errors)) {
+//            return $this->json($errors, 400);
+//        }
         $logo = $this->getParameter('logo');
 
         $parameters = [
