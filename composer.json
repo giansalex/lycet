@@ -1,7 +1,7 @@
 {
     "name": "greenter/lycet",
     "type": "project",
-    "license": "proprietary",
+    "license": "MIT",
     "require": {
         "php": "^7.1",
         "ext-gd": "*",
