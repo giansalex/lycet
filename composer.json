@@ -11,7 +11,7 @@
         "greenter/greenter": "^3.0",
         "greenter/htmltopdf": "^2.1",
         "greenter/report": "^2.1",
-        "jms/serializer-bundle": "^2.4",
+        "jms/serializer-bundle": "^3.1",
         "nelmio/cors-bundle": "^1.5",
         "symfony/dotenv": "4.2.*",
         "symfony/console": "4.2.*",

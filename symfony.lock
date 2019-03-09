@@ -38,23 +38,64 @@
     "greenter/xmldsig": {
         "version": "v5.0.1"
     },
-    "jms/metadata": {
-        "version": "1.7.0"
+    "hoa/compiler": {
+        "version": "3.17.08.08"
     },
-    "jms/parser-lib": {
-        "version": "1.0.0"
+    "hoa/consistency": {
+        "version": "1.17.05.02"
+    },
+    "hoa/event": {
+        "version": "1.17.01.13"
+    },
+    "hoa/exception": {
+        "version": "1.17.01.16"
+    },
+    "hoa/file": {
+        "version": "1.17.07.11"
+    },
+    "hoa/iterator": {
+        "version": "2.17.01.10"
+    },
+    "hoa/math": {
+        "version": "1.17.05.16"
+    },
+    "hoa/protocol": {
+        "version": "1.17.01.14"
+    },
+    "hoa/regex": {
+        "version": "1.17.01.13"
+    },
+    "hoa/stream": {
+        "version": "1.17.02.21"
+    },
+    "hoa/ustring": {
+        "version": "4.17.01.16"
+    },
+    "hoa/visitor": {
+        "version": "2.17.01.16"
+    },
+    "hoa/zformat": {
+        "version": "1.17.01.10"
+    },
+    "jms/metadata": {
+        "version": "2.0.0"
     },
     "jms/serializer": {
-        "version": "1.13.0"
+        "version": "2.2.0"
     },
     "jms/serializer-bundle": {
-        "version": "2.0",
+        "version": "3.0",
         "recipe": {
             "repo": "github.com/symfony/recipes-contrib",
             "branch": "master",
-            "version": "2.0",
-            "ref": "fe60ce509ef04a3f40da96e3979bc8d9b13b2372"
-        }
+            "version": "3.0",
+            "ref": "384cec52df45f3bfd46a09930d6960a58872b268"
+        },
+        "files": [
+            "./config/packages/dev/jms_serializer.yaml",
+            "./config/packages/jms_serializer.yaml",
+            "./config/packages/prod/jms_serializer.yaml"
+        ]
     },
     "mikehaertl/php-shellcommand": {
         "version": "1.4.1"
@@ -76,12 +117,6 @@
         "files": [
             "./config/packages/nelmio_cors.yaml"
         ]
-    },
-    "phpcollection/phpcollection": {
-        "version": "0.5.0"
-    },
-    "phpoption/phpoption": {
-        "version": "1.5.0"
     },
     "psr/cache": {
         "version": "1.0.1"
