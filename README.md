@@ -4,7 +4,7 @@
 Lycet es un API REST basado en [greenter](https://github.com/giansalex/greenter) y Symfony Framework v4, UBL 2.1 es soportado.
 
 ## Requerimientos
-- Php 7.1 o superior
+- Php 7.2 o superior
 - Php Extensions habilitadas (gd, soap, xml, openssl, zlib)
 - WkhtmltoPdf executable (PDF report)
 - Pem Certificate - [convert pfx to pem](https://github.com/giansalex/xmldsig/blob/master/CONVERT.md)

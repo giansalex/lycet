@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "82f9980b7280899a1fcb6c5523684103",
+    "content-hash": "969f11b6b697ded16e86fcf9e37745ca",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -2789,7 +2789,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.1",
+        "php": "^7.2",
         "ext-gd": "*",
         "ext-json": "*",
         "ext-ctype": "*",
