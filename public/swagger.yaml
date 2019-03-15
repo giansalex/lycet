@@ -283,7 +283,7 @@ paths:
         - name: ticket
           in: query
           description: Ticket de Resumen diario
-          type: boolean
+          type: string
       produces:
         - application/json
       responses:
@@ -381,7 +381,7 @@ paths:
         - name: ticket
           in: query
           description: Ticket de Comunicación de baja
-          type: boolean
+          type: string
       produces:
         - application/json
       responses:
@@ -716,7 +716,7 @@ paths:
         - name: ticket
           in: query
           description: Ticket de Resumen de Reversiones
-          type: boolean
+          type: string
       produces:
         - application/json
       responses:
