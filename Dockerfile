@@ -1,9 +1,9 @@
-FROM php:7.1-apache
+FROM php:7.3-apache
 LABEL owner="Giancarlos Salas"
 LABEL maintainer="giansalex@gmail.com"
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends wkhtmltopdf wget libxml2-dev zlib1g-dev git zip unzip libfreetype6-dev libjpeg62-turbo-dev && \
+    apt-get install -y --no-install-recommends wkhtmltopdf wget libzip-dev libxml2-dev git unzip libfreetype6-dev libjpeg62-turbo-dev && \
     docker-php-ext-install soap && \
     docker-php-ext-install zip && \
     docker-php-ext-configure opcache --enable-opcache && \
@@ -45,4 +45,5 @@ RUN composer install --no-interaction --no-dev --optimize-autoloader && \
     php bin/console cache:clear --env=prod --no-debug  && \
     composer dump-autoload --optimize --no-dev --classmap-authoritative && \
     composer dump-env prod && \
-    chmod -R 777 ./data && chmod -R 777 ./var
+    chmod -R 777 ./data && \
+    chmod -R 777 ./var
