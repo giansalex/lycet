@@ -32,6 +32,12 @@ GUIA_URL=https://e-beta.sunat.gob.pe/ol-ti-itemision-guia-gem-beta/billService
 ###< greenter/greenter ###
 ```
 
+**Configuración de Zona Horaria**  
+En ocaciones, existen problemas al realizar la conversión de fechas, para evitar esto, se necesita cambiar en el `php.ini`, la siguiente configuración.
+```
+date.timezone ="America/Lima"
+```
+
 ### Archivos Requeridos
 Se necesita almacenar el certificado y logo en la carpeta `/data`, los archivos deben tener nombres especificos que se indican
 a continuación.
