@@ -1490,20 +1490,20 @@
         },
         {
             "name": "jms/serializer-bundle",
-            "version": "3.1.0",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/JMSSerializerBundle.git",
-                "reference": "851286d85a3d59fcd2c05cc36c23bbc520ac055d"
+                "reference": "0ab81ca1abc4e843dc5d8eea9b79b13721f4a92f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/851286d85a3d59fcd2c05cc36c23bbc520ac055d",
-                "reference": "851286d85a3d59fcd2c05cc36c23bbc520ac055d",
+                "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/0ab81ca1abc4e843dc5d8eea9b79b13721f4a92f",
+                "reference": "0ab81ca1abc4e843dc5d8eea9b79b13721f4a92f",
                 "shasum": ""
             },
             "require": {
-                "jms/serializer": "^2.0",
+                "jms/serializer": "^2.2",
                 "php": "^7.2",
                 "symfony/dependency-injection": "^3.3 || ^4.0",
                 "symfony/framework-bundle": "^3.0 || ^4.0"
@@ -1526,7 +1526,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
@@ -1559,7 +1559,7 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2019-01-11T08:50:41+00:00"
+            "time": "2019-03-21T06:43:47+00:00"
         },
         {
             "name": "mikehaertl/php-shellcommand",
