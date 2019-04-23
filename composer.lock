@@ -54,16 +54,16 @@
         },
         {
             "name": "doctrine/annotations",
-            "version": "v1.6.0",
+            "version": "v1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "c7f2050c68a9ab0bdb0f98567ec08d80ea7d24d5"
+                "reference": "53120e0eb10355388d6ccbe462f1fea34ddadb24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/c7f2050c68a9ab0bdb0f98567ec08d80ea7d24d5",
-                "reference": "c7f2050c68a9ab0bdb0f98567ec08d80ea7d24d5",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/53120e0eb10355388d6ccbe462f1fea34ddadb24",
+                "reference": "53120e0eb10355388d6ccbe462f1fea34ddadb24",
                 "shasum": ""
             },
             "require": {
@@ -118,31 +118,33 @@
                 "docblock",
                 "parser"
             ],
-            "time": "2017-12-06T07:11:42+00:00"
+            "time": "2019-03-25T19:12:02+00:00"
         },
         {
             "name": "doctrine/instantiator",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/instantiator.git",
-                "reference": "185b8868aa9bf7159f5f953ed5afb2d7fcdc3bda"
+                "reference": "a2c590166b2133a4633738648b6b064edae0814a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/185b8868aa9bf7159f5f953ed5afb2d7fcdc3bda",
-                "reference": "185b8868aa9bf7159f5f953ed5afb2d7fcdc3bda",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/a2c590166b2133a4633738648b6b064edae0814a",
+                "reference": "a2c590166b2133a4633738648b6b064edae0814a",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1"
             },
             "require-dev": {
-                "athletic/athletic": "~0.1.8",
+                "doctrine/coding-standard": "^6.0",
                 "ext-pdo": "*",
                 "ext-phar": "*",
-                "phpunit/phpunit": "^6.2.3",
-                "squizlabs/php_codesniffer": "^3.0.2"
+                "phpbench/phpbench": "^0.13",
+                "phpstan/phpstan-phpunit": "^0.11",
+                "phpstan/phpstan-shim": "^0.11",
+                "phpunit/phpunit": "^7.0"
             },
             "type": "library",
             "extra": {
@@ -167,12 +169,12 @@
                 }
             ],
             "description": "A small, lightweight utility to instantiate objects in PHP without invoking their constructors",
-            "homepage": "https://github.com/doctrine/instantiator",
+            "homepage": "https://www.doctrine-project.org/projects/instantiator.html",
             "keywords": [
                 "constructor",
                 "instantiate"
             ],
-            "time": "2017-07-22T11:58:36+00:00"
+            "time": "2019-03-17T17:37:11+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -1406,16 +1408,16 @@
         },
         {
             "name": "jms/serializer",
-            "version": "2.2.0",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/serializer.git",
-                "reference": "3c3d4f1b97738722c7da36ce42ae62911ccf6794"
+                "reference": "90e1063cdba90c117c4c27375645379919bc8d33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/3c3d4f1b97738722c7da36ce42ae62911ccf6794",
-                "reference": "3c3d4f1b97738722c7da36ce42ae62911ccf6794",
+                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/90e1063cdba90c117c4c27375645379919bc8d33",
+                "reference": "90e1063cdba90c117c4c27375645379919bc8d33",
                 "shasum": ""
             },
             "require": {
@@ -1436,7 +1438,7 @@
                 "doctrine/phpcr-odm": "^1.3|^2.0",
                 "ext-pdo_sqlite": "*",
                 "jackalope/jackalope-doctrine-dbal": "^1.1.5",
-                "phpunit/phpunit": "^7.1",
+                "phpunit/phpunit": "^7.5",
                 "psr/container": "^1.0",
                 "symfony/dependency-injection": "^3.0|^4.0",
                 "symfony/expression-language": "^3.0|^4.0",
@@ -1445,7 +1447,7 @@
                 "symfony/translation": "^3.0|^4.0",
                 "symfony/validator": "^3.1.9|^4.0",
                 "symfony/yaml": "^3.3|^4.0",
-                "twig/twig": "^1.12|^2.0"
+                "twig/twig": "~1.34|~2.4"
             },
             "suggest": {
                 "doctrine/cache": "Required if you like to use cache functionality.",
@@ -1455,7 +1457,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
@@ -1486,24 +1488,24 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2019-02-27T20:38:28+00:00"
+            "time": "2019-04-23T07:13:23+00:00"
         },
         {
             "name": "jms/serializer-bundle",
-            "version": "3.2.0",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/JMSSerializerBundle.git",
-                "reference": "0ab81ca1abc4e843dc5d8eea9b79b13721f4a92f"
+                "reference": "2842e767bd0e64310ab803e05bb5f676c81c0bbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/0ab81ca1abc4e843dc5d8eea9b79b13721f4a92f",
-                "reference": "0ab81ca1abc4e843dc5d8eea9b79b13721f4a92f",
+                "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/2842e767bd0e64310ab803e05bb5f676c81c0bbe",
+                "reference": "2842e767bd0e64310ab803e05bb5f676c81c0bbe",
                 "shasum": ""
             },
             "require": {
-                "jms/serializer": "^2.2",
+                "jms/serializer": "^2.2|^3.0",
                 "php": "^7.2",
                 "symfony/dependency-injection": "^3.3 || ^4.0",
                 "symfony/framework-bundle": "^3.0 || ^4.0"
@@ -1526,7 +1528,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.2-dev"
+                    "dev-master": "3.3-dev"
                 }
             },
             "autoload": {
@@ -1559,7 +1561,7 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2019-03-21T06:43:47+00:00"
+            "time": "2019-04-23T07:44:23+00:00"
         },
         {
             "name": "mikehaertl/php-shellcommand",
@@ -2918,7 +2920,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "backendtea@gmail.com"
+                    "email": "BackEndTea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
