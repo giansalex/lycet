@@ -2346,7 +2346,7 @@
         },
         {
             "name": "symfony/dotenv",
-            "version": "v4.2.7",
+            "version": "v4.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dotenv.git",
