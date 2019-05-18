@@ -232,16 +232,16 @@
         },
         {
             "name": "greenter/core",
-            "version": "v2.1.3",
+            "version": "v2.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giansalex/greenter-core.git",
-                "reference": "fd3a49953b5439b7a97ab9557a9419aab22b12bd"
+                "reference": "024d6db507968f56af906e21a026d0c0d8fe9af1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giansalex/greenter-core/zipball/fd3a49953b5439b7a97ab9557a9419aab22b12bd",
-                "reference": "fd3a49953b5439b7a97ab9557a9419aab22b12bd",
+                "url": "https://api.github.com/repos/giansalex/greenter-core/zipball/024d6db507968f56af906e21a026d0c0d8fe9af1",
+                "reference": "024d6db507968f56af906e21a026d0c0d8fe9af1",
                 "shasum": ""
             },
             "require": {
@@ -270,7 +270,7 @@
                 "greenter",
                 "sunat"
             ],
-            "time": "2018-11-06T17:38:52+00:00"
+            "time": "2019-03-17T18:08:27+00:00"
         },
         {
             "name": "greenter/greenter",
@@ -478,16 +478,16 @@
         },
         {
             "name": "greenter/xml",
-            "version": "v2.1.1",
+            "version": "v2.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giansalex/greenter-xml.git",
-                "reference": "b19f1894c02086a33a50deedfadc727087489ab9"
+                "reference": "7549af81d6af121aac19e21f3ef80067b2b061f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giansalex/greenter-xml/zipball/b19f1894c02086a33a50deedfadc727087489ab9",
-                "reference": "b19f1894c02086a33a50deedfadc727087489ab9",
+                "url": "https://api.github.com/repos/giansalex/greenter-xml/zipball/7549af81d6af121aac19e21f3ef80067b2b061f5",
+                "reference": "7549af81d6af121aac19e21f3ef80067b2b061f5",
                 "shasum": ""
             },
             "require": {
@@ -523,7 +523,7 @@
                 "greenter",
                 "xml"
             ],
-            "time": "2018-11-06T00:07:48+00:00"
+            "time": "2019-05-18T01:08:11+00:00"
         },
         {
             "name": "greenter/xmldsig",
@@ -1408,16 +1408,16 @@
         },
         {
             "name": "jms/serializer",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/serializer.git",
-                "reference": "90e1063cdba90c117c4c27375645379919bc8d33"
+                "reference": "bf2bae374e565f443fc01fe60695061366bd3261"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/90e1063cdba90c117c4c27375645379919bc8d33",
-                "reference": "90e1063cdba90c117c4c27375645379919bc8d33",
+                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/bf2bae374e565f443fc01fe60695061366bd3261",
+                "reference": "bf2bae374e565f443fc01fe60695061366bd3261",
                 "shasum": ""
             },
             "require": {
@@ -1488,7 +1488,7 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2019-04-23T07:13:23+00:00"
+            "time": "2019-04-23T17:53:59+00:00"
         },
         {
             "name": "jms/serializer-bundle",
@@ -1640,16 +1640,16 @@
         },
         {
             "name": "mikehaertl/phpwkhtmltopdf",
-            "version": "2.3.1",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mikehaertl/phpwkhtmltopdf.git",
-                "reference": "45974cc1f0b99a8200aeedac6b692934a8a592cd"
+                "reference": "dcd1236026e8bec9e429308e867c26cd1f941e0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikehaertl/phpwkhtmltopdf/zipball/45974cc1f0b99a8200aeedac6b692934a8a592cd",
-                "reference": "45974cc1f0b99a8200aeedac6b692934a8a592cd",
+                "url": "https://api.github.com/repos/mikehaertl/phpwkhtmltopdf/zipball/dcd1236026e8bec9e429308e867c26cd1f941e0a",
+                "reference": "dcd1236026e8bec9e429308e867c26cd1f941e0a",
                 "shasum": ""
             },
             "require": {
@@ -1685,7 +1685,7 @@
                 "wkhtmltoimage",
                 "wkhtmltopdf"
             ],
-            "time": "2018-02-18T10:54:00+00:00"
+            "time": "2019-03-12T07:03:42+00:00"
         },
         {
             "name": "nelmio/cors-bundle",
@@ -2149,16 +2149,16 @@
         },
         {
             "name": "symfony/contracts",
-            "version": "v1.0.2",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/contracts.git",
-                "reference": "1aa7ab2429c3d594dd70689604b5cf7421254cdf"
+                "reference": "d3636025e8253c6144358ec0a62773cae588395b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/contracts/zipball/1aa7ab2429c3d594dd70689604b5cf7421254cdf",
-                "reference": "1aa7ab2429c3d594dd70689604b5cf7421254cdf",
+                "url": "https://api.github.com/repos/symfony/contracts/zipball/d3636025e8253c6144358ec0a62773cae588395b",
+                "reference": "d3636025e8253c6144358ec0a62773cae588395b",
                 "shasum": ""
             },
             "require": {
@@ -2166,19 +2166,22 @@
             },
             "require-dev": {
                 "psr/cache": "^1.0",
-                "psr/container": "^1.0"
+                "psr/container": "^1.0",
+                "symfony/polyfill-intl-idn": "^1.10"
             },
             "suggest": {
                 "psr/cache": "When using the Cache contracts",
                 "psr/container": "When using the Service contracts",
                 "symfony/cache-contracts-implementation": "",
+                "symfony/event-dispatcher-implementation": "",
+                "symfony/http-client-contracts-implementation": "",
                 "symfony/service-contracts-implementation": "",
                 "symfony/translation-contracts-implementation": ""
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "1.1-dev"
                 }
             },
             "autoload": {
@@ -2213,7 +2216,7 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2018-12-05T08:06:11+00:00"
+            "time": "2019-04-27T14:29:50+00:00"
         },
         {
             "name": "symfony/debug",
@@ -3189,16 +3192,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.38.0",
+            "version": "v1.41.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "754b8dfc0026585eb8498ec4bf5ff240b6b34db7"
+                "reference": "575cd5028362da591facde1ef5d7b94553c375c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/754b8dfc0026585eb8498ec4bf5ff240b6b34db7",
-                "reference": "754b8dfc0026585eb8498ec4bf5ff240b6b34db7",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/575cd5028362da591facde1ef5d7b94553c375c9",
+                "reference": "575cd5028362da591facde1ef5d7b94553c375c9",
                 "shasum": ""
             },
             "require": {
@@ -3213,7 +3216,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.38-dev"
+                    "dev-master": "1.41-dev"
                 }
             },
             "autoload": {
@@ -3251,7 +3254,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-03-12T12:42:04+00:00"
+            "time": "2019-05-14T11:59:08+00:00"
         }
     ],
     "packages-dev": [
