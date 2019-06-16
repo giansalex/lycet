@@ -19,7 +19,7 @@ composer install -o
 ```
 
 ### Configuraciones  
-En el archivo `.env` ubicado en la raiz del proyecto, cambiar estas configuraciones de acuerdo a su necesidad.
+En el archivo `.env` ubicado en la raiz del proyecto, podra cambiar estas configuraciones.
 ```
 ###> greenter/greenter ###
 WKHTMLTOPDF_PATH=full/path/wkhtmltopdf.exe
@@ -31,6 +31,8 @@ RE_URL=https://e-beta.sunat.gob.pe/ol-ti-itemision-otroscpe-gem-beta/billService
 GUIA_URL=https://e-beta.sunat.gob.pe/ol-ti-itemision-guia-gem-beta/billService
 ###< greenter/greenter ###
 ```
+
+> Tener en cuenta que `SOL_USER` es la concatenación del **RUC + Usuario SOL**
 
 **Configuración de Zona Horaria**  
 En ocaciones, existen problemas al realizar la conversión de fechas, para evitar esto, se necesita cambiar en el `php.ini`, la siguiente configuración.
