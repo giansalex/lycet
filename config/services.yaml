@@ -49,6 +49,7 @@ services:
         arguments: ['@App\Service\HtmlReportDecorator']
         calls:
             - [setBinPath, ['%env(WKHTMLTOPDF_PATH)%']]
+            - [setOptions, [['no-outline', 'print-media-type']]]
 
     App\Service\AppDocumentValidator:
         autowire: true
