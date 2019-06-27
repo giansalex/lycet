@@ -1414,16 +1414,16 @@
         },
         {
             "name": "jms/serializer",
-            "version": "3.0.1",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/serializer.git",
-                "reference": "bf2bae374e565f443fc01fe60695061366bd3261"
+                "reference": "cff99c4874a23a697c5c103e384ce15e7ae512a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/bf2bae374e565f443fc01fe60695061366bd3261",
-                "reference": "bf2bae374e565f443fc01fe60695061366bd3261",
+                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/cff99c4874a23a697c5c103e384ce15e7ae512a4",
+                "reference": "cff99c4874a23a697c5c103e384ce15e7ae512a4",
                 "shasum": ""
             },
             "require": {
@@ -1463,7 +1463,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "3.1-dev"
                 }
             },
             "autoload": {
@@ -1494,20 +1494,20 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2019-04-23T17:53:59+00:00"
+            "time": "2019-06-25T21:01:40+00:00"
         },
         {
             "name": "jms/serializer-bundle",
-            "version": "3.4.0",
+            "version": "3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/JMSSerializerBundle.git",
-                "reference": "7c3432a331fe20a7d802c82a154e418e0a1e82d0"
+                "reference": "d5af7fe83fead9b791dd6b46a936d5e6e42deed4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/7c3432a331fe20a7d802c82a154e418e0a1e82d0",
-                "reference": "7c3432a331fe20a7d802c82a154e418e0a1e82d0",
+                "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/d5af7fe83fead9b791dd6b46a936d5e6e42deed4",
+                "reference": "d5af7fe83fead9b791dd6b46a936d5e6e42deed4",
                 "shasum": ""
             },
             "require": {
@@ -1567,7 +1567,7 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2019-06-24T21:42:32+00:00"
+            "time": "2019-06-27T07:24:18+00:00"
         },
         {
             "name": "mikehaertl/php-shellcommand",
