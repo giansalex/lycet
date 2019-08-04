@@ -12,5 +12,7 @@ Greenter\Model\Summary\Summary:
             type: Greenter\Model\Company\Company
         details:
             type: array<Greenter\Model\Summary\SummaryDetail>
+        xmlId:
+            type: string
         name:
             type: string

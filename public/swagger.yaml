@@ -914,6 +914,12 @@ definitions:
       otroTributo:
         type: number
         format: float
+      icbper:
+        type: number
+        format: float
+      factorIcbper:
+        type: number
+        format: float
       cargos:
         type: array
         items:
@@ -1058,6 +1064,9 @@ definitions:
       mtoOtrosTributos:
         type: number
         format: float
+      icbper:
+        type: number
+        format: float
       mtoImpVenta:
         type: number
         format: float
@@ -1077,6 +1086,8 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Document'
+      observacion:
+        type: string
       compra:
         type: string
       mtoBaseIsc:
@@ -1119,6 +1130,8 @@ definitions:
         $ref: '#/definitions/Detraction'
       seller:
         $ref: '#/definitions/Client'
+      direccionEntrega:
+        $ref: '#/definitions/Address'
       descuentos:
         type: array
         items:
@@ -1173,6 +1186,9 @@ definitions:
         type: number
         format: float
       mtoOtrosTributos:
+        type: number
+        format: float
+      icbper:
         type: number
         format: float
       mtoImpVenta:
@@ -1279,6 +1295,9 @@ definitions:
         type: number
         format: float
       mtoIvap:
+        type: number
+        format: float
+      mtoIcbper:
         type: number
         format: float
       mtoISC:
@@ -1599,6 +1618,7 @@ definitions:
     properties:
       accepted:
         type: boolean
+        readOnly: true
       id:
         type: string
       code:

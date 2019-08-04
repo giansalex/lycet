@@ -42,6 +42,8 @@ Greenter\Model\Sale\Note:
             type: float
         mtoOtrosTributos:
             type: float
+        icbper:
+            type: float
         mtoImpVenta:
             type: float
         details:

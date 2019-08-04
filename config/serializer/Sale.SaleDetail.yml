@@ -26,6 +26,10 @@ Greenter\Model\Sale\SaleDetail:
             type: string
         totalImpuestos:
             type: float
+        icbper:
+            type: float
+        factorIcbper:
+            type: float
         mtoPrecioUnitario:
             type: float
         mtoValorVenta:

@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "content-hash": "3ff309ad274b5562a0990f5a938accfe",
@@ -178,28 +178,30 @@
         },
         {
             "name": "doctrine/lexer",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/lexer.git",
-                "reference": "1febd6c3ef84253d7c815bed85fc622ad207a9f8"
+                "reference": "e17f069ede36f7534b95adec71910ed1b49c74ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/lexer/zipball/1febd6c3ef84253d7c815bed85fc622ad207a9f8",
-                "reference": "1febd6c3ef84253d7c815bed85fc622ad207a9f8",
+                "url": "https://api.github.com/repos/doctrine/lexer/zipball/e17f069ede36f7534b95adec71910ed1b49c74ea",
+                "reference": "e17f069ede36f7534b95adec71910ed1b49c74ea",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.2"
+                "php": "^7.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.5"
+                "doctrine/coding-standard": "^6.0",
+                "phpstan/phpstan": "^0.11.8",
+                "phpunit/phpunit": "^8.2"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -213,12 +215,12 @@
             ],
             "authors": [
                 {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
                     "name": "Guilherme Blanco",
                     "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
                 },
                 {
                     "name": "Johannes Schmitt",
@@ -234,20 +236,20 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-06-08T11:03:04+00:00"
+            "time": "2019-07-30T19:33:28+00:00"
         },
         {
             "name": "greenter/core",
-            "version": "v2.1.4",
+            "version": "v2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giansalex/greenter-core.git",
-                "reference": "024d6db507968f56af906e21a026d0c0d8fe9af1"
+                "reference": "c133f3d1a61a717061abaf45098cceab9c9928e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giansalex/greenter-core/zipball/024d6db507968f56af906e21a026d0c0d8fe9af1",
-                "reference": "024d6db507968f56af906e21a026d0c0d8fe9af1",
+                "url": "https://api.github.com/repos/giansalex/greenter-core/zipball/c133f3d1a61a717061abaf45098cceab9c9928e8",
+                "reference": "c133f3d1a61a717061abaf45098cceab9c9928e8",
                 "shasum": ""
             },
             "require": {
@@ -276,7 +278,7 @@
                 "greenter",
                 "sunat"
             ],
-            "time": "2019-03-17T18:08:27+00:00"
+            "time": "2019-08-04T16:13:04+00:00"
         },
         {
             "name": "greenter/greenter",
@@ -382,16 +384,16 @@
         },
         {
             "name": "greenter/report",
-            "version": "v2.1.2",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giansalex/greenter-report.git",
-                "reference": "ee768cf5bf9ad4bca977a1787bbf3270a2238a31"
+                "reference": "a320e75199ec84a247b1b82e5d84ce7e51ff09bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giansalex/greenter-report/zipball/ee768cf5bf9ad4bca977a1787bbf3270a2238a31",
-                "reference": "ee768cf5bf9ad4bca977a1787bbf3270a2238a31",
+                "url": "https://api.github.com/repos/giansalex/greenter-report/zipball/a320e75199ec84a247b1b82e5d84ce7e51ff09bd",
+                "reference": "a320e75199ec84a247b1b82e5d84ce7e51ff09bd",
                 "shasum": ""
             },
             "require": {
@@ -428,20 +430,20 @@
                 "pdf",
                 "sunat"
             ],
-            "time": "2019-06-05T00:01:18+00:00"
+            "time": "2019-08-04T18:31:31+00:00"
         },
         {
             "name": "greenter/ws",
-            "version": "v2.2.1",
+            "version": "v2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giansalex/greenter-ws.git",
-                "reference": "689bc91685b8367b20e9cc2ab6dc9da1ff9c3ca9"
+                "reference": "b45798f0404faea7d2fe63dd67f3505df356d762"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giansalex/greenter-ws/zipball/689bc91685b8367b20e9cc2ab6dc9da1ff9c3ca9",
-                "reference": "689bc91685b8367b20e9cc2ab6dc9da1ff9c3ca9",
+                "url": "https://api.github.com/repos/giansalex/greenter-ws/zipball/b45798f0404faea7d2fe63dd67f3505df356d762",
+                "reference": "b45798f0404faea7d2fe63dd67f3505df356d762",
                 "shasum": ""
             },
             "require": {
@@ -481,26 +483,26 @@
                 "sunat",
                 "webservices"
             ],
-            "time": "2019-04-08T23:53:12+00:00"
+            "time": "2019-07-07T03:17:44+00:00"
         },
         {
             "name": "greenter/xml",
-            "version": "v2.1.4",
+            "version": "v2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giansalex/greenter-xml.git",
-                "reference": "7549af81d6af121aac19e21f3ef80067b2b061f5"
+                "reference": "1ccb0b1dc27739739b64fc730639f1af10a2abce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giansalex/greenter-xml/zipball/7549af81d6af121aac19e21f3ef80067b2b061f5",
-                "reference": "7549af81d6af121aac19e21f3ef80067b2b061f5",
+                "url": "https://api.github.com/repos/giansalex/greenter-xml/zipball/1ccb0b1dc27739739b64fc730639f1af10a2abce",
+                "reference": "1ccb0b1dc27739739b64fc730639f1af10a2abce",
                 "shasum": ""
             },
             "require": {
                 "greenter/core": "^2.1",
                 "php": ">=5.5.9",
-                "twig/twig": "~1.0"
+                "twig/twig": "~1.0 || ~2.0"
             },
             "require-dev": {
                 "greenter/data": "dev-master",
@@ -530,7 +532,7 @@
                 "greenter",
                 "xml"
             ],
-            "time": "2019-05-18T01:08:11+00:00"
+            "time": "2019-08-04T17:28:00+00:00"
         },
         {
             "name": "greenter/xmldsig",
@@ -1414,16 +1416,16 @@
         },
         {
             "name": "jms/serializer",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/serializer.git",
-                "reference": "cff99c4874a23a697c5c103e384ce15e7ae512a4"
+                "reference": "7f8dc86e9168d0112b3cc38ba8cca41b17f409a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/cff99c4874a23a697c5c103e384ce15e7ae512a4",
-                "reference": "cff99c4874a23a697c5c103e384ce15e7ae512a4",
+                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/7f8dc86e9168d0112b3cc38ba8cca41b17f409a0",
+                "reference": "7f8dc86e9168d0112b3cc38ba8cca41b17f409a0",
                 "shasum": ""
             },
             "require": {
@@ -1494,7 +1496,7 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2019-06-25T21:01:40+00:00"
+            "time": "2019-06-28T09:09:40+00:00"
         },
         {
             "name": "jms/serializer-bundle",
@@ -3506,21 +3508,22 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.42.1",
+            "version": "v2.11.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "671347603760a88b1e7288aaa9378f33687d7edf"
+                "reference": "699ed2342557c88789a15402de5eb834dedd6792"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/671347603760a88b1e7288aaa9378f33687d7edf",
-                "reference": "671347603760a88b1e7288aaa9378f33687d7edf",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/699ed2342557c88789a15402de5eb834dedd6792",
+                "reference": "699ed2342557c88789a15402de5eb834dedd6792",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0",
-                "symfony/polyfill-ctype": "^1.8"
+                "php": "^7.0",
+                "symfony/polyfill-ctype": "^1.8",
+                "symfony/polyfill-mbstring": "^1.3"
             },
             "require-dev": {
                 "psr/container": "^1.0",
@@ -3530,7 +3533,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.42-dev"
+                    "dev-master": "2.11-dev"
                 }
             },
             "autoload": {
@@ -3548,19 +3551,19 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
+                    "role": "Lead Developer",
                     "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
+                    "homepage": "http://fabien.potencier.org"
                 },
                 {
                     "name": "Armin Ronacher",
-                    "email": "armin.ronacher@active-4.com",
-                    "role": "Project Founder"
+                    "role": "Project Founder",
+                    "email": "armin.ronacher@active-4.com"
                 },
                 {
                     "name": "Twig Team",
-                    "homepage": "https://twig.symfony.com/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://twig.symfony.com/contributors"
                 }
             ],
             "description": "Twig, the flexible, fast, and secure template language for PHP",
@@ -3568,7 +3571,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-06-04T11:31:08+00:00"
+            "time": "2019-06-18T15:37:11+00:00"
         }
     ],
     "packages-dev": [

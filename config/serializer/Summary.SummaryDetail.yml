@@ -36,3 +36,5 @@ Greenter\Model\Summary\SummaryDetail:
             type: float
         mtoOtrosTributos:
             type: float
+        mtoIcbper:
+            type: float

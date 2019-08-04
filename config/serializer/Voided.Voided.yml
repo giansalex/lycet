@@ -10,7 +10,7 @@ Greenter\Model\Voided\Voided:
             type: Greenter\Model\Company\Company
         details:
             type: array<Greenter\Model\Voided\VoidedDetail>
-        name:
-            type: string
         xmlId:
+            type: string
+        name:
             type: string

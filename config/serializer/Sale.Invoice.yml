@@ -30,6 +30,10 @@ Greenter\Model\Sale\Invoice:
             type: float
         valorVenta:
             type: float
+        observacion:
+            type: string
+        direccionEntrega:
+            type: Greenter\Model\Company\Address
         tipoDoc:
             type: string
         serie:
@@ -59,6 +63,8 @@ Greenter\Model\Sale\Invoice:
         mtoISC:
             type: float
         mtoOtrosTributos:
+            type: float
+        icbper:
             type: float
         mtoImpVenta:
             type: float

@@ -3,7 +3,7 @@ Greenter\Model\Sale\Charge:
         codTipo:
             type: string
         factor:
-            type: string
+            type: float
         monto:
             type: float
         montoBase:
