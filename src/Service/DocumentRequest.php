@@ -139,7 +139,7 @@ class DocumentRequest implements DocumentRequestInterface
         $companies = json_decode($jsonCompanies, true);
 
         $ruc = $document->getCompany()->getRuc();
-        if (array_key_exists($ruc, $companies)) {
+        if (is_array($companies) && array_key_exists($ruc, $companies)) {
             $logo = $this->getFile($companies[$ruc]["logo"]);
         }
         $parameters = [
@@ -178,10 +178,12 @@ class DocumentRequest implements DocumentRequestInterface
         $user = $ruc . "MODDATOS";
         $pass = "moddatos";
         $data = "";
-        if (array_key_exists($ruc, $companies)) {
+        if (is_array($companies) && array_key_exists($ruc, $companies)) {
             $user = $companies[$ruc]["SOL_USER"];
             $pass = $companies[$ruc]["SOL_PASS"];
             $data = $this->getFile($companies[$ruc]["certificado"]);
+        } else {
+            $data = $this->getParameter('certificado');
         }
         $see = $this->container->get(See::class);
         $see->setCredentials($user, $pass);
