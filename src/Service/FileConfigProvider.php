@@ -24,6 +24,7 @@ class FileConfigProvider implements ConfigProviderInterface
     private $keys = [
         'certificate' => 'cert.pem',
         'logo' => 'logo.png',
+        'companies' => 'empresas.json',
     ];
 
     /**
@@ -33,6 +34,22 @@ class FileConfigProvider implements ConfigProviderInterface
     public function __construct(string $directory)
     {
         $this->directory = $directory;
+    }
+
+    /**
+     * @param string $fileName
+     * @return mixed
+     */
+    public function getFile($fileName)
+    {
+
+        $path = $this->directory.DIRECTORY_SEPARATOR.$fileName;
+
+        if (file_exists($path)) {
+            return file_get_contents($path);
+        }
+
+        return '';
     }
 
     /**

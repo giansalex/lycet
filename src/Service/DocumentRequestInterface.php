@@ -49,5 +49,5 @@ interface DocumentRequestInterface
      *
      * @return See
      */
-    public function getSee(): See;
+    public function getSee(string $ruc): See;
 }

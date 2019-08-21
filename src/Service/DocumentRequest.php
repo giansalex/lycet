@@ -83,7 +83,7 @@ class DocumentRequest implements DocumentRequestInterface
 //            return $this->json($errors, 400);
 //        }
 
-        $see = $this->getSee();
+        $see = $this->getSee($document->getCompany()->getRuc());
         $result = $see->send($document);
 
         $this->toBase64Zip($result);
@@ -113,7 +113,7 @@ class DocumentRequest implements DocumentRequestInterface
 //            return $this->json($errors, 400);
 //        }
 
-        $see = $this->getSee();
+        $see = $this->getSee($document->getCompany()->getRuc());
 
         $xml  = $see->getXmlSigned($document);
 
@@ -135,7 +135,13 @@ class DocumentRequest implements DocumentRequestInterface
 //            return $this->json($errors, 400);
 //        }
         $logo = $this->getParameter('logo');
+        $jsonCompanies = $this->getParameter('companies');
+        $companies = json_decode($jsonCompanies, true);
 
+        $ruc = $document->getCompany()->getRuc();
+        if (array_key_exists($ruc, $companies)) {
+            $logo = $this->getFile($companies[$ruc]["logo"]);
+        }
         $parameters = [
             'system' => [
                 'logo' => $logo,
@@ -165,12 +171,19 @@ class DocumentRequest implements DocumentRequestInterface
      * @throws \Psr\Container\ContainerExceptionInterface
      * @throws \Psr\Container\NotFoundExceptionInterface
      */
-    public function getSee(): See
+    public function getSee(string $ruc): See
     {
-        $user = getenv('SOL_USER');
-        $pass = getenv('SOL_PASS');
+        $jsonCompanies = $this->getParameter('companies');
+        $companies = json_decode($jsonCompanies, true);
+        $user = $ruc . "MODDATOS";
+        $pass = "moddatos";
+        $data = "";
+        if (array_key_exists($ruc, $companies)) {
+            $user = $companies[$ruc]["SOL_USER"];
+            $pass = $companies[$ruc]["SOL_PASS"];
+            $data = $this->getFile($companies[$ruc]["certificado"]);
+        }
         $see = $this->container->get(See::class);
-        $data = $this->getParameter('certificate');
         $see->setCredentials($user, $pass);
         $see->setCertificate($data);
         $see->setService($this->getUrlService());
@@ -238,6 +251,14 @@ class DocumentRequest implements DocumentRequestInterface
     {
         $config = $this->container->get(ConfigProviderInterface::class);
         $value = $config->get($key);
+
+        return $value;
+    }
+
+    private function getFile($fileName): string
+    {
+        $config = $this->container->get(ConfigProviderInterface::class);
+        $value = $config->getFile($fileName);
 
         return $value;
     }
