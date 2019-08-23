@@ -9,6 +9,7 @@
 namespace App\Controller\v1;
 
 use App\Service\DocumentRequestInterface;
+use App\Service\SeeFactory;
 use Greenter\Model\Voided\Voided;
 use JMS\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -81,13 +82,13 @@ class VoidedController extends AbstractController
      * @param Request $request
      * @return JsonResponse
      */
-    public function status(Request $request): JsonResponse
+    public function status(Request $request, SeeFactory $factory): JsonResponse
     {
         $ticket = $request->query->get('ticket');
         if (empty($ticket)) {
             return new JsonResponse(['message' => 'Ticket Requerido'], 400);
         }
-        $see = $this->document->getSee();
+        $see = $factory->build(Voided::class, $request->query->get('ruc'));
         $result = $see->getStatus($ticket);
 
         if ($result->isSuccess()) {

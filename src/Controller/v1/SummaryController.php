@@ -9,6 +9,7 @@
 namespace App\Controller\v1;
 
 use App\Service\DocumentRequestInterface;
+use App\Service\SeeFactory;
 use Greenter\Model\Summary\Summary;
 use JMS\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -79,15 +80,16 @@ class SummaryController extends AbstractController
      * @Route("/status", methods={"GET"})
      *
      * @param Request $request
+     * @param SeeFactory $factory
      * @return JsonResponse
      */
-    public function status(Request $request): JsonResponse
+    public function status(Request $request, SeeFactory $factory): JsonResponse
     {
         $ticket = $request->query->get('ticket');
         if (empty($ticket)) {
             return new JsonResponse(['message' => 'Ticket Requerido'], 400);
         }
-        $see = $this->document->getSee();
+        $see = $factory->build(Summary::class, $request->query->get('ruc'));
         $result = $see->getStatus($ticket);
 
         if ($result->isSuccess()) {
