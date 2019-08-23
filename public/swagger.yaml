@@ -284,6 +284,10 @@ paths:
           in: query
           description: Ticket de Resumen diario
           type: string
+        - name: ruc
+          in: query
+          description: RUC de empresa
+          type: string
       produces:
         - application/json
       responses:
