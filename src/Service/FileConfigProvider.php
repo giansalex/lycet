@@ -37,22 +37,6 @@ class FileConfigProvider implements ConfigProviderInterface
     }
 
     /**
-     * @param string $fileName
-     * @return mixed
-     */
-    public function getFile($fileName)
-    {
-
-        $path = $this->directory.DIRECTORY_SEPARATOR.$fileName;
-
-        if (file_exists($path)) {
-            return file_get_contents($path);
-        }
-
-        return '';
-    }
-
-    /**
      * @param string $key
      * @return mixed
      */
