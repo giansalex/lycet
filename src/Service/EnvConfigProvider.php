@@ -11,6 +11,6 @@ class EnvConfigProvider implements ConfigProviderInterface
 
     public function store($key, $value)
     {
-        putenv($key, $value);
+        putenv($key.'='.$value);
     }
 }
