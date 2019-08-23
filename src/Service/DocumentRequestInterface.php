@@ -47,6 +47,7 @@ interface DocumentRequestInterface
     /**
      * Get Configured See.
      *
+     * @param string $ruc
      * @return See
      */
     public function getSee(string $ruc): See;

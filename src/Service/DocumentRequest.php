@@ -8,14 +8,10 @@
 
 namespace App\Service;
 
-use Greenter\Model\Despatch\Despatch;
 use Greenter\Model\DocumentInterface;
-use Greenter\Model\Perception\Perception;
 use Greenter\Model\Response\BaseResult;
 use Greenter\Model\Response\BillResult;
 use Greenter\Model\Response\SummaryResult;
-use Greenter\Model\Retention\Retention;
-use Greenter\Model\Voided\Reversion;
 use Greenter\Report\PdfReport;
 use Greenter\Report\ReportInterface;
 use Greenter\Report\XmlUtils;
@@ -134,14 +130,16 @@ class DocumentRequest implements DocumentRequestInterface
 //        if (count($errors)) {
 //            return $this->json($errors, 400);
 //        }
-        $logo = $this->getParameter('logo');
+
         $jsonCompanies = $this->getParameter('companies');
-        $companies = json_decode($jsonCompanies, true);
 
         $ruc = $document->getCompany()->getRuc();
-        if (is_array($companies) && array_key_exists($ruc, $companies)) {
-            $logo = $this->getFile($companies[$ruc]["logo"]);
+        if (empty($companies) && ($companies = json_decode($jsonCompanies, true)) && array_key_exists($ruc, $companies)) {
+            $logo = $this->getFile($companies[$ruc]['logo']);
+        } else {
+            $logo = $this->getParameter('logo');
         }
+
         $parameters = [
             'system' => [
                 'logo' => $logo,
@@ -167,47 +165,14 @@ class DocumentRequest implements DocumentRequestInterface
     /**
      * Get Configured See.
      *
+     * @param string $ruc
      * @return See
-     * @throws \Psr\Container\ContainerExceptionInterface
-     * @throws \Psr\Container\NotFoundExceptionInterface
      */
     public function getSee(string $ruc): See
     {
-        $jsonCompanies = $this->getParameter('companies');
-        $companies = json_decode($jsonCompanies, true);
-        $user = $ruc . "MODDATOS";
-        $pass = "moddatos";
-        $data = "";
-        if (is_array($companies) && array_key_exists($ruc, $companies)) {
-            $user = $companies[$ruc]["SOL_USER"];
-            $pass = $companies[$ruc]["SOL_PASS"];
-            $data = $this->getFile($companies[$ruc]["certificado"]);
-        } else {
-            $data = $this->getParameter('certificado');
-        }
-        $see = $this->container->get(See::class);
-        $see->setCredentials($user, $pass);
-        $see->setCertificate($data);
-        $see->setService($this->getUrlService());
+        $factory = $this->container->get(SeeFactory::class);
 
-        return $see;
-    }
-
-    private function getUrlService()
-    {
-        $key = 'FE_URL';
-        switch ($this->className) {
-            case Perception::class:
-            case Retention::class:
-            case Reversion::class:
-                $key = 'RE_URL';
-                break;
-            case Despatch::class:
-                $key = 'GUIA_URL';
-                break;
-        }
-
-        return getenv($key);
+        return $factory->build($this->className, $ruc);
     }
 
     /**
@@ -257,12 +222,11 @@ class DocumentRequest implements DocumentRequestInterface
         return $value;
     }
 
-    private function getFile($fileName): string
+    private function getFile($filename): string
     {
-        $config = $this->container->get(ConfigProviderInterface::class);
-        $value = $config->getFile($fileName);
+        $config = $this->container->get(FileDataReader::class);
 
-        return $value;
+        return $config->getContents($filename);
     }
 
     private function GetHashFromXml($xml): string
