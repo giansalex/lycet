@@ -64,7 +64,7 @@ class SeeFactory
 
         $companies = json_decode($jsonCompanies, true);
 
-        if ($companies == null || !array_key_exists($ruc, $companies)) {
+        if (!array_key_exists($ruc, $companies)) {
             return false;
         }
 
