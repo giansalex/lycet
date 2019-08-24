@@ -84,10 +84,16 @@ class InvoiceControllerTest extends WebTestCase
         $stub = $this->getMockBuilder(ConfigProviderInterface::class)
                     ->getMock();
 
-        $path = __DIR__.'/../../Resources/SFSCert.pem';
-
         $stub->method('get')
-            ->willReturn(file_get_contents($path));
+            ->willReturnCallback(function ($key) {
+               switch ($key) {
+                   case 'certificate':
+                       $path = __DIR__.'/../../Resources/SFSCert.pem';
+                       return file_get_contents($path);
+                   default:
+                       return '';
+               }
+            });
 
         /**@var $stub ConfigProviderInterface*/
         return $stub;

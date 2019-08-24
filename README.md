@@ -47,9 +47,11 @@ a continuación.
 /data
 ├── cert.pem
 ├── logo.png
+├── empresas.json (opcional para multiples empresas)
 ```
 También puede usar [lycet-ui-config](https://giansalex.github.io/lycet-ui-config/) como interfaz de usuario, siendo mas útil
-esta opción cuando emplea contenedores.
+esta opción cuando emplea contenedores.  
+Para mas detalles del contenido de `empresas.json` puedes revisarlo [aquí](https://github.com/giansalex/lycet/pull/129).
 
 ### Ejecutar    
 Usando Php Built-in Web Server.

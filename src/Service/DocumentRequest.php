@@ -8,14 +8,10 @@
 
 namespace App\Service;
 
-use Greenter\Model\Despatch\Despatch;
 use Greenter\Model\DocumentInterface;
-use Greenter\Model\Perception\Perception;
 use Greenter\Model\Response\BaseResult;
 use Greenter\Model\Response\BillResult;
 use Greenter\Model\Response\SummaryResult;
-use Greenter\Model\Retention\Retention;
-use Greenter\Model\Voided\Reversion;
 use Greenter\Report\PdfReport;
 use Greenter\Report\ReportInterface;
 use Greenter\Report\XmlUtils;
@@ -83,7 +79,7 @@ class DocumentRequest implements DocumentRequestInterface
 //            return $this->json($errors, 400);
 //        }
 
-        $see = $this->getSee();
+        $see = $this->getSee($document->getCompany()->getRuc());
         $result = $see->send($document);
 
         $this->toBase64Zip($result);
@@ -113,7 +109,7 @@ class DocumentRequest implements DocumentRequestInterface
 //            return $this->json($errors, 400);
 //        }
 
-        $see = $this->getSee();
+        $see = $this->getSee($document->getCompany()->getRuc());
 
         $xml  = $see->getXmlSigned($document);
 
@@ -134,7 +130,15 @@ class DocumentRequest implements DocumentRequestInterface
 //        if (count($errors)) {
 //            return $this->json($errors, 400);
 //        }
-        $logo = $this->getParameter('logo');
+
+        $jsonCompanies = $this->getParameter('companies');
+
+        $ruc = $document->getCompany()->getRuc();
+        if (empty($companies) && ($companies = json_decode($jsonCompanies, true)) && array_key_exists($ruc, $companies)) {
+            $logo = $this->getFile($companies[$ruc]['logo']);
+        } else {
+            $logo = $this->getParameter('logo');
+        }
 
         $parameters = [
             'system' => [
@@ -161,38 +165,14 @@ class DocumentRequest implements DocumentRequestInterface
     /**
      * Get Configured See.
      *
+     * @param string $ruc
      * @return See
-     * @throws \Psr\Container\ContainerExceptionInterface
-     * @throws \Psr\Container\NotFoundExceptionInterface
      */
-    public function getSee(): See
+    public function getSee(string $ruc): See
     {
-        $user = getenv('SOL_USER');
-        $pass = getenv('SOL_PASS');
-        $see = $this->container->get(See::class);
-        $data = $this->getParameter('certificate');
-        $see->setCredentials($user, $pass);
-        $see->setCertificate($data);
-        $see->setService($this->getUrlService());
+        $factory = $this->container->get(SeeFactory::class);
 
-        return $see;
-    }
-
-    private function getUrlService()
-    {
-        $key = 'FE_URL';
-        switch ($this->className) {
-            case Perception::class:
-            case Retention::class:
-            case Reversion::class:
-                $key = 'RE_URL';
-                break;
-            case Despatch::class:
-                $key = 'GUIA_URL';
-                break;
-        }
-
-        return getenv($key);
+        return $factory->build($this->className, $ruc);
     }
 
     /**
@@ -240,6 +220,13 @@ class DocumentRequest implements DocumentRequestInterface
         $value = $config->get($key);
 
         return $value;
+    }
+
+    private function getFile($filename): string
+    {
+        $config = $this->container->get(FileDataReader::class);
+
+        return $config->getContents($filename);
     }
 
     private function GetHashFromXml($xml): string

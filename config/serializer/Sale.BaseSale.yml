@@ -44,6 +44,10 @@ Greenter\Model\Sale\BaseSale:
             type: array<Greenter\Model\Sale\Document>
         compra:
             type: string
+        mtoBaseIvap:
+            type: float
+        mtoIvap:
+            type: float
         mtoBaseIsc:
             type: float
         mtoBaseOth:

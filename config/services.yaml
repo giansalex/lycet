@@ -76,9 +76,23 @@ services:
     App\Service\FileConfigProvider:
         arguments: ['%data_path%']
 
+    App\Service\FileDataReader:
+        public: true
+        arguments: ['%data_path%']
+
     App\Service\ConfigProviderInterface:
         alias: App\Service\FileConfigProvider
         public: true
+
+    App\Service\EnvConfigProvider:
+
+    App\Service\SeeFactory:
+        public: true
+        arguments:
+            - '@App\Service\EnvConfigProvider'
+            - '@App\Service\ConfigProviderInterface'
+            - '@App\Service\FileDataReader'
+            - '@Greenter\See'
 
     App\EventSubscriber\TokenSubscriber:
         arguments:

@@ -24,6 +24,7 @@ class FileConfigProvider implements ConfigProviderInterface
     private $keys = [
         'certificate' => 'cert.pem',
         'logo' => 'logo.png',
+        'companies' => 'empresas.json',
     ];
 
     /**
