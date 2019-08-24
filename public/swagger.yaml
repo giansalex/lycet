@@ -286,8 +286,9 @@ paths:
           type: string
         - name: ruc
           in: query
-          description: RUC de empresa
+          description: RUC de empresa (Multiples Empresas)
           type: string
+          required: false
       produces:
         - application/json
       responses:
@@ -386,6 +387,11 @@ paths:
           in: query
           description: Ticket de Comunicación de baja
           type: string
+        - name: ruc
+          in: query
+          description: RUC de empresa (Multiples Empresas)
+          type: string
+          required: false
       produces:
         - application/json
       responses:
@@ -721,6 +727,11 @@ paths:
           in: query
           description: Ticket de Resumen de Reversiones
           type: string
+        - name: ruc
+          in: query
+          description: RUC de empresa (Multiples Empresas)
+          type: string
+          required: false
       produces:
         - application/json
       responses:
