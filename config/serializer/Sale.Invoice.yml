@@ -66,6 +66,8 @@ Greenter\Model\Sale\Invoice:
             type: float
         icbper:
             type: float
+        subTotal:
+            type: float
         mtoImpVenta:
             type: float
         details:
