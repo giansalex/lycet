@@ -1,7 +1,7 @@
 # Lycet - Greenter
 [![Travis-CI](https://img.shields.io/travis/giansalex/lycet.svg?branch=master&style=flat-square)](https://travis-ci.org/giansalex/lycet)
 
-Lycet es un API REST basado en [greenter](https://github.com/giansalex/greenter) y Symfony Framework v4, UBL 2.1 es soportado.
+Lycet es un API REST basado en [greenter](https://github.com/giansalex/greenter) y Symfony Framework, UBL 2.1 es soportado.
 
 ## Requerimientos
 - Php 7.2 o superior

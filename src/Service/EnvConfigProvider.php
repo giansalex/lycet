@@ -6,7 +6,7 @@ class EnvConfigProvider implements ConfigProviderInterface
 {
     public function get($key)
     {
-       return getenv($key);
+       return $_ENV[$key];
     }
 
     public function store($key, $value)
