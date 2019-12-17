@@ -98,6 +98,6 @@ class SeeFactory
                 break;
         }
 
-        return getenv($key);
+        return $this->config->get($key);
     }
 }
