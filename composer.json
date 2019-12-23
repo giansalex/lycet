@@ -26,9 +26,6 @@
         "symfony/phpunit-bridge": "5.0.*"
     },
     "config": {
-        "platform": {
-            "php": "7.2.15"
-        },
         "preferred-install": {
             "*": "dist"
         },
