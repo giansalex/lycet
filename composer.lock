@@ -3807,16 +3807,16 @@
     "packages-dev": [
         {
             "name": "symfony/browser-kit",
-            "version": "v5.0.4",
+            "version": "v5.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/browser-kit.git",
-                "reference": "b0294489a7fbb4f3f39c39efe6f0328cb09731b9"
+                "reference": "6b2a9590a5868f0ce5cbf7af6abe563d1a3930a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/browser-kit/zipball/b0294489a7fbb4f3f39c39efe6f0328cb09731b9",
-                "reference": "b0294489a7fbb4f3f39c39efe6f0328cb09731b9",
+                "url": "https://api.github.com/repos/symfony/browser-kit/zipball/6b2a9590a5868f0ce5cbf7af6abe563d1a3930a3",
+                "reference": "6b2a9590a5868f0ce5cbf7af6abe563d1a3930a3",
                 "shasum": ""
             },
             "require": {
@@ -3862,20 +3862,20 @@
             ],
             "description": "Symfony BrowserKit Component",
             "homepage": "https://symfony.com",
-            "time": "2020-01-04T14:08:26+00:00"
+            "time": "2020-02-24T15:05:31+00:00"
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v5.0.4",
+            "version": "v5.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "439c3c7be4daa569deef0dd1e30cf3562108d062"
+                "reference": "4368bdd61b83af365b8f23e9616d2a2ed52cbe7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/439c3c7be4daa569deef0dd1e30cf3562108d062",
-                "reference": "439c3c7be4daa569deef0dd1e30cf3562108d062",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/4368bdd61b83af365b8f23e9616d2a2ed52cbe7c",
+                "reference": "4368bdd61b83af365b8f23e9616d2a2ed52cbe7c",
                 "shasum": ""
             },
             "require": {
@@ -3923,7 +3923,7 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
-            "time": "2020-01-04T14:08:26+00:00"
+            "time": "2020-02-29T10:07:09+00:00"
         },
         {
             "name": "symfony/phpunit-bridge",
