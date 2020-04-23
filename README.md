@@ -1,13 +1,13 @@
 # Lycet - Greenter
 [![Travis-CI](https://img.shields.io/travis/giansalex/lycet.svg?branch=master&style=flat-square)](https://travis-ci.org/giansalex/lycet)
 
-Lycet es un API REST basado en [greenter](https://github.com/giansalex/greenter) y Symfony Framework, UBL 2.1 es soportado.
+Lycet es un API REST basado en [greenter](https://github.com/thegreenter/greenter) y Symfony Framework, UBL 2.1 es soportado.
 
 ## Requerimientos
 - Php 7.2 o superior
 - Php Extensions habilitadas (gd, soap, xml, openssl, zlib)
 - WkhtmltoPdf executable (PDF report)
-- Pem Certificate - [convert pfx to pem](https://github.com/giansalex/xmldsig/blob/master/CONVERT.md)
+- Pem Certificate - [convert pfx to pem](https://github.com/thegreenter/xmldsig/blob/master/CONVERT.md)
 
 ## Pasos
 
