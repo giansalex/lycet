@@ -41,7 +41,15 @@ COPY . .
 RUN curl --silent --show-error -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
     composer install --no-interaction --no-dev -o -a && \
     composer require php-pm/php-pm && \
+    composer require php-pm/httpkernel-adapter && \
     composer dump-autoload --optimize --no-dev --classmap-authoritative && \
     composer dump-env prod && \
     chmod -R 755 ./data && \
     chmod -R 755 ./var
+
+RUN apk del .build-green-deps && \
+    rm -rf /var/cache/apk/*
+
+COPY docker/docker-entrypoint.sh .
+
+ENTRYPOINT ["sh", "./docker-entrypoint.sh"]
