@@ -40,8 +40,8 @@ COPY . .
 # Install Packages
 RUN curl --silent --show-error -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
     composer install --no-interaction --no-dev -o -a && \
-    composer require php-pm/php-pm && \
-    composer require php-pm/httpkernel-adapter && \
+    composer require --update-no-dev php-pm/php-pm && \
+    composer require --update-no-dev php-pm/httpkernel-adapter && \
     composer dump-autoload --optimize --no-dev --classmap-authoritative && \
     composer dump-env prod && \
     chmod -R 755 ./data && \
