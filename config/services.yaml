@@ -26,6 +26,9 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
+    Psr\Container\ContainerInterface:
+        alias: service_container
+
     Greenter\Report\Resolver\DefaultTemplateResolver:
         autowire: true
 
