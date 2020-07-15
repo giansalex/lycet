@@ -2200,16 +2200,16 @@
         },
         {
             "name": "symfony/flex",
-            "version": "v1.9.0",
+            "version": "v1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/flex.git",
-                "reference": "afd3d715d6860b9d5cc57b0a819eb36b6495b1f0"
+                "reference": "0e752e47d8382361ca2d7ef016f549828185ddb6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/flex/zipball/afd3d715d6860b9d5cc57b0a819eb36b6495b1f0",
-                "reference": "afd3d715d6860b9d5cc57b0a819eb36b6495b1f0",
+                "url": "https://api.github.com/repos/symfony/flex/zipball/0e752e47d8382361ca2d7ef016f549828185ddb6",
+                "reference": "0e752e47d8382361ca2d7ef016f549828185ddb6",
                 "shasum": ""
             },
             "require": {
@@ -2259,7 +2259,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-07-14T14:43:46+00:00"
+            "time": "2020-07-14T15:18:33+00:00"
         },
         {
             "name": "symfony/framework-bundle",
