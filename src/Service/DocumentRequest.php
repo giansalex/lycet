@@ -153,7 +153,7 @@ class DocumentRequest implements DocumentRequestInterface
 
         $report = $this->getReport();
         $pdf = $report->render($document, $parameters);
-        if ($pdf === false) {
+        if (is_null($pdf)) {
             $message = $this->tryGetError($report);
 
             return $this->json(['message' => $message], 500);
@@ -217,9 +217,8 @@ class DocumentRequest implements DocumentRequestInterface
     private function getParameter($key): string
     {
         $config = $this->container->get(ConfigProviderInterface::class);
-        $value = $config->get($key);
 
-        return $value;
+        return $config->get($key);
     }
 
     private function getFile($filename): string
