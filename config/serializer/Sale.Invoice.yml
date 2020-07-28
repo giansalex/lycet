@@ -10,6 +10,8 @@ Greenter\Model\Sale\Invoice:
             type: float
         mtoOperGratuitas:
             type: float
+        mtoIGVGratuitas:
+            type: float
         totalAnticipos:
             type: float
         perception:
