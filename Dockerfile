@@ -23,14 +23,12 @@ RUN apk add --no-cache --virtual .build-green-deps \
     git \
     unzip \
     curl \
-    libzip-dev libxml2-dev \
-    libpng-dev libjpeg-turbo-dev freetype-dev libwebp-dev libxpm-dev
+    libzip-dev libxml2-dev
 
 # Configure php extensions
 RUN docker-php-ext-install soap && \
     docker-php-ext-configure opcache --enable-opcache && \
     docker-php-ext-install opcache && \
-    docker-php-ext-install gd && \
     docker-php-ext-install zip && \
     docker-php-ext-install pcntl
 
