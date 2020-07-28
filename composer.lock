@@ -4,36 +4,39 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9cc89e9dacf0e2ee7db2c10bfa26c180",
+    "content-hash": "d3d7150ff864cdda8e75fcb2f418d429",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
-            "version": "1.0.3",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Bacon/BaconQrCode.git",
-                "reference": "5a91b62b9d37cee635bbf8d553f4546057250bee"
+                "reference": "6e53ced3d2499cee4a0ef23a7c4d6449607ac7da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Bacon/BaconQrCode/zipball/5a91b62b9d37cee635bbf8d553f4546057250bee",
-                "reference": "5a91b62b9d37cee635bbf8d553f4546057250bee",
+                "url": "https://api.github.com/repos/Bacon/BaconQrCode/zipball/6e53ced3d2499cee4a0ef23a7c4d6449607ac7da",
+                "reference": "6e53ced3d2499cee4a0ef23a7c4d6449607ac7da",
                 "shasum": ""
             },
             "require": {
+                "dasprid/enum": "^1.0",
                 "ext-iconv": "*",
-                "php": "^5.4|^7.0"
+                "php": "^7.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8"
+                "phly/keep-a-changelog": "^1.4",
+                "phpunit/phpunit": "^6.4",
+                "squizlabs/php_codesniffer": "^3.1"
             },
             "suggest": {
-                "ext-gd": "to generate QR code images"
+                "ext-imagick": "to generate QR code images"
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "BaconQrCode": "src/"
+                "psr-4": {
+                    "BaconQrCode\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -50,7 +53,49 @@
             ],
             "description": "BaconQrCode is a QR code generator for PHP.",
             "homepage": "https://github.com/Bacon/BaconQrCode",
-            "time": "2017-10-17T09:59:25+00:00"
+            "time": "2020-07-14T11:04:05+00:00"
+        },
+        {
+            "name": "dasprid/enum",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DASPRiD/Enum.git",
+                "reference": "631ef6e638e9494b0310837fa531bedd908fc22b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DASPRiD/Enum/zipball/631ef6e638e9494b0310837fa531bedd908fc22b",
+                "reference": "631ef6e638e9494b0310837fa531bedd908fc22b",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.4",
+                "squizlabs/php_codesniffer": "^3.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DASPRiD\\Enum\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Ben Scholzen 'DASPRiD'",
+                    "email": "mail@dasprids.de",
+                    "homepage": "https://dasprids.de/"
+                }
+            ],
+            "description": "PHP 7.1 enum implementation",
+            "keywords": [
+                "enum",
+                "map"
+            ],
+            "time": "2017-10-25T22:45:27+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -268,301 +313,89 @@
             "time": "2020-05-25T17:44:05+00:00"
         },
         {
-            "name": "greenter/core",
-            "version": "v2.2.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thegreenter/core.git",
-                "reference": "faf2efab232c9f29ce22e603db094402fac41565"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/core/zipball/faf2efab232c9f29ce22e603db094402fac41565",
-                "reference": "faf2efab232c9f29ce22e603db094402fac41565",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Greenter\\": "src/Core/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Giancarlos Salas",
-                    "email": "giansalex@gmail.com"
-                }
-            ],
-            "description": "Greenter Core",
-            "homepage": "https://github.com/giansalex/greenter-core",
-            "keywords": [
-                "facturación electrónica",
-                "greenter",
-                "sunat"
-            ],
-            "time": "2019-10-11T23:42:00+00:00"
-        },
-        {
             "name": "greenter/greenter",
-            "version": "v3.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/greenter.git",
-                "reference": "a63147b2176e773147485e60db9fb745a377f5bd"
+                "reference": "d60d1545bd66d91959f8d7d7589e6fefda72d6ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/greenter/zipball/a63147b2176e773147485e60db9fb745a377f5bd",
-                "reference": "a63147b2176e773147485e60db9fb745a377f5bd",
+                "url": "https://api.github.com/repos/thegreenter/greenter/zipball/d60d1545bd66d91959f8d7d7589e6fefda72d6ef",
+                "reference": "d60d1545bd66d91959f8d7d7589e6fefda72d6ef",
                 "shasum": ""
             },
             "require": {
-                "greenter/core": "^2.1",
-                "greenter/ws": "^2.1",
-                "greenter/xml": "^2.1",
-                "greenter/xmldsig": "^5.0",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "phpunit/phpunit": ">=4.8 < 6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Greenter\\": "src/Greenter/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Giancarlos Salas",
-                    "email": "giansalex@gmail.com"
-                }
-            ],
-            "description": "Implementación de la Facturacion Electrónica SUNAT - Perú",
-            "homepage": "https://github.com/giansalex/greenter",
-            "keywords": [
-                "sunat",
-                "ubl20",
-                "ubl21",
-                "xml"
-            ],
-            "funding": [
-                {
-                    "url": "https://paypal.me/giansalex",
-                    "type": "custom"
-                }
-            ],
-            "time": "2018-10-14T23:23:45+00:00"
-        },
-        {
-            "name": "greenter/htmltopdf",
-            "version": "v2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thegreenter/htmltopdf.git",
-                "reference": "1f7d09a35d7babcc8a2e2b437623b0e483eb1cd3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/htmltopdf/zipball/1f7d09a35d7babcc8a2e2b437623b0e483eb1cd3",
-                "reference": "1f7d09a35d7babcc8a2e2b437623b0e483eb1cd3",
-                "shasum": ""
-            },
-            "require": {
-                "greenter/core": "^2.1",
-                "mikehaertl/phpwkhtmltopdf": "^2.3",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "phpunit/phpunit": ">=4.8 < 6.0"
-            },
-            "suggest": {
-                "greenter/report": "Html Reporter"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Greenter\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Giancarlos Salas",
-                    "email": "giansalex@gmail.com"
-                }
-            ],
-            "description": "Greenter Html Report to Pdf using wkhtmltopdf",
-            "homepage": "https://github.com/giansalex/greenter-htmltopdf",
-            "keywords": [
-                "greenter",
-                "representacion-impresa",
-                "wkhtmltodf"
-            ],
-            "time": "2018-10-14T20:22:29+00:00"
-        },
-        {
-            "name": "greenter/report",
-            "version": "v2.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thegreenter/report.git",
-                "reference": "a6a9dc798742d57717f5473b77540b391bec7e31"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/report/zipball/a6a9dc798742d57717f5473b77540b391bec7e31",
-                "reference": "a6a9dc798742d57717f5473b77540b391bec7e31",
-                "shasum": ""
-            },
-            "require": {
-                "bacon/bacon-qr-code": "^1.0",
-                "greenter/core": "^2.1",
-                "php": ">=5.5.9",
-                "twig/twig": "~1.0 || ~2.0 || ~3.0"
-            },
-            "require-dev": {
-                "greenter/data": "dev-master",
-                "phpunit/phpunit": ">=4.8 < 6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Greenter\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Giancarlos Salas",
-                    "email": "giansalex@gmail.com"
-                }
-            ],
-            "description": "Representacion Impresa para Facturacion Electrónica SUNAT - Perú",
-            "homepage": "https://github.com/giansalex/greenter-report",
-            "keywords": [
-                "greenter",
-                "pdf",
-                "sunat"
-            ],
-            "time": "2019-12-08T00:24:43+00:00"
-        },
-        {
-            "name": "greenter/ws",
-            "version": "v2.2.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thegreenter/ws.git",
-                "reference": "b45798f0404faea7d2fe63dd67f3505df356d762"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/ws/zipball/b45798f0404faea7d2fe63dd67f3505df356d762",
-                "reference": "b45798f0404faea7d2fe63dd67f3505df356d762",
-                "shasum": ""
-            },
-            "require": {
+                "bacon/bacon-qr-code": "^2.0",
                 "ext-dom": "*",
                 "ext-soap": "*",
                 "ext-zip": "*",
                 "ext-zlib": "*",
-                "greenter/core": "^2.1",
-                "php": ">=5.5.9"
+                "greenter/xmldsig": "^5.0",
+                "mikehaertl/phpwkhtmltopdf": "^2.4",
+                "php": "^7.2",
+                "symfony/validator": "^5.0",
+                "twig/twig": "~3.0"
+            },
+            "replace": {
+                "greenter/core": "self.version",
+                "greenter/data": "self.version",
+                "greenter/greenter": "self.version",
+                "greenter/htmltopdf": "self.version",
+                "greenter/lite": "self.version",
+                "greenter/report": "self.version",
+                "greenter/validator": "self.version",
+                "greenter/ws": "self.version",
+                "greenter/xcodes": "self.version",
+                "greenter/xml": "self.version",
+                "greenter/xml-parser": "self.version"
             },
             "require-dev": {
-                "mockery/mockery": "^1.2",
-                "phpunit/phpunit": ">=4.8 < 6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Greenter\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Giancarlos Salas",
-                    "email": "giansalex@gmail.com"
-                }
-            ],
-            "description": "WebServices Sunat Facturación Electrónica - Perú",
-            "homepage": "https://github.com/giansalex/greenter-ws",
-            "keywords": [
-                "greenter",
-                "soap",
-                "sunat",
-                "webservices"
-            ],
-            "time": "2019-07-07T03:17:44+00:00"
-        },
-        {
-            "name": "greenter/xml",
-            "version": "v2.2.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thegreenter/xml.git",
-                "reference": "03f0f1dc61525ca27451f4ef0092163a38b646a9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/xml/zipball/03f0f1dc61525ca27451f4ef0092163a38b646a9",
-                "reference": "03f0f1dc61525ca27451f4ef0092163a38b646a9",
-                "shasum": ""
-            },
-            "require": {
-                "greenter/core": "^2.1",
-                "php": ">=5.5.9",
-                "twig/twig": "~1.0 || ~2.0 || ~3.0"
-            },
-            "require-dev": {
-                "greenter/data": "dev-master",
                 "greenter/ubl-validator": "^2.0",
-                "phpunit/phpunit": ">=4.8 < 6.0"
+                "mockery/mockery": "^1.2",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^8",
+                "symplify/monorepo-builder": "^8.1"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
-                    "Greenter\\": "src/"
+                    "Greenter\\": [
+                        "packages/core/src/Core/",
+                        "packages/data/src/",
+                        "packages/htmltopdf/src/",
+                        "packages/lite/src/Greenter/",
+                        "packages/report/src/",
+                        "packages/validator/src/",
+                        "packages/ws/src/",
+                        "packages/xcodes/src/",
+                        "packages/xml-parser/src/",
+                        "packages/xml/src/"
+                    ]
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "authors": [
+            "description": "Facturacion Electrónica SUNAT - Perú",
+            "funding": [
                 {
-                    "name": "Giancarlos Salas",
-                    "email": "giansalex@gmail.com"
+                    "url": "https://paypal.me/giansalex",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://yape.greenter.dev/",
+                    "type": "custom"
                 }
             ],
-            "description": "XML generación de documentos electrónicos, Facturacion Electrónica SUNAT - Perú",
-            "homepage": "https://github.com/giansalex/greenter-xml",
-            "keywords": [
-                "greenter",
-                "xml"
-            ],
-            "time": "2020-04-03T15:06:10+00:00"
+            "time": "2020-07-28T21:04:03+00:00"
         },
         {
             "name": "greenter/xmldsig",
@@ -870,16 +703,16 @@
         },
         {
             "name": "mikehaertl/php-tmpfile",
-            "version": "1.1.3",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mikehaertl/php-tmpfile.git",
-                "reference": "e733207ea8ce32f0a40a6a5e1363a98a3bd31d4e"
+                "reference": "491476ffb63612ee4bbfa063d4ff02717fc6bf42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikehaertl/php-tmpfile/zipball/e733207ea8ce32f0a40a6a5e1363a98a3bd31d4e",
-                "reference": "e733207ea8ce32f0a40a6a5e1363a98a3bd31d4e",
+                "url": "https://api.github.com/repos/mikehaertl/php-tmpfile/zipball/491476ffb63612ee4bbfa063d4ff02717fc6bf42",
+                "reference": "491476ffb63612ee4bbfa063d4ff02717fc6bf42",
                 "shasum": ""
             },
             "require-dev": {
@@ -905,20 +738,20 @@
             "keywords": [
                 "files"
             ],
-            "time": "2020-01-27T09:39:06+00:00"
+            "time": "2020-07-21T11:54:36+00:00"
         },
         {
             "name": "mikehaertl/phpwkhtmltopdf",
-            "version": "2.4.1",
+            "version": "2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mikehaertl/phpwkhtmltopdf.git",
-                "reference": "82ed9ee7394b1d88055f294aede4b1851ea27c7c"
+                "reference": "0e97c2e1eec918fbcd13f5b4b6c9fa476f99e9db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikehaertl/phpwkhtmltopdf/zipball/82ed9ee7394b1d88055f294aede4b1851ea27c7c",
-                "reference": "82ed9ee7394b1d88055f294aede4b1851ea27c7c",
+                "url": "https://api.github.com/repos/mikehaertl/phpwkhtmltopdf/zipball/0e97c2e1eec918fbcd13f5b4b6c9fa476f99e9db",
+                "reference": "0e97c2e1eec918fbcd13f5b4b6c9fa476f99e9db",
                 "shasum": ""
             },
             "require": {
@@ -926,15 +759,13 @@
                 "mikehaertl/php-tmpfile": "^1.1.0",
                 "php": ">=5.0.0"
             },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
+            "require-dev": {
+                "phpunit/phpunit": ">4.0 <8"
             },
+            "type": "library",
             "autoload": {
                 "psr-4": {
-                    "mikehaertl\\wkhtmlto\\": "src/"
+                    "mikehaertl\\wkhtmlto\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -954,7 +785,7 @@
                 "wkhtmltoimage",
                 "wkhtmltopdf"
             ],
-            "time": "2019-08-17T07:53:19+00:00"
+            "time": "2020-01-07T07:47:15+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -3398,6 +3229,188 @@
             "time": "2020-07-08T08:27:49+00:00"
         },
         {
+            "name": "symfony/translation-contracts",
+            "version": "v2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/translation-contracts.git",
+                "reference": "616a9773c853097607cf9dd6577d5b143ffdcd63"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/616a9773c853097607cf9dd6577d5b143ffdcd63",
+                "reference": "616a9773c853097607cf9dd6577d5b143ffdcd63",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5"
+            },
+            "suggest": {
+                "symfony/translation-implementation": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Contracts\\Translation\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Generic abstractions related to translation",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "abstractions",
+                "contracts",
+                "decoupling",
+                "interfaces",
+                "interoperability",
+                "standards"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-06T13:23:11+00:00"
+        },
+        {
+            "name": "symfony/validator",
+            "version": "v5.0.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/validator.git",
+                "reference": "9084a603e998e7abb010c44f8e3a2046b61fa9f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/validator/zipball/9084a603e998e7abb010c44f8e3a2046b61fa9f6",
+                "reference": "9084a603e998e7abb010c44f8e3a2046b61fa9f6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/polyfill-ctype": "~1.8",
+                "symfony/polyfill-mbstring": "~1.0",
+                "symfony/translation-contracts": "^1.1|^2"
+            },
+            "conflict": {
+                "doctrine/lexer": "<1.0.2",
+                "phpunit/phpunit": "<5.4.3",
+                "symfony/dependency-injection": "<4.4",
+                "symfony/http-kernel": "<4.4",
+                "symfony/intl": "<4.4",
+                "symfony/translation": "<4.4",
+                "symfony/yaml": "<4.4"
+            },
+            "require-dev": {
+                "doctrine/annotations": "~1.7",
+                "doctrine/cache": "~1.0",
+                "egulias/email-validator": "^2.1.10",
+                "symfony/cache": "^4.4|^5.0",
+                "symfony/config": "^4.4|^5.0",
+                "symfony/dependency-injection": "^4.4|^5.0",
+                "symfony/expression-language": "^4.4|^5.0",
+                "symfony/http-client": "^4.4|^5.0",
+                "symfony/http-foundation": "^4.4|^5.0",
+                "symfony/http-kernel": "^4.4|^5.0",
+                "symfony/intl": "^4.4|^5.0",
+                "symfony/mime": "^4.4|^5.0",
+                "symfony/property-access": "^4.4|^5.0",
+                "symfony/property-info": "^4.4|^5.0",
+                "symfony/translation": "^4.4|^5.0",
+                "symfony/yaml": "^4.4|^5.0"
+            },
+            "suggest": {
+                "doctrine/annotations": "For using the annotation mapping. You will also need doctrine/cache.",
+                "doctrine/cache": "For using the default cached annotation reader.",
+                "egulias/email-validator": "Strict (RFC compliant) email validation",
+                "psr/cache-implementation": "For using the mapping cache.",
+                "symfony/config": "",
+                "symfony/expression-language": "For using the Expression validator",
+                "symfony/http-foundation": "",
+                "symfony/intl": "",
+                "symfony/property-access": "For accessing properties within comparison constraints",
+                "symfony/property-info": "To automatically add NotNull and Type constraints",
+                "symfony/translation": "For translating validation errors.",
+                "symfony/yaml": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Validator\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Validator Component",
+            "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-06-30T17:40:59+00:00"
+        },
+        {
             "name": "symfony/var-dumper",
             "version": "v5.1.3",
             "source": {
@@ -3641,26 +3654,26 @@
         },
         {
             "name": "twig/twig",
-            "version": "v3.0.3",
+            "version": "v3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "3b88ccd180a6b61ebb517aea3b1a8906762a1dc2"
+                "reference": "582bdbdc173027ebfba3c93dc750a40b8f9ebc02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/3b88ccd180a6b61ebb517aea3b1a8906762a1dc2",
-                "reference": "3b88ccd180a6b61ebb517aea3b1a8906762a1dc2",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/582bdbdc173027ebfba3c93dc750a40b8f9ebc02",
+                "reference": "582bdbdc173027ebfba3c93dc750a40b8f9ebc02",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2.5",
+                "php": ">=7.2.5",
                 "symfony/polyfill-ctype": "^1.8",
                 "symfony/polyfill-mbstring": "^1.3"
             },
             "require-dev": {
                 "psr/container": "^1.0",
-                "symfony/phpunit-bridge": "^4.4|^5.0"
+                "symfony/phpunit-bridge": "^4.4.9|^5.0.9"
             },
             "type": "library",
             "extra": {
@@ -3699,7 +3712,29 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2020-02-11T15:33:47+00:00"
+            "funding": [
+                {
+                    "url": "https://certification.symfony.com/",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://live.symfony.com/",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://symfony.com/cloud/",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/twig/twig",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-05T13:18:14+00:00"
         }
     ],
     "packages-dev": [
@@ -3933,14 +3968,13 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": [],
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^7.2",
         "ext-ctype": "*",
-        "ext-gd": "*",
         "ext-iconv": "*",
         "ext-json": "*"
     },
