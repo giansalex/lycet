@@ -6,6 +6,8 @@ Greenter\Model\Sale\Invoice:
             type: DateTime
         sumDsctoGlobal:
             type: float
+        sumOtrosDescuentos:
+            type: float
         mtoDescuentos:
             type: float
         mtoOperGratuitas:
