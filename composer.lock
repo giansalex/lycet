@@ -318,12 +318,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/greenter.git",
-                "reference": "d60d1545bd66d91959f8d7d7589e6fefda72d6ef"
+                "reference": "8588b4f002093a0ef2e4ebb00fee6edd31c96425"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/greenter/zipball/d60d1545bd66d91959f8d7d7589e6fefda72d6ef",
-                "reference": "d60d1545bd66d91959f8d7d7589e6fefda72d6ef",
+                "url": "https://api.github.com/repos/thegreenter/greenter/zipball/8588b4f002093a0ef2e4ebb00fee6edd31c96425",
+                "reference": "8588b4f002093a0ef2e4ebb00fee6edd31c96425",
                 "shasum": ""
             },
             "require": {
@@ -384,31 +384,40 @@
             "license": [
                 "MIT"
             ],
-            "description": "Facturacion Electrónica SUNAT - Perú",
-            "funding": [
+            "authors": [
                 {
-                    "url": "https://paypal.me/giansalex",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://yape.greenter.dev/",
-                    "type": "custom"
+                    "name": "Giancarlos Salas",
+                    "email": "giansalex@gmail.com"
                 }
             ],
-            "time": "2020-07-28T21:04:03+00:00"
+            "description": "Facturacion Electrónica SUNAT en Perú",
+            "homepage": "https://greenter.dev/",
+            "keywords": [
+                "facturacion-electronica",
+                "greenter",
+                "peru",
+                "sunat"
+            ],
+            "funding": [
+                {
+                    "url": "https://yape.greenter.dev/",
+                    "type": "yape"
+                }
+            ],
+            "time": "2020-08-09T00:29:21+00:00"
         },
         {
             "name": "greenter/xmldsig",
-            "version": "v5.0.2",
+            "version": "v5.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/xmldsig.git",
-                "reference": "fc71824f105d7370b6be84d62ad40f17fa989603"
+                "reference": "98df1580228cff6c5f02a451ac162d00d384848e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/xmldsig/zipball/fc71824f105d7370b6be84d62ad40f17fa989603",
-                "reference": "fc71824f105d7370b6be84d62ad40f17fa989603",
+                "url": "https://api.github.com/repos/thegreenter/xmldsig/zipball/98df1580228cff6c5f02a451ac162d00d384848e",
+                "reference": "98df1580228cff6c5f02a451ac162d00d384848e",
                 "shasum": ""
             },
             "require": {
@@ -427,7 +436,7 @@
                 "BSD-2-Clause"
             ],
             "description": "Libreria para firmar XML según normativa de SUNAT en Facturación Electrónica",
-            "homepage": "https://github.com/giansalex/xmldsig",
+            "homepage": "https://github.com/thegreenter/xmldsig",
             "keywords": [
                 "security",
                 "signature",
@@ -435,7 +444,7 @@
                 "xml",
                 "xmldsig"
             ],
-            "time": "2019-05-29T21:00:57+00:00"
+            "time": "2020-07-31T04:45:22+00:00"
         },
         {
             "name": "jms/metadata",
