@@ -40,9 +40,9 @@ class HtmlReportDecorator implements ReportInterface
      * @param DocumentInterface $document
      * @param array $parameters
      *
-     * @return mixed
+     * @return string|null
      */
-    public function render(DocumentInterface $document, $parameters = [])
+    public function render(DocumentInterface $document, array $parameters = []): ?string
     {
         $template = $this->resolver->getTemplate($document);
 

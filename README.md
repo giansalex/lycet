@@ -5,7 +5,7 @@ Lycet es un API REST basado en [greenter](https://github.com/thegreenter/greente
 
 ## Requerimientos
 - Php 7.2 o superior
-- Php Extensions habilitadas (gd, soap, xml, openssl, zlib)
+- Php Extensions habilitadas (soap, xml, openssl, zlib)
 - WkhtmltoPdf executable (PDF report)
 - Pem Certificate - [convert pfx to pem](https://github.com/thegreenter/xmldsig/blob/master/CONVERT.md)
 
@@ -19,7 +19,7 @@ composer install -o
 ```
 
 ### Configuraciones  
-En el archivo `.env` ubicado en la raiz del proyecto, podra cambiar estas configuraciones.
+En el archivo `.env` ubicado en la raíz del proyecto, podrá cambiar estas configuraciones.
 ```
 ###> greenter/greenter ###
 WKHTMLTOPDF_PATH=full/path/wkhtmltopdf.exe
@@ -35,13 +35,13 @@ GUIA_URL=https://e-beta.sunat.gob.pe/ol-ti-itemision-guia-gem-beta/billService
 > Tener en cuenta que `SOL_USER` es la concatenación del **RUC + Usuario SOL**
 
 **Configuración de Zona Horaria**  
-En ocaciones, existen problemas al realizar la conversión de fechas, para evitar esto, se necesita cambiar en el `php.ini`, la siguiente configuración.
+En ocasiones, existen problemas al realizar la conversión de fechas, para evitar esto, se necesita cambiar en el `php.ini`, la siguiente configuración.
 ```
 date.timezone ="America/Lima"
 ```
 
 ### Archivos Requeridos
-Se necesita almacenar el certificado y logo en la carpeta `/data`, los archivos deben tener nombres especificos que se indican
+Se necesita almacenar el certificado y logo en la carpeta `/data`, los archivos deben tener nombres específicos que se indican
 a continuación.
 ```
 /data
@@ -73,5 +73,8 @@ docker run -p 8000:80 --name lycet_app lycet
 Abrir el navegador, y dirígete a http://localhost:8000/public
 
 ### Docs
+
+Puedes descargar la [colección de postman](https://www.getpostman.com/collections/2ef4f4bd7c6720a9e09f) que contiene ejemplo del envío de algunos comprobantes.
+
 Ver [swagger documentation](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/giansalex/lycet/master/public/swagger.yaml), puedes crear un cliente en [swagger editor](http://editor.swagger.io/?url=https://raw.githubusercontent.com/giansalex/lycet/master/public/swagger.yaml), para tu lenguaje de preferencia.
 

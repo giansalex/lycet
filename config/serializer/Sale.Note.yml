@@ -10,6 +10,8 @@ Greenter\Model\Sale\Note:
             type: string
         mtoOperGratuitas:
             type: float
+        mtoIGVGratuitas:
+            type: float
         perception:
             type: Greenter\Model\Sale\SalePerception
         tipoDoc:

@@ -37,12 +37,10 @@ class DocumentRequestParser implements RequestParserInterface
     {
         $data = $request->getContent();
 
-        $document = $this->serializer->deserialize(
+        return $this->serializer->deserialize(
             $data,
             $class,
             'json'
         );
-
-        return $document;
     }
 }

@@ -33,7 +33,7 @@ class AppDocumentValidator implements DocumentValidatorInterface
      *
      * @return mixed
      */
-    public function validate(DocumentInterface $document)
+    public function validate(DocumentInterface $document): ?object
     {
         /**@var $errors \Symfony\Component\Validator\ConstraintViolationList */
         $errors = $this->validator->validate($document);
