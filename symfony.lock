@@ -23,8 +23,23 @@
     "doctrine/lexer": {
         "version": "1.2.1"
     },
-    "greenter/greenter": {
-        "version": "4.0-dev"
+    "greenter/core": {
+        "version": "v4.0.0"
+    },
+    "greenter/htmltopdf": {
+        "version": "v4.0.0"
+    },
+    "greenter/lite": {
+        "version": "v4.0.0"
+    },
+    "greenter/report": {
+        "version": "v4.0.0"
+    },
+    "greenter/ws": {
+        "version": "v4.0.0"
+    },
+    "greenter/xml": {
+        "version": "v4.0.0"
     },
     "greenter/xmldsig": {
         "version": "v5.0.2"
@@ -288,22 +303,6 @@
     },
     "symfony/string": {
         "version": "v5.1.2"
-    },
-    "symfony/translation-contracts": {
-        "version": "v2.1.3"
-    },
-    "symfony/validator": {
-        "version": "4.3",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "4.3",
-            "ref": "d902da3e4952f18d3bf05aab29512eb61cabd869"
-        },
-        "files": [
-            "./config/packages/test/validator.yaml",
-            "./config/packages/validator.yaml"
-        ]
     },
     "symfony/var-dumper": {
         "version": "v5.1.2"
