@@ -3,6 +3,8 @@
 
 Lycet es un API REST basado en [greenter](https://github.com/thegreenter/greenter) y Symfony Framework, UBL 2.1 es soportado.
 
+**Objetivo:** Ofrecer una interfaz a greenter desde otros lenguajes de programación. 
+
 LIVE (Pruebas)
 
 |      :rocket: |                                      |
