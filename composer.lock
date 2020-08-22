@@ -316,16 +316,16 @@
         },
         {
             "name": "greenter/core",
-            "version": "v4.0.1",
+            "version": "v4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/core.git",
-                "reference": "addd878e2d666450543620b68ae8abb4ab258b3f"
+                "reference": "6c694a626070c2df314484cdc3035ca88e29c3a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/core/zipball/addd878e2d666450543620b68ae8abb4ab258b3f",
-                "reference": "addd878e2d666450543620b68ae8abb4ab258b3f",
+                "url": "https://api.github.com/repos/thegreenter/core/zipball/6c694a626070c2df314484cdc3035ca88e29c3a1",
+                "reference": "6c694a626070c2df314484cdc3035ca88e29c3a1",
                 "shasum": ""
             },
             "require": {
@@ -359,24 +359,24 @@
                 "greenter",
                 "sunat"
             ],
-            "time": "2020-08-09T22:48:39+00:00"
+            "time": "2020-08-16T02:50:03+00:00"
         },
         {
             "name": "greenter/htmltopdf",
-            "version": "v4.0.1",
+            "version": "v4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/htmltopdf.git",
-                "reference": "a285983e97b133e33f674303faff2ba13a800e7a"
+                "reference": "475566a51f028b51806c107cee6e3ec4410e7015"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/htmltopdf/zipball/a285983e97b133e33f674303faff2ba13a800e7a",
-                "reference": "a285983e97b133e33f674303faff2ba13a800e7a",
+                "url": "https://api.github.com/repos/thegreenter/htmltopdf/zipball/475566a51f028b51806c107cee6e3ec4410e7015",
+                "reference": "475566a51f028b51806c107cee6e3ec4410e7015",
                 "shasum": ""
             },
             "require": {
-                "greenter/core": "^4.0.1",
+                "greenter/core": "^4.0.2",
                 "mikehaertl/phpwkhtmltopdf": "^2.4",
                 "php": "^7.2"
             },
@@ -414,27 +414,27 @@
                 "greenter",
                 "sunat"
             ],
-            "time": "2020-08-15T01:33:52+00:00"
+            "time": "2020-08-22T19:38:02+00:00"
         },
         {
             "name": "greenter/lite",
-            "version": "v4.0.1",
+            "version": "v4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/lite.git",
-                "reference": "a98fb7e0cdaf3e633893304d428f749db9d6b4e6"
+                "reference": "cb667a2a4ef8a594175621e08a0193f0b96a15a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/lite/zipball/a98fb7e0cdaf3e633893304d428f749db9d6b4e6",
-                "reference": "a98fb7e0cdaf3e633893304d428f749db9d6b4e6",
+                "url": "https://api.github.com/repos/thegreenter/lite/zipball/cb667a2a4ef8a594175621e08a0193f0b96a15a4",
+                "reference": "cb667a2a4ef8a594175621e08a0193f0b96a15a4",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
-                "greenter/core": "^4.0.1",
-                "greenter/ws": "^4.0.1",
-                "greenter/xml": "^4.0.1",
+                "greenter/core": "^4.0.2",
+                "greenter/ws": "^4.0.2",
+                "greenter/xml": "^4.0.2",
                 "greenter/xmldsig": "^5.0",
                 "php": "^7.2"
             },
@@ -470,30 +470,30 @@
                 "sunat",
                 "xml"
             ],
-            "time": "2020-08-15T01:33:52+00:00"
+            "time": "2020-08-22T19:38:02+00:00"
         },
         {
             "name": "greenter/report",
-            "version": "v4.0.1",
+            "version": "v4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/report.git",
-                "reference": "eda2bc2c97a93d8a9687ce168da9748021d88935"
+                "reference": "76a98650fb1329829e50d2dca5eeadb407b18394"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/report/zipball/eda2bc2c97a93d8a9687ce168da9748021d88935",
-                "reference": "eda2bc2c97a93d8a9687ce168da9748021d88935",
+                "url": "https://api.github.com/repos/thegreenter/report/zipball/76a98650fb1329829e50d2dca5eeadb407b18394",
+                "reference": "76a98650fb1329829e50d2dca5eeadb407b18394",
                 "shasum": ""
             },
             "require": {
                 "bacon/bacon-qr-code": "^2.0",
-                "greenter/core": "^4.0.1",
+                "greenter/core": "^4.0.2",
                 "php": "^7.2",
                 "twig/twig": "~3.0"
             },
             "require-dev": {
-                "greenter/data": "^4.0.1",
+                "greenter/data": "^4.0.2",
                 "phpunit/phpunit": "^8"
             },
             "type": "library",
@@ -525,20 +525,20 @@
                 "pdf",
                 "sunat"
             ],
-            "time": "2020-08-15T01:33:52+00:00"
+            "time": "2020-08-22T19:38:02+00:00"
         },
         {
             "name": "greenter/ws",
-            "version": "v4.0.1",
+            "version": "v4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/ws.git",
-                "reference": "e37706d41eb37b3f33349fec152ee2a5923056e1"
+                "reference": "bc9fc954a313652fb500d7ea96fd9ae07c9997fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/ws/zipball/e37706d41eb37b3f33349fec152ee2a5923056e1",
-                "reference": "e37706d41eb37b3f33349fec152ee2a5923056e1",
+                "url": "https://api.github.com/repos/thegreenter/ws/zipball/bc9fc954a313652fb500d7ea96fd9ae07c9997fa",
+                "reference": "bc9fc954a313652fb500d7ea96fd9ae07c9997fa",
                 "shasum": ""
             },
             "require": {
@@ -546,7 +546,7 @@
                 "ext-soap": "*",
                 "ext-zip": "*",
                 "ext-zlib": "*",
-                "greenter/core": "^4.0.1",
+                "greenter/core": "^4.0.2",
                 "php": "^7.2"
             },
             "require-dev": {
@@ -582,29 +582,29 @@
                 "soap",
                 "sunat"
             ],
-            "time": "2020-08-15T01:33:52+00:00"
+            "time": "2020-08-22T19:38:02+00:00"
         },
         {
             "name": "greenter/xml",
-            "version": "v4.0.1",
+            "version": "v4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/xml.git",
-                "reference": "3e037c60013637c0788cf55be24e6f67158b4fa9"
+                "reference": "f870c1c5bdf5aaf48ab38b70118e5e15d70af9b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/xml/zipball/3e037c60013637c0788cf55be24e6f67158b4fa9",
-                "reference": "3e037c60013637c0788cf55be24e6f67158b4fa9",
+                "url": "https://api.github.com/repos/thegreenter/xml/zipball/f870c1c5bdf5aaf48ab38b70118e5e15d70af9b2",
+                "reference": "f870c1c5bdf5aaf48ab38b70118e5e15d70af9b2",
                 "shasum": ""
             },
             "require": {
-                "greenter/core": "^4.0.1",
+                "greenter/core": "^4.0.2",
                 "php": "^7.2",
                 "twig/twig": "~3.0"
             },
             "require-dev": {
-                "greenter/data": "^4.0.1",
+                "greenter/data": "^4.0.2",
                 "greenter/ubl-validator": "^2.0",
                 "phpunit/phpunit": "^8"
             },
@@ -637,7 +637,7 @@
                 "sunat",
                 "xml"
             ],
-            "time": "2020-08-15T01:33:52+00:00"
+            "time": "2020-08-22T19:38:02+00:00"
         },
         {
             "name": "greenter/xmldsig",
