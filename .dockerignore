@@ -1,5 +1,6 @@
 .git
 .idea
+composer/
 data/*
 !data/.htaccess
 tests
