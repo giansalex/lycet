@@ -3,6 +3,10 @@
 
 Lycet es un API REST basado en [greenter](https://github.com/thegreenter/greenter) y Symfony Framework, UBL 2.1 es soportado.
 
+Live (Pruebas):    
+https://greenter-lycet.herokuapp.com/    
+API TOKEN: `greenter`
+
 ## Requerimientos
 - Php 7.2 o superior
 - Php Extensions habilitadas (soap, xml, openssl, zlib)
