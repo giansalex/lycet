@@ -146,14 +146,13 @@ class DocumentRequest implements DocumentRequestInterface
 //                'hash' => '',
             ],
             'user' => [
-                'resolucion' => '-',
                 'header' => '',
             ]
         ];
 
         $report = $this->getReport();
         $pdf = $report->render($document, $parameters);
-        if (is_null($pdf)) {
+        if ($pdf === null) {
             $message = $this->tryGetError($report);
 
             return $this->json(['message' => $message], 500);
