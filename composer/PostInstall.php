@@ -1,15 +1,31 @@
 <?php
 
-final class WkhtmlPdfInstall
+final class PostInstall
 {
     public static function run()
     {
-        if (getenv('DOCKER') || getenv('CI')) {
+        if (!getenv('LYCET_BETA')) {
             return;
         }
 
+        self::copyCertLogo();
+        self::installWkthmltopdf();
+    }
+
+    private static function copyCertLogo()
+    {
+        $logoPath = __DIR__.'/../tests/Resources/logo.png';
+        $certPath = __DIR__.'/../tests/Resources/SFSCert.pem';
+
+        echo 'Copiar certificado, logo para pruebas.'.PHP_EOL;
+        copy($logoPath, __DIR__.'/../data/logo.png');
+        copy($certPath, __DIR__.'/../data/cert.pem');
+    }
+
+    private static function installWkthmltopdf()
+    {
         if (self::inPath('wkhtmltopdf')) {
-            echo 'Wkhtmltopdf global install found.';
+            echo 'Wkhtmltopdf global install found.'.PHP_EOL;
             return;
         }
 
@@ -106,4 +122,4 @@ final class WkhtmlPdfInstall
     }
 }
 
-WkhtmlPdfInstall::run();
+PostInstall::run();

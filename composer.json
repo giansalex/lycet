@@ -55,7 +55,7 @@
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
-            "@php composer/WkhtmlPdfInstall.php",
+            "@php composer/PostInstall.php",
             "@auto-scripts"
         ],
         "post-update-cmd": [
