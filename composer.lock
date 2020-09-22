@@ -474,26 +474,26 @@
         },
         {
             "name": "greenter/report",
-            "version": "v4.0.2",
+            "version": "v4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/report.git",
-                "reference": "76a98650fb1329829e50d2dca5eeadb407b18394"
+                "reference": "4a655284e48269612aeed492eba027bb8abb1104"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/report/zipball/76a98650fb1329829e50d2dca5eeadb407b18394",
-                "reference": "76a98650fb1329829e50d2dca5eeadb407b18394",
+                "url": "https://api.github.com/repos/thegreenter/report/zipball/4a655284e48269612aeed492eba027bb8abb1104",
+                "reference": "4a655284e48269612aeed492eba027bb8abb1104",
                 "shasum": ""
             },
             "require": {
                 "bacon/bacon-qr-code": "^2.0",
-                "greenter/core": "^4.0.2",
+                "greenter/core": "^4.1",
                 "php": "^7.2",
                 "twig/twig": "~3.0"
             },
             "require-dev": {
-                "greenter/data": "^4.0.2",
+                "greenter/data": "^4.1",
                 "phpunit/phpunit": "^8"
             },
             "type": "library",
@@ -525,7 +525,7 @@
                 "pdf",
                 "sunat"
             ],
-            "time": "2020-08-22T19:38:02+00:00"
+            "time": "2020-08-22T19:38:17+00:00"
         },
         {
             "name": "greenter/ws",
