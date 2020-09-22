@@ -418,23 +418,23 @@
         },
         {
             "name": "greenter/lite",
-            "version": "v4.0.2",
+            "version": "v4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/lite.git",
-                "reference": "cb667a2a4ef8a594175621e08a0193f0b96a15a4"
+                "reference": "26c0d0e98c48db23fb22c89719e501aa32d632f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/lite/zipball/cb667a2a4ef8a594175621e08a0193f0b96a15a4",
-                "reference": "cb667a2a4ef8a594175621e08a0193f0b96a15a4",
+                "url": "https://api.github.com/repos/thegreenter/lite/zipball/26c0d0e98c48db23fb22c89719e501aa32d632f4",
+                "reference": "26c0d0e98c48db23fb22c89719e501aa32d632f4",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
-                "greenter/core": "^4.0.2",
-                "greenter/ws": "^4.0.2",
-                "greenter/xml": "^4.0.2",
+                "greenter/core": "^4.1",
+                "greenter/ws": "^4.1",
+                "greenter/xml": "^4.1",
                 "greenter/xmldsig": "^5.0",
                 "php": "^7.2"
             },
@@ -470,7 +470,7 @@
                 "sunat",
                 "xml"
             ],
-            "time": "2020-08-22T19:38:02+00:00"
+            "time": "2020-08-22T19:38:17+00:00"
         },
         {
             "name": "greenter/report",
@@ -529,24 +529,24 @@
         },
         {
             "name": "greenter/ws",
-            "version": "v4.0.2",
+            "version": "v4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/ws.git",
-                "reference": "bc9fc954a313652fb500d7ea96fd9ae07c9997fa"
+                "reference": "bdba9df1b20c434ae93fdab4ce364dd1556ef45c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/ws/zipball/bc9fc954a313652fb500d7ea96fd9ae07c9997fa",
-                "reference": "bc9fc954a313652fb500d7ea96fd9ae07c9997fa",
+                "url": "https://api.github.com/repos/thegreenter/ws/zipball/bdba9df1b20c434ae93fdab4ce364dd1556ef45c",
+                "reference": "bdba9df1b20c434ae93fdab4ce364dd1556ef45c",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
                 "ext-soap": "*",
-                "ext-zip": "*",
                 "ext-zlib": "*",
-                "greenter/core": "^4.0.2",
+                "greenter/core": "^4.1",
+                "nelexa/zip": "^3.3",
                 "php": "^7.2"
             },
             "require-dev": {
@@ -582,29 +582,29 @@
                 "soap",
                 "sunat"
             ],
-            "time": "2020-08-22T19:38:02+00:00"
+            "time": "2020-09-20T19:34:32+00:00"
         },
         {
             "name": "greenter/xml",
-            "version": "v4.0.2",
+            "version": "v4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/xml.git",
-                "reference": "f870c1c5bdf5aaf48ab38b70118e5e15d70af9b2"
+                "reference": "2a46bfd8f1527bb9f68a751e854e6df580737b17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/xml/zipball/f870c1c5bdf5aaf48ab38b70118e5e15d70af9b2",
-                "reference": "f870c1c5bdf5aaf48ab38b70118e5e15d70af9b2",
+                "url": "https://api.github.com/repos/thegreenter/xml/zipball/2a46bfd8f1527bb9f68a751e854e6df580737b17",
+                "reference": "2a46bfd8f1527bb9f68a751e854e6df580737b17",
                 "shasum": ""
             },
             "require": {
-                "greenter/core": "^4.0.2",
+                "greenter/core": "^4.1",
                 "php": "^7.2",
                 "twig/twig": "~3.0"
             },
             "require-dev": {
-                "greenter/data": "^4.0.2",
+                "greenter/data": "^4.1",
                 "greenter/ubl-validator": "^2.0",
                 "phpunit/phpunit": "^8"
             },
@@ -637,7 +637,7 @@
                 "sunat",
                 "xml"
             ],
-            "time": "2020-08-22T19:38:02+00:00"
+            "time": "2020-09-15T05:08:52+00:00"
         },
         {
             "name": "greenter/xmldsig",
@@ -1124,6 +1124,72 @@
             "time": "2020-07-23T08:41:23+00:00"
         },
         {
+            "name": "nelexa/zip",
+            "version": "3.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Ne-Lexa/php-zip.git",
+                "reference": "501b52f6fc393a599b44ff348a42740e1eaac7c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Ne-Lexa/php-zip/zipball/501b52f6fc393a599b44ff348a42740e1eaac7c6",
+                "reference": "501b52f6fc393a599b44ff348a42740e1eaac7c6",
+                "shasum": ""
+            },
+            "require": {
+                "ext-zlib": "*",
+                "paragonie/random_compat": "*",
+                "php": "^5.5.9 || ^7.0",
+                "psr/http-message": "^1.0",
+                "symfony/finder": "^3.0|^4.0|^5.0"
+            },
+            "require-dev": {
+                "ext-bz2": "*",
+                "ext-fileinfo": "*",
+                "ext-openssl": "*",
+                "ext-xml": "*",
+                "guzzlehttp/psr7": "^1.6",
+                "phpunit/phpunit": "^4.8|^5.7",
+                "symfony/var-dumper": "^3.0|^4.0|^5.0"
+            },
+            "suggest": {
+                "ext-bz2": "Needed to support BZIP2 compression",
+                "ext-fileinfo": "Needed to get mime-type file",
+                "ext-mcrypt": "Needed to support encrypt zip entries or use ext-openssl",
+                "ext-openssl": "Needed to support encrypt zip entries or use ext-mcrypt"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PhpZip\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ne-Lexa",
+                    "email": "alexey@nelexa.ru",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PhpZip is a php-library for extended work with ZIP-archives. Open, create, update, delete, extract and get info tool. Supports appending to existing ZIP files, WinZip AES encryption, Traditional PKWARE Encryption, ZipAlign tool, BZIP2 compression, external file attributes and ZIP64 extensions. Alternative ZipArchive. It does not require php-zip extension.",
+            "homepage": "https://github.com/Ne-Lexa/php-zip",
+            "keywords": [
+                "archive",
+                "extract",
+                "unzip",
+                "winzip",
+                "zip",
+                "zipalign",
+                "ziparchive"
+            ],
+            "time": "2020-07-11T21:01:42+00:00"
+        },
+        {
             "name": "nelmio/cors-bundle",
             "version": "2.1.0",
             "source": {
@@ -1320,6 +1386,56 @@
                 "psr-14"
             ],
             "time": "2019-01-08T18:20:26+00:00"
+        },
+        {
+            "name": "psr/http-message",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP messages",
+            "homepage": "https://github.com/php-fig/http-message",
+            "keywords": [
+                "http",
+                "http-message",
+                "psr",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "time": "2016-08-06T14:39:51+00:00"
         },
         {
             "name": "psr/log",
