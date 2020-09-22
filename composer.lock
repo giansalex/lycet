@@ -316,16 +316,16 @@
         },
         {
             "name": "greenter/core",
-            "version": "v4.0.2",
+            "version": "v4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/core.git",
-                "reference": "6c694a626070c2df314484cdc3035ca88e29c3a1"
+                "reference": "1f393e6a8dad1708202f0dd1a507499a5f13bc8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/core/zipball/6c694a626070c2df314484cdc3035ca88e29c3a1",
-                "reference": "6c694a626070c2df314484cdc3035ca88e29c3a1",
+                "url": "https://api.github.com/repos/thegreenter/core/zipball/1f393e6a8dad1708202f0dd1a507499a5f13bc8d",
+                "reference": "1f393e6a8dad1708202f0dd1a507499a5f13bc8d",
                 "shasum": ""
             },
             "require": {
@@ -359,24 +359,24 @@
                 "greenter",
                 "sunat"
             ],
-            "time": "2020-08-16T02:50:03+00:00"
+            "time": "2020-09-20T15:43:39+00:00"
         },
         {
             "name": "greenter/htmltopdf",
-            "version": "v4.0.2",
+            "version": "v4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/htmltopdf.git",
-                "reference": "475566a51f028b51806c107cee6e3ec4410e7015"
+                "reference": "34bf786c0635dc78a6a76616e0bae9ff9ad8401f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/htmltopdf/zipball/475566a51f028b51806c107cee6e3ec4410e7015",
-                "reference": "475566a51f028b51806c107cee6e3ec4410e7015",
+                "url": "https://api.github.com/repos/thegreenter/htmltopdf/zipball/34bf786c0635dc78a6a76616e0bae9ff9ad8401f",
+                "reference": "34bf786c0635dc78a6a76616e0bae9ff9ad8401f",
                 "shasum": ""
             },
             "require": {
-                "greenter/core": "^4.0.2",
+                "greenter/core": "^4.1",
                 "mikehaertl/phpwkhtmltopdf": "^2.4",
                 "php": "^7.2"
             },
@@ -414,7 +414,7 @@
                 "greenter",
                 "sunat"
             ],
-            "time": "2020-08-22T19:38:02+00:00"
+            "time": "2020-08-22T19:38:17+00:00"
         },
         {
             "name": "greenter/lite",
@@ -906,20 +906,23 @@
         },
         {
             "name": "mikehaertl/php-shellcommand",
-            "version": "1.6.1",
+            "version": "1.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mikehaertl/php-shellcommand.git",
-                "reference": "8d98d8536e05abafe76a491da87296d824939076"
+                "reference": "06d6220c77c4632b639f4855f76026c59bceb8aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikehaertl/php-shellcommand/zipball/8d98d8536e05abafe76a491da87296d824939076",
-                "reference": "8d98d8536e05abafe76a491da87296d824939076",
+                "url": "https://api.github.com/repos/mikehaertl/php-shellcommand/zipball/06d6220c77c4632b639f4855f76026c59bceb8aa",
+                "reference": "06d6220c77c4632b639f4855f76026c59bceb8aa",
                 "shasum": ""
             },
             "require": {
                 "php": ">= 5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">4.0 <8"
             },
             "type": "library",
             "autoload": {
@@ -941,20 +944,20 @@
             "keywords": [
                 "shell"
             ],
-            "time": "2019-12-20T08:48:10+00:00"
+            "time": "2020-08-30T09:56:40+00:00"
         },
         {
             "name": "mikehaertl/php-tmpfile",
-            "version": "1.1.5",
+            "version": "1.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mikehaertl/php-tmpfile.git",
-                "reference": "491476ffb63612ee4bbfa063d4ff02717fc6bf42"
+                "reference": "20a1879033d6b044cfba5dfcf55cbb418249d0ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikehaertl/php-tmpfile/zipball/491476ffb63612ee4bbfa063d4ff02717fc6bf42",
-                "reference": "491476ffb63612ee4bbfa063d4ff02717fc6bf42",
+                "url": "https://api.github.com/repos/mikehaertl/php-tmpfile/zipball/20a1879033d6b044cfba5dfcf55cbb418249d0ec",
+                "reference": "20a1879033d6b044cfba5dfcf55cbb418249d0ec",
                 "shasum": ""
             },
             "require-dev": {
@@ -980,7 +983,7 @@
             "keywords": [
                 "files"
             ],
-            "time": "2020-07-21T11:54:36+00:00"
+            "time": "2020-08-30T09:54:54+00:00"
         },
         {
             "name": "mikehaertl/phpwkhtmltopdf",
