@@ -29,7 +29,6 @@ RUN apk add --no-cache --virtual .build-green-deps \
 RUN docker-php-ext-install soap && \
     docker-php-ext-configure opcache --enable-opcache && \
     docker-php-ext-install opcache && \
-    docker-php-ext-install zip && \
     docker-php-ext-install pcntl
 
 COPY docker/config/* $PHP_INI_DIR/conf.d/
