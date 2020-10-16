@@ -23,7 +23,7 @@ RUN apk add --no-cache --virtual .build-green-deps \
     git \
     unzip \
     curl \
-    libzip-dev libxml2-dev
+    libxml2-dev
 
 # Configure php extensions
 RUN docker-php-ext-install soap && \
