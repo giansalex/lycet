@@ -63,6 +63,6 @@ class SaleController extends AbstractController
 
         $qr = $this->render->getImage($sale);
 
-        return new Response($qr, 200, ['Content-Type' => 'image/png']);
+        return new Response($qr, 200, ['Content-Type' => 'image/svg+xml']);
     }
 }
