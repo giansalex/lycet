@@ -1,4 +1,4 @@
-FROM php:7.4-alpine3.12
+FROM amd64/php:8.0-alpine
 LABEL owner="Giancarlos Salas"
 LABEL maintainer="giansalex@gmail.com"
 
