@@ -40,7 +40,7 @@ RUN curl --silent --show-error -sS https://getcomposer.org/installer | php -- --
     composer require --update-no-dev php-pm/php-pm && \
     composer require --update-no-dev php-pm/httpkernel-adapter && \
     composer dump-autoload --optimize --no-dev --classmap-authoritative && \
-    composer dump-env prod && \
+    composer dump-env prod --empty && \
     chmod -R 755 ./data && \
     chmod -R 755 ./var
 
