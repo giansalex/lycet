@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'es'
+    container.dumper.inline_factories: true
     token: '%env(CLIENT_TOKEN)%'
     data_path: '%kernel.project_dir%/data'
 
