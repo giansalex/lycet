@@ -23,8 +23,8 @@ COPY . .
 
 # Install Packages
 RUN curl --silent --show-error -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
-    composer install --no-interaction --no-dev -o -a --ignore-platform-reqs && \
-    composer require --update-no-dev php-pm/php-pm php-pm/httpkernel-adapter --ignore-platform-reqs && \
+    composer install --no-interaction --no-dev --no-autoloader --no-scripts --no-progress --ignore-platform-reqs && \
+    composer require php-pm/php-pm php-pm/httpkernel-adapter --update-no-dev --no-scripts --no-progress --ignore-platform-reqs && \
     composer dump-autoload --optimize --no-dev --classmap-authoritative && \
     composer dump-env prod --empty && \
     find -name "[Tt]est*" -type d -exec rm -rf {} + && \
@@ -53,11 +53,13 @@ RUN apk update && apk add --no-cache \
     wkhtmltopdf \
     ttf-droid
 
-RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 COPY --from=build-env $PHP_EXT_DIR $PHP_EXT_DIR
 COPY --from=build-env $PHP_INI_DIR/conf.d/ $PHP_INI_DIR/conf.d/
 COPY --from=build-env /app .
 COPY docker/config/* $PHP_INI_DIR/conf.d/
 COPY docker/docker-entrypoint.sh .
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
+    php bin/console cache:clear && \
+    chmod -R 755 ./data
 
 ENTRYPOINT ["sh", "./docker-entrypoint.sh"]
