@@ -70,7 +70,7 @@ Deploy on Docker.
 git clone https://github.com/giansalex/lycet
 cd lycet
 docker build -t lycet .
-docker run -p 8000:8000 --name lycet_app lycet 
+docker run -d -p 8000:8000 --name lycet_app lycet 
 ```
 
 Abrir el navegador, y dirígete a http://localhost:8000/public
