@@ -8,12 +8,10 @@ Greenter\Model\Sale\Note:
             type: string
         numDocfectado:
             type: string
-        mtoOperGratuitas:
-            type: float
-        mtoIGVGratuitas:
-            type: float
         perception:
             type: Greenter\Model\Sale\SalePerception
+        ublVersion:
+            type: string
         tipoDoc:
             type: string
         serie:
@@ -22,10 +20,10 @@ Greenter\Model\Sale\Note:
             type: string
         fechaEmision:
             type: DateTime
-        client:
-            type: Greenter\Model\Client\Client
         company:
             type: Greenter\Model\Company\Company
+        client:
+            type: Greenter\Model\Client\Client
         tipoMoneda:
             type: string
         sumOtrosCargos:
@@ -38,13 +36,29 @@ Greenter\Model\Sale\Note:
             type: float
         mtoOperExportacion:
             type: float
+        mtoOperGratuitas:
+            type: float
+        mtoIGVGratuitas:
+            type: float
         mtoIGV:
             type: float
+        mtoBaseIvap:
+            type: float
+        mtoIvap:
+            type: float
+        mtoBaseIsc:
+            type: float
         mtoISC:
+            type: float
+        mtoBaseOth:
             type: float
         mtoOtrosTributos:
             type: float
         icbper:
+            type: float
+        totalImpuestos:
+            type: float
+        redondeo:
             type: float
         mtoImpVenta:
             type: float
@@ -57,18 +71,6 @@ Greenter\Model\Sale\Note:
         relDocs:
             type: array<Greenter\Model\Sale\Document>
         compra:
-            type: string
-        mtoBaseIvap:
-            type: float
-        mtoIvap:
-            type: float
-        mtoBaseIsc:
-            type: float
-        mtoBaseOth:
-            type: float
-        totalImpuestos:
-            type: float
-        ublVersion:
             type: string
         name:
             type: string
