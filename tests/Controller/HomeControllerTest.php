@@ -29,6 +29,6 @@ class HomeControllerTest extends WebTestCase
         $response = $client->getResponse();
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertContains('text/yaml', $response->headers->get('Content-Type'));
+        $this->assertStringContainsString('text/yaml', $response->headers->get('Content-Type'));
     }
 }

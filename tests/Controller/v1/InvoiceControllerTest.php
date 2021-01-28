@@ -10,14 +10,13 @@ namespace App\Tests\Controller\v1;
 
 use App\Service\ConfigProviderInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class InvoiceControllerTest extends WebTestCase
 {
-    /**
-     * @expectedException \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException
-     */
     public function testSendAccessDenied()
     {
+        $this->expectException(AccessDeniedHttpException::class);
         $client = $this->getClientConfigured();
 
         $client->request(
