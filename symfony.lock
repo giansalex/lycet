@@ -136,6 +136,9 @@
     "php": {
         "version": "7.2"
     },
+    "phpstan/phpdoc-parser": {
+        "version": "0.4.10"
+    },
     "psr/cache": {
         "version": "1.0.1"
     },
