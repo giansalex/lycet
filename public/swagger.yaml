@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   description: Lycet API REST basado en Greenter - Facturación Electrónica.
-  version: '1.1'
+  version: '1.3'
   title: Lycet
   contact:
     name: Giancarlos Salas
@@ -1049,6 +1049,12 @@ definitions:
       fechaEmision:
         type: string
         format: date-time
+      formaPago:
+        $ref: '#/definitions/PaymentTerms'
+      cuotas:
+        type: array
+        items:
+          $ref: '#/definitions/Cuota'
       client:
         $ref: '#/definitions/Client'
       company:
@@ -1176,6 +1182,12 @@ definitions:
       fechaEmision:
         type: string
         format: date-time
+      formaPago:
+        $ref: '#/definitions/PaymentTerms'
+      cuotas:
+        type: array
+        items:
+          $ref: '#/definitions/Cuota'
       client:
         $ref: '#/definitions/Client'
       company:
@@ -1257,6 +1269,27 @@ definitions:
         format: float
       perception:
         $ref: '#/definitions/SalePerception'
+  PaymentTerms:
+    type: object
+    properties:
+      moneda:
+        type: string
+      tipo:
+        type: string
+      monto:
+        type: number
+        format: float
+  Cuota:
+    type: object
+    properties:
+      moneda:
+        type: string
+      monto:
+        type: number
+        format: float
+      fechaPago:
+        type: string
+        format: date-time
   SummaryPerception:
     type: object
     properties:
