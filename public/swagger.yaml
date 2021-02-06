@@ -1073,6 +1073,9 @@ definitions:
       mtoIGV:
         type: number
         format: float
+      mtoIGVGratuitas:
+        type: number
+        format: float
       mtoISC:
         type: number
         format: float
@@ -1195,6 +1198,9 @@ definitions:
         type: number
         format: float
       mtoIGV:
+        type: number
+        format: float
+      mtoIGVGratuitas:
         type: number
         format: float
       mtoISC:
