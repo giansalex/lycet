@@ -1,0 +1,8 @@
+Greenter\Model\Sale\PaymentTerms:
+    properties:
+        moneda:
+            type: string
+        tipo:
+            type: string
+        monto:
+            type: float
