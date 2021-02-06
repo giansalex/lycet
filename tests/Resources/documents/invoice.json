@@ -1,23 +1,12 @@
 {
-  "tipoOperacion": "01",
-  "sumDsctoGlobal": 0.00,
-  "totalAnticipos": 0,
+  "ublVersion": "2.1",
+  "tipoOperacion": "0101",
   "tipoDoc": "01",
   "serie": "FA99",
-  "correlativo": "00001",
-  "fechaEmision": "2017-10-02T00:00:00-05:00",
-  "client": {
-    "tipoDoc": "6",
-    "numDoc": "20384203133",
-    "rznSocial": "ZV DISTRIBUIDORES S.A.C.",
-    "address": {
-      "ubigueo": "150101",
-      "codigoPais": "PE",
-      "departamento": "-",
-      "provincia": "-",
-      "distrito": "-",
-      "direccion": "AV. SANTA ELVIRA MZA. E LOTE. 1 (VILLA SOL) - LOS OLIVOS LIMA LIMA PERU "
-    }
+  "correlativo": "1",
+  "fechaEmision": "2021-02-06T12:43:00-05:00",
+  "formaPago": {
+    "tipo": "Contado"
   },
   "company": {
     "ruc": "20480072872",
@@ -33,29 +22,46 @@
       "direccion": "CAL. AMADOR MERINO REYNA NRO. 307 (EDIFICIO NACIONAL PISO 12 Y 13)"
     }
   },
+  "client": {
+    "tipoDoc": "6",
+    "numDoc": "20384203133",
+    "rznSocial": "ZV DISTRIBUIDORES S.A.C.",
+    "address": {
+      "ubigueo": "150101",
+      "codigoPais": "PE",
+      "departamento": "-",
+      "provincia": "-",
+      "distrito": "-",
+      "direccion": "AV. SANTA ELVIRA MZA. E LOTE. 1 (VILLA SOL) - LOS OLIVOS LIMA LIMA PERU "
+    }
+  },
   "tipoMoneda": "PEN",
-  "mtoOperGravadas": 28151.72,
-  "mtoOperExoneradas": 0.00,
-  "mtoOperInafectas": 0.00,
-  "mtoIGV": 5067.31,
-  "mtoImpVenta": "466.65",
+  "mtoOperGravadas": 307.65,
+  "mtoIGV": 55.38,
+  "totalImpuestos": 55.38,
+  "valorVenta": 307.65,
+  "subTotal": 363.03,
+  "mtoImpVenta": 363.03,
   "details": [
     {
       "unidad": "D43",
-      "cantidad": "3.00",
+      "cantidad": 3.00,
       "codProducto": "0202",
       "descripcion": "\"Ganadores Expo\" Sard. Crem.Roc / Jur.Hierb.And. 1/2 LB x 48 A/F*; pack x 6 *; Frescomar *;-Frescomar",
-      "mtoValorUnitario": "102.5506",
-      "igv": 55.38,
+      "mtoValorUnitario": 102.5506,
+      "mtoValorVenta": 307.65,
       "tipAfeIgv": "10",
-      "mtoPrecioUnitario": 121.97,
-      "mtoValorVenta": 307.65
+      "mtoBaseIgv": 307.65,
+      "porcentajeIgv": 18.0,
+      "igv": 55.38,
+      "totalImpuestos": 55.38,
+      "mtoPrecioUnitario": 121.97
     }
   ],
   "legends": [
     {
-      "code": "1001",
-      "value": "SON CIEN CON 00/100 SOLES"
+      "code": "1000",
+      "value": "SON TRESCIENTOS SESENTA Y TRES CON 03/100 SOLES"
     }
   ]
 }
