@@ -50,6 +50,8 @@ class InvoiceControllerTest extends WebTestCase
         $this->assertNotEmpty($result->hash);
         $this->assertNotNull($result->sunatResponse);
         $this->assertTrue($result->sunatResponse->success);
+        $this->assertEquals('0', $result->sunatResponse->cdrResponse->code);
+        $this->assertCount(0, $result->sunatResponse->cdrResponse->notes);
     }
 
     public function testXml()

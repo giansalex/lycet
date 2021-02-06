@@ -1,13 +1,11 @@
-swagger: '2.0'
+openapi: 3.0.0
 info:
-  description: Lycet API REST basado en Greenter - Facturación Electrónica.
-  version: '1.1'
-  title: Lycet
+  description: API REST basado en Greenter - Facturación Electrónica.
+  version: "1.3"
+  title: Lycet API
   contact:
     name: Giancarlos Salas
     email: giansalex@gmail.com
-host: lycet.api
-basePath: /api/v1
 tags:
   - name: invoice
     description: Facturas y Boletas
@@ -29,9 +27,6 @@ tags:
     description: Configuraciones
   - name: sale
     description: Ventas en General
-schemes:
-  - http
-  - https
 security:
   - ApiToken: []
 paths:
@@ -42,28 +37,23 @@ paths:
       summary: Enviar una Factura o Boleta
       description: Retorna la respuesta de SUNAT y el XML firmado
       operationId: sendInvoice
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Invoice'
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      requestBody:
+        $ref: "#/components/requestBodies/Invoice"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-          schema:
-            $ref: '#/definitions/DocumentResponse'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentResponse"
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /invoice/xml:
     post:
       tags:
@@ -71,24 +61,19 @@ paths:
       summary: Generar el XML de una factura o boleta
       description: Retorna el XML
       operationId: getInvoiceXml
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Invoice'
-      produces:
-        - text/xml
+      requestBody:
+        $ref: "#/components/requestBodies/Invoice"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-        '400':
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /invoice/pdf:
     post:
       tags:
@@ -96,24 +81,19 @@ paths:
       summary: Generar el PDF de una factura o boleta
       description: Retorna el Pdf
       operationId: getInvoicePdf
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Invoice'
-      produces:
-        - application/pdf
+      requestBody:
+        $ref: "#/components/requestBodies/Invoice"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-        '400':
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            application/pdf:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /note/send:
     post:
       tags:
@@ -121,28 +101,23 @@ paths:
       summary: Envia nota de credito o debito
       description: Retorna la respuesta de SUNAT y el XML firmado
       operationId: sendNote
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Note'
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      requestBody:
+        $ref: "#/components/requestBodies/Note"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-          schema:
-            $ref: '#/definitions/DocumentResponse'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentResponse"
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /note/xml:
     post:
       tags:
@@ -150,24 +125,19 @@ paths:
       summary: Generar el XML de una nota de crédito o débito
       description: Retorna el XML
       operationId: getNoteXml
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Note'
-      produces:
-        - text/xml
+      requestBody:
+        $ref: "#/components/requestBodies/Note"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-        '400':
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /note/pdf:
     post:
       tags:
@@ -175,24 +145,19 @@ paths:
       summary: Generar el PDF de una nota de crédito o débito
       description: Retorna el PDF
       operationId: getNotePdf
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Invoice'
-      produces:
-        - application/pdf
+      requestBody:
+        $ref: "#/components/requestBodies/Invoice"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-        '400':
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            application/pdf:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /summary/send:
     post:
       tags:
@@ -200,28 +165,23 @@ paths:
       summary: Enviar una Resumen diario de Boletas
       description: Retorna la respuesta de SUNAT y el XML firmado
       operationId: sendSummary
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Summary'
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      requestBody:
+        $ref: "#/components/requestBodies/Summary"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-          schema:
-            $ref: '#/definitions/SummaryResponse'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SummaryResponse"
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /summary/xml:
     post:
       tags:
@@ -229,24 +189,19 @@ paths:
       summary: Generar el XML de un resumen diario
       description: Retorna el XML
       operationId: getSummaryXml
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Summary'
-      produces:
-        - text/xml
+      requestBody:
+        $ref: "#/components/requestBodies/Summary"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-        '400':
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /summary/pdf:
     post:
       tags:
@@ -254,24 +209,19 @@ paths:
       summary: Generar el PDF de un resumen diario
       description: Retorna el PDF
       operationId: getSummaryPdf
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Summary'
-      produces:
-        - application/pdf
+      requestBody:
+        $ref: "#/components/requestBodies/Summary"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-        '400':
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            application/pdf:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /summary/status:
     get:
       tags:
@@ -283,19 +233,21 @@ paths:
         - name: ticket
           in: query
           description: Ticket de Resumen diario
-          type: string
+          schema:
+            type: string
         - name: ruc
           in: query
           description: RUC de empresa (Multiples Empresas)
-          type: string
           required: false
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: Operacion exitosa
           schema:
-            $ref: '#/definitions/StatusResult'
+            type: string
+      responses:
+        "200":
+          description: Operacion exitosa
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StatusResult"
   /voided/send:
     post:
       tags:
@@ -303,28 +255,23 @@ paths:
       summary: Enviar una Comunicación de Bajas
       description: Retorna la respuesta de SUNAT y el XML firmado
       operationId: sendVoided
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Voided'
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      requestBody:
+        $ref: "#/components/requestBodies/Voided"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-          schema:
-            $ref: '#/definitions/SummaryResponse'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SummaryResponse"
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /voided/xml:
     post:
       tags:
@@ -332,24 +279,19 @@ paths:
       summary: Generar el XML de una Comunicación de Bajas
       description: Retorna el XML
       operationId: getVoidedXml
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Voided'
-      produces:
-        - text/xml
+      requestBody:
+        $ref: "#/components/requestBodies/Voided"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-        '400':
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /voided/pdf:
     post:
       tags:
@@ -357,24 +299,19 @@ paths:
       summary: Generar el PDF de una Comunicación de Bajas
       description: Retorna el PDF
       operationId: getVoidedPdf
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Voided'
-      produces:
-        - application/pdf
+      requestBody:
+        $ref: "#/components/requestBodies/Voided"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-        '400':
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            application/pdf:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /voided/status:
     get:
       tags:
@@ -386,19 +323,21 @@ paths:
         - name: ticket
           in: query
           description: Ticket de Comunicación de baja
-          type: string
+          schema:
+            type: string
         - name: ruc
           in: query
           description: RUC de empresa (Multiples Empresas)
-          type: string
           required: false
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: Operacion exitosa
           schema:
-            $ref: '#/definitions/StatusResult'
+            type: string
+      responses:
+        "200":
+          description: Operacion exitosa
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StatusResult"
   /despatch/send:
     post:
       tags:
@@ -406,28 +345,23 @@ paths:
       summary: Enviar una Guía de Remisión
       description: Retorna la respuesta de SUNAT y el XML firmado
       operationId: sendDespatch
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Despatch'
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      requestBody:
+        $ref: "#/components/requestBodies/Despatch"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-          schema:
-            $ref: '#/definitions/DocumentResponse'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentResponse"
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /despatch/xml:
     post:
       tags:
@@ -435,24 +369,19 @@ paths:
       summary: Generar el XML de una Guía de Remisión
       description: Retorna el XML
       operationId: getDespatchXml
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Despatch'
-      produces:
-        - text/xml
+      requestBody:
+        $ref: "#/components/requestBodies/Despatch"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-        '400':
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /despatch/Pdf:
     post:
       tags:
@@ -460,24 +389,19 @@ paths:
       summary: Generar el Pdf de una Guía de Remisión
       description: Retorna el Pdf
       operationId: getDespatchPdf
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Despatch'
-      produces:
-        - application/Pdf
+      requestBody:
+        $ref: "#/components/requestBodies/Despatch"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-        '400':
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            application/Pdf:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /retention/send:
     post:
       tags:
@@ -485,28 +409,23 @@ paths:
       summary: Enviar un Comprobante de Retencion
       description: Retorna la respuesta de SUNAT y el XML firmado
       operationId: sendRetention
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Retention'
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      requestBody:
+        $ref: "#/components/requestBodies/Retention"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-          schema:
-            $ref: '#/definitions/DocumentResponse'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentResponse"
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /retention/xml:
     post:
       tags:
@@ -514,24 +433,19 @@ paths:
       summary: Generar el XML de un Comprobante de Retencion
       description: Retorna el XML
       operationId: getRetentionXml
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Retention'
-      produces:
-        - text/xml
+      requestBody:
+        $ref: "#/components/requestBodies/Retention"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-        '400':
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /retention/pdf:
     post:
       tags:
@@ -539,24 +453,19 @@ paths:
       summary: Generar el pdf de un Comprobante de Retencion
       description: Retorna el pdf
       operationId: getRetentionpdf
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Retention'
-      produces:
-        - application/pdf
+      requestBody:
+        $ref: "#/components/requestBodies/Retention"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-        '400':
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            application/pdf:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /peception/send:
     post:
       tags:
@@ -564,28 +473,23 @@ paths:
       summary: Enviar un Comprobante de Percepcion
       description: Retorna la respuesta de SUNAT y el XML firmado
       operationId: sendPerception
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Perception'
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      requestBody:
+        $ref: "#/components/requestBodies/Perception"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-          schema:
-            $ref: '#/definitions/DocumentResponse'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentResponse"
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /peception/xml:
     post:
       tags:
@@ -593,24 +497,19 @@ paths:
       summary: Generar el XML de un Comprobante de Percepcion
       description: Retorna el XML
       operationId: getPerceptionXml
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Perception'
-      produces:
-        - text/xml
+      requestBody:
+        $ref: "#/components/requestBodies/Perception"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-        '400':
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /peception/pdf:
     post:
       tags:
@@ -618,24 +517,19 @@ paths:
       summary: Generar el pdf de un Comprobante de Percepcion
       description: Retorna el pdf
       operationId: getPerceptionpdf
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Perception'
-      produces:
-        - application/pdf
+      requestBody:
+        $ref: "#/components/requestBodies/Perception"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-        '400':
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            application/pdf:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /reversion/send:
     post:
       tags:
@@ -643,28 +537,23 @@ paths:
       summary: Enviar un Resumen de Reversiones
       description: Retorna la respuesta de SUNAT y el XML firmado
       operationId: sendReversion
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Reversion'
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      requestBody:
+        $ref: "#/components/requestBodies/Reversion"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-          schema:
-            $ref: '#/definitions/SummaryResponse'
-        '400':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SummaryResponse"
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /reversion/xml:
     post:
       tags:
@@ -672,24 +561,19 @@ paths:
       summary: Generar el XML de un Resumen de Reversiones
       description: Retorna el XML
       operationId: getReversionXml
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Reversion'
-      produces:
-        - text/xml
+      requestBody:
+        $ref: "#/components/requestBodies/Reversion"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-        '400':
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /reversion/pdf:
     post:
       tags:
@@ -697,24 +581,19 @@ paths:
       summary: Generar el pdf de un Resumen de Reversiones
       description: Retorna el pdf
       operationId: getReversionpdf
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/Reversion'
-      produces:
-        - application/pdf
+      requestBody:
+        $ref: "#/components/requestBodies/Reversion"
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-        '400':
+        "400":
           description: Error de Validación
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ValidationResponse'
+          content:
+            application/pdf:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ValidationResponse"
   /reversion/status:
     get:
       tags:
@@ -726,19 +605,21 @@ paths:
         - name: ticket
           in: query
           description: Ticket de Resumen de Reversiones
-          type: string
+          schema:
+            type: string
         - name: ruc
           in: query
           description: RUC de empresa (Multiples Empresas)
-          type: string
           required: false
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: Operacion exitosa
           schema:
-            $ref: '#/definitions/StatusResult'
+            type: string
+      responses:
+        "200":
+          description: Operacion exitosa
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StatusResult"
   /configuration/:
     post:
       tags:
@@ -746,17 +627,15 @@ paths:
       summary: Guarda el certificado y logo
       description: Guarda archivos de configuración
       operationId: saveConfiguration
-      parameters:
-        - name: body
-          in: body
-          description: archivos en base64
-          required: true
-          schema:
-            $ref: '#/definitions/FilesData'
-      consumes:
-        - application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FilesData"
+        description: archivos en base64
+        required: true
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
   /sale/qr:
     post:
@@ -765,983 +644,1080 @@ paths:
       summary: Generar el QR de una Venta
       description: Retorna la imagen del QR
       operationId: getSaleQr
-      parameters:
-        - name: body
-          in: body
-          description: Comprobante
-          required: true
-          schema:
-            $ref: '#/definitions/QrParameter'
-      produces:
-        - image/png
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QrParameter"
+        description: Comprobante
+        required: true
       responses:
-        '200':
+        "200":
           description: Operacion exitosa
-
-securityDefinitions:
-  ApiToken:
-    name: token
-    type: apiKey
-    in: query
-    description: Api Token
-definitions:
-  Address:
-    type: object
-    properties:
-      ubigueo:
-        type: string
-      codigoPais:
-        type: string
-      departamento:
-        type: string
-      provincia:
-        type: string
-      distrito:
-        type: string
-      urbanizacion:
-        type: string
-      direccion:
-        type: string
-      codLocal:
-        type: string
-  Client:
-    type: object
-    properties:
-      tipoDoc:
-        type: string
-      numDoc:
-        type: string
-      rznSocial:
-        type: string
-      address:
-        $ref: '#/definitions/Address'
-      email:
-        type: string
-      telephone:
-        type: string
-  Company:
-    type: object
-    properties:
-      ruc:
-        type: string
-      razonSocial:
-        type: string
-      nombreComercial:
-        type: string
-      address:
-        $ref: '#/definitions/Address'
-      email:
-        type: string
-      telephone:
-        type: string
-  Charge:
-    type: object
-    properties:
-      codTipo:
-        type: string
-      factor:
-        type: string
-      monto:
-        type: number
-        format: float
-      montoBase:
-        type: number
-        format: float
-  DetailAttribute:
-    type: object
-    properties:
-      code:
-        type: string
-      name:
-        type: string
-      value:
-        type: string
-      fecInicio:
-        type: string
-        format: date-time
-      fecFin:
-        type: string
-        format: date-time
-      duracion:
-        type: integer
-  SaleDetail:
-    type: object
-    properties:
-      unidad:
-        type: string
-      cantidad:
-        type: number
-        format: float
-      codProducto:
-        type: string
-      codProdSunat:
-        type: string
-      codProdGS1:
-        type: string
-      descripcion:
-        type: string
-      mtoValorUnitario:
-        type: number
-        format: float
-      descuento:
-        type: number
-        format: float
-      igv:
-        type: number
-        format: float
-      tipAfeIgv:
-        type: string
-      isc:
-        type: number
-        format: float
-      tipSisIsc:
-        type: string
-      totalImpuestos:
-        type: number
-        format: float
-      mtoPrecioUnitario:
-        type: number
-        format: float
-      mtoValorVenta:
-        type: number
-        format: float
-      mtoValorGratuito:
-        type: number
-        format: float
-      mtoBaseIgv:
-        type: number
-        format: float
-      porcentajeIgv:
-        type: number
-        format: float
-      mtoBaseIsc:
-        type: number
-        format: float
-      porcentajeIsc:
-        type: number
-        format: float
-      mtoBaseOth:
-        type: number
-        format: float
-      porcentajeOth:
-        type: number
-        format: float
-      otroTributo:
-        type: number
-        format: float
-      icbper:
-        type: number
-        format: float
-      factorIcbper:
-        type: number
-        format: float
-      cargos:
-        type: array
-        items:
-          $ref: '#/definitions/Charge'
-      descuentos:
-        type: array
-        items:
-          $ref: '#/definitions/Charge'
-      atributos:
-        type: array
-        items:
-          $ref: '#/definitions/DetailAttribute'
-  Legend:
-    type: object
-    properties:
-      code:
-        type: string
-      value:
-        type: string
-  Document:
-    type: object
-    properties:
-      tipoDoc:
-        type: string
-      nroDoc:
-        type: string
-  SalePerception:
-    type: object
-    properties:
-      codReg:
-        type: string
-      porcentaje:
-        type: number
-        format: float
-      mtoBase:
-        type: number
-        format: float
-      mto:
-        type: number
-        format: float
-      mtoTotal:
-        type: number
-        format: float
-  Direction:
-    type: object
-    properties:
-      ubigueo:
-        type: string
-      direccion:
-        type: string
-  EmbededDespatch:
-    type: object
-    properties:
-      llegada:
-        $ref: '#/definitions/Direction'
-      partida:
-        $ref: '#/definitions/Direction'
-      transportista:
-        $ref: '#/definitions/Client'
-      nroLicencia:
-        type: string
-      transpPlaca:
-        type: string
-      transpCodeAuth:
-        type: string
-      transpMarca:
-        type: string
-      modTraslado:
-        type: string
-      pesoBruto:
-        type: number
-        format: float
-      undPesoBruto:
-        type: string
-  Prepayment:
-    type: object
-    properties:
-      tipoDocRel:
-        type: string
-      nroDocRel:
-        type: string
-      total:
-        type: number
-        format: float
-  Detraction:
-    type: object
-    properties:
-      percent:
-        type: number
-        format: float
-      mount:
-        type: number
-        format: float
-      ctaBanco:
-        type: string
-      codMedioPago:
-        type: string
-      codBienDetraccion:
-        type: string
-      valueRef:
-        type: number
-        format: float
-  Invoice:
-    type: object
-    properties:
-      tipoDoc:
-        type: string
-      serie:
-        type: string
-      correlativo:
-        type: string
-      fechaEmision:
-        type: string
-        format: date-time
-      client:
-        $ref: '#/definitions/Client'
-      company:
-        $ref: '#/definitions/Company'
-      tipoMoneda:
-        type: string
-      sumOtrosCargos:
-        type: number
-        format: float
-      mtoOperGravadas:
-        type: number
-        format: float
-      mtoOperInafectas:
-        type: number
-        format: float
-      mtoOperExoneradas:
-        type: number
-        format: float
-      mtoOperExportacion:
-        type: number
-        format: float
-      mtoIGV:
-        type: number
-        format: float
-      mtoISC:
-        type: number
-        format: float
-      mtoOtrosTributos:
-        type: number
-        format: float
-      icbper:
-        type: number
-        format: float
-      mtoImpVenta:
-        type: number
-        format: float
-      details:
-        type: array
-        items:
-          $ref: '#/definitions/SaleDetail'
-      legends:
-        type: array
-        items:
-          $ref: '#/definitions/Legend'
-      guias:
-        type: array
-        items:
-          $ref: '#/definitions/Document'
-      relDocs:
-        type: array
-        items:
-          $ref: '#/definitions/Document'
-      observacion:
-        type: string
-      compra:
-        type: string
-      mtoBaseIsc:
-        type: number
-        format: float
-      mtoBaseOth:
-        type: number
-        format: float
-      totalImpuestos:
-        type: number
-        format: float
-      ublVersion:
-        type: string
-      tipoOperacion:
-        type: string
-      fecVencimiento:
-        type: string
-        format: date-time
-      sumDsctoGlobal:
-        type: number
-        format: float
-      mtoDescuentos:
-        type: number
-        format: float
-      mtoOperGratuitas:
-        type: number
-        format: float
-      totalAnticipos:
-        type: number
-        format: float
-      perception:
-        $ref: '#/definitions/SalePerception'
-      guiaEmbebida:
-        $ref: '#/definitions/EmbededDespatch'
-      anticipos:
-        type: array
-        items:
-          $ref: '#/definitions/Prepayment'
-      detraccion:
-        $ref: '#/definitions/Detraction'
-      seller:
-        $ref: '#/definitions/Client'
-      direccionEntrega:
-        $ref: '#/definitions/Address'
-      descuentos:
-        type: array
-        items:
-          $ref: '#/definitions/Charge'
-      cargos:
-        type: array
-        items:
-          $ref: '#/definitions/Charge'
-      mtoCargos:
-        type: number
-        format: float
-      valorVenta:
-        type: number
-        format: float
-  Note:
-    type: object
-    properties:
-      tipoDoc:
-        type: string
-      serie:
-        type: string
-      correlativo:
-        type: string
-      fechaEmision:
-        type: string
-        format: date-time
-      client:
-        $ref: '#/definitions/Client'
-      company:
-        $ref: '#/definitions/Company'
-      tipoMoneda:
-        type: string
-      sumOtrosCargos:
-        type: number
-        format: float
-      mtoOperGravadas:
-        type: number
-        format: float
-      mtoOperInafectas:
-        type: number
-        format: float
-      mtoOperExoneradas:
-        type: number
-        format: float
-      mtoOperExportacion:
-        type: number
-        format: float
-      mtoIGV:
-        type: number
-        format: float
-      mtoISC:
-        type: number
-        format: float
-      mtoOtrosTributos:
-        type: number
-        format: float
-      icbper:
-        type: number
-        format: float
-      mtoImpVenta:
-        type: number
-        format: float
-      details:
-        type: array
-        items:
-          $ref: '#/definitions/SaleDetail'
-      legends:
-        type: array
-        items:
-          $ref: '#/definitions/Legend'
-      guias:
-        type: array
-        items:
-          $ref: '#/definitions/Document'
-      relDocs:
-        type: array
-        items:
-          $ref: '#/definitions/Document'
-      compra:
-        type: string
-      mtoBaseIsc:
-        type: number
-        format: float
-      mtoBaseOth:
-        type: number
-        format: float
-      totalImpuestos:
-        type: number
-        format: float
-      ublVersion:
-        type: string
-      codMotivo:
-        type: string
-      desMotivo:
-        type: string
-      tipDocAfectado:
-        type: string
-      numDocfectado:
-        type: string
-      mtoOperGratuitas:
-        type: number
-        format: float
-      perception:
-        $ref: '#/definitions/SalePerception'
-  SummaryPerception:
-    type: object
-    properties:
-      codReg:
-        type: string
-      tasa:
-        type: number
-        format: float
-      mtoBase:
-        type: number
-        format: float
-      mto:
-        type: number
-        format: float
-      mtoTotal:
-        type: number
-        format: float
-  SummaryDetail:
-    type: object
-    properties:
-      tipoDoc:
-        type: string
-      serieNro:
-        type: string
-      clienteTipo:
-        type: string
-      clienteNro:
-        type: string
-      docReferencia:
-        $ref: '#/definitions/Document'
-      percepcion:
-        $ref: '#/definitions/SummaryPerception'
-      estado:
-        type: string
-      total:
-        type: number
-        format: float
-      mtoOperGravadas:
-        type: number
-        format: float
-      mtoOperInafectas:
-        type: number
-        format: float
-      mtoOperExoneradas:
-        type: number
-        format: float
-      mtoOperExportacion:
-        type: number
-        format: float
-      mtoOperGratuitas:
-        type: number
-        format: float
-      mtoOtrosCargos:
-        type: number
-        format: float
-      mtoIGV:
-        type: number
-        format: float
-      mtoIvap:
-        type: number
-        format: float
-      mtoIcbper:
-        type: number
-        format: float
-      mtoISC:
-        type: number
-        format: float
-      mtoOtrosTributos:
-        type: number
-        format: float
-  Summary:
-    type: object
-    properties:
-      correlativo:
-        type: string
-      fecGeneracion:
-        type: string
-        format: date-time
-      fecResumen:
-        type: string
-        format: date-time
-      moneda:
-        type: string
-      company:
-        $ref: '#/definitions/Company'
-      details:
-        type: array
-        items:
-          $ref: '#/definitions/SummaryDetail'
-  VoidedDetail:
-    type: object
-    properties:
-      tipoDoc:
-        type: string
-      serie:
-        type: string
-      correlativo:
-        type: string
-      desMotivoBaja:
-        type: string
-  Voided:
-    type: object
-    properties:
-      correlativo:
-        type: string
-      fecGeneracion:
-        type: string
-        format: date-time
-      fecComunicacion:
-        type: string
-        format: date-time
-      company:
-        $ref: '#/definitions/Company'
-      details:
-        type: array
-        items:
-          $ref: '#/definitions/VoidedDetail'
-  Reversion:
-    type: object
-    properties:
-      correlativo:
-        type: string
-      fecGeneracion:
-        type: string
-        format: date-time
-      fecComunicacion:
-        type: string
-        format: date-time
-      company:
-        $ref: '#/definitions/Company'
-      details:
-        type: array
-        items:
-          $ref: '#/definitions/VoidedDetail'
-  Payment:
-    type: object
-    properties:
-      moneda:
-        type: string
-      importe:
-        type: number
-        format: float
-      fecha:
-        type: string
-        format: date-time
-  Exchange:
-    type: object
-    properties:
-      monedaRef:
-        type: string
-      monedaObj:
-        type: string
-      factor:
-        type: number
-        format: float
-      fecha:
-        type: string
-        format: date-time
-  PerceptionDetail:
-    type: object
-    properties:
-      tipoDoc:
-        type: string
-      numDoc:
-        type: string
-      fechaEmision:
-        type: string
-        format: date-time
-      impTotal:
-        type: number
-        format: float
-      moneda:
-        type: string
-      cobros:
-        type: array
-        items:
-          $ref: '#/definitions/Payment'
-      fechaPercepcion:
-        type: string
-        format: date-time
-      impPercibido:
-        type: number
-        format: float
-      impCobrar:
-        type: number
-        format: float
-      tipoCambio:
-        $ref: '#/definitions/Exchange'
-  Perception:
-    type: object
-    properties:
-      serie:
-        type: string
-      correlativo:
-        type: string
-      fechaEmision:
-        type: string
-        format: date-time
-      company:
-        $ref: '#/definitions/Company'
-      proveedor:
-        $ref: '#/definitions/Client'
-      regimen:
-        type: string
-      tasa:
-        type: number
-        format: float
-      impPercibido:
-        type: number
-        format: float
-      impCobrado:
-        type: number
-        format: float
-      observacion:
-        type: string
-      details:
-        type: array
-        items:
-          $ref: '#/definitions/PerceptionDetail'
-  RetentionDetail:
-    type: object
-    properties:
-      tipoDoc:
-        type: string
-      numDoc:
-        type: string
-      fechaEmision:
-        type: string
-        format: date-time
-      impTotal:
-        type: number
-        format: float
-      moneda:
-        type: string
-      pagos:
-        type: array
-        items:
-          $ref: '#/definitions/Payment'
-      fechaRetencion:
-        type: string
-        format: date-time
-      impRetenido:
-        type: number
-        format: float
-      impPagar:
-        type: number
-        format: float
-      tipoCambio:
-        $ref: '#/definitions/Exchange'
-  Retention:
-    type: object
-    properties:
-      serie:
-        type: string
-      correlativo:
-        type: string
-      fechaEmision:
-        type: string
-        format: date-time
-      proveedor:
-        $ref: '#/definitions/Client'
-      company:
-        $ref: '#/definitions/Company'
-      regimen:
-        type: string
-      tasa:
-        type: number
-        format: float
-      impRetenido:
-        type: number
-        format: float
-      impPagado:
-        type: number
-        format: float
-      observacion:
-        type: string
-      details:
-        type: array
-        items:
-          $ref: '#/definitions/RetentionDetail'
-  Transportist:
-    type: object
-    properties:
-      tipoDoc:
-        type: string
-      numDoc:
-        type: string
-      rznSocial:
-        type: string
-      placa:
-        type: string
-      choferTipoDoc:
-        type: string
-      choferDoc:
-        type: string
-  Shipment:
-    type: object
-    properties:
-      codTraslado:
-        type: string
-      desTraslado:
-        type: string
-      indTransbordo:
-        type: boolean
-      pesoTotal:
-        type: number
-        format: float
-      undPesoTotal:
-        type: string
-      numBultos:
-        type: integer
-      modTraslado:
-        type: string
-      fecTraslado:
-        type: string
-        format: date-time
-      numContenedor:
-        type: string
-      codPuerto:
-        type: string
-      transportista:
-        $ref: '#/definitions/Transportist'
-      llegada:
-        $ref: '#/definitions/Direction'
-      partida:
-        $ref: '#/definitions/Direction'
-  DespatchDetail:
-    type: object
-    properties:
-      codigo:
-        type: string
-      descripcion:
-        type: string
-      unidad:
-        type: string
-      cantidad:
-        type: number
-        format: float
-      codProdSunat:
-        type: string
-  Despatch:
-    type: object
-    properties:
-      tipoDoc:
-        type: string
-      serie:
-        type: string
-      correlativo:
-        type: string
-      observacion:
-        type: string
-      fechaEmision:
-        type: string
-        format: date-time
-      company:
-        $ref: '#/definitions/Company'
-      destinatario:
-        $ref: '#/definitions/Client'
-      tercero:
-        $ref: '#/definitions/Client'
-      envio:
-        $ref: '#/definitions/Shipment'
-      docBaja:
-        $ref: '#/definitions/Document'
-      relDoc:
-        $ref: '#/definitions/Document'
-      details:
-        type: array
-        items:
-          $ref: '#/definitions/DespatchDetail'
-  Error:
-    type: object
-    properties:
-      code:
-        type: string
-      message:
-        type: string
-  CdrResponse:
-    type: object
-    properties:
-      accepted:
-        type: boolean
-        readOnly: true
-      id:
-        type: string
-      code:
-        type: string
-      description:
-        type: string
-      notes:
-        type: array
-        items:
+servers:
+  - url: http://lycet.api/api/v1
+  - url: https://lycet.api/api/v1
+components:
+  requestBodies:
+    Note:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Note"
+      description: Comprobante
+      required: true
+    Invoice:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Invoice"
+      description: Comprobante
+      required: true
+    Summary:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Summary"
+      description: Comprobante
+      required: true
+    Voided:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Voided"
+      description: Comprobante
+      required: true
+    Despatch:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Despatch"
+      description: Comprobante
+      required: true
+    Retention:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Retention"
+      description: Comprobante
+      required: true
+    Perception:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Perception"
+      description: Comprobante
+      required: true
+    Reversion:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Reversion"
+      description: Comprobante
+      required: true
+  securitySchemes:
+    ApiToken:
+      name: token
+      type: apiKey
+      in: query
+      description: Api Token
+  schemas:
+    Address:
+      type: object
+      properties:
+        ubigueo:
           type: string
-  BillResult:
-    type: object
-    properties:
-      success:
-        type: boolean
-      error:
-        $ref: '#/definitions/Error'
-      cdrZip:
-        type: string
-        format: byte
-      cdrResponse:
-        $ref: '#/definitions/CdrResponse'
-  SummaryResult:
-    type: object
-    properties:
-      success:
-        type: boolean
-      error:
-        $ref: '#/definitions/Error'
-      ticket:
-        type: string
-  StatusResult:
-    type: object
-    properties:
-      cdrZip:
-        type: string
-        format: byte
-      cdrResponse:
-        $ref: '#/definitions/CdrResponse'
-      success:
-        type: boolean
-      error:
-        $ref: '#/definitions/Error'
-      code:
-        type: string
-  DocumentResponse:
-    type: object
-    properties:
-      xml:
-        type: string
-      hash:
-        type: string
-        description: Resumen de la Firma Digital
-      sunatResponse:
-        $ref: '#/definitions/BillResult'
-  SummaryResponse:
-    type: object
-    properties:
-      xml:
-        type: string
-      hash:
-        type: string
-        description: Resumen de la Firma Digital
-      sunatResponse:
-        $ref: '#/definitions/SummaryResult'
-  ValidationResponse:
-    type: object
-    properties:
-      message:
-        type: string
-      field:
-        type: string
-  FilesData:
-    type: object
-    properties:
-      certificate:
-        type: string
-        description: certificado PEM en formato base64
-      logo:
-        type: string
-        description: logo png en formato base64
-  QrParameter:
-    type: object
-    properties:
-      ruc:
-        type: string
-        description: ruc del emisor
-      tipo:
-        type: string
-        description: tipo de comprobante
-      serie:
-        type: string
-      numero:
-        type: string
-      emision:
-        type: string
-        format: date
-        description: fecha de emisión
-      igv:
-        type: number
-        format: float
-      total:
-        type: number
-        format: float
-        description: total importe de venta
-      clienteTipo:
-        type: string
-        description: Tipo de documento del cliente
-      clienteNumero:
-        type: string
-        description: Numero de documento del cliente
+        codigoPais:
+          type: string
+        departamento:
+          type: string
+        provincia:
+          type: string
+        distrito:
+          type: string
+        urbanizacion:
+          type: string
+        direccion:
+          type: string
+        codLocal:
+          type: string
+    Client:
+      type: object
+      properties:
+        tipoDoc:
+          type: string
+        numDoc:
+          type: string
+        rznSocial:
+          type: string
+        address:
+          $ref: "#/components/schemas/Address"
+        email:
+          type: string
+        telephone:
+          type: string
+    Company:
+      type: object
+      properties:
+        ruc:
+          type: string
+        razonSocial:
+          type: string
+        nombreComercial:
+          type: string
+        address:
+          $ref: "#/components/schemas/Address"
+        email:
+          type: string
+        telephone:
+          type: string
+    Charge:
+      type: object
+      properties:
+        codTipo:
+          type: string
+        factor:
+          type: string
+        monto:
+          type: number
+          format: float
+        montoBase:
+          type: number
+          format: float
+    DetailAttribute:
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+        value:
+          type: string
+        fecInicio:
+          type: string
+          format: date-time
+        fecFin:
+          type: string
+          format: date-time
+        duracion:
+          type: integer
+    SaleDetail:
+      type: object
+      properties:
+        unidad:
+          type: string
+        cantidad:
+          type: number
+          format: float
+        codProducto:
+          type: string
+        codProdSunat:
+          type: string
+        codProdGS1:
+          type: string
+        descripcion:
+          type: string
+        mtoValorUnitario:
+          type: number
+          format: float
+        descuento:
+          type: number
+          format: float
+        igv:
+          type: number
+          format: float
+        tipAfeIgv:
+          type: string
+        isc:
+          type: number
+          format: float
+        tipSisIsc:
+          type: string
+        totalImpuestos:
+          type: number
+          format: float
+        mtoPrecioUnitario:
+          type: number
+          format: float
+        mtoValorVenta:
+          type: number
+          format: float
+        mtoValorGratuito:
+          type: number
+          format: float
+        mtoBaseIgv:
+          type: number
+          format: float
+        porcentajeIgv:
+          type: number
+          format: float
+        mtoBaseIsc:
+          type: number
+          format: float
+        porcentajeIsc:
+          type: number
+          format: float
+        mtoBaseOth:
+          type: number
+          format: float
+        porcentajeOth:
+          type: number
+          format: float
+        otroTributo:
+          type: number
+          format: float
+        icbper:
+          type: number
+          format: float
+        factorIcbper:
+          type: number
+          format: float
+        cargos:
+          type: array
+          items:
+            $ref: "#/components/schemas/Charge"
+        descuentos:
+          type: array
+          items:
+            $ref: "#/components/schemas/Charge"
+        atributos:
+          type: array
+          items:
+            $ref: "#/components/schemas/DetailAttribute"
+    Legend:
+      type: object
+      properties:
+        code:
+          type: string
+        value:
+          type: string
+    Document:
+      type: object
+      properties:
+        tipoDoc:
+          type: string
+        nroDoc:
+          type: string
+    SalePerception:
+      type: object
+      properties:
+        codReg:
+          type: string
+        porcentaje:
+          type: number
+          format: float
+        mtoBase:
+          type: number
+          format: float
+        mto:
+          type: number
+          format: float
+        mtoTotal:
+          type: number
+          format: float
+    Direction:
+      type: object
+      properties:
+        ubigueo:
+          type: string
+        direccion:
+          type: string
+    EmbededDespatch:
+      type: object
+      properties:
+        llegada:
+          $ref: "#/components/schemas/Direction"
+        partida:
+          $ref: "#/components/schemas/Direction"
+        transportista:
+          $ref: "#/components/schemas/Client"
+        nroLicencia:
+          type: string
+        transpPlaca:
+          type: string
+        transpCodeAuth:
+          type: string
+        transpMarca:
+          type: string
+        modTraslado:
+          type: string
+        pesoBruto:
+          type: number
+          format: float
+        undPesoBruto:
+          type: string
+    Prepayment:
+      type: object
+      properties:
+        tipoDocRel:
+          type: string
+        nroDocRel:
+          type: string
+        total:
+          type: number
+          format: float
+    Detraction:
+      type: object
+      properties:
+        percent:
+          type: number
+          format: float
+        mount:
+          type: number
+          format: float
+        ctaBanco:
+          type: string
+        codMedioPago:
+          type: string
+        codBienDetraccion:
+          type: string
+        valueRef:
+          type: number
+          format: float
+    Invoice:
+      type: object
+      properties:
+        tipoDoc:
+          type: string
+        serie:
+          type: string
+        correlativo:
+          type: string
+        fechaEmision:
+          type: string
+          format: date-time
+        formaPago:
+          $ref: "#/components/schemas/PaymentTerms"
+        cuotas:
+          type: array
+          items:
+            $ref: "#/components/schemas/Cuota"
+        client:
+          $ref: "#/components/schemas/Client"
+        company:
+          $ref: "#/components/schemas/Company"
+        tipoMoneda:
+          type: string
+        sumOtrosCargos:
+          type: number
+          format: float
+        mtoOperGravadas:
+          type: number
+          format: float
+        mtoOperInafectas:
+          type: number
+          format: float
+        mtoOperExoneradas:
+          type: number
+          format: float
+        mtoOperExportacion:
+          type: number
+          format: float
+        mtoIGV:
+          type: number
+          format: float
+        mtoIGVGratuitas:
+          type: number
+          format: float
+        mtoISC:
+          type: number
+          format: float
+        mtoOtrosTributos:
+          type: number
+          format: float
+        icbper:
+          type: number
+          format: float
+        mtoImpVenta:
+          type: number
+          format: float
+        details:
+          type: array
+          items:
+            $ref: "#/components/schemas/SaleDetail"
+        legends:
+          type: array
+          items:
+            $ref: "#/components/schemas/Legend"
+        guias:
+          type: array
+          items:
+            $ref: "#/components/schemas/Document"
+        relDocs:
+          type: array
+          items:
+            $ref: "#/components/schemas/Document"
+        observacion:
+          type: string
+        compra:
+          type: string
+        mtoBaseIsc:
+          type: number
+          format: float
+        mtoBaseOth:
+          type: number
+          format: float
+        totalImpuestos:
+          type: number
+          format: float
+        ublVersion:
+          type: string
+        tipoOperacion:
+          type: string
+        fecVencimiento:
+          type: string
+          format: date-time
+        sumDsctoGlobal:
+          type: number
+          format: float
+        mtoDescuentos:
+          type: number
+          format: float
+        mtoOperGratuitas:
+          type: number
+          format: float
+        totalAnticipos:
+          type: number
+          format: float
+        perception:
+          $ref: "#/components/schemas/SalePerception"
+        guiaEmbebida:
+          $ref: "#/components/schemas/EmbededDespatch"
+        anticipos:
+          type: array
+          items:
+            $ref: "#/components/schemas/Prepayment"
+        detraccion:
+          $ref: "#/components/schemas/Detraction"
+        seller:
+          $ref: "#/components/schemas/Client"
+        direccionEntrega:
+          $ref: "#/components/schemas/Address"
+        descuentos:
+          type: array
+          items:
+            $ref: "#/components/schemas/Charge"
+        cargos:
+          type: array
+          items:
+            $ref: "#/components/schemas/Charge"
+        mtoCargos:
+          type: number
+          format: float
+        valorVenta:
+          type: number
+          format: float
+    Note:
+      type: object
+      properties:
+        tipoDoc:
+          type: string
+        serie:
+          type: string
+        correlativo:
+          type: string
+        fechaEmision:
+          type: string
+          format: date-time
+        formaPago:
+          $ref: "#/components/schemas/PaymentTerms"
+        cuotas:
+          type: array
+          items:
+            $ref: "#/components/schemas/Cuota"
+        client:
+          $ref: "#/components/schemas/Client"
+        company:
+          $ref: "#/components/schemas/Company"
+        tipoMoneda:
+          type: string
+        sumOtrosCargos:
+          type: number
+          format: float
+        mtoOperGravadas:
+          type: number
+          format: float
+        mtoOperInafectas:
+          type: number
+          format: float
+        mtoOperExoneradas:
+          type: number
+          format: float
+        mtoOperExportacion:
+          type: number
+          format: float
+        mtoIGV:
+          type: number
+          format: float
+        mtoIGVGratuitas:
+          type: number
+          format: float
+        mtoISC:
+          type: number
+          format: float
+        mtoOtrosTributos:
+          type: number
+          format: float
+        icbper:
+          type: number
+          format: float
+        mtoImpVenta:
+          type: number
+          format: float
+        details:
+          type: array
+          items:
+            $ref: "#/components/schemas/SaleDetail"
+        legends:
+          type: array
+          items:
+            $ref: "#/components/schemas/Legend"
+        guias:
+          type: array
+          items:
+            $ref: "#/components/schemas/Document"
+        relDocs:
+          type: array
+          items:
+            $ref: "#/components/schemas/Document"
+        compra:
+          type: string
+        mtoBaseIsc:
+          type: number
+          format: float
+        mtoBaseOth:
+          type: number
+          format: float
+        totalImpuestos:
+          type: number
+          format: float
+        ublVersion:
+          type: string
+        codMotivo:
+          type: string
+        desMotivo:
+          type: string
+        tipDocAfectado:
+          type: string
+        numDocfectado:
+          type: string
+        mtoOperGratuitas:
+          type: number
+          format: float
+        perception:
+          $ref: "#/components/schemas/SalePerception"
+    PaymentTerms:
+      type: object
+      properties:
+        moneda:
+          type: string
+        tipo:
+          type: string
+        monto:
+          type: number
+          format: float
+    Cuota:
+      type: object
+      properties:
+        moneda:
+          type: string
+        monto:
+          type: number
+          format: float
+        fechaPago:
+          type: string
+          format: date-time
+    SummaryPerception:
+      type: object
+      properties:
+        codReg:
+          type: string
+        tasa:
+          type: number
+          format: float
+        mtoBase:
+          type: number
+          format: float
+        mto:
+          type: number
+          format: float
+        mtoTotal:
+          type: number
+          format: float
+    SummaryDetail:
+      type: object
+      properties:
+        tipoDoc:
+          type: string
+        serieNro:
+          type: string
+        clienteTipo:
+          type: string
+        clienteNro:
+          type: string
+        docReferencia:
+          $ref: "#/components/schemas/Document"
+        percepcion:
+          $ref: "#/components/schemas/SummaryPerception"
+        estado:
+          type: string
+        total:
+          type: number
+          format: float
+        mtoOperGravadas:
+          type: number
+          format: float
+        mtoOperInafectas:
+          type: number
+          format: float
+        mtoOperExoneradas:
+          type: number
+          format: float
+        mtoOperExportacion:
+          type: number
+          format: float
+        mtoOperGratuitas:
+          type: number
+          format: float
+        mtoOtrosCargos:
+          type: number
+          format: float
+        mtoIGV:
+          type: number
+          format: float
+        mtoIvap:
+          type: number
+          format: float
+        mtoIcbper:
+          type: number
+          format: float
+        mtoISC:
+          type: number
+          format: float
+        mtoOtrosTributos:
+          type: number
+          format: float
+    Summary:
+      type: object
+      properties:
+        correlativo:
+          type: string
+        fecGeneracion:
+          type: string
+          format: date-time
+        fecResumen:
+          type: string
+          format: date-time
+        moneda:
+          type: string
+        company:
+          $ref: "#/components/schemas/Company"
+        details:
+          type: array
+          items:
+            $ref: "#/components/schemas/SummaryDetail"
+    VoidedDetail:
+      type: object
+      properties:
+        tipoDoc:
+          type: string
+        serie:
+          type: string
+        correlativo:
+          type: string
+        desMotivoBaja:
+          type: string
+    Voided:
+      type: object
+      properties:
+        correlativo:
+          type: string
+        fecGeneracion:
+          type: string
+          format: date-time
+        fecComunicacion:
+          type: string
+          format: date-time
+        company:
+          $ref: "#/components/schemas/Company"
+        details:
+          type: array
+          items:
+            $ref: "#/components/schemas/VoidedDetail"
+    Reversion:
+      type: object
+      properties:
+        correlativo:
+          type: string
+        fecGeneracion:
+          type: string
+          format: date-time
+        fecComunicacion:
+          type: string
+          format: date-time
+        company:
+          $ref: "#/components/schemas/Company"
+        details:
+          type: array
+          items:
+            $ref: "#/components/schemas/VoidedDetail"
+    Payment:
+      type: object
+      properties:
+        moneda:
+          type: string
+        importe:
+          type: number
+          format: float
+        fecha:
+          type: string
+          format: date-time
+    Exchange:
+      type: object
+      properties:
+        monedaRef:
+          type: string
+        monedaObj:
+          type: string
+        factor:
+          type: number
+          format: float
+        fecha:
+          type: string
+          format: date-time
+    PerceptionDetail:
+      type: object
+      properties:
+        tipoDoc:
+          type: string
+        numDoc:
+          type: string
+        fechaEmision:
+          type: string
+          format: date-time
+        impTotal:
+          type: number
+          format: float
+        moneda:
+          type: string
+        cobros:
+          type: array
+          items:
+            $ref: "#/components/schemas/Payment"
+        fechaPercepcion:
+          type: string
+          format: date-time
+        impPercibido:
+          type: number
+          format: float
+        impCobrar:
+          type: number
+          format: float
+        tipoCambio:
+          $ref: "#/components/schemas/Exchange"
+    Perception:
+      type: object
+      properties:
+        serie:
+          type: string
+        correlativo:
+          type: string
+        fechaEmision:
+          type: string
+          format: date-time
+        company:
+          $ref: "#/components/schemas/Company"
+        proveedor:
+          $ref: "#/components/schemas/Client"
+        regimen:
+          type: string
+        tasa:
+          type: number
+          format: float
+        impPercibido:
+          type: number
+          format: float
+        impCobrado:
+          type: number
+          format: float
+        observacion:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: "#/components/schemas/PerceptionDetail"
+    RetentionDetail:
+      type: object
+      properties:
+        tipoDoc:
+          type: string
+        numDoc:
+          type: string
+        fechaEmision:
+          type: string
+          format: date-time
+        impTotal:
+          type: number
+          format: float
+        moneda:
+          type: string
+        pagos:
+          type: array
+          items:
+            $ref: "#/components/schemas/Payment"
+        fechaRetencion:
+          type: string
+          format: date-time
+        impRetenido:
+          type: number
+          format: float
+        impPagar:
+          type: number
+          format: float
+        tipoCambio:
+          $ref: "#/components/schemas/Exchange"
+    Retention:
+      type: object
+      properties:
+        serie:
+          type: string
+        correlativo:
+          type: string
+        fechaEmision:
+          type: string
+          format: date-time
+        proveedor:
+          $ref: "#/components/schemas/Client"
+        company:
+          $ref: "#/components/schemas/Company"
+        regimen:
+          type: string
+        tasa:
+          type: number
+          format: float
+        impRetenido:
+          type: number
+          format: float
+        impPagado:
+          type: number
+          format: float
+        observacion:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: "#/components/schemas/RetentionDetail"
+    Transportist:
+      type: object
+      properties:
+        tipoDoc:
+          type: string
+        numDoc:
+          type: string
+        rznSocial:
+          type: string
+        placa:
+          type: string
+        choferTipoDoc:
+          type: string
+        choferDoc:
+          type: string
+    Shipment:
+      type: object
+      properties:
+        codTraslado:
+          type: string
+        desTraslado:
+          type: string
+        indTransbordo:
+          type: boolean
+        pesoTotal:
+          type: number
+          format: float
+        undPesoTotal:
+          type: string
+        numBultos:
+          type: integer
+        modTraslado:
+          type: string
+        fecTraslado:
+          type: string
+          format: date-time
+        numContenedor:
+          type: string
+        codPuerto:
+          type: string
+        transportista:
+          $ref: "#/components/schemas/Transportist"
+        llegada:
+          $ref: "#/components/schemas/Direction"
+        partida:
+          $ref: "#/components/schemas/Direction"
+    DespatchDetail:
+      type: object
+      properties:
+        codigo:
+          type: string
+        descripcion:
+          type: string
+        unidad:
+          type: string
+        cantidad:
+          type: number
+          format: float
+        codProdSunat:
+          type: string
+    Despatch:
+      type: object
+      properties:
+        tipoDoc:
+          type: string
+        serie:
+          type: string
+        correlativo:
+          type: string
+        observacion:
+          type: string
+        fechaEmision:
+          type: string
+          format: date-time
+        company:
+          $ref: "#/components/schemas/Company"
+        destinatario:
+          $ref: "#/components/schemas/Client"
+        tercero:
+          $ref: "#/components/schemas/Client"
+        envio:
+          $ref: "#/components/schemas/Shipment"
+        docBaja:
+          $ref: "#/components/schemas/Document"
+        relDoc:
+          $ref: "#/components/schemas/Document"
+        details:
+          type: array
+          items:
+            $ref: "#/components/schemas/DespatchDetail"
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    CdrResponse:
+      type: object
+      properties:
+        accepted:
+          type: boolean
+          readOnly: true
+        id:
+          type: string
+        code:
+          type: string
+        description:
+          type: string
+        notes:
+          type: array
+          items:
+            type: string
+    BillResult:
+      type: object
+      properties:
+        success:
+          type: boolean
+        error:
+          $ref: "#/components/schemas/Error"
+        cdrZip:
+          type: string
+          format: byte
+        cdrResponse:
+          $ref: "#/components/schemas/CdrResponse"
+    SummaryResult:
+      type: object
+      properties:
+        success:
+          type: boolean
+        error:
+          $ref: "#/components/schemas/Error"
+        ticket:
+          type: string
+    StatusResult:
+      type: object
+      properties:
+        cdrZip:
+          type: string
+          format: byte
+        cdrResponse:
+          $ref: "#/components/schemas/CdrResponse"
+        success:
+          type: boolean
+        error:
+          $ref: "#/components/schemas/Error"
+        code:
+          type: string
+    DocumentResponse:
+      type: object
+      properties:
+        xml:
+          type: string
+        hash:
+          type: string
+          description: Resumen de la Firma Digital
+        sunatResponse:
+          $ref: "#/components/schemas/BillResult"
+    SummaryResponse:
+      type: object
+      properties:
+        xml:
+          type: string
+        hash:
+          type: string
+          description: Resumen de la Firma Digital
+        sunatResponse:
+          $ref: "#/components/schemas/SummaryResult"
+    ValidationResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        field:
+          type: string
+    FilesData:
+      type: object
+      properties:
+        certificate:
+          type: string
+          description: certificado PEM en formato base64
+        logo:
+          type: string
+          description: logo png en formato base64
+    QrParameter:
+      type: object
+      properties:
+        ruc:
+          type: string
+          description: ruc del emisor
+        tipo:
+          type: string
+          description: tipo de comprobante
+        serie:
+          type: string
+        numero:
+          type: string
+        emision:
+          type: string
+          format: date
+          description: fecha de emisión
+        igv:
+          type: number
+          format: float
+        total:
+          type: number
+          format: float
+          description: total importe de venta
+        clienteTipo:
+          type: string
+          description: Tipo de documento del cliente
+        clienteNumero:
+          type: string
+          description: Numero de documento del cliente

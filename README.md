@@ -77,7 +77,7 @@ Abrir el navegador, y dirígete a http://localhost:8000/public
 
 ### Docs
 
-Puedes descargar la [colección de postman](https://www.getpostman.com/collections/2ef4f4bd7c6720a9e09f) que contiene ejemplo del envío de algunos comprobantes.
+Puedes visitar [greenter en postman](https://www.postman.com/greenter/) que contiene ejemplos del envío de algunos comprobantes.
 
 Ver [swagger documentation](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/giansalex/lycet/master/public/swagger.yaml), puedes crear un cliente en [swagger editor](http://editor.swagger.io/?url=https://raw.githubusercontent.com/giansalex/lycet/master/public/swagger.yaml), para tu lenguaje de preferencia.
 

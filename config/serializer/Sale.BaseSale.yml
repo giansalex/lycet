@@ -62,5 +62,9 @@ Greenter\Model\Sale\BaseSale:
             type: array<Greenter\Model\Sale\Document>
         compra:
             type: string
+        formaPago:
+            type: Greenter\Model\Sale\PaymentTerms
+        cuotas:
+            type: array<Greenter\Model\Sale\Cuota>
         name:
             type: string

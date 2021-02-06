@@ -1,0 +1,8 @@
+Greenter\Model\Sale\Cuota:
+    properties:
+        moneda:
+            type: string
+        monto:
+            type: float
+        fechaPago:
+            type: DateTime
