@@ -27,8 +27,10 @@ RUN curl --silent --show-error -sS https://getcomposer.org/installer | php -- --
     composer require php-pm/php-pm php-pm/httpkernel-adapter --update-no-dev --no-scripts --no-progress --ignore-platform-reqs && \
     composer dump-autoload --optimize --no-dev --classmap-authoritative && \
     composer dump-env prod --empty && \
-    find -name "[Tt]est*" -type d -exec rm -rf {} + && \
     find -type f -name '*.md' -delete;
+#   twig have Test as src code
+#   find -name "[Tt]est*" -type d -exec rm -rf {} + 
+    
 
 FROM php:8.0-alpine
 
