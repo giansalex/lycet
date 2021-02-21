@@ -60,6 +60,13 @@ services:
             - [setBinPath, ['%env(WKHTMLTOPDF_PATH)%']]
             - [setOptions, [['no-outline', 'print-media-type']]]
 
+    App\Service\PdfReportDecorator:
+        public: true
+        arguments:
+            - '@App\Service\HtmlReportDecorator'
+            - '%env(WKHTMLTOPDF_PATH)%'
+            - ['no-outline', 'print-media-type']
+
     App\Service\AppDocumentValidator:
         autowire: true
 
@@ -68,7 +75,7 @@ services:
 
     Greenter\Validator\DocumentValidatorInterface: '@App\Service\AppDocumentValidator'
     Greenter\Report\ReportInterface:
-        alias: Greenter\Report\PdfReport
+        alias: App\Service\PdfReportDecorator
         public: true
 
     App\Service\DocumentRequestInterface: '@App\Service\DocumentRequest'
