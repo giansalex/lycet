@@ -12,7 +12,6 @@ use Greenter\Model\DocumentInterface;
 use Greenter\Model\Response\BaseResult;
 use Greenter\Model\Response\BillResult;
 use Greenter\Model\Response\SummaryResult;
-use Greenter\Report\PdfReport;
 use Greenter\Report\ReportInterface;
 use Greenter\Report\XmlUtils;
 use Greenter\See;
@@ -152,11 +151,6 @@ class DocumentRequest implements DocumentRequestInterface
 
         $report = $this->getReport();
         $pdf = $report->render($document, $parameters);
-        if ($pdf === null) {
-            $message = $this->tryGetError($report);
-
-            return $this->json(['message' => $message], 500);
-        }
 
         return $this->file($pdf, $document->getName().'.pdf', 'application/pdf');
     }
@@ -177,14 +171,14 @@ class DocumentRequest implements DocumentRequestInterface
     /**
      * @return DocumentInterface
      */
-    private function getDocument()
+    private function getDocument(): DocumentInterface
     {
         $request = $this->requestStack->getCurrentRequest();
 
         return $this->parser->getObject($request, $this->className);
     }
 
-    private function getReport()
+    private function getReport(): ReportInterface
     {
         return $this->container->get(ReportInterface::class);
     }
@@ -246,14 +240,5 @@ class DocumentRequest implements DocumentRequestInterface
                 $result->setCdrZip(base64_encode($zip));
             }
         }
-    }
-
-    private function tryGetError($pdfService)
-    {
-        if (!($pdfService instanceof PdfReport)) {
-            return 'No se pudo generar el reporte desde ' . get_class($pdfService);
-        }
-
-        return $pdfService->getExporter()->getError();
     }
 }

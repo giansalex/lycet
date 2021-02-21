@@ -1,5 +1,6 @@
 # Lycet - Greenter
 [![Travis-CI](https://img.shields.io/travis/giansalex/lycet.svg?branch=master&style=flat-square)](https://travis-ci.org/giansalex/lycet)
+[![PPM Compatible](https://raw.githubusercontent.com/php-pm/ppm-badge/master/ppm-badge.png)](https://github.com/php-pm/php-pm)
 
 Lycet es un API REST basado en [greenter](https://github.com/thegreenter/greenter) y Symfony Framework, UBL 2.1 es soportado.
 
@@ -73,7 +74,7 @@ docker build -t lycet .
 docker run -d -p 8000:8000 --name lycet_app lycet 
 ```
 
-Abrir el navegador, y dirígete a http://localhost:8000/public
+Abrir el navegador, y dirígete a http://localhost:8000/
 
 ### Docs
 
