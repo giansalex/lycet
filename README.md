@@ -15,7 +15,7 @@ LIVE (Pruebas)
 
 ## Requerimientos
 - Php 7.2 o superior
-- Php Extensions habilitadas (soap, xml, openssl, zlib, fileinfo)
+- Php Extensions habilitadas (soap, xml, openssl, zlib)
 - WkhtmltoPdf executable (PDF report)
 - Pem Certificate - [convert pfx to pem](https://github.com/thegreenter/xmldsig/blob/master/CONVERT.md)
 
