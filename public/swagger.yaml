@@ -1028,6 +1028,12 @@ components:
         icbper:
           type: number
           format: float
+        valorVenta:
+          type: number
+          format: float
+        subTotal:
+          type: number
+          format: float
         mtoImpVenta:
           type: number
           format: float
@@ -1102,9 +1108,6 @@ components:
           items:
             $ref: "#/components/schemas/Charge"
         mtoCargos:
-          type: number
-          format: float
-        valorVenta:
           type: number
           format: float
     Note:
