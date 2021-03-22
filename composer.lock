@@ -327,16 +327,16 @@
         },
         {
             "name": "greenter/core",
-            "version": "v4.3.0",
+            "version": "v4.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/core.git",
-                "reference": "0343908841d2d2ab457db30dd29b042a7f207ef1"
+                "reference": "554ff5bd58efeb2862d129a31a4223e690506f53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/core/zipball/0343908841d2d2ab457db30dd29b042a7f207ef1",
-                "reference": "0343908841d2d2ab457db30dd29b042a7f207ef1",
+                "url": "https://api.github.com/repos/thegreenter/core/zipball/554ff5bd58efeb2862d129a31a4223e690506f53",
+                "reference": "554ff5bd58efeb2862d129a31a4223e690506f53",
                 "shasum": ""
             },
             "require": {
@@ -345,7 +345,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.4-dev"
                 }
             },
             "autoload": {
@@ -372,26 +372,26 @@
             ],
             "support": {
                 "forum": "https://community.greenter.dev/",
-                "source": "https://github.com/thegreenter/core/tree/v4.3.0"
+                "source": "https://github.com/thegreenter/core/tree/v4.3.1"
             },
-            "time": "2021-02-06T16:18:50+00:00"
+            "time": "2021-03-20T19:45:25+00:00"
         },
         {
             "name": "greenter/htmltopdf",
-            "version": "v4.3.0",
+            "version": "v4.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/htmltopdf.git",
-                "reference": "77f183041179aff34516bbf873c4dc20dd6080cf"
+                "reference": "14f55b0802772f50b983cfdb5bf9ac683333e602"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/htmltopdf/zipball/77f183041179aff34516bbf873c4dc20dd6080cf",
-                "reference": "77f183041179aff34516bbf873c4dc20dd6080cf",
+                "url": "https://api.github.com/repos/thegreenter/htmltopdf/zipball/14f55b0802772f50b983cfdb5bf9ac683333e602",
+                "reference": "14f55b0802772f50b983cfdb5bf9ac683333e602",
                 "shasum": ""
             },
             "require": {
-                "greenter/core": "^4.3",
+                "greenter/core": "^4.3.1",
                 "mikehaertl/phpwkhtmltopdf": "^2.4",
                 "php": ">=7.2"
             },
@@ -404,7 +404,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.4-dev"
                 }
             },
             "autoload": {
@@ -431,9 +431,9 @@
             ],
             "support": {
                 "forum": "https://community.greenter.dev/",
-                "source": "https://github.com/thegreenter/htmltopdf/tree/v4.3.0"
+                "source": "https://github.com/thegreenter/htmltopdf/tree/v4.3.1"
             },
-            "time": "2021-02-06T16:18:50+00:00"
+            "time": "2021-03-20T20:45:58+00:00"
         },
         {
             "name": "greenter/lite",
@@ -962,16 +962,16 @@
         },
         {
             "name": "mikehaertl/php-shellcommand",
-            "version": "1.6.3",
+            "version": "1.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mikehaertl/php-shellcommand.git",
-                "reference": "fe86ec847877b83bf61a96719e7f2e3b3e516a6b"
+                "reference": "3488d7803df1e8f1a343d3d0ca452d527ad8d5e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikehaertl/php-shellcommand/zipball/fe86ec847877b83bf61a96719e7f2e3b3e516a6b",
-                "reference": "fe86ec847877b83bf61a96719e7f2e3b3e516a6b",
+                "url": "https://api.github.com/repos/mikehaertl/php-shellcommand/zipball/3488d7803df1e8f1a343d3d0ca452d527ad8d5e5",
+                "reference": "3488d7803df1e8f1a343d3d0ca452d527ad8d5e5",
                 "shasum": ""
             },
             "require": {
@@ -1002,9 +1002,9 @@
             ],
             "support": {
                 "issues": "https://github.com/mikehaertl/php-shellcommand/issues",
-                "source": "https://github.com/mikehaertl/php-shellcommand/tree/1.6.3"
+                "source": "https://github.com/mikehaertl/php-shellcommand/tree/1.6.4"
             },
-            "time": "2020-11-23T17:31:15+00:00"
+            "time": "2021-03-17T06:54:33+00:00"
         },
         {
             "name": "mikehaertl/php-tmpfile",
