@@ -327,16 +327,16 @@
         },
         {
             "name": "greenter/core",
-            "version": "v4.3.0",
+            "version": "v4.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/core.git",
-                "reference": "0343908841d2d2ab457db30dd29b042a7f207ef1"
+                "reference": "554ff5bd58efeb2862d129a31a4223e690506f53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/core/zipball/0343908841d2d2ab457db30dd29b042a7f207ef1",
-                "reference": "0343908841d2d2ab457db30dd29b042a7f207ef1",
+                "url": "https://api.github.com/repos/thegreenter/core/zipball/554ff5bd58efeb2862d129a31a4223e690506f53",
+                "reference": "554ff5bd58efeb2862d129a31a4223e690506f53",
                 "shasum": ""
             },
             "require": {
@@ -345,7 +345,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.4-dev"
                 }
             },
             "autoload": {
@@ -372,9 +372,9 @@
             ],
             "support": {
                 "forum": "https://community.greenter.dev/",
-                "source": "https://github.com/thegreenter/core/tree/v4.3.0"
+                "source": "https://github.com/thegreenter/core/tree/v4.3.1"
             },
-            "time": "2021-02-06T16:18:50+00:00"
+            "time": "2021-03-20T19:45:25+00:00"
         },
         {
             "name": "greenter/htmltopdf",
@@ -498,32 +498,32 @@
         },
         {
             "name": "greenter/report",
-            "version": "v4.3.0",
+            "version": "v4.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/report.git",
-                "reference": "e48f44890c6e5317fc555ee3622fd4e7b8a6b713"
+                "reference": "f29a6c15e2ef6ba15f0b3990b9b284d0f727cf85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/report/zipball/e48f44890c6e5317fc555ee3622fd4e7b8a6b713",
-                "reference": "e48f44890c6e5317fc555ee3622fd4e7b8a6b713",
+                "url": "https://api.github.com/repos/thegreenter/report/zipball/f29a6c15e2ef6ba15f0b3990b9b284d0f727cf85",
+                "reference": "f29a6c15e2ef6ba15f0b3990b9b284d0f727cf85",
                 "shasum": ""
             },
             "require": {
                 "bacon/bacon-qr-code": "^2.0",
-                "greenter/core": "^4.3",
+                "greenter/core": "^4.3.1",
                 "php": ">=7.2",
                 "twig/twig": "~3.0"
             },
             "require-dev": {
-                "greenter/data": "^4.3",
+                "greenter/data": "^4.3.1",
                 "phpunit/phpunit": "^8"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.4-dev"
                 }
             },
             "autoload": {
@@ -551,9 +551,9 @@
             ],
             "support": {
                 "forum": "https://community.greenter.dev/",
-                "source": "https://github.com/thegreenter/report/tree/v4.3.0"
+                "source": "https://github.com/thegreenter/report/tree/v4.3.1"
             },
-            "time": "2021-02-06T16:18:50+00:00"
+            "time": "2021-03-20T20:46:01+00:00"
         },
         {
             "name": "greenter/ws",
