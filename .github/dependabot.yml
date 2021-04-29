@@ -1,0 +1,52 @@
+version: 2
+updates:
+- package-ecosystem: composer
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "10:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: symfony/console
+    versions:
+    - 5.2.3
+    - 5.2.4
+    - 5.2.5
+    - 5.2.6
+  - dependency-name: symfony/phpunit-bridge
+    versions:
+    - 5.2.3
+    - 5.2.6
+  - dependency-name: symfony/framework-bundle
+    versions:
+    - 5.2.3
+    - 5.2.4
+    - 5.2.6
+  - dependency-name: greenter/htmltopdf
+    versions:
+    - 4.3.1
+  - dependency-name: greenter/lite
+    versions:
+    - 4.3.1
+  - dependency-name: greenter/report
+    versions:
+    - 4.3.1
+  - dependency-name: jms/serializer-bundle
+    versions:
+    - 3.9.0
+  - dependency-name: symfony/yaml
+    versions:
+    - 5.2.3
+    - 5.2.4
+    - 5.2.5
+  - dependency-name: symfony/browser-kit
+    versions:
+    - 5.2.3
+    - 5.2.4
+  - dependency-name: symfony/dotenv
+    versions:
+    - 5.2.3
+    - 5.2.4
+  - dependency-name: symfony/flex
+    versions:
+    - 1.12.1
