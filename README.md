@@ -1,5 +1,5 @@
 # Lycet - Greenter
-[![Travis-CI](https://img.shields.io/travis/giansalex/lycet.svg?branch=master&style=flat-square)](https://travis-ci.org/giansalex/lycet)
+[![Travis-CI](https://travis-ci.com/giansalex/lycet.svg?branch=master)](https://travis-ci.org/giansalex/lycet)
 [![PPM Compatible](https://raw.githubusercontent.com/php-pm/ppm-badge/master/ppm-badge.png)](https://github.com/php-pm/php-pm)
 
 Lycet es un API REST basado en [greenter](https://github.com/thegreenter/greenter) y Symfony Framework, UBL 2.1 es soportado.
