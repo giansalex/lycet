@@ -155,7 +155,7 @@
         "version": "1.1.4"
     },
     "symfony/browser-kit": {
-        "version": "v5.2.12"
+        "version": "v5.3.4"
     },
     "symfony/cache": {
         "version": "v5.3.4"
@@ -167,12 +167,12 @@
         "version": "v5.3.4"
     },
     "symfony/console": {
-        "version": "5.1",
+        "version": "5.3",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "master",
-            "version": "5.1",
-            "ref": "c6d02bdfba9da13c22157520e32a602dbee8a75c"
+            "version": "5.3",
+            "ref": "da0c8be8157600ad34f10ff0c9cc91232522e047"
         },
         "files": [
             "./bin/console"
@@ -188,7 +188,7 @@
         "version": "v5.3.4"
     },
     "symfony/dotenv": {
-        "version": "v5.2.14"
+        "version": "v5.3.6"
     },
     "symfony/error-handler": {
         "version": "v5.3.4"
@@ -218,19 +218,18 @@
         ]
     },
     "symfony/framework-bundle": {
-        "version": "5.2",
+        "version": "5.3",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "master",
-            "version": "5.2",
-            "ref": "13b8454726e2511d39eb9846fce1980dec5545ae"
+            "version": "5.3",
+            "ref": "772b77cfb5017644547ef7f9364c54e4eb9a6c61"
         },
         "files": [
             "./config/packages/cache.yaml",
             "./config/packages/framework.yaml",
-            "./config/packages/test/framework.yaml",
             "./config/preload.php",
-            "./config/routes/dev/framework.yaml",
+            "./config/routes/framework.yaml",
             "./config/services.yaml",
             "./public/index.php",
             "./src/Controller/.gitignore",
@@ -268,12 +267,12 @@
         ]
     },
     "symfony/phpunit-bridge": {
-        "version": "5.1",
+        "version": "5.3",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "master",
-            "version": "5.1",
-            "ref": "863a46b0cd2d547c4f5255e0cdca6f7847ce9251"
+            "version": "5.3",
+            "ref": "905679249e7b10f06c572917a9022a72cbfedc04"
         },
         "files": [
             "./.env.test",
@@ -316,6 +315,9 @@
             "./config/routes.yaml"
         ]
     },
+    "symfony/runtime": {
+        "version": "v5.3.4"
+    },
     "symfony/service-contracts": {
         "version": "v2.4.0"
     },
@@ -329,7 +331,7 @@
         "version": "v5.3.4"
     },
     "symfony/yaml": {
-        "version": "v5.2.14"
+        "version": "v5.3.6"
     },
     "twig/twig": {
         "version": "v3.3.2"
