@@ -7,3 +7,18 @@ jms_serializer:
             GreenterCore:
                 namespace_prefix: "Greenter\\Model"
                 path: "%kernel.project_dir%/config/serializer"
+    visitors:
+        json_serialization:
+            options:
+                - JSON_PRETTY_PRINT
+                - JSON_UNESCAPED_SLASHES
+                - JSON_PRESERVE_ZERO_FRACTION
+
+when@prod:
+    jms_serializer:
+        visitors:
+            json_serialization:
+                options:
+                    - JSON_UNESCAPED_SLASHES
+                    - JSON_PRESERVE_ZERO_FRACTION
+

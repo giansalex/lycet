@@ -2,7 +2,7 @@
 framework:
     secret: '%env(APP_SECRET)%'
     #csrf_protection: true
-    #http_method_override: true
+    http_method_override: false
 
     trusted_proxies: '%env(TRUSTED_PROXIES)%'
     trusted_headers: ['x-forwarded-for', 'x-forwarded-host', 'x-forwarded-proto', 'x-forwarded-port']
@@ -18,3 +18,9 @@ framework:
     #fragments: true
     php_errors:
         log: true
+
+when@test:
+    framework:
+        test: true
+        session:
+            storage_factory_id: session.storage.factory.mock_file
