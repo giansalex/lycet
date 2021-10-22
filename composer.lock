@@ -880,16 +880,16 @@
         },
         {
             "name": "jms/serializer-bundle",
-            "version": "4.0.0",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/JMSSerializerBundle.git",
-                "reference": "0508bc04e0220fc8c266b862432cb36f6ad3b007"
+                "reference": "6fdc277e16703c6f2cf6acb1df496ddba493b8a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/0508bc04e0220fc8c266b862432cb36f6ad3b007",
-                "reference": "0508bc04e0220fc8c266b862432cb36f6ad3b007",
+                "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/6fdc277e16703c6f2cf6acb1df496ddba493b8a1",
+                "reference": "6fdc277e16703c6f2cf6acb1df496ddba493b8a1",
                 "shasum": ""
             },
             "require": {
@@ -955,7 +955,7 @@
             ],
             "support": {
                 "issues": "https://github.com/schmittjoh/JMSSerializerBundle/issues",
-                "source": "https://github.com/schmittjoh/JMSSerializerBundle/tree/4.0.0"
+                "source": "https://github.com/schmittjoh/JMSSerializerBundle/tree/4.0.1"
             },
             "funding": [
                 {
@@ -963,7 +963,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-10-14T20:40:28+00:00"
+            "time": "2021-10-20T13:26:53+00:00"
         },
         {
             "name": "mikehaertl/php-shellcommand",
