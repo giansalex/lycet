@@ -1,4 +1,4 @@
-FROM php:8.0-alpine AS build-env
+FROM php:8.0-alpine3.14 AS build-env
 
 LABEL owner="Giancarlos Salas"
 LABEL maintainer="giansalex@gmail.com"
@@ -32,7 +32,7 @@ RUN curl --silent --show-error -sS https://getcomposer.org/installer | php -- --
 #   find -name "[Tt]est*" -type d -exec rm -rf {} + 
     
 
-FROM php:8.0-alpine
+FROM php:8.0-alpine3.14
 
 EXPOSE 8000
 WORKDIR /var/www/html
