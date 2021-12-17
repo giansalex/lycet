@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "93fdfd852380ac097e69c0629adef38f",
+    "content-hash": "36340f0e83fb7b2d08748bc58d77394a",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -3849,16 +3849,16 @@
         },
         {
             "name": "symfony/runtime",
-            "version": "v5.3.11",
+            "version": "v5.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/runtime.git",
-                "reference": "0345ba5dbfc06a878bc48a7ec18ebc144cc60800"
+                "reference": "f7a8403ae0e6847e56881c3c106e4ea2ec4ef8c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/runtime/zipball/0345ba5dbfc06a878bc48a7ec18ebc144cc60800",
-                "reference": "0345ba5dbfc06a878bc48a7ec18ebc144cc60800",
+                "url": "https://api.github.com/repos/symfony/runtime/zipball/f7a8403ae0e6847e56881c3c106e4ea2ec4ef8c9",
+                "reference": "f7a8403ae0e6847e56881c3c106e4ea2ec4ef8c9",
                 "shasum": ""
             },
             "require": {
@@ -3871,10 +3871,10 @@
             },
             "require-dev": {
                 "composer/composer": "^1.0.2|^2.0",
-                "symfony/console": "^4.4|^5",
-                "symfony/dotenv": "^5.1",
-                "symfony/http-foundation": "^4.4|^5",
-                "symfony/http-kernel": "^4.4|^5"
+                "symfony/console": "^4.4.30|^5.3.7|^6.0",
+                "symfony/dotenv": "^5.1|^6.0",
+                "symfony/http-foundation": "^4.4.30|^5.3.7|^6.0",
+                "symfony/http-kernel": "^4.4.30|^5.3.7|^6.0"
             },
             "type": "composer-plugin",
             "extra": {
@@ -3906,7 +3906,7 @@
             "description": "Enables decoupling PHP applications from global state",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/runtime/tree/v5.3.11"
+                "source": "https://github.com/symfony/runtime/tree/v5.4.1"
             },
             "funding": [
                 {
@@ -3922,7 +3922,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-05T14:24:28+00:00"
+            "time": "2021-12-01T15:47:38+00:00"
         },
         {
             "name": "symfony/service-contracts",
