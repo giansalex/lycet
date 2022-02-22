@@ -31,6 +31,7 @@ services:
     App\Controller\:
         resource: '../src/Controller/'
         tags: ['controller.service_arguments']
+        shared: false
 
     Psr\Container\ContainerInterface:
         alias: service_container
