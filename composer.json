@@ -23,7 +23,7 @@
     },
     "require-dev": {
         "symfony/browser-kit": "5.3.*",
-        "symfony/phpunit-bridge": "5.3.*"
+        "symfony/phpunit-bridge": "6.0.*"
     },
     "config": {
         "preferred-install": {
