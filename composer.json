@@ -19,7 +19,7 @@
         "symfony/framework-bundle": "5.3.*",
         "symfony/monolog-bundle": "^3.5",
         "symfony/runtime": "5.3.*",
-        "symfony/yaml": "5.3.*"
+        "symfony/yaml": "5.4.*"
     },
     "require-dev": {
         "symfony/browser-kit": "5.3.*",
