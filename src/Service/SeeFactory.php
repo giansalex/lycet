@@ -71,7 +71,7 @@ class SeeFactory
         $config = $companies[$ruc];
         $this->see->setCredentials($config['SOL_USER'], $config['SOL_PASS']);
         $this->see->setCertificate($this->fileReader->getContents($config['certificate']));
-        $this->see->setService($this->getUrlService($class));
+        $this->see->setService($this->getUrlService($class, $config));
 
         return true;
     }
@@ -84,7 +84,7 @@ class SeeFactory
     }
 
 
-    private function getUrlService($className)
+    private function getUrlService($className, $config = [])
     {
         $key = 'FE_URL';
         switch ($className) {
@@ -96,6 +96,10 @@ class SeeFactory
             case Despatch::class:
                 $key = 'GUIA_URL';
                 break;
+        }
+
+        if(array_key_exists($key, $config)) {
+          return $config[$key];
         }
 
         return $this->config->get($key);
