@@ -78,6 +78,8 @@ Abrir el navegador, y dirígete a http://localhost:8000/
 
 ### Docs
 
+- [Conectando lycet desde nodejs](https://github.com/giansalex/lycet-demo-js)
+
 Puedes visitar [greenter en postman](https://www.postman.com/greenter/) que contiene ejemplos del envío de algunos comprobantes.
 
 Ver [swagger documentation](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/giansalex/lycet/master/public/swagger.yaml), puedes crear un cliente en [swagger editor](http://editor.swagger.io/?url=https://raw.githubusercontent.com/giansalex/lycet/master/public/swagger.yaml), para tu lenguaje de preferencia.
