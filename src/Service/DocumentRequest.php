@@ -122,7 +122,8 @@ class DocumentRequest implements DocumentRequestInterface
      */
     public function pdf(): Response
     {
-        $document = $this->getDocument();
+        $document = $this->getDocument("document");
+        $parameters = $this->getKeyContent("parameters");
 
         /**@var $errors array */
 //        $errors = $this->validator->validate($document);
@@ -139,15 +140,17 @@ class DocumentRequest implements DocumentRequestInterface
             $logo = $this->getParameter('logo');
         }
 
-        $parameters = [
-            'system' => [
-                'logo' => $logo,
-//                'hash' => '',
-            ],
-            'user' => [
-                'header' => '',
-            ]
-        ];
+        if(!$parameters) {
+            $parameters = [
+                'system' => [
+                    'logo' => $logo,
+    //                'hash' => '',
+                ],
+                'user' => [
+                    'header' => '',
+                ]
+            ];
+        }
 
         $report = $this->getReport();
         $pdf = $report->render($document, $parameters);
@@ -171,11 +174,21 @@ class DocumentRequest implements DocumentRequestInterface
     /**
      * @return DocumentInterface
      */
-    private function getDocument(): DocumentInterface
+    private function getDocument(string $key = ''): DocumentInterface
     {
         $request = $this->requestStack->getCurrentRequest();
 
-        return $this->parser->getObject($request, $this->className);
+        return $this->parser->getObject($request, $this->className, $key);
+    }
+
+    /**
+     * @return Array
+     */
+    private function getKeyContent(string $key): ?Array
+    {
+        $request = $this->requestStack->getCurrentRequest();
+
+        return $this->parser->getKey($request, $key);
     }
 
     private function getReport(): ReportInterface
