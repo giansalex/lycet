@@ -31,22 +31,19 @@ class DocumentRequestParser implements RequestParserInterface
     /**
      * @param Request $request
      * @param string $class
-     * @param string $key
      * @return mixed
      */
-    function getObject(Request $request, string $class, string $key = ''): DocumentInterface
+    function getObject(Request $request, string $class): DocumentInterface
     {
         $data = $request->getContent();
 
-        if(!empty($key)) {
-            $dataJson = json_decode($data, true);
-            if(array_key_exists($key, $dataJson)) {
-                return $this->serializer->deserialize(
-                    json_encode($dataJson[$key]),
-                    $class,
-                    'json'
-                );
-            }
+        $dataJson = json_decode($data, true);
+        if(array_key_exists('document', $dataJson)) {
+            return $this->serializer->deserialize(
+                json_encode($dataJson['document']),
+                $class,
+                'json'
+            );
         }
 
         return $this->serializer->deserialize(
@@ -59,7 +56,7 @@ class DocumentRequestParser implements RequestParserInterface
     /**
      * @param Request $request
      * @param string $key
-     * @return Array
+     * @return mixed
      */
     function getKey(Request $request, string $key): ?Array
     {

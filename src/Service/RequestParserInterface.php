@@ -18,15 +18,14 @@ interface RequestParserInterface
     /**
      * @param Request $request
      * @param string $class
-     * @param string $key
      * @return mixed
      */
-    function getObject(Request $request, string $class, string $key);
+    function getObject(Request $request, string $class);
 
     /**
      * @param Request $request
      * @param string $key
-     * @return array
+     * @return mixed
      */
     function getKey(Request $request, string $key);
 }

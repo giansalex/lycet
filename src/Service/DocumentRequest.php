@@ -122,7 +122,7 @@ class DocumentRequest implements DocumentRequestInterface
      */
     public function pdf(): Response
     {
-        $document = $this->getDocument("document");
+        $document = $this->getDocument();
         $parameters = $this->getKeyContent("parameters");
 
         /**@var $errors array */
@@ -131,16 +131,16 @@ class DocumentRequest implements DocumentRequestInterface
 //            return $this->json($errors, 400);
 //        }
 
-        $jsonCompanies = $this->getParameter('companies');
-
-        $ruc = $document->getCompany()->getRuc();
-        if (empty($companies) && ($companies = json_decode($jsonCompanies, true)) && array_key_exists($ruc, $companies)) {
-            $logo = $this->getFile($companies[$ruc]['logo']);
-        } else {
-            $logo = $this->getParameter('logo');
-        }
 
         if(!$parameters) {
+            $jsonCompanies = $this->getParameter('companies');
+            $ruc = $document->getCompany()->getRuc();
+            if (empty($companies) && ($companies = json_decode($jsonCompanies, true)) && array_key_exists($ruc, $companies)) {
+                $logo = $this->getFile($companies[$ruc]['logo']);
+            } else {
+                $logo = $this->getParameter('logo');
+            }
+
             $parameters = [
                 'system' => [
                     'logo' => $logo,
@@ -174,11 +174,11 @@ class DocumentRequest implements DocumentRequestInterface
     /**
      * @return DocumentInterface
      */
-    private function getDocument(string $key = ''): DocumentInterface
+    private function getDocument(): DocumentInterface
     {
         $request = $this->requestStack->getCurrentRequest();
 
-        return $this->parser->getObject($request, $this->className, $key);
+        return $this->parser->getObject($request, $this->className);
     }
 
     /**
