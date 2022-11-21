@@ -123,6 +123,7 @@ class DocumentRequest implements DocumentRequestInterface
     public function pdf(): Response
     {
         $document = $this->getDocument();
+        $parameters = $this->getKeyContent("parameters");
 
         /**@var $errors array */
 //        $errors = $this->validator->validate($document);
@@ -130,24 +131,26 @@ class DocumentRequest implements DocumentRequestInterface
 //            return $this->json($errors, 400);
 //        }
 
-        $jsonCompanies = $this->getParameter('companies');
 
-        $ruc = $document->getCompany()->getRuc();
-        if (empty($companies) && ($companies = json_decode($jsonCompanies, true)) && array_key_exists($ruc, $companies)) {
-            $logo = $this->getFile($companies[$ruc]['logo']);
-        } else {
-            $logo = $this->getParameter('logo');
+        if(!$parameters) {
+            $jsonCompanies = $this->getParameter('companies');
+            $ruc = $document->getCompany()->getRuc();
+            if (empty($companies) && ($companies = json_decode($jsonCompanies, true)) && array_key_exists($ruc, $companies)) {
+                $logo = $this->getFile($companies[$ruc]['logo']);
+            } else {
+                $logo = $this->getParameter('logo');
+            }
+
+            $parameters = [
+                'system' => [
+                    'logo' => $logo,
+    //                'hash' => '',
+                ],
+                'user' => [
+                    'header' => '',
+                ]
+            ];
         }
-
-        $parameters = [
-            'system' => [
-                'logo' => $logo,
-//                'hash' => '',
-            ],
-            'user' => [
-                'header' => '',
-            ]
-        ];
 
         $report = $this->getReport();
         $pdf = $report->render($document, $parameters);
@@ -176,6 +179,16 @@ class DocumentRequest implements DocumentRequestInterface
         $request = $this->requestStack->getCurrentRequest();
 
         return $this->parser->getObject($request, $this->className);
+    }
+
+    /**
+     * @return Array
+     */
+    private function getKeyContent(string $key): ?Array
+    {
+        $request = $this->requestStack->getCurrentRequest();
+
+        return $this->parser->getKey($request, $key);
     }
 
     private function getReport(): ReportInterface

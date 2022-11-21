@@ -37,10 +37,31 @@ class DocumentRequestParser implements RequestParserInterface
     {
         $data = $request->getContent();
 
+        $dataJson = json_decode($data, true);
+        if(array_key_exists('document', $dataJson)) {
+            return $this->serializer->deserialize(
+                json_encode($dataJson['document']),
+                $class,
+                'json'
+            );
+        }
+
         return $this->serializer->deserialize(
             $data,
             $class,
             'json'
         );
+    }
+
+    /**
+     * @param Request $request
+     * @param string $key
+     * @return mixed
+     */
+    function getKey(Request $request, string $key): ?Array
+    {
+        $data = json_decode($request->getContent(), true);
+
+        return array_key_exists($key, $data) ? $data[$key] : null;
     }
 }
