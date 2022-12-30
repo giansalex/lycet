@@ -10,3 +10,5 @@ Greenter\Model\Despatch\DespatchDetail:
             type: float
         codProdSunat:
             type: string
+        atributos:
+            type: array<Greenter\Model\Sale\DetailAttribute>

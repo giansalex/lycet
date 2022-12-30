@@ -1,0 +1,6 @@
+Greenter\Model\Despatch\Puerto:
+    properties:
+        codigo:
+            type: string
+        nombre:
+            type: string

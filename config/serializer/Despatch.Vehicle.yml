@@ -1,0 +1,12 @@
+Greenter\Model\Despatch\Vehicle:
+    properties:
+        placa:
+            type: string
+        nroCirculacion:
+            type: string
+        codEmisor:
+            type: string
+        nroAutorizacion:
+            type: string
+        secundarios:
+            type: array<Greenter\Model\Despatch\Vehicle>

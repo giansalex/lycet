@@ -1,10 +1,10 @@
-Greenter\Model\Despatch\Direction:
+Greenter\Model\Despatch\AdditionalDoc:
     properties:
-        ubigueo:
+        tipoDesc:
             type: string
-        direccion:
+        tipo:
             type: string
-        codLocal:
+        nro:
             type: string
-        ruc:
+        emisor:
             type: string
