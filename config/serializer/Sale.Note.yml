@@ -10,6 +10,10 @@ Greenter\Model\Sale\Note:
             type: string
         perception:
             type: Greenter\Model\Sale\SalePerception
+        valorVenta:
+            type: float
+        subTotal:
+            type: float
         ublVersion:
             type: string
         tipoDoc:
