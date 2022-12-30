@@ -4,8 +4,16 @@ Greenter\Model\Despatch\Shipment:
             type: string
         desTraslado:
             type: string
+        sustentoPeso:
+            type: string
         indTransbordo:
             type: bool
+        indicadores:
+            type: array<string>
+        indicador:
+            type: array<string>
+        pesoItems:
+            type: float
         pesoTotal:
             type: float
         undPesoTotal:
@@ -18,10 +26,20 @@ Greenter\Model\Despatch\Shipment:
             type: DateTime
         numContenedor:
             type: string
+        contenedores:
+            type: array<string>
         codPuerto:
             type: string
+        puerto:
+            type: Greenter\Model\Despatch\Puerto
+        aeropuerto:
+            type: Greenter\Model\Despatch\Puerto
         transportista:
             type: Greenter\Model\Despatch\Transportist
+        vehiculo:
+            type: Greenter\Model\Despatch\Vehicle
+        choferes:
+            type: array<Greenter\Model\Despatch\Driver>
         llegada:
             type: Greenter\Model\Despatch\Direction
         partida:

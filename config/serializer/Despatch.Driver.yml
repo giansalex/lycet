@@ -1,0 +1,14 @@
+Greenter\Model\Despatch\Driver:
+    properties:
+        tipo:
+            type: string
+        tipoDoc:
+            type: string
+        nroDoc:
+            type: string
+        nombres:
+            type: string
+        apellidos:
+            type: string
+        licencia:
+            type: string

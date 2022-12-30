@@ -6,6 +6,8 @@ Greenter\Model\Despatch\Transportist:
             type: string
         rznSocial:
             type: string
+        nroMtc:
+            type: string
         placa:
             type: string
         choferTipoDoc:
