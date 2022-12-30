@@ -8,9 +8,9 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
-        "greenter/lite": "^4.3",
-        "greenter/htmltopdf": "^4.3",
-        "greenter/report": "^4.3",
+        "greenter/lite": "^4.4",
+        "greenter/htmltopdf": "^4.4",
+        "greenter/report": "^4.4",
         "jms/serializer-bundle": "^5.0",
         "nelmio/cors-bundle": "^2.1",
         "symfony/console": "5.4.*",
@@ -25,13 +25,15 @@
         "symfony/browser-kit": "5.4.*",
         "symfony/phpunit-bridge": "5.4.*"
     },
+    "prefer-stable": true,
+    "minimum-stability": "dev",
     "config": {
         "preferred-install": {
             "*": "dist"
         },
         "allow-plugins": {
             "symfony/flex": true,
-	    "symfony/runtime": true
+	        "symfony/runtime": true
         },
         "sort-packages": true
     },
