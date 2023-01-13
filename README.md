@@ -75,7 +75,9 @@ Ejemplo de contenido del archivo `empresas.json`, tambien puede cambiar la URL d
     "RE_URL": "https://my-ose.com/billService",
     "GUIA_URL": "https://my-ose.com/billService",
     "AUTH_URL": "https://api-test-seguridad.sunat.gob.pe/v1",
-    "API_URL": "https://api-test.sunat.gob.pe/v1"
+    "API_URL": "https://api-test.sunat.gob.pe/v1",
+    "CLIENT_ID": "85e5b0ae-255c-4891-a595-0b98c65c9854",
+    "CLIENT_SECRET": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   }
 }
 ```
