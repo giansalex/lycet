@@ -35,6 +35,10 @@ class TokenSubscriber implements EventSubscriberInterface
             return;
         }
 
+        if ($event->getRequest()->getMethod() === 'OPTION') {
+            return;
+        }
+
         $token = $event->getRequest()->query->get('token');
         if ($token !== $this->token) {
             throw new AccessDeniedHttpException('This action needs a valid token!');

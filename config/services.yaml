@@ -90,6 +90,14 @@ services:
         calls:
             - [setCachePath, ['%kernel.cache_dir%']]
 
+    Greenter\Api:
+        public: true
+        arguments:
+            - auth: '%env(AUTH_URL)%'
+              cpe: '%env(API_URL)%'
+        calls:
+            - [setBuilderOptions, [cache: '%kernel.cache_dir%']]
+
     App\Service\FileConfigProvider:
         arguments: ['%data_path%']
 
@@ -110,6 +118,14 @@ services:
             - '@App\Service\ConfigProviderInterface'
             - '@App\Service\FileDataReader'
             - '@Greenter\See'
+
+    App\Service\SeeApiFactory:
+        public: true
+        arguments:
+            - '@App\Service\EnvConfigProvider'
+            - '@App\Service\ConfigProviderInterface'
+            - '@App\Service\FileDataReader'
+            - '@Greenter\Api'
 
     App\EventSubscriber\TokenSubscriber:
         arguments:

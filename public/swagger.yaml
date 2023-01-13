@@ -353,7 +353,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DocumentResponse"
+                $ref: "#/components/schemas/SummaryResponse"
         "400":
           description: Error de Validación
           content:
@@ -382,7 +382,33 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/ValidationResponse"
-  /despatch/Pdf:
+  /despatch/status:
+    get:
+      tags:
+        - despatch
+      summary: Obtiene el estado del ticket
+      description: Retorna el CDR
+      operationId: getDespatchStatus
+      parameters:
+        - name: ticket
+          in: query
+          description: Ticket del comprobante
+          schema:
+            type: string
+        - name: ruc
+          in: query
+          description: RUC de empresa (Multiples Empresas)
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Operacion exitosa
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StatusResult"
+  /despatch/pdf:
     post:
       tags:
         - despatch
@@ -1510,6 +1536,13 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/RetentionDetail"
+    Puerto:
+      type: object
+      properties:
+        codigo:
+          type: string
+        nombre:
+          type: string
     Transportist:
       type: object
       properties:
@@ -1519,11 +1552,43 @@ components:
           type: string
         rznSocial:
           type: string
+        nroMtc:
+          type: string
         placa:
           type: string
         choferTipoDoc:
           type: string
         choferDoc:
+          type: string
+    Vehicle:
+      type: object
+      properties:
+        placa:
+          type: string
+        nroCirculacion:
+          type: string
+        codEmisor:
+          type: string
+        nroAutorizacion:
+          type: string
+        secundarios:
+          type: array
+          items:
+            $ref: '#/components/schemas/Vehicle'
+    Driver:
+      type: object
+      properties:
+        tipo:
+          type: string
+        tipoDoc:
+          type: string
+        nroDoc:
+          type: string
+        nombres:
+          type: string
+        apellidos:
+          type: string
+        licencia:
           type: string
     Shipment:
       type: object
@@ -1532,8 +1597,17 @@ components:
           type: string
         desTraslado:
           type: string
+        sustentoPeso:
+          type: string
         indTransbordo:
           type: boolean
+        indicadores:
+          type: array
+          items:
+            type: string
+        pesoItems:
+          type: number
+          format: float
         pesoTotal:
           type: number
           format: float
@@ -1548,14 +1622,39 @@ components:
           format: date-time
         numContenedor:
           type: string
+        contenedores:
+          type: array
+          items:
+            type: string
         codPuerto:
           type: string
+        puerto:
+          $ref: '#/components/schemas/Puerto'
+        aeropuerto:
+          $ref: '#/components/schemas/Puerto'
         transportista:
-          $ref: "#/components/schemas/Transportist"
+          $ref: '#/components/schemas/Transportist'
+        vehiculo:
+          $ref: '#/components/schemas/Vehicle'
+        choferes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Driver'
         llegada:
-          $ref: "#/components/schemas/Direction"
+          $ref: '#/components/schemas/Direction'
         partida:
-          $ref: "#/components/schemas/Direction"
+          $ref: '#/components/schemas/Direction'
+    AdditionalDoc:
+      type: object
+      properties:
+        tipoDesc:
+          type: string
+        tipo:
+          type: string
+        nro:
+          type: string
+        emisor:
+          type: string
     DespatchDetail:
       type: object
       properties:
@@ -1570,9 +1669,15 @@ components:
           format: float
         codProdSunat:
           type: string
+        atributos:
+          type: array
+          items:
+            $ref: '#/components/schemas/DetailAttribute'
     Despatch:
       type: object
       properties:
+        version:
+          type: string
         tipoDoc:
           type: string
         serie:
@@ -1585,21 +1690,25 @@ components:
           type: string
           format: date-time
         company:
-          $ref: "#/components/schemas/Company"
+          $ref: '#/components/schemas/Company'
         destinatario:
-          $ref: "#/components/schemas/Client"
+          $ref: '#/components/schemas/Client'
         tercero:
-          $ref: "#/components/schemas/Client"
+          $ref: '#/components/schemas/Client'
+        comprador:
+          $ref: '#/components/schemas/Client'
         envio:
-          $ref: "#/components/schemas/Shipment"
-        docBaja:
-          $ref: "#/components/schemas/Document"
-        relDoc:
-          $ref: "#/components/schemas/Document"
+          $ref: '#/components/schemas/Shipment'
+        addDocs:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdditionalDoc'
         details:
           type: array
           items:
-            $ref: "#/components/schemas/DespatchDetail"
+            $ref: '#/components/schemas/DespatchDetail'
+        name:
+          type: string
     Error:
       type: object
       properties:
