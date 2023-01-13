@@ -132,7 +132,7 @@
         "version": "v9.99.100"
     },
     "php": {
-        "version": "7.2"
+        "version": "7.4"
     },
     "phpstan/phpdoc-parser": {
         "version": "1.2.0"
