@@ -73,7 +73,9 @@ Ejemplo de contenido del archivo `empresas.json`, tambien puede cambiar la URL d
     "logo": "20000000002-logo.png",
     "FE_URL": "https://my-ose.com/billService",
     "RE_URL": "https://my-ose.com/billService",
-    "GUIA_URL": "https://my-ose.com/billService"
+    "GUIA_URL": "https://my-ose.com/billService",
+    "AUTH_URL": "https://api-test-seguridad.sunat.gob.pe/v1",
+    "API_URL": "https://api-test.sunat.gob.pe/v1"
   }
 }
 ```
