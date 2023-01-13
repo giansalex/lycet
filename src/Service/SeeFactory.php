@@ -83,7 +83,6 @@ class SeeFactory
         $this->see->setService($this->getUrlService($class));
     }
 
-
     private function getUrlService($className, $config = [])
     {
         $key = 'FE_URL';
