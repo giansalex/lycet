@@ -92,12 +92,11 @@ services:
 
     Greenter\Api:
         public: true
-        arguments: [['%env(AUTH_URL)%', '%env(API_URL)%']]
+        arguments:
+            - auth: '%env(AUTH_URL)%'
+              cpe: '%env(API_URL)%'
         calls:
-            -
-              - setBuilderOptions
-              -
-                - cache: '%kernel.cache_dir%'
+            - [setBuilderOptions, [cache: '%kernel.cache_dir%']]
 
     App\Service\FileConfigProvider:
         arguments: ['%data_path%']
