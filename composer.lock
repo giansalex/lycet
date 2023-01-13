@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bc98eb30a1545ff9d172ba28beff3250",
+    "content-hash": "c295c2f5fdcdda62a816c4ab8c62b8be",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -382,25 +382,25 @@
         },
         {
             "name": "greenter/htmltopdf",
-            "version": "v4.4.0-beta.1",
+            "version": "v5.0.0-beta.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/htmltopdf.git",
-                "reference": "afb2c9d811bdd414f4e757de41d7b8fd9171fbeb"
+                "reference": "e0303cc183174fa0fc17af9485036dfbe12f7db7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/htmltopdf/zipball/afb2c9d811bdd414f4e757de41d7b8fd9171fbeb",
-                "reference": "afb2c9d811bdd414f4e757de41d7b8fd9171fbeb",
+                "url": "https://api.github.com/repos/thegreenter/htmltopdf/zipball/e0303cc183174fa0fc17af9485036dfbe12f7db7",
+                "reference": "e0303cc183174fa0fc17af9485036dfbe12f7db7",
                 "shasum": ""
             },
             "require": {
                 "greenter/core": "^4.4",
                 "mikehaertl/phpwkhtmltopdf": "^2.4",
-                "php": ">=7.2"
+                "php": ">=7.4"
             },
             "require-dev": {
-                "phpunit/phpunit": "^8"
+                "phpunit/phpunit": "^9"
             },
             "suggest": {
                 "greenter/report": "Html Reporter"
@@ -435,22 +435,22 @@
             ],
             "support": {
                 "forum": "https://community.greenter.dev/",
-                "source": "https://github.com/thegreenter/htmltopdf/tree/v4.4.0-beta.1"
+                "source": "https://github.com/thegreenter/htmltopdf/tree/v5.0.0-beta.1"
             },
-            "time": "2021-06-05T03:05:19+00:00"
+            "time": "2023-01-11T16:23:30+00:00"
         },
         {
             "name": "greenter/lite",
-            "version": "v4.4.0-beta.1",
+            "version": "v5.0.0-beta.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/lite.git",
-                "reference": "e79fd410f8509049b947246a1c96ec433f0d770e"
+                "reference": "a93502cf2acde6a98d793307e4fa62a96a4c4507"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/lite/zipball/e79fd410f8509049b947246a1c96ec433f0d770e",
-                "reference": "e79fd410f8509049b947246a1c96ec433f0d770e",
+                "url": "https://api.github.com/repos/thegreenter/lite/zipball/a93502cf2acde6a98d793307e4fa62a96a4c4507",
+                "reference": "a93502cf2acde6a98d793307e4fa62a96a4c4507",
                 "shasum": ""
             },
             "require": {
@@ -459,10 +459,10 @@
                 "greenter/ws": "^4.4",
                 "greenter/xml": "^4.4",
                 "greenter/xmldsig": "^5.0",
-                "php": ">=7.2"
+                "php": ">=7.4"
             },
             "require-dev": {
-                "phpunit/phpunit": "^8"
+                "phpunit/phpunit": "^9"
             },
             "type": "library",
             "extra": {
@@ -496,33 +496,33 @@
             "support": {
                 "forum": "https://community.greenter.dev/",
                 "issues": "https://github.com/thegreenter/lite/issues",
-                "source": "https://github.com/thegreenter/lite/tree/v4.4.0-beta.1"
+                "source": "https://github.com/thegreenter/lite/tree/v5.0.0-beta.1"
             },
-            "time": "2022-12-23T18:15:05+00:00"
+            "time": "2023-01-11T16:23:24+00:00"
         },
         {
             "name": "greenter/report",
-            "version": "v4.4.0-beta.1",
+            "version": "v5.0.0-beta.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/report.git",
-                "reference": "e3a726ce2ea3370b7e15f27317eb07a2cb270ae9"
+                "reference": "58bcb34f808f382dd266440936d1a84fa7ce7b1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/report/zipball/e3a726ce2ea3370b7e15f27317eb07a2cb270ae9",
-                "reference": "e3a726ce2ea3370b7e15f27317eb07a2cb270ae9",
+                "url": "https://api.github.com/repos/thegreenter/report/zipball/58bcb34f808f382dd266440936d1a84fa7ce7b1b",
+                "reference": "58bcb34f808f382dd266440936d1a84fa7ce7b1b",
                 "shasum": ""
             },
             "require": {
                 "bacon/bacon-qr-code": "^2.0",
                 "greenter/core": "^4.4",
-                "php": ">=7.2",
+                "php": ">=7.4",
                 "twig/twig": "~3.0"
             },
             "require-dev": {
                 "greenter/data": "^4.4",
-                "phpunit/phpunit": "^8"
+                "phpunit/phpunit": "^9"
             },
             "type": "library",
             "extra": {
@@ -555,9 +555,9 @@
             ],
             "support": {
                 "forum": "https://community.greenter.dev/",
-                "source": "https://github.com/thegreenter/report/tree/v4.4.0-beta.1"
+                "source": "https://github.com/thegreenter/report/tree/v5.0.0-beta.1"
             },
-            "time": "2021-06-05T03:05:17+00:00"
+            "time": "2023-01-11T16:23:28+00:00"
         },
         {
             "name": "greenter/ws",
