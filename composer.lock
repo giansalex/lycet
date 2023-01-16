@@ -331,7 +331,7 @@
         },
         {
             "name": "greenter/core",
-            "version": "v5.0.0-beta.3",
+            "version": "v5.0.0-beta.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/core.git",
@@ -376,7 +376,7 @@
             ],
             "support": {
                 "forum": "https://community.greenter.dev/",
-                "source": "https://github.com/thegreenter/core/tree/v5.0.0-beta.3"
+                "source": "https://github.com/thegreenter/core/tree/v5.0.0-beta.4"
             },
             "time": "2023-01-11T17:16:15+00:00"
         },
@@ -438,7 +438,7 @@
         },
         {
             "name": "greenter/htmltopdf",
-            "version": "v5.0.0-beta.3",
+            "version": "v5.0.0-beta.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/htmltopdf.git",
@@ -491,7 +491,7 @@
             ],
             "support": {
                 "forum": "https://community.greenter.dev/",
-                "source": "https://github.com/thegreenter/htmltopdf/tree/v5.0.0-beta.3"
+                "source": "https://github.com/thegreenter/htmltopdf/tree/v5.0.0-beta.4"
             },
             "time": "2023-01-11T17:16:13+00:00"
         },
