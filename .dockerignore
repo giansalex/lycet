@@ -1,7 +1,5 @@
 .git
 .idea
-data/*
-!data/.htaccess
 tests
 var
 vendor
