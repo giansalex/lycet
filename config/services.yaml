@@ -51,7 +51,7 @@ services:
 
     Greenter\Report\HtmlReport:
         arguments:
-            - '%env(TEMPLATESPDF_PATH)%'
+            - '%env(default::TEMPLATESPDF_PATH)%'
             - cache: '%kernel.cache_dir%'
               strict_variables: true
 
