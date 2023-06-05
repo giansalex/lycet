@@ -10,9 +10,6 @@ namespace App\Controller\v1;
 
 use App\Service\ConfigProviderInterface;
 use App\Service\DocumentRequestInterface;
-use App\Service\EnvConfigProvider;
-use App\Service\FileConfigProvider;
-use App\Service\SeeFactory;
 use Greenter\Model\Sale\Invoice;
 use Greenter\Ws\Services\ConsultCdrService;
 use Greenter\Ws\Services\SoapClient;
@@ -54,11 +51,11 @@ class InvoiceController extends AbstractController
     /**
      * InvoiceController constructor.
      * @param DocumentRequestInterface $document
-     * @param EnvConfigProvider $config
-     * @param FileConfigProvider $fileProvider
+     * @param ConfigProviderInterface $config
+     * @param ConfigProviderInterface $fileProvider
      * @param SerializerInterface $serializer
      */
-    public function __construct(DocumentRequestInterface $document, EnvConfigProvider $config, FileConfigProvider $fileProvider, SerializerInterface $serializer)
+    public function __construct(DocumentRequestInterface $document, ConfigProviderInterface $config, ConfigProviderInterface $fileProvider, SerializerInterface $serializer)
     {
         $this->document = $document;
         $this->document->setDocumentType(Invoice::class);
