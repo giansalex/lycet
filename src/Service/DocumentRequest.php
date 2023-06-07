@@ -123,39 +123,33 @@ class DocumentRequest implements DocumentRequestInterface
     public function pdf(): Response
     {
         $document = $this->getDocument();
-        $parameters = $this->getKeyContent("parameters");
+        $params = $this->getKeyContent("parameters");
 
-        /**@var $errors array */
-//        $errors = $this->validator->validate($document);
-//        if (count($errors)) {
-//            return $this->json($errors, 400);
-//        }
-
-
-        if(!$parameters) {
-            $jsonCompanies = $this->getParameter('companies');
-            $ruc = $document->getCompany()->getRuc();
-            if (empty($companies) && ($companies = json_decode($jsonCompanies, true)) && array_key_exists($ruc, $companies)) {
-                $logo = $this->getFile($companies[$ruc]['logo']);
-            } else {
-                $logo = $this->getParameter('logo');
-            }
-
-            $parameters = [
-                'system' => [
-                    'logo' => $logo,
-    //                'hash' => '',
-                ],
-                'user' => [
-                    'header' => '',
-                ]
-            ];
+        $jsonCompanies = $this->getParameter('companies');
+        $ruc = $document->getCompany()->getRuc();
+        if (empty($companies) && ($companies = json_decode($jsonCompanies, true)) && array_key_exists($ruc, $companies)) {
+            $logo = $this->getFile($companies[$ruc]['logo']);
+        } else {
+            $logo = $this->getParameter('logo');
         }
+
+        $see = $this->getSee($ruc);
+
+        $parameters = [
+            'system' => [
+                'logo' => $params['system']['logo'] ?? $logo,
+                'hash' => $this->getHashFromXml($see->getXmlSigned($document)),
+            ],
+            'user' => [
+                'header' => '',
+                'extras' => $params['user']['extras'] ?? [],
+            ]
+        ];
 
         $report = $this->getReport();
         $pdf = $report->render($document, $parameters);
 
-        return $this->file($pdf, $document->getName().'.pdf', 'application/pdf');
+        return $this->file($pdf, $document->getName() . '.pdf', 'application/pdf');
     }
 
     /**
