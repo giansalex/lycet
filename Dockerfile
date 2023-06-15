@@ -1,10 +1,11 @@
-FROM php:8.0-alpine3.14 AS build-env
+FROM php:8.1-alpine3.14 AS build-env
 
 LABEL owner="Giancarlos Salas"
 LABEL maintainer="giansalex@gmail.com"
 
 WORKDIR /app
 ENV APP_ENV prod
+ENV COMPOSER_ALLOW_SUPERUSER=1
 
 # Install php dev dependencies
 RUN apk add --no-cache \
@@ -24,7 +25,7 @@ COPY . .
 # Install Packages
 RUN curl --silent --show-error -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
     composer install --no-interaction --no-dev --no-autoloader --no-scripts --no-progress --ignore-platform-reqs && \
-    composer require php-pm/php-pm php-pm/httpkernel-adapter --update-no-dev --no-scripts --no-progress --ignore-platform-reqs && \
+    composer require php-pm/php-pm php-pm/httpkernel-adapter --update-no-dev --no-scripts --no-progress --ignore-platform-reqs --with-all-dependencies && \
     composer dump-autoload --optimize --no-dev --classmap-authoritative && \
     composer dump-env prod --empty && \
     find -type f -name '*.md' -delete;
@@ -32,7 +33,7 @@ RUN curl --silent --show-error -sS https://getcomposer.org/installer | php -- --
 #   find -name "[Tt]est*" -type d -exec rm -rf {} + 
     
 
-FROM php:8.0-alpine3.14
+FROM php:8.1-alpine3.14
 
 EXPOSE 8000
 WORKDIR /var/www/html
@@ -41,8 +42,8 @@ ENV APP_ENV prod
 ENV APP_SECRET c4136a0540553455b122461ab6923e9d
 ENV WKHTMLTOPDF_PATH wkhtmltopdf
 ENV CLIENT_TOKEN 123456
-ENV SOL_USER 20000000001MODDATOS
-ENV SOL_PASS moddatos
+ENV SOL_USER 20161515648MODDATOS
+ENV SOL_PASS MODDATOS
 ENV CORS_ALLOW_ORIGIN .
 ENV FE_URL https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService
 ENV RE_URL https://e-beta.sunat.gob.pe/ol-ti-itemision-otroscpe-gem-beta/billService
@@ -53,7 +54,7 @@ ENV CLIENT_ID test-85e5b0ae-255c-4891-a595-0b98c65c9854
 ENV CLIENT_SECRET test-Hty/M6QshYvPgItX2P0+Kw==
 ENV TRUSTED_PROXIES="127.0.0.1,REMOTE_ADDR"
 
-ARG PHP_EXT_DIR=/usr/local/lib/php/extensions/no-debug-non-zts-20200930
+ARG PHP_EXT_DIR=/usr/local/lib/php/extensions/no-debug-non-zts-20210902
 
 # Install wkhtmltopdf
 RUN apk update && apk add --no-cache \
