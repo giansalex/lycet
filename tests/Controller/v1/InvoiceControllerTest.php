@@ -89,7 +89,7 @@ class InvoiceControllerTest extends WebTestCase
             ->willReturnCallback(function ($key) {
                switch ($key) {
                    case 'certificate':
-                       $path = __DIR__.'/../../Resources/SFSCert.pem';
+                       $path = __DIR__.'/../../Resources/cert.pem';
                        return file_get_contents($path);
                    default:
                        return '';
