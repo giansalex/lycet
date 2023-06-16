@@ -1,7 +1,7 @@
-FROM php:8.1-alpine3.14 AS build-env
+FROM php:8.1-alpine3.17 AS build-env
 
 LABEL owner="Giancarlos Salas"
-LABEL maintainer="giansalex@gmail.com"
+LABEL maintainer="me@giansalex.dev"
 
 WORKDIR /app
 ENV APP_ENV prod
@@ -19,7 +19,7 @@ RUN docker-php-ext-install soap && \
     docker-php-ext-configure opcache --enable-opcache && \
     docker-php-ext-install opcache && \
     docker-php-ext-install pcntl
-    
+
 COPY . .
 
 # Install Packages
@@ -30,10 +30,11 @@ RUN curl --silent --show-error -sS https://getcomposer.org/installer | php -- --
     composer dump-env prod --empty && \
     find -type f -name '*.md' -delete;
 #   twig have Test as src code
-#   find -name "[Tt]est*" -type d -exec rm -rf {} + 
-    
+#   find -name "[Tt]est*" -type d -exec rm -rf {} +
 
-FROM php:8.1-alpine3.14
+FROM surnet/alpine-wkhtmltopdf:3.17.0-0.12.6-small as pdf-bin
+
+FROM php:8.1-alpine3.17
 
 EXPOSE 8000
 WORKDIR /var/www/html
@@ -56,14 +57,22 @@ ENV TRUSTED_PROXIES="127.0.0.1,REMOTE_ADDR"
 
 ARG PHP_EXT_DIR=/usr/local/lib/php/extensions/no-debug-non-zts-20210902
 
-# Install wkhtmltopdf
+# Install wkhtmltopdf deps
 RUN apk update && apk add --no-cache \
-    wkhtmltopdf \
-    ttf-droid
+        libstdc++ \
+        libx11 \
+        libxrender \
+        libxext \
+        libssl1.1 \
+        ca-certificates \
+        fontconfig \
+        freetype \
+        ttf-droid
 
 COPY --from=build-env $PHP_EXT_DIR $PHP_EXT_DIR
 COPY --from=build-env $PHP_INI_DIR/conf.d/ $PHP_INI_DIR/conf.d/
 COPY --from=build-env /app .
+COPY --from=pdf-bin /bin/wkhtmltopdf /usr/bin/
 COPY docker/config/* $PHP_INI_DIR/conf.d/
 COPY docker/docker-entrypoint.sh .
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
