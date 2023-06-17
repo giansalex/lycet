@@ -81,6 +81,7 @@ Ejemplo de contenido del archivo `empresas.json`, tambien puede cambiar la URL d
   }
 }
 ```
+> Para pruebas de Guia de remision, utilizar la siguiente configuración [issue#605](https://github.com/giansalex/lycet/issues/605)
 
 ### Ejecutar    
 Usando Php Built-in Web Server.
