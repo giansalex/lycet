@@ -4325,16 +4325,16 @@
         },
         {
             "name": "symfony/runtime",
-            "version": "v5.4.22",
+            "version": "v5.4.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/runtime.git",
-                "reference": "4a78e519d40a3845437e29dc514959631badfed4"
+                "reference": "4659b552bc9f2380986e3f4b7e2bd4e512470e0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/runtime/zipball/4a78e519d40a3845437e29dc514959631badfed4",
-                "reference": "4a78e519d40a3845437e29dc514959631badfed4",
+                "url": "https://api.github.com/repos/symfony/runtime/zipball/4659b552bc9f2380986e3f4b7e2bd4e512470e0d",
+                "reference": "4659b552bc9f2380986e3f4b7e2bd4e512470e0d",
                 "shasum": ""
             },
             "require": {
@@ -4347,7 +4347,7 @@
             },
             "require-dev": {
                 "composer/composer": "^1.0.2|^2.0",
-                "symfony/console": "^4.4.30|^5.3.7|^6.0",
+                "symfony/console": "^4.4.30|^5.4.9|^6.0.9",
                 "symfony/dotenv": "^5.1|^6.0",
                 "symfony/http-foundation": "^4.4.30|^5.3.7|^6.0",
                 "symfony/http-kernel": "^4.4.30|^5.3.7|^6.0"
@@ -4385,7 +4385,7 @@
                 "runtime"
             ],
             "support": {
-                "source": "https://github.com/symfony/runtime/tree/v5.4.22"
+                "source": "https://github.com/symfony/runtime/tree/v5.4.26"
             },
             "funding": [
                 {
@@ -4401,7 +4401,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-14T15:48:23+00:00"
+            "time": "2023-07-16T16:48:57+00:00"
         },
         {
             "name": "symfony/service-contracts",
