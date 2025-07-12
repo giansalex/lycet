@@ -42,7 +42,6 @@ class VoidedController extends AbstractController
     public function __construct(DocumentRequestInterface $document, SerializerInterface $serializer)
     {
         $this->document = $document;
-        $this->document->setDocumentType(Voided::class);
         $this->serializer = $serializer;
     }
 
@@ -53,7 +52,7 @@ class VoidedController extends AbstractController
      */
     public function send(): Response
     {
-        return $this->document->send();
+        return $this->document->send(Voided::class);
     }
 
     /**
@@ -63,7 +62,7 @@ class VoidedController extends AbstractController
      */
     public function xml(): Response
     {
-        return $this->document->xml();
+        return $this->document->xml(Voided::class);
     }
 
     /**
@@ -73,7 +72,7 @@ class VoidedController extends AbstractController
      */
     public function pdf(): Response
     {
-        return $this->document->pdf();
+        return $this->document->pdf(Voided::class);
     }
 
     /**

@@ -58,7 +58,6 @@ class InvoiceController extends AbstractController
     public function __construct(DocumentRequestInterface $document, ConfigProviderInterface $config, ConfigProviderInterface $fileProvider, SerializerInterface $serializer)
     {
         $this->document = $document;
-        $this->document->setDocumentType(Invoice::class);
         $this->config = $config;
         $this->fileProvider = $fileProvider;
         $this->serializer = $serializer;
@@ -71,7 +70,7 @@ class InvoiceController extends AbstractController
      */
     public function send(): Response
     {
-        return $this->document->send();
+        return $this->document->send(Invoice::class);
     }
 
     /**
@@ -81,7 +80,7 @@ class InvoiceController extends AbstractController
      */
     public function xml(): Response
     {
-        return $this->document->xml();
+        return $this->document->xml(Invoice::class);
     }
 
     /**
@@ -91,7 +90,7 @@ class InvoiceController extends AbstractController
      */
     public function pdf(): Response
     {
-        return $this->document->pdf();
+        return $this->document->pdf(Invoice::class);
     }
 
     /**

@@ -35,7 +35,6 @@ class DespatchController extends AbstractController
     public function __construct(DocumentRequestInterface $document, SerializerInterface $serializer)
     {
         $this->document = $document;
-        $this->document->setDocumentType(Despatch::class);
         $this->serializer = $serializer;
     }
 
@@ -46,7 +45,8 @@ class DespatchController extends AbstractController
      */
     public function send(SeeApiFactory $factory): Response
     {
-        $document = $this->document->getDocument();
+        /** @var \Greenter\Model\Despatch\Despatch $document */
+        $document = $this->document->getDocument(Despatch::class);
         $see = $factory->build($document->getCompany()->getRuc());
         $result = $see->send($document);
 
@@ -69,7 +69,7 @@ class DespatchController extends AbstractController
      */
     public function xml(): Response
     {
-        return $this->document->xml();
+        return $this->document->xml(Despatch::class);
     }
 
     /**
@@ -79,7 +79,7 @@ class DespatchController extends AbstractController
      */
     public function pdf(): Response
     {
-        return $this->document->pdf();
+        return $this->document->pdf(Despatch::class);
     }
 
     /**

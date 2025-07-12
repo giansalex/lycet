@@ -33,7 +33,6 @@ class PerceptionController extends AbstractController
     public function __construct(DocumentRequestInterface $document)
     {
         $this->document = $document;
-        $this->document->setDocumentType(Perception::class);
     }
 
     /**
@@ -43,7 +42,7 @@ class PerceptionController extends AbstractController
      */
     public function send(): Response
     {
-        return $this->document->send();
+        return $this->document->send(Perception::class);
     }
 
     /**
@@ -53,7 +52,7 @@ class PerceptionController extends AbstractController
      */
     public function xml(): Response
     {
-        return $this->document->xml();
+        return $this->document->xml(Perception::class);
     }
 
     /**
@@ -63,6 +62,6 @@ class PerceptionController extends AbstractController
      */
     public function pdf(): Response
     {
-        return $this->document->pdf();
+        return $this->document->pdf(Perception::class);
     }
 }
