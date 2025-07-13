@@ -42,7 +42,6 @@ class SummaryController extends AbstractController
     public function __construct(DocumentRequestInterface $document, SerializerInterface $serializer)
     {
         $this->document = $document;
-        $this->document->setDocumentType(Summary::class);
         $this->serializer = $serializer;
     }
 
@@ -53,7 +52,7 @@ class SummaryController extends AbstractController
      */
     public function send(): Response
     {
-        return $this->document->send();
+        return $this->document->send(Summary::class);
     }
 
     /**
@@ -63,7 +62,7 @@ class SummaryController extends AbstractController
      */
     public function xml(): Response
     {
-        return $this->document->xml();
+        return $this->document->xml(Summary::class);
     }
 
     /**
@@ -73,7 +72,7 @@ class SummaryController extends AbstractController
      */
     public function pdf(): Response
     {
-        return $this->document->pdf();
+        return $this->document->pdf(Summary::class);
     }
 
     /**

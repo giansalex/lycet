@@ -33,7 +33,6 @@ class NoteController extends AbstractController
     public function __construct(DocumentRequestInterface $document)
     {
         $this->document = $document;
-        $this->document->setDocumentType(Note::class);
     }
 
     /**
@@ -43,7 +42,7 @@ class NoteController extends AbstractController
      */
     public function send(): Response
     {
-        return $this->document->send();
+        return $this->document->send(Note::class);
     }
 
     /**
@@ -53,7 +52,7 @@ class NoteController extends AbstractController
      */
     public function xml(): Response
     {
-        return $this->document->xml();
+        return $this->document->xml(Note::class);
     }
 
     /**
@@ -63,6 +62,6 @@ class NoteController extends AbstractController
      */
     public function pdf(): Response
     {
-        return $this->document->pdf();
+        return $this->document->pdf(Note::class);
     }
 }

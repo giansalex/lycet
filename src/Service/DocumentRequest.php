@@ -27,10 +27,6 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 class DocumentRequest implements DocumentRequestInterface
 {
     /**
-     * @var string
-     */
-    private $className;
-    /**
      * @var RequestStack
      */
     private $requestStack;
@@ -54,31 +50,16 @@ class DocumentRequest implements DocumentRequestInterface
     }
 
     /**
-     * Set document to process.
-     *
+     * Get Result. 
      * @param string $class
-     */
-    public function setDocumentType(string $class)
-    {
-        $this->className = $class;
-    }
-
-    /**
-     * Get Result.
-     *
      * @return Response
      */
-    public function send(): Response
+    public function send(string $class): Response
     {
-       $document = $this->getDocument();
+        $document = $this->getDocument($class);
+        $company = $document->getCompany();
 
-        /**@var $errors array */
-//        $errors = $this->validator->validate($document);
-//        if (count($errors)) {
-//            return $this->json($errors, 400);
-//        }
-
-        $see = $this->getSee($document->getCompany()->getRuc());
+        $see = $this->getSee($class, $company->getRuc());
         $result = $see->send($document);
 
         $this->toBase64Zip($result);
@@ -96,19 +77,14 @@ class DocumentRequest implements DocumentRequestInterface
     /**
      * Get Xml.
      *
+     * @param string $class
      * @return Response
      */
-    public function xml(): Response
+    public function xml(string $class): Response
     {
-        $document = $this->getDocument();
-
-        /**@var $errors array */
-//        $errors = $this->validator->validate($document);
-//        if (count($errors)) {
-//            return $this->json($errors, 400);
-//        }
-
-        $see = $this->getSee($document->getCompany()->getRuc());
+        $document = $this->getDocument($class);
+        $company = $document->getCompany();
+        $see = $this->getSee($class, $company->getRuc());
 
         $xml  = $see->getXmlSigned($document);
 
@@ -117,23 +93,25 @@ class DocumentRequest implements DocumentRequestInterface
 
     /**
      * Get Pdf.
-     *
+     * 
+     * @param string $class
      * @return Response
      */
-    public function pdf(): Response
+    public function pdf(string $class): Response
     {
-        $document = $this->getDocument();
+        $document = $this->getDocument($class);
         $params = $this->getKeyContent("parameters");
 
+        $company = $document->getCompany();
         $jsonCompanies = $this->getParameter('companies');
-        $ruc = $document->getCompany()->getRuc();
+        $ruc = $company->getRuc();
         if (empty($companies) && ($companies = json_decode($jsonCompanies, true)) && array_key_exists($ruc, $companies)) {
             $logo = $this->getFile($companies[$ruc]['logo']);
         } else {
             $logo = $this->getParameter('logo');
         }
 
-        $see = $this->getSee($ruc);
+        $see = $this->getSee($class, $ruc);
 
         $parameters = [
             'system' => [
@@ -155,24 +133,28 @@ class DocumentRequest implements DocumentRequestInterface
     /**
      * Get Configured See.
      *
+     * @param string $class
      * @param string $ruc
      * @return See
      */
-    public function getSee(string $ruc): See
+    public function getSee(string $class, string $ruc): See
     {
         $factory = $this->container->get(SeeFactory::class);
 
-        return $factory->build($this->className, $ruc);
+        return $factory->build($class, $ruc);
     }
 
     /**
+     * Get parsed document.
+     *
+     * @param string $class
      * @return DocumentInterface
      */
-    public function getDocument(): DocumentInterface
+    public function getDocument(string $class): DocumentInterface
     {
         $request = $this->requestStack->getCurrentRequest();
 
-        return $this->parser->getObject($request, $this->className);
+        return $this->parser->getObject($request, $class);
     }
 
     /**
