@@ -33,6 +33,14 @@ services:
         tags: ['controller.service_arguments']
         shared: false
 
+    App\Controller\v1\InvoiceController:
+        arguments:
+            - '@App\Service\DocumentRequestInterface'
+            - '@App\Service\EnvConfigProvider'
+            - '@App\Service\ConfigProviderInterface'
+            - '@JMS\Serializer\SerializerInterface'
+        shared: false
+
     Psr\Container\ContainerInterface:
         alias: service_container
 
@@ -131,11 +139,5 @@ services:
         arguments:
             $token: '%token%'
 
-    App\Controller\v1\InvoiceController:
-        arguments:
-            - '@App\Service\DocumentRequestInterface'
-            - '@App\Service\EnvConfigProvider'
-            - '@App\Service\ConfigProviderInterface'
-            - '@JMS\Serializer\SerializerInterface'
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
