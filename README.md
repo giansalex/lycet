@@ -54,7 +54,31 @@ a continuación.
 ├── empresas.json (opcional para multiples empresas)
 ```
 También puede usar [lycet-ui-config](https://giansalex.github.io/lycet-ui-config/) como interfaz de usuario, siendo mas útil
-esta opción cuando emplea contenedores.  
+esta opción cuando emplea contenedores.
+
+#### API de gestión de empresas
+
+También puede gestionar empresas programáticamente via API:
+
+**Registrar/Actualizar empresa:**
+```bash
+curl -X PUT "http://localhost:8000/api/v1/configuration/company/20000000001?token=123456" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "SOL_USER": "20000000001MODDATOS",
+    "SOL_PASS": "moddatos",
+    "certificate": "<certificado .pem en base64>",
+    "logo": "<logo en base64 (opcional)>",
+    "FE_URL": "https://e-factura.sunat.gob.pe/ol-ti-itcpfegem/billService"
+  }'
+```
+
+**Eliminar empresa:**
+```bash
+curl -X DELETE "http://localhost:8000/api/v1/configuration/company/20000000001?token=123456"
+```
+
+Los campos opcionales (`FE_URL`, `RE_URL`, `GUIA_URL`, `AUTH_URL`, `API_URL`, `CLIENT_ID`, `CLIENT_SECRET`) permiten configurar URLs por empresa. Si no se proporcionan, se usan las del `.env`.
 
 Ejemplo de contenido del archivo `empresas.json`, tambien puede cambiar la URL de los servicios para apuntar a un OSE.
 
