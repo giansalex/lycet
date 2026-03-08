@@ -143,10 +143,24 @@ class ConfigurationController extends AbstractController
             return $this->json(['error' => 'Company not found. Register the company first.'], Response::HTTP_NOT_FOUND);
         }
 
-        $logoFilename = $ruc . '-logo.png';
+        $imageData = base64_decode($data['logo']);
+        $ext = $this->detectImageExtension($imageData);
+        if ($ext === null) {
+            return $this->json(
+                ['error' => 'Unsupported image format. Use PNG, JPEG, or GIF.'],
+                Response::HTTP_BAD_REQUEST
+            );
+        }
+
+        // Remove old logo if extension changed
+        if (!empty($companies[$ruc]['logo'])) {
+            @unlink($this->dataPath . DIRECTORY_SEPARATOR . $companies[$ruc]['logo']);
+        }
+
+        $logoFilename = $ruc . '-logo.' . $ext;
         file_put_contents(
             $this->dataPath . DIRECTORY_SEPARATOR . $logoFilename,
-            base64_decode($data['logo'])
+            $imageData
         );
 
         $companies[$ruc]['logo'] = $logoFilename;
@@ -174,14 +188,16 @@ class ConfigurationController extends AbstractController
             return $this->json(['error' => 'Company not found'], Response::HTTP_NOT_FOUND);
         }
 
+        if (!empty($companies[$ruc]['logo'])) {
+            @unlink($this->dataPath . DIRECTORY_SEPARATOR . $companies[$ruc]['logo']);
+        }
+
         unset($companies[$ruc]['logo']);
 
         $this->fileStore->store(
             'companies',
             json_encode($companies, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
         );
-
-        @unlink($this->dataPath . DIRECTORY_SEPARATOR . $ruc . '-logo.png');
 
         return $this->json(['ruc' => $ruc, 'message' => 'Logo removed']);
     }
@@ -201,6 +217,10 @@ class ConfigurationController extends AbstractController
             return $this->json(['error' => 'Company not found'], Response::HTTP_NOT_FOUND);
         }
 
+        if (!empty($companies[$ruc]['logo'])) {
+            @unlink($this->dataPath . DIRECTORY_SEPARATOR . $companies[$ruc]['logo']);
+        }
+
         unset($companies[$ruc]);
 
         $this->fileStore->store(
@@ -209,8 +229,22 @@ class ConfigurationController extends AbstractController
         );
 
         @unlink($this->dataPath . DIRECTORY_SEPARATOR . $ruc . '-cert.pem');
-        @unlink($this->dataPath . DIRECTORY_SEPARATOR . $ruc . '-logo.png');
 
         return $this->json(['ruc' => $ruc, 'message' => 'Company removed']);
+    }
+
+    /**
+     * Detect image extension from binary data using PHP's built-in image functions.
+     */
+    private function detectImageExtension(string $data): ?string
+    {
+        $info = @getimagesizefromstring($data);
+        if ($info === false) {
+            return null;
+        }
+
+        $ext = image_type_to_extension($info[2], false);
+
+        return $ext ?: null;
     }
 }
