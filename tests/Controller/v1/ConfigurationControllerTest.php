@@ -47,7 +47,6 @@ class ConfigurationControllerTest extends WebTestCase
         $client = static::createClient();
 
         $certContent = 'fake-certificate-content';
-        $logoContent = 'fake-logo-content';
 
         $client->request(
             'PUT',
@@ -59,7 +58,6 @@ class ConfigurationControllerTest extends WebTestCase
                 'SOL_USER' => '20000000001MODDATOS',
                 'SOL_PASS' => 'moddatos',
                 'certificate' => base64_encode($certContent),
-                'logo' => base64_encode($logoContent),
                 'FE_URL' => 'https://e-factura.sunat.gob.pe/ol-ti-itcpfegem/billService',
             ])
         );
@@ -74,15 +72,51 @@ class ConfigurationControllerTest extends WebTestCase
         $this->assertFileExists(self::$dataPath . '/20000000001-cert.pem');
         $this->assertEquals($certContent, file_get_contents(self::$dataPath . '/20000000001-cert.pem'));
 
-        // Verify logo file was created
-        $this->assertFileExists(self::$dataPath . '/20000000001-logo.png');
-
         // Verify empresas.json was created
         $this->assertFileExists(self::$dataPath . '/empresas.json');
         $companies = json_decode(file_get_contents(self::$dataPath . '/empresas.json'), true);
         $this->assertArrayHasKey('20000000001', $companies);
         $this->assertEquals('20000000001MODDATOS', $companies['20000000001']['SOL_USER']);
         $this->assertEquals('https://e-factura.sunat.gob.pe/ol-ti-itcpfegem/billService', $companies['20000000001']['FE_URL']);
+        $this->assertArrayNotHasKey('logo', $companies['20000000001']);
+    }
+
+    public function testUploadCompanyLogo()
+    {
+        $client = static::createClient();
+
+        $client->request(
+            'PUT',
+            '/api/v1/configuration/company/20000000001/logo?token=123456',
+            [],
+            [],
+            ['CONTENT_TYPE' => 'application/json'],
+            json_encode(['logo' => base64_encode('fake-logo-content')])
+        );
+
+        $response = $client->getResponse();
+        $this->assertEquals(200, $response->getStatusCode());
+
+        $this->assertFileExists(self::$dataPath . '/20000000001-logo.png');
+
+        $companies = json_decode(file_get_contents(self::$dataPath . '/empresas.json'), true);
+        $this->assertEquals('20000000001-logo.png', $companies['20000000001']['logo']);
+    }
+
+    public function testRemoveCompanyLogo()
+    {
+        $client = static::createClient();
+
+        $client->request(
+            'DELETE',
+            '/api/v1/configuration/company/20000000001/logo?token=123456'
+        );
+
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $this->assertFileDoesNotExist(self::$dataPath . '/20000000001-logo.png');
+
+        $companies = json_decode(file_get_contents(self::$dataPath . '/empresas.json'), true);
+        $this->assertArrayNotHasKey('logo', $companies['20000000001']);
     }
 
     public function testUpsertSecondCompany()
