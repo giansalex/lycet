@@ -88,14 +88,6 @@ class ConfigurationController extends AbstractController
             base64_decode($data['certificate'])
         );
 
-        if (!empty($data['logo'])) {
-            $logoFilename = $ruc . '-logo.png';
-            file_put_contents(
-                $this->dataPath . DIRECTORY_SEPARATOR . $logoFilename,
-                base64_decode($data['logo'])
-            );
-        }
-
         $companiesJson = $this->fileStore->get('companies');
         $companies = !empty($companiesJson) ? json_decode($companiesJson, true) : [];
 
@@ -105,8 +97,9 @@ class ConfigurationController extends AbstractController
             'certificate' => $certFilename,
         ];
 
-        if (!empty($data['logo'])) {
-            $company['logo'] = $ruc . '-logo.png';
+        // Preserve existing logo if already uploaded
+        if (!empty($companies[$ruc]['logo'])) {
+            $company['logo'] = $companies[$ruc]['logo'];
         }
 
         foreach (['FE_URL', 'RE_URL', 'GUIA_URL', 'AUTH_URL', 'API_URL', 'CLIENT_ID', 'CLIENT_SECRET'] as $key) {
@@ -123,6 +116,74 @@ class ConfigurationController extends AbstractController
         );
 
         return $this->json(['ruc' => $ruc, 'message' => 'Company configured']);
+    }
+
+    /**
+     * @Route("/company/{ruc}/logo", methods={"PUT"})
+     *
+     * @param string $ruc
+     * @param Request $request
+     * @return Response
+     */
+    public function uploadCompanyLogo(string $ruc, Request $request): Response
+    {
+        $data = json_decode($request->getContent(), true);
+
+        if (empty($data['logo'])) {
+            return $this->json(
+                ['error' => 'logo is required (base64 encoded image)'],
+                Response::HTTP_BAD_REQUEST
+            );
+        }
+
+        $companiesJson = $this->fileStore->get('companies');
+        $companies = !empty($companiesJson) ? json_decode($companiesJson, true) : [];
+
+        if (!array_key_exists($ruc, $companies)) {
+            return $this->json(['error' => 'Company not found. Register the company first.'], Response::HTTP_NOT_FOUND);
+        }
+
+        $logoFilename = $ruc . '-logo.png';
+        file_put_contents(
+            $this->dataPath . DIRECTORY_SEPARATOR . $logoFilename,
+            base64_decode($data['logo'])
+        );
+
+        $companies[$ruc]['logo'] = $logoFilename;
+
+        $this->fileStore->store(
+            'companies',
+            json_encode($companies, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
+        );
+
+        return $this->json(['ruc' => $ruc, 'message' => 'Logo uploaded']);
+    }
+
+    /**
+     * @Route("/company/{ruc}/logo", methods={"DELETE"})
+     *
+     * @param string $ruc
+     * @return Response
+     */
+    public function removeCompanyLogo(string $ruc): Response
+    {
+        $companiesJson = $this->fileStore->get('companies');
+        $companies = !empty($companiesJson) ? json_decode($companiesJson, true) : [];
+
+        if (!array_key_exists($ruc, $companies)) {
+            return $this->json(['error' => 'Company not found'], Response::HTTP_NOT_FOUND);
+        }
+
+        unset($companies[$ruc]['logo']);
+
+        $this->fileStore->store(
+            'companies',
+            json_encode($companies, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
+        );
+
+        @unlink($this->dataPath . DIRECTORY_SEPARATOR . $ruc . '-logo.png');
+
+        return $this->json(['ruc' => $ruc, 'message' => 'Logo removed']);
     }
 
     /**

@@ -11,5 +11,8 @@ ARGS="$ARGS --static-directory=''"
 # no limits
 ARGS="$ARGS --max-execution-time 0"
 
+# increase body buffer for large payloads (logo base64, etc). Default is 64KB.
+ARGS="$ARGS --request-body-buffer=524288"
+
 php vendor/bin/ppm start $ARGS $@
 
