@@ -8,6 +8,19 @@ class ConfigurationControllerTest extends WebTestCase
 {
     private static $dataPath;
 
+    /**
+     * Create a minimal valid 1x1 PNG image.
+     */
+    private static function createMinimalPng(): string
+    {
+        $img = imagecreatetruecolor(1, 1);
+        ob_start();
+        imagepng($img);
+        $data = ob_get_clean();
+        imagedestroy($img);
+        return $data;
+    }
+
     public static function setUpBeforeClass(): void
     {
         self::$dataPath = __DIR__ . '/../../tmp_data';
@@ -91,12 +104,13 @@ class ConfigurationControllerTest extends WebTestCase
             [],
             [],
             ['CONTENT_TYPE' => 'application/json'],
-            json_encode(['logo' => base64_encode('fake-logo-content')])
+            json_encode(['logo' => base64_encode(self::createMinimalPng())])
         );
 
         $response = $client->getResponse();
         $this->assertEquals(200, $response->getStatusCode());
 
+        // detectImageExtension returns 'png' for PNG images
         $this->assertFileExists(self::$dataPath . '/20000000001-logo.png');
 
         $companies = json_decode(file_get_contents(self::$dataPath . '/empresas.json'), true);
