@@ -68,9 +68,20 @@ curl -X PUT "http://localhost:8000/api/v1/configuration/company/20000000001?toke
     "SOL_USER": "20000000001MODDATOS",
     "SOL_PASS": "moddatos",
     "certificate": "<certificado .pem en base64>",
-    "logo": "<logo en base64 (opcional)>",
     "FE_URL": "https://e-factura.sunat.gob.pe/ol-ti-itcpfegem/billService"
   }'
+```
+
+**Subir logo (separado para evitar límite de payload):**
+```bash
+curl -X PUT "http://localhost:8000/api/v1/configuration/company/20000000001/logo?token=123456" \
+  -H "Content-Type: application/json" \
+  -d '{"logo": "<logo en base64>"}'
+```
+
+**Eliminar logo:**
+```bash
+curl -X DELETE "http://localhost:8000/api/v1/configuration/company/20000000001/logo?token=123456"
 ```
 
 **Eliminar empresa:**
