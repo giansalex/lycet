@@ -103,6 +103,31 @@ class ConfigurationControllerTest extends WebTestCase
         $this->assertEquals('20000000001-logo.png', $companies['20000000001']['logo']);
     }
 
+    public function testUpsertCompanyPreservesLogo()
+    {
+        $client = static::createClient();
+
+        // Update company credentials — logo should be preserved
+        $client->request(
+            'PUT',
+            '/api/v1/configuration/company/20000000001?token=123456',
+            [],
+            [],
+            ['CONTENT_TYPE' => 'application/json'],
+            json_encode([
+                'SOL_USER' => '20000000001NEWUSER',
+                'SOL_PASS' => 'newpass',
+                'certificate' => base64_encode('updated-cert'),
+            ])
+        );
+
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+
+        $companies = json_decode(file_get_contents(self::$dataPath . '/empresas.json'), true);
+        $this->assertEquals('20000000001NEWUSER', $companies['20000000001']['SOL_USER']);
+        $this->assertEquals('20000000001-logo.png', $companies['20000000001']['logo']);
+    }
+
     public function testRemoveCompanyLogo()
     {
         $client = static::createClient();
