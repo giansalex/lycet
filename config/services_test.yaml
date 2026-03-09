@@ -1,3 +1,6 @@
+parameters:
+    data_path: '%kernel.project_dir%/tests/tmp_data'
+
 services:
     _defaults:
         public: true
