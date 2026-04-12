@@ -16,6 +16,8 @@ Greenter\Model\Summary\SummaryDetail:
             type: string
         total:
             type: float
+        porcentajeIgv:
+            type: float
         mtoOperGravadas:
             type: float
         mtoOperInafectas:

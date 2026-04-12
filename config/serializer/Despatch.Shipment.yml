@@ -10,8 +10,6 @@ Greenter\Model\Despatch\Shipment:
             type: bool
         indicadores:
             type: array<string>
-        indicador:
-            type: array<string>
         pesoItems:
             type: float
         pesoTotal:

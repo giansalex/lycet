@@ -803,7 +803,8 @@ components:
         codTipo:
           type: string
         factor:
-          type: string
+          type: number
+          format: float
         monto:
           type: number
           format: float
@@ -947,6 +948,10 @@ components:
         ubigueo:
           type: string
         direccion:
+          type: string
+        codLocal:
+          type: string
+        ruc:
           type: string
     EmbededDespatch:
       type: object
@@ -1136,6 +1141,20 @@ components:
         mtoCargos:
           type: number
           format: float
+        sumOtrosDescuentos:
+          type: number
+          format: float
+        mtoBaseIvap:
+          type: number
+          format: float
+        mtoIvap:
+          type: number
+          format: float
+        redondeo:
+          type: number
+          format: float
+        name:
+          type: string
     Note:
       type: object
       properties:
@@ -1235,6 +1254,23 @@ components:
           format: float
         perception:
           $ref: "#/components/schemas/SalePerception"
+        valorVenta:
+          type: number
+          format: float
+        subTotal:
+          type: number
+          format: float
+        mtoBaseIvap:
+          type: number
+          format: float
+        mtoIvap:
+          type: number
+          format: float
+        redondeo:
+          type: number
+          format: float
+        name:
+          type: string
     PaymentTerms:
       type: object
       properties:
@@ -1293,6 +1329,9 @@ components:
         total:
           type: number
           format: float
+        porcentajeIgv:
+          type: number
+          format: float
         mtoOperGravadas:
           type: number
           format: float
@@ -1345,6 +1384,10 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/SummaryDetail"
+        xmlId:
+          type: string
+        name:
+          type: string
     VoidedDetail:
       type: object
       properties:
@@ -1373,6 +1416,10 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/VoidedDetail"
+        xmlId:
+          type: string
+        name:
+          type: string
     Reversion:
       type: object
       properties:
@@ -1390,6 +1437,10 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/VoidedDetail"
+        xmlId:
+          type: string
+        name:
+          type: string
     Payment:
       type: object
       properties:
@@ -1475,6 +1526,8 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/PerceptionDetail"
+        name:
+          type: string
     RetentionDetail:
       type: object
       properties:
@@ -1536,6 +1589,8 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/RetentionDetail"
+        name:
+          type: string
     Puerto:
       type: object
       properties:
@@ -1699,6 +1754,10 @@ components:
           $ref: '#/components/schemas/Client'
         envio:
           $ref: '#/components/schemas/Shipment'
+        docBaja:
+          $ref: '#/components/schemas/Document'
+        relDoc:
+          $ref: '#/components/schemas/Document'
         addDocs:
           type: array
           items:
