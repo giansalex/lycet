@@ -27,12 +27,19 @@ class ConfigurationController extends AbstractController
     private $fileStore;
 
     /**
+     * @var string
+     */
+    private $dataPath;
+
+    /**
      * ConfigurationController constructor.
      * @param ConfigProviderInterface $fileStore
+     * @param string $dataPath
      */
-    public function __construct(ConfigProviderInterface $fileStore)
+    public function __construct(ConfigProviderInterface $fileStore, string $dataPath)
     {
         $this->fileStore = $fileStore;
+        $this->dataPath = $dataPath;
     }
 
     /**
@@ -55,5 +62,189 @@ class ConfigurationController extends AbstractController
         }
 
         return new Response();
+    }
+
+    /**
+     * @Route("/company/{ruc}", methods={"PUT"})
+     *
+     * @param string $ruc
+     * @param Request $request
+     * @return Response
+     */
+    public function upsertCompany(string $ruc, Request $request): Response
+    {
+        $data = json_decode($request->getContent(), true);
+
+        if (empty($data['SOL_USER']) || empty($data['SOL_PASS']) || empty($data['certificate'])) {
+            return $this->json(
+                ['error' => 'SOL_USER, SOL_PASS and certificate are required'],
+                Response::HTTP_BAD_REQUEST
+            );
+        }
+
+        $certFilename = $ruc . '-cert.pem';
+        file_put_contents(
+            $this->dataPath . DIRECTORY_SEPARATOR . $certFilename,
+            base64_decode($data['certificate'])
+        );
+
+        $companiesJson = $this->fileStore->get('companies');
+        $companies = !empty($companiesJson) ? json_decode($companiesJson, true) : [];
+
+        $company = [
+            'SOL_USER' => $data['SOL_USER'],
+            'SOL_PASS' => $data['SOL_PASS'],
+            'certificate' => $certFilename,
+        ];
+
+        // Preserve existing logo if already uploaded
+        if (!empty($companies[$ruc]['logo'])) {
+            $company['logo'] = $companies[$ruc]['logo'];
+        }
+
+        foreach (['FE_URL', 'RE_URL', 'GUIA_URL', 'AUTH_URL', 'API_URL', 'CLIENT_ID', 'CLIENT_SECRET'] as $key) {
+            if (!empty($data[$key])) {
+                $company[$key] = $data[$key];
+            }
+        }
+
+        $companies[$ruc] = $company;
+
+        $this->fileStore->store(
+            'companies',
+            json_encode($companies, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
+        );
+
+        return $this->json(['ruc' => $ruc, 'message' => 'Company configured']);
+    }
+
+    /**
+     * @Route("/company/{ruc}/logo", methods={"PUT"})
+     *
+     * @param string $ruc
+     * @param Request $request
+     * @return Response
+     */
+    public function uploadCompanyLogo(string $ruc, Request $request): Response
+    {
+        $data = json_decode($request->getContent(), true);
+
+        if (empty($data['logo'])) {
+            return $this->json(
+                ['error' => 'logo is required (base64 encoded image)'],
+                Response::HTTP_BAD_REQUEST
+            );
+        }
+
+        $companiesJson = $this->fileStore->get('companies');
+        $companies = !empty($companiesJson) ? json_decode($companiesJson, true) : [];
+
+        if (!array_key_exists($ruc, $companies)) {
+            return $this->json(['error' => 'Company not found. Register the company first.'], Response::HTTP_NOT_FOUND);
+        }
+
+        $imageData = base64_decode($data['logo']);
+        $ext = $this->detectImageExtension($imageData);
+        if ($ext === null) {
+            return $this->json(
+                ['error' => 'Unsupported image format. Use PNG, JPEG, or GIF.'],
+                Response::HTTP_BAD_REQUEST
+            );
+        }
+
+        // Remove old logo if extension changed
+        if (!empty($companies[$ruc]['logo'])) {
+            @unlink($this->dataPath . DIRECTORY_SEPARATOR . $companies[$ruc]['logo']);
+        }
+
+        $logoFilename = $ruc . '-logo.' . $ext;
+        file_put_contents(
+            $this->dataPath . DIRECTORY_SEPARATOR . $logoFilename,
+            $imageData
+        );
+
+        $companies[$ruc]['logo'] = $logoFilename;
+
+        $this->fileStore->store(
+            'companies',
+            json_encode($companies, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
+        );
+
+        return $this->json(['ruc' => $ruc, 'message' => 'Logo uploaded']);
+    }
+
+    /**
+     * @Route("/company/{ruc}/logo", methods={"DELETE"})
+     *
+     * @param string $ruc
+     * @return Response
+     */
+    public function removeCompanyLogo(string $ruc): Response
+    {
+        $companiesJson = $this->fileStore->get('companies');
+        $companies = !empty($companiesJson) ? json_decode($companiesJson, true) : [];
+
+        if (!array_key_exists($ruc, $companies)) {
+            return $this->json(['error' => 'Company not found'], Response::HTTP_NOT_FOUND);
+        }
+
+        if (!empty($companies[$ruc]['logo'])) {
+            @unlink($this->dataPath . DIRECTORY_SEPARATOR . $companies[$ruc]['logo']);
+        }
+
+        unset($companies[$ruc]['logo']);
+
+        $this->fileStore->store(
+            'companies',
+            json_encode($companies, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
+        );
+
+        return $this->json(['ruc' => $ruc, 'message' => 'Logo removed']);
+    }
+
+    /**
+     * @Route("/company/{ruc}", methods={"DELETE"})
+     *
+     * @param string $ruc
+     * @return Response
+     */
+    public function removeCompany(string $ruc): Response
+    {
+        $companiesJson = $this->fileStore->get('companies');
+        $companies = !empty($companiesJson) ? json_decode($companiesJson, true) : [];
+
+        if (!array_key_exists($ruc, $companies)) {
+            return $this->json(['error' => 'Company not found'], Response::HTTP_NOT_FOUND);
+        }
+
+        if (!empty($companies[$ruc]['logo'])) {
+            @unlink($this->dataPath . DIRECTORY_SEPARATOR . $companies[$ruc]['logo']);
+        }
+
+        unset($companies[$ruc]);
+
+        $this->fileStore->store(
+            'companies',
+            json_encode($companies, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
+        );
+
+        @unlink($this->dataPath . DIRECTORY_SEPARATOR . $ruc . '-cert.pem');
+
+        return $this->json(['ruc' => $ruc, 'message' => 'Company removed']);
+    }
+
+    /**
+     * Detect image extension from binary data using PHP's built-in image functions.
+     */
+    private function detectImageExtension(string $data): ?string
+    {
+        $info = @getimagesizefromstring($data);
+        if ($info === false) {
+            return null;
+        }
+
+        $ext = image_type_to_extension($info[2], false);
+
+        return $ext ?: null;
     }
 }

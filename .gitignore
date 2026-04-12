@@ -13,6 +13,7 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
+/tests/tmp_data/
 ###> symfony/phpunit-bridge ###
 .phpunit.result.cache
 /phpunit.xml

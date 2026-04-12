@@ -33,14 +33,6 @@ services:
         tags: ['controller.service_arguments']
         shared: false
 
-    App\Controller\v1\InvoiceController:
-        arguments:
-            - '@App\Service\DocumentRequestInterface'
-            - '@App\Service\EnvConfigProvider'
-            - '@App\Service\ConfigProviderInterface'
-            - '@JMS\Serializer\SerializerInterface'
-        shared: false
-
     Psr\Container\ContainerInterface:
         alias: service_container
 
@@ -106,6 +98,11 @@ services:
         calls:
             - [setBuilderOptions, [cache: '%kernel.cache_dir%']]
 
+    App\Controller\v1\ConfigurationController:
+        arguments:
+            $dataPath: '%data_path%'
+        shared: false
+
     App\Service\FileConfigProvider:
         arguments: ['%data_path%']
 
@@ -134,6 +131,12 @@ services:
             - '@App\Service\ConfigProviderInterface'
             - '@App\Service\FileDataReader'
             - '@Greenter\Api'
+
+    App\Service\ConsultCdrServiceFactory:
+        public: true
+        arguments:
+            - '@App\Service\EnvConfigProvider'
+            - '@App\Service\ConfigProviderInterface'
 
     App\EventSubscriber\TokenSubscriber:
         arguments:

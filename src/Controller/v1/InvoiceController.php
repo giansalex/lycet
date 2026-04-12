@@ -8,12 +8,9 @@
 
 namespace App\Controller\v1;
 
-use App\Service\ConfigProviderInterface;
+use App\Service\ConsultCdrServiceFactory;
 use App\Service\DocumentRequestInterface;
 use Greenter\Model\Sale\Invoice;
-use Greenter\Ws\Services\ConsultCdrService;
-use Greenter\Ws\Services\SoapClient;
-use Greenter\Ws\Services\SunatEndpoints;
 use JMS\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -34,16 +31,6 @@ class InvoiceController extends AbstractController
     private $document;
 
     /**
-     * @var ConfigProviderInterface
-     */
-    private $config;
-
-    /**
-     * @var ConfigProviderInterface
-     */
-    private $fileProvider;
-
-    /**
      * @var SerializerInterface
      */
     private $serializer;
@@ -51,15 +38,11 @@ class InvoiceController extends AbstractController
     /**
      * InvoiceController constructor.
      * @param DocumentRequestInterface $document
-     * @param ConfigProviderInterface $config
-     * @param ConfigProviderInterface $fileProvider
      * @param SerializerInterface $serializer
      */
-    public function __construct(DocumentRequestInterface $document, ConfigProviderInterface $config, ConfigProviderInterface $fileProvider, SerializerInterface $serializer)
+    public function __construct(DocumentRequestInterface $document, SerializerInterface $serializer)
     {
         $this->document = $document;
-        $this->config = $config;
-        $this->fileProvider = $fileProvider;
         $this->serializer = $serializer;
     }
 
@@ -97,9 +80,10 @@ class InvoiceController extends AbstractController
      * @Route("/status", methods={"GET"})
      *
      * @param Request $request
+     * @param ConsultCdrServiceFactory $factory
      * @return JsonResponse
      */
-    public function status(Request $request): JsonResponse
+    public function status(Request $request, ConsultCdrServiceFactory $factory): JsonResponse
     {
         $tipo = $request->query->get('tipo');
         $serie = $request->query->get('serie');
@@ -113,8 +97,12 @@ class InvoiceController extends AbstractController
         if (empty($numero)) {
             return new JsonResponse(['message' => 'Numero Requerido'], 400);
         }
-        $see = $this->getCdrStatusService($request->query->get('ruc'));
-        $username = $this->getConfig('SOL_USER', $request->query->get('ruc'));
+        $rucParam = $request->query->get('ruc');
+        $see = $factory->build($rucParam);
+        $username = $factory->getCredentialUser($rucParam);
+        if (empty($username) || strlen($username) < 11) {
+            return new JsonResponse(['message' => 'No se encontraron credenciales para el RUC indicado'], 400);
+        }
         $ruc = substr($username, 0, 11);
         $result = $see->getStatusCdr($ruc, $tipo, $serie, $numero);
 
@@ -125,47 +113,5 @@ class InvoiceController extends AbstractController
         $json = $this->serializer->serialize($result, 'json');
 
         return new JsonResponse($json, 200, [], true);
-    }
-
-    /**
-     * @param $ruc |null
-     * @return ConsultCdrService|false
-     */
-    private function getCdrStatusService($ruc = null)
-    {
-        $ws = new SoapClient(SunatEndpoints::FE_CONSULTA_CDR . '?wsdl');
-
-        if (!empty($ruc)) {
-            $ws->setCredentials($this->getConfig('SOL_USER', $ruc), $this->getConfig('SOL_PASS', $ruc));
-        } else {
-            $ws->setCredentials($this->getConfig('SOL_USER'), $this->getConfig('SOL_PASS'));
-        }
-
-        $service = new ConsultCdrService();
-        $service->setClient($ws);
-
-        return $service;
-    }
-
-    private function getConfig($key, $ruc = null)
-    {
-        if (empty($ruc)) {
-            return $this->config->get($key);
-        }
-
-        $jsonCompanies = $this->fileProvider->get('companies');
-        if (empty($jsonCompanies)) {
-            return false;
-        }
-
-        $companies = json_decode($jsonCompanies, true);
-
-        if (!array_key_exists($ruc, $companies)) {
-            return false;
-        }
-
-        $config = $companies[$ruc];
-
-        return $config[$key];
     }
 }
