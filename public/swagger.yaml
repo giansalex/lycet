@@ -94,6 +94,45 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/ValidationResponse"
+  /invoice/status:
+    get:
+      tags:
+        - invoice
+      summary: Obtiene el estado del CDR de una Factura o Boleta
+      description: Retorna el CDR desde SUNAT
+      operationId: getInvoiceStatus
+      parameters:
+        - name: tipo
+          in: query
+          description: Tipo de comprobante (Ej. 01, 03)
+          required: true
+          schema:
+            type: string
+        - name: serie
+          in: query
+          description: Serie del comprobante (Ej. F001)
+          required: true
+          schema:
+            type: string
+        - name: numero
+          in: query
+          description: Número correlativo del comprobante
+          required: true
+          schema:
+            type: string
+        - name: ruc
+          in: query
+          description: RUC de empresa (Múltiples Empresas)
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Operacion exitosa
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StatusResult"
   /note/send:
     post:
       tags:
