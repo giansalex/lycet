@@ -24,13 +24,49 @@ class HomeController
      */
     public function index(Request $request): Response
     {
-        $pathDocs = $request->getUriForPath('/swagger');
-        $content = $this->getWithReplace(
-            __DIR__.'/../../views/welcome.html',
-            'lycet.api',
-            $pathDocs);
+        $pathDocs = $request->getUriForPath('/docs');
 
-        return new Response($content, 200, ['Content-Type', 'text/html']);
+        $content = $this->getWithReplace(
+            __DIR__ . '/../../views/welcome.html',
+            'lycet.api',
+            $pathDocs
+        );
+
+        return new Response($content, 200, ['Content-Type' => 'text/html']);
+    }
+
+    /**
+     * @Route("/docs")
+     * @param Request $request
+     * @return Response
+     */
+    public function docs(Request $request): Response
+    {
+        $swaggerUrl = $request->getUriForPath('/swagger');
+
+        $content = <<<HTML
+            <!doctype html>
+            <html lang="es">
+            <head>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <title>Lycet API Reference</title>
+            </head>
+            <body>
+                <div id="app"></div>
+
+                <script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference"></script>
+                <script>
+                    Scalar.createApiReference('#app', {
+                        url: '{$swaggerUrl}',
+                        theme: 'default'
+                    });
+                </script>
+            </body>
+            </html>
+        HTML;
+
+        return new Response($content, 200, ['Content-Type' => 'text/html']);
     }
 
     /**
@@ -40,11 +76,13 @@ class HomeController
      */
     public function swagger(Request $request): Response
     {
-        $rootUrl = $request->getHttpHost().$request->getBasePath();
+        $rootUrl = $request->getHttpHost() . $request->getBasePath();
+
         $content = $this->getWithReplace(
-            __DIR__.'/../../public/swagger.yaml',
+            __DIR__ . '/../../public/swagger.yaml',
             'lycet.api',
-            $rootUrl);
+            $rootUrl
+        );
 
         return new Response($content, 200, ['Content-Type' => 'text/yaml']);
     }
