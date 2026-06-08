@@ -22,6 +22,8 @@ Greenter\Model\Despatch\Shipment:
             type: string
         fecTraslado:
             type: DateTime
+        fecEntregaBienes:
+            type: DateTime
         numContenedor:
             type: string
         contenedores:
