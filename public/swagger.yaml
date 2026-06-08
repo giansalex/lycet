@@ -719,6 +719,134 @@ paths:
       responses:
         "200":
           description: Operacion exitosa
+  /configuration/company/{ruc}:
+    put:
+      tags:
+        - configuration
+      summary: Registrar o actualizar empresa
+      description: Registra o actualiza la configuración de una empresa para facturación electrónica.
+      operationId: saveCompanyConfiguration
+      parameters:
+        - name: ruc
+          in: path
+          description: RUC de la empresa
+          required: true
+          schema:
+            type: string
+        - name: token
+          in: query
+          description: Token de autenticación
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - SOL_USER
+                - SOL_PASS
+                - certificate
+                - FE_URL
+              properties:
+                SOL_USER:
+                  type: string
+                  example: 20000000001MODDATOS
+                SOL_PASS:
+                  type: string
+                  example: moddatos
+                certificate:
+                  type: string
+                  description: Certificado .pem codificado en base64
+                  example: "<certificado .pem en base64>"
+                FE_URL:
+                  type: string
+                  example: https://e-factura.sunat.gob.pe/ol-ti-itcpfegem/billService
+      responses:
+        "200":
+          description: Empresa registrada o actualizada correctamente
+    delete:
+      tags:
+        - configuration
+      summary: Eliminar empresa
+      description: Elimina la configuración registrada de una empresa.
+      operationId: deleteCompanyConfiguration
+      parameters:
+        - name: ruc
+          in: path
+          description: RUC de la empresa
+          required: true
+          schema:
+            type: string
+        - name: token
+          in: query
+          description: Token de autenticación
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Empresa eliminada correctamente
+  /configuration/company/{ruc}/logo:
+    put:
+      tags:
+        - configuration
+      summary: Subir logo de empresa
+      description: Sube o actualiza el logo de una empresa en base64.
+      operationId: saveCompanyLogo
+      parameters:
+        - name: ruc
+          in: path
+          description: RUC de la empresa
+          required: true
+          schema:
+            type: string
+        - name: token
+          in: query
+          description: Token de autenticación
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - logo
+              properties:
+                logo:
+                  type: string
+                  description: Logo codificado en base64
+                  example: "<logo en base64>"
+      responses:
+        "200":
+          description: Logo registrado o actualizado correctamente
+    delete:
+      tags:
+        - configuration
+      summary: Eliminar logo de empresa
+      description: Elimina el logo registrado de una empresa.
+      operationId: deleteCompanyLogo
+      parameters:
+        - name: ruc
+          in: path
+          description: RUC de la empresa
+          required: true
+          schema:
+            type: string
+        - name: token
+          in: query
+          description: Token de autenticación
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Logo eliminado correctamente
 servers:
   - url: http://lycet.api/api/v1
   - url: https://lycet.api/api/v1
