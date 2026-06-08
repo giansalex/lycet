@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3f5cebaa7fab494a2ab15a9071d6c225",
+    "content-hash": "245429bad1ac678f64401c3209fc0778",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -383,16 +383,16 @@
         },
         {
             "name": "greenter/core",
-            "version": "v5.2.0",
+            "version": "v5.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/core.git",
-                "reference": "ed92def3820688a2bbf37f3009a09a04736af9d0"
+                "reference": "f0093a08d13bf5564e2c32869541de04ba73d7de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thegreenter/core/zipball/ed92def3820688a2bbf37f3009a09a04736af9d0",
-                "reference": "ed92def3820688a2bbf37f3009a09a04736af9d0",
+                "url": "https://api.github.com/repos/thegreenter/core/zipball/f0093a08d13bf5564e2c32869541de04ba73d7de",
+                "reference": "f0093a08d13bf5564e2c32869541de04ba73d7de",
                 "shasum": ""
             },
             "require": {
@@ -428,9 +428,9 @@
             ],
             "support": {
                 "forum": "https://community.greenter.dev/",
-                "source": "https://github.com/thegreenter/core/tree/v5.2.0"
+                "source": "https://github.com/thegreenter/core/tree/v5.3.0"
             },
-            "time": "2026-02-25T19:22:04+00:00"
+            "time": "2026-06-08T19:26:33+00:00"
         },
         {
             "name": "greenter/gre-api",
@@ -490,7 +490,7 @@
         },
         {
             "name": "greenter/htmltopdf",
-            "version": "v5.2.0",
+            "version": "v5.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/htmltopdf.git",
@@ -543,13 +543,13 @@
             ],
             "support": {
                 "forum": "https://community.greenter.dev/",
-                "source": "https://github.com/thegreenter/htmltopdf/tree/v5.2.0"
+                "source": "https://github.com/thegreenter/htmltopdf/tree/v5.3.0"
             },
             "time": "2023-01-11T17:16:13+00:00"
         },
         {
             "name": "greenter/lite",
-            "version": "v5.2.0",
+            "version": "v5.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/lite.git",
@@ -604,13 +604,13 @@
             "support": {
                 "forum": "https://community.greenter.dev/",
                 "issues": "https://github.com/thegreenter/lite/issues",
-                "source": "https://github.com/thegreenter/lite/tree/v5.2.0"
+                "source": "https://github.com/thegreenter/lite/tree/v5.3.0"
             },
             "time": "2026-02-25T19:23:52+00:00"
         },
         {
             "name": "greenter/report",
-            "version": "v5.2.0",
+            "version": "v5.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thegreenter/report.git",
@@ -663,7 +663,7 @@
             ],
             "support": {
                 "forum": "https://community.greenter.dev/",
-                "source": "https://github.com/thegreenter/report/tree/v5.2.0"
+                "source": "https://github.com/thegreenter/report/tree/v5.3.0"
             },
             "time": "2026-02-25T19:23:44+00:00"
         },
@@ -5116,7 +5116,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {},
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
@@ -5125,6 +5125,6 @@
         "ext-iconv": "*",
         "ext-json": "*"
     },
-    "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
 }
