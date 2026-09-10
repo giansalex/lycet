@@ -14,19 +14,19 @@ class ConsultCdrServiceFactory
     private $config;
 
     /**
-     * @var ConfigProviderInterface
+     * @var CompanyConfigResolver
      */
-    private $fileProvider;
+    private $resolver;
 
     /**
      * ConsultCdrServiceFactory constructor.
      * @param ConfigProviderInterface $config
-     * @param ConfigProviderInterface $fileProvider
+     * @param CompanyConfigResolver $resolver
      */
-    public function __construct(ConfigProviderInterface $config, ConfigProviderInterface $fileProvider)
+    public function __construct(ConfigProviderInterface $config, CompanyConfigResolver $resolver)
     {
         $this->config = $config;
-        $this->fileProvider = $fileProvider;
+        $this->resolver = $resolver;
     }
 
     /**
@@ -38,17 +38,10 @@ class ConsultCdrServiceFactory
     public function build(?string $ruc): ConsultCdrService
     {
         $ws = new SoapClient(SunatEndpoints::FE_CONSULTA_CDR . '?wsdl');
-
-        $user = $this->getConfig('SOL_USER', $ruc);
-        $pass = $this->getConfig('SOL_PASS', $ruc);
-
-        // Si no se encontró en companies (o no se proporcionó RUC), usar credenciales de entorno
-        if ($user === false || $user === null) {
-            $user = $this->config->get('SOL_USER');
-            $pass = $this->config->get('SOL_PASS');
-        }
-
-        $ws->setCredentials($user, $pass);
+        $ws->setCredentials(
+            $this->resolveCredential('SOL_USER', $ruc),
+            $this->resolveCredential('SOL_PASS', $ruc)
+        );
 
         $service = new ConsultCdrService();
         $service->setClient($ws);
@@ -65,45 +58,22 @@ class ConsultCdrServiceFactory
      */
     public function getCredentialUser(?string $ruc): string
     {
-        $user = $this->getConfig('SOL_USER', $ruc);
-
-        // Si no se encontró en companies (o no se proporcionó RUC), usar credencial de entorno
-        if ($user === false || $user === null) {
-            $user = $this->config->get('SOL_USER');
-        }
-
-        return (string) $user;
+        return $this->resolveCredential('SOL_USER', $ruc);
     }
 
     /**
-     * @param string      $key
-     * @param string|null $ruc
-     * @return mixed
+     * Company value (following the environment inheritance chain, which already
+     * falls back to .env) or the .env value when the RUC is unknown/not provided.
      */
-    private function getConfig(string $key, ?string $ruc = null)
+    private function resolveCredential(string $key, ?string $ruc): string
     {
-        if (empty($ruc)) {
-            return $this->config->get($key);
+        $company = !empty($ruc) ? $this->resolver->getCompany($ruc) : null;
+        if ($company !== null) {
+            return (string) $this->resolver->resolve($company, $key);
         }
 
-        $jsonCompanies = $this->fileProvider->get('companies');
-        if (empty($jsonCompanies)) {
-            return false;
-        }
+        $value = $this->config->get($key);
 
-        $companies = json_decode($jsonCompanies, true);
-        if (!is_array($companies)) {
-            return false;
-        }
-
-        if (!array_key_exists($ruc, $companies)) {
-            return false;
-        }
-
-        if (!array_key_exists($key, $companies[$ruc])) {
-            return false;
-        }
-
-        return $companies[$ruc][$key];
+        return ($value === false || $value === null) ? '' : (string) $value;
     }
 }

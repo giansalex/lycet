@@ -116,12 +116,19 @@ services:
 
     App\Service\EnvConfigProvider:
 
+    App\Service\CompanyConfigResolver:
+        public: true
+        arguments:
+            - '@App\Service\ConfigProviderInterface'
+            - '@App\Service\EnvConfigProvider'
+            - '@App\Service\FileDataReader'
+
     App\Service\SeeFactory:
         public: true
         arguments:
             - '@App\Service\EnvConfigProvider'
             - '@App\Service\ConfigProviderInterface'
-            - '@App\Service\FileDataReader'
+            - '@App\Service\CompanyConfigResolver'
             - '@Greenter\See'
 
     App\Service\SeeApiFactory:
@@ -129,14 +136,15 @@ services:
         arguments:
             - '@App\Service\EnvConfigProvider'
             - '@App\Service\ConfigProviderInterface'
-            - '@App\Service\FileDataReader'
+            - '@App\Service\CompanyConfigResolver'
             - '@Greenter\Api'
+            - '%kernel.cache_dir%'
 
     App\Service\ConsultCdrServiceFactory:
         public: true
         arguments:
             - '@App\Service\EnvConfigProvider'
-            - '@App\Service\ConfigProviderInterface'
+            - '@App\Service\CompanyConfigResolver'
 
     App\EventSubscriber\TokenSubscriber:
         arguments:

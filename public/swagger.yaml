@@ -720,6 +720,34 @@ paths:
         "200":
           description: Operacion exitosa
   /configuration/company/{ruc}:
+    get:
+      tags:
+        - configuration
+      summary: Consultar estado de empresa
+      description: Retorna el entorno activo y la configuración efectiva de la empresa (sin exponer claves secretas ni certificados).
+      operationId: getCompanyConfiguration
+      parameters:
+        - name: ruc
+          in: path
+          description: RUC de la empresa
+          required: true
+          schema:
+            type: string
+        - name: token
+          in: query
+          description: Token de autenticación
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Configuración de la empresa
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CompanyConfiguration"
+        "404":
+          description: Empresa no encontrada
     put:
       tags:
         - configuration
@@ -749,7 +777,6 @@ paths:
                 - SOL_USER
                 - SOL_PASS
                 - certificate
-                - FE_URL
               properties:
                 SOL_USER:
                   type: string
@@ -764,9 +791,32 @@ paths:
                 FE_URL:
                   type: string
                   example: https://e-factura.sunat.gob.pe/ol-ti-itcpfegem/billService
+                RE_URL:
+                  type: string
+                GUIA_URL:
+                  type: string
+                AUTH_URL:
+                  type: string
+                API_URL:
+                  type: string
+                CLIENT_ID:
+                  type: string
+                CLIENT_SECRET:
+                  type: string
+                environment:
+                  type: string
+                  description: Entorno activo (beta, production o el nombre de un entorno definido en environments)
+                  example: production
+                environments:
+                  type: object
+                  description: Configuración por entorno (nombre => configuración). Si se omite, se conservan los entornos existentes.
+                  additionalProperties:
+                    $ref: "#/components/schemas/CompanyEnvironment"
       responses:
         "200":
           description: Empresa registrada o actualizada correctamente
+        "400":
+          description: Datos inválidos
     delete:
       tags:
         - configuration
@@ -847,6 +897,114 @@ paths:
       responses:
         "200":
           description: Logo eliminado correctamente
+  /configuration/company/{ruc}/environment:
+    put:
+      tags:
+        - configuration
+      summary: Conmutar entorno activo
+      description: Cambia el entorno activo de la empresa (beta, production o un entorno definido) y lo persiste en empresas.json.
+      operationId: setCompanyEnvironment
+      parameters:
+        - name: ruc
+          in: path
+          description: RUC de la empresa
+          required: true
+          schema:
+            type: string
+        - name: token
+          in: query
+          description: Token de autenticación
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - environment
+              properties:
+                environment:
+                  type: string
+                  example: production
+      responses:
+        "200":
+          description: Entorno actualizado
+        "400":
+          description: Entorno inválido o no definido
+        "404":
+          description: Empresa no encontrada
+  /configuration/company/{ruc}/environments/{name}:
+    put:
+      tags:
+        - configuration
+      summary: Registrar o actualizar entorno
+      description: Registra o reemplaza la configuración de un entorno de la empresa. El certificado se guarda como {ruc}-{name}-cert.pem; si se omite, se conserva el anterior.
+      operationId: saveCompanyEnvironment
+      parameters:
+        - name: ruc
+          in: path
+          description: RUC de la empresa
+          required: true
+          schema:
+            type: string
+        - name: name
+          in: path
+          description: Nombre del entorno (letras, dígitos, "_", "." y "-")
+          required: true
+          schema:
+            type: string
+        - name: token
+          in: query
+          description: Token de autenticación
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CompanyEnvironment"
+      responses:
+        "200":
+          description: Entorno registrado o actualizado correctamente
+        "400":
+          description: Nombre inválido o sin datos
+        "404":
+          description: Empresa no encontrada
+    delete:
+      tags:
+        - configuration
+      summary: Eliminar entorno
+      description: Elimina un entorno de la empresa y su certificado. Si era el entorno activo, la empresa vuelve a usar su configuración raíz.
+      operationId: deleteCompanyEnvironment
+      parameters:
+        - name: ruc
+          in: path
+          description: RUC de la empresa
+          required: true
+          schema:
+            type: string
+        - name: name
+          in: path
+          description: Nombre del entorno
+          required: true
+          schema:
+            type: string
+        - name: token
+          in: query
+          description: Token de autenticación
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Entorno eliminado correctamente
+        "404":
+          description: Empresa o entorno no encontrado
 servers:
   - url: http://lycet.api/api/v1
   - url: https://lycet.api/api/v1
@@ -915,6 +1073,69 @@ components:
       in: query
       description: Api Token
   schemas:
+    CompanyEnvironment:
+      type: object
+      description: Configuración de un entorno. Las claves no definidas se heredan de la raíz de la empresa y luego del .env.
+      properties:
+        SOL_USER:
+          type: string
+          example: 20000000001REAL
+        SOL_PASS:
+          type: string
+        certificate:
+          type: string
+          description: Certificado .pem codificado en base64
+        FE_URL:
+          type: string
+        RE_URL:
+          type: string
+        GUIA_URL:
+          type: string
+        AUTH_URL:
+          type: string
+        API_URL:
+          type: string
+        CLIENT_ID:
+          type: string
+        CLIENT_SECRET:
+          type: string
+    CompanyConfiguration:
+      type: object
+      properties:
+        ruc:
+          type: string
+        environment:
+          type: string
+          nullable: true
+          description: Entorno activo
+        environments:
+          type: array
+          items:
+            type: string
+          description: Nombres de los entornos definidos
+        hasLogo:
+          type: boolean
+        hasCertificate:
+          type: boolean
+        SOL_USER:
+          type: string
+        FE_URL:
+          type: string
+          nullable: true
+        RE_URL:
+          type: string
+          nullable: true
+        GUIA_URL:
+          type: string
+          nullable: true
+        AUTH_URL:
+          type: string
+          nullable: true
+        API_URL:
+          type: string
+          nullable: true
+        CLIENT_ID:
+          type: string
     Address:
       type: object
       properties:

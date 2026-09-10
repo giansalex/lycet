@@ -91,6 +91,74 @@ curl -X DELETE "http://localhost:8000/api/v1/configuration/company/20000000001?t
 
 Los campos opcionales (`FE_URL`, `RE_URL`, `GUIA_URL`, `AUTH_URL`, `API_URL`, `CLIENT_ID`, `CLIENT_SECRET`) permiten configurar URLs por empresa. Si no se proporcionan, se usan las del `.env`.
 
+#### Entornos por empresa
+
+Cada empresa puede definir varios **entornos** con nombre libre (`beta`, `production`, `sunat-beta`, `bizlink-prod`, …) y un
+campo `environment` que indica cuál está activo. Esto permite dejar preconfiguradas las credenciales, certificado y URLs de
+homologación, producción o de distintos OSE, y "conmutar" entre ellos sin reenviar toda la configuración.
+
+Cualquier clave (`SOL_USER`, `SOL_PASS`, `certificate`, `FE_URL`, `RE_URL`, `GUIA_URL`, `AUTH_URL`, `API_URL`, `CLIENT_ID`,
+`CLIENT_SECRET`) se resuelve con este orden de prioridad:
+
+1. El bloque del entorno activo: `environments[<environment>]`.
+2. La raíz de la empresa.
+3. Solo para `FE_URL`, `RE_URL` y `GUIA_URL`, y solo si el entorno activo se llama `beta` o `production`: las URLs oficiales
+   de SUNAT (`Greenter\Ws\Services\SunatEndpoints`). Por eso `beta` y `production` se pueden activar sin definir un bloque.
+4. El archivo `.env`.
+
+> Las URLs definidas en la raíz de la empresa tienen prioridad sobre las URLs oficiales de SUNAT. Si quiere que un entorno
+> `production` use las URLs de SUNAT, no defina `FE_URL`/`RE_URL`/`GUIA_URL` en la raíz (o defínalas dentro de cada bloque).
+
+Si una empresa no tiene `environment`, se comporta como hasta ahora (raíz → `.env`), por lo que los archivos existentes siguen
+funcionando sin cambios.
+
+**Consultar el estado de una empresa** (no expone `SOL_PASS`, `CLIENT_SECRET` ni certificados):
+```bash
+curl "http://localhost:8000/api/v1/configuration/company/20000000001?token=123456"
+```
+```json
+{
+  "ruc": "20000000001",
+  "environment": "production",
+  "environments": ["production", "bizlink-prod"],
+  "hasLogo": true,
+  "hasCertificate": true,
+  "SOL_USER": "20000000001REAL",
+  "FE_URL": "https://e-factura.sunat.gob.pe/ol-ti-itcpfegem/billService",
+  "RE_URL": "https://e-factura.sunat.gob.pe/ol-ti-itemision-otroscpe-gem/billService",
+  "GUIA_URL": "https://e-guiaremision.sunat.gob.pe/ol-ti-itemision-guia-gem/billService",
+  "AUTH_URL": "https://api-seguridad.sunat.gob.pe/v1",
+  "API_URL": "https://api-cpe.sunat.gob.pe/v1",
+  "CLIENT_ID": "xxxxxxxx"
+}
+```
+
+**Registrar/Actualizar un entorno** (todos los campos son opcionales; el certificado se guarda como `{ruc}-{entorno}-cert.pem`):
+```bash
+curl -X PUT "http://localhost:8000/api/v1/configuration/company/20000000001/environments/production?token=123456" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "SOL_USER": "20000000001REAL",
+    "SOL_PASS": "clave-real",
+    "certificate": "<certificado .pem en base64>"
+  }'
+```
+
+**Conmutar el entorno activo** (`beta`, `production` o el nombre de un entorno definido; se persiste en `empresas.json`):
+```bash
+curl -X PUT "http://localhost:8000/api/v1/configuration/company/20000000001/environment?token=123456" \
+  -H "Content-Type: application/json" \
+  -d '{"environment": "production"}'
+```
+
+**Eliminar un entorno:**
+```bash
+curl -X DELETE "http://localhost:8000/api/v1/configuration/company/20000000001/environments/production?token=123456"
+```
+
+El endpoint `PUT /company/{ruc}` también acepta `environment` y `environments` (mapa `nombre => configuración`) para
+registrar todo en una sola llamada, y conserva los entornos ya definidos cuando no se envían.
+
 Ejemplo de contenido del archivo `empresas.json`, tambien puede cambiar la URL de los servicios para apuntar a un OSE.
 
 ```json
@@ -113,9 +181,32 @@ Ejemplo de contenido del archivo `empresas.json`, tambien puede cambiar la URL d
     "API_URL": "https://api-test.sunat.gob.pe/v1",
     "CLIENT_ID": "85e5b0ae-255c-4891-a595-0b98c65c9854",
     "CLIENT_SECRET": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  "20000000003": {
+    "SOL_USER": "20000000003MODDATOS",
+    "SOL_PASS": "moddatos",
+    "certificate": "20000000003-cert.pem",
+    "logo": "20000000003-logo.png",
+    "environment": "production",
+    "environments": {
+      "production": {
+        "SOL_USER": "20000000003REAL",
+        "SOL_PASS": "clave-real",
+        "certificate": "20000000003-production-cert.pem"
+      },
+      "bizlink-prod": {
+        "FE_URL": "https://ose.bizlinks.com/billService",
+        "RE_URL": "https://ose.bizlinks.com/billService",
+        "CLIENT_ID": "prod-id",
+        "CLIENT_SECRET": "prod-secret"
+      }
+    }
   }
 }
 ```
+> La empresa `20000000003` usa las credenciales y certificado del bloque `production`, hereda el `logo` de la raíz y, al no
+> definir URLs, usa las oficiales de SUNAT de producción. Si se cambia `environment` a `bizlink-prod`, usará las URLs del OSE
+> y las credenciales SOL de la raíz.
 > Para pruebas de Guia de remision, utilizar la siguiente configuración [issue#605](https://github.com/giansalex/lycet/issues/605)
 
 ### Ejecutar    

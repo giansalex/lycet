@@ -102,14 +102,11 @@ class DocumentRequest implements DocumentRequestInterface
         $document = $this->getDocument($class);
         $params = $this->getKeyContent("parameters");
 
-        $company = $document->getCompany();
-        $jsonCompanies = $this->getParameter('companies');
-        $ruc = $company->getRuc();
-        if (empty($companies) && ($companies = json_decode($jsonCompanies, true)) && array_key_exists($ruc, $companies)) {
-            $logo = $this->getFile($companies[$ruc]['logo']);
-        } else {
-            $logo = $this->getParameter('logo');
-        }
+        $ruc = $document->getCompany()->getRuc();
+        $resolver = $this->container->get(CompanyConfigResolver::class);
+        $companyConfig = $resolver->getCompany($ruc);
+        $logoFile = $companyConfig !== null ? $resolver->resolve($companyConfig, 'logo') : null;
+        $logo = !empty($logoFile) ? $this->getFile($logoFile) : $this->getParameter('logo');
 
         $see = $this->getSee($class, $ruc);
 

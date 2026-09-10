@@ -10,62 +10,67 @@ class SeeApiFactory
 {
     private ConfigProviderInterface $config;
     private ConfigProviderInterface $fileProvider;
-    private FileDataReader $fileReader;
+    private CompanyConfigResolver $resolver;
     private Api $see;
+    private string $cacheDir;
 
     /**
-     * SeeFactory constructor.
+     * SeeApiFactory constructor.
      * @param ConfigProviderInterface $config
      * @param ConfigProviderInterface $fileProvider
-     * @param FileDataReader $fileReader
+     * @param CompanyConfigResolver $resolver
      * @param Api $see
+     * @param string $cacheDir
      */
-    public function __construct(ConfigProviderInterface $config, ConfigProviderInterface $fileProvider, FileDataReader $fileReader, Api $see)
+    public function __construct(ConfigProviderInterface $config, ConfigProviderInterface $fileProvider, CompanyConfigResolver $resolver, Api $see, string $cacheDir)
     {
         $this->config = $config;
         $this->fileProvider = $fileProvider;
-        $this->fileReader = $fileReader;
+        $this->resolver = $resolver;
         $this->see = $see;
+        $this->cacheDir = $cacheDir;
     }
 
     public function build(?string $ruc): Api
     {
-        if (!empty($ruc) && $this->configureSeeWithRuc($ruc)) {
-            return $this->see;
+        $company = !empty($ruc) ? $this->resolver->getCompany($ruc) : null;
+        if ($company !== null) {
+            return $this->buildForCompany($company);
         }
 
         $this->configureSeeWithEnv();
         return $this->see;
     }
 
-    private function configureSeeWithRuc(string $ruc): bool
+    /**
+     * Companies may override AUTH_URL/API_URL (per environment), and Greenter\Api only
+     * accepts endpoints at construction time, so a dedicated instance is built.
+     */
+    private function buildForCompany(array $company): Api
     {
-        $jsonCompanies = $this->fileProvider->get('companies');
-        if (empty($jsonCompanies)) {
-            return false;
-        }
+        $api = new Api([
+            'auth' => (string) $this->resolver->resolve($company, 'AUTH_URL'),
+            'cpe' => (string) $this->resolver->resolve($company, 'API_URL'),
+        ]);
+        $api->setBuilderOptions(['cache' => $this->cacheDir]);
 
-        $companies = json_decode($jsonCompanies, true);
+        list ($ruc, $user) = $this->getRucAndUser((string) $this->resolver->resolve($company, 'SOL_USER'));
+        $api->setClaveSOL($ruc, $user, (string) $this->resolver->resolve($company, 'SOL_PASS'));
+        $api->setCertificate($this->resolver->resolveCertificate($company));
+        $api->setApiCredentials(
+            (string) $this->resolver->resolve($company, 'CLIENT_ID'),
+            (string) $this->resolver->resolve($company, 'CLIENT_SECRET')
+        );
 
-        if (!array_key_exists($ruc, $companies)) {
-            return false;
-        }
-
-        $config = $companies[$ruc];
-        list ($ruc, $user) = $this->getRucAndUser($config['SOL_USER']);
-        $this->see->setClaveSOL($ruc, $user, $config['SOL_PASS']);
-        $this->see->setCertificate($this->fileReader->getContents($config['certificate']));
-        $this->see->setApiCredentials($config['CLIENT_ID'], $config['CLIENT_SECRET']);
-
-        return true;
+        return $api;
     }
 
     private function configureSeeWithEnv()
     {
-        list ($ruc, $user) = $this->getRucAndUser($this->config->get('SOL_USER'));
-        $this->see->setClaveSOL($ruc, $user, $this->config->get('SOL_PASS'));
-        $this->see->setApiCredentials($this->config->get('CLIENT_ID'), $this->config->get('CLIENT_SECRET'));
-        $this->see->setCertificate($this->fileProvider->get('certificate'));
+        list ($ruc, $user) = $this->getRucAndUser((string) $this->config->get('SOL_USER'));
+        $this->see->setClaveSOL($ruc, $user, (string) $this->config->get('SOL_PASS'));
+        $this->see->setApiCredentials((string) $this->config->get('CLIENT_ID'), (string) $this->config->get('CLIENT_SECRET'));
+        $this->see->setCertificate((string) $this->fileProvider->get('certificate'));
     }
 
     private function getRucAndUser(string $username): array
