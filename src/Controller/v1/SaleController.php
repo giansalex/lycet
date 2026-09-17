@@ -15,6 +15,7 @@ use Greenter\Report\Render\QrRender;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
+use OpenApi\Annotations as OA;
 
 /**
  * Class SaleController
@@ -38,6 +39,17 @@ class SaleController extends AbstractController
 
     /**
      * @Route("/qr", methods={"POST"})
+     *
+     * @OA\Post(
+     *     path="/sale/qr",
+     *     tags={"sale"},
+     *     summary="Generar el QR de una Venta",
+     *     description="Retorna la imagen del QR",
+     *     operationId="getSaleQr",
+     *     @OA\RequestBody(required=true, description="Comprobante",
+     *         @OA\JsonContent(ref="#/components/schemas/QrParameter")),
+     *     @OA\Response(response=200, description="Operacion exitosa")
+     * )
      *
      * @param Request $request
      * @return Response

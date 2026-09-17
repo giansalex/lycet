@@ -3,6 +3,9 @@
 /data
 !/data/.htaccess
 
+# Archivo temporal generado por el CI para verificar sincronización del swagger
+/swagger.generated.yaml
+
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php

@@ -142,5 +142,9 @@ services:
         arguments:
             $token: '%token%'
 
+    App\Command\GenerateSwaggerCommand:
+        arguments:
+            $projectDir: '%kernel.project_dir%'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
