@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use OpenApi\Annotations as OA;
 
 /**
  * Class NoteController.
@@ -49,6 +50,20 @@ class NoteController extends AbstractController
     /**
      * @Route("/send", methods={"POST"})
      *
+     * @OA\Post(
+     *     path="/note/send",
+     *     tags={"note"},
+     *     summary="Envia nota de credito o debito",
+     *     description="Retorna la respuesta de SUNAT y el XML firmado",
+     *     operationId="sendNote",
+     *     @OA\RequestBody(required=true, description="Comprobante",
+     *         @OA\JsonContent(ref="#/components/schemas/Note")),
+     *     @OA\Response(response=200, description="Operacion exitosa",
+     *         @OA\JsonContent(ref="#/components/schemas/DocumentResponse")),
+     *     @OA\Response(response=400, description="Error de Validación",
+     *         @OA\JsonContent(type="array", @OA\Items(ref="#/components/schemas/ValidationResponse")))
+     * )
+     *
      * @return Response
      */
     public function send(): Response
@@ -58,6 +73,18 @@ class NoteController extends AbstractController
 
     /**
      * @Route("/xml", methods={"POST"})
+     *
+     * @OA\Post(
+     *     path="/note/xml",
+     *     tags={"note"},
+     *     summary="Generar el XML de una nota de crédito o débito",
+     *     description="Retorna el XML",
+     *     operationId="getNoteXml",
+     *     @OA\RequestBody(required=true, description="Comprobante",
+     *         @OA\JsonContent(ref="#/components/schemas/Note")),
+     *     @OA\Response(response=200, description="Operacion exitosa"),
+     *     @OA\Response(response=400, description="Error de Validación")
+     * )
      *
      * @return Response
      */
@@ -69,6 +96,18 @@ class NoteController extends AbstractController
     /**
      * @Route("/pdf", methods={"POST"})
      *
+     * @OA\Post(
+     *     path="/note/pdf",
+     *     tags={"note"},
+     *     summary="Generar el PDF de una nota de crédito o débito",
+     *     description="Retorna el PDF",
+     *     operationId="getNotePdf",
+     *     @OA\RequestBody(required=true, description="Comprobante",
+     *         @OA\JsonContent(ref="#/components/schemas/Note")),
+     *     @OA\Response(response=200, description="Operacion exitosa"),
+     *     @OA\Response(response=400, description="Error de Validación")
+     * )
+     *
      * @return Response
      */
     public function pdf(): Response
@@ -78,6 +117,20 @@ class NoteController extends AbstractController
 
     /**
      * @Route("/status", methods={"GET"})
+     *
+     * @OA\Get(
+     *     path="/note/status",
+     *     tags={"note"},
+     *     summary="Obtiene el estado del CDR de una Nota de Crédito o Débito",
+     *     description="Retorna el CDR desde SUNAT. El tipo debe ser 07 (Nota de Crédito) o 08 (Nota de Débito).",
+     *     operationId="getNoteStatus",
+     *     @OA\Parameter(name="tipo", in="query", required=true, description="Tipo de comprobante (07 o 08)", @OA\Schema(type="string")),
+     *     @OA\Parameter(name="serie", in="query", required=true, description="Serie del comprobante", @OA\Schema(type="string")),
+     *     @OA\Parameter(name="numero", in="query", required=true, description="Número correlativo del comprobante", @OA\Schema(type="string")),
+     *     @OA\Parameter(name="ruc", in="query", required=false, description="RUC de empresa (Múltiples Empresas)", @OA\Schema(type="string")),
+     *     @OA\Response(response=200, description="Operacion exitosa",
+     *         @OA\JsonContent(ref="#/components/schemas/StatusResult"))
+     * )
      *
      * @param Request $request
      * @param ConsultCdrServiceFactory $factory

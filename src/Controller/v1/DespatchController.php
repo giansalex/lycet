@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use OpenApi\Annotations as OA;
 
 /**
  * Class DespatchController.
@@ -40,6 +41,20 @@ class DespatchController extends AbstractController
 
     /**
      * @Route("/send", methods={"POST"})
+     *
+     * @OA\Post(
+     *     path="/despatch/send",
+     *     tags={"despatch"},
+     *     summary="Enviar una Guía de Remisión",
+     *     description="Retorna la respuesta de SUNAT y el XML firmado",
+     *     operationId="sendDespatch",
+     *     @OA\RequestBody(required=true, description="Comprobante",
+     *         @OA\JsonContent(ref="#/components/schemas/Despatch")),
+     *     @OA\Response(response=200, description="Operacion exitosa",
+     *         @OA\JsonContent(ref="#/components/schemas/SummaryResponse")),
+     *     @OA\Response(response=400, description="Error de Validación",
+     *         @OA\JsonContent(type="array", @OA\Items(ref="#/components/schemas/ValidationResponse")))
+     * )
      *
      * @return Response
      */
@@ -65,6 +80,18 @@ class DespatchController extends AbstractController
     /**
      * @Route("/xml", methods={"POST"})
      *
+     * @OA\Post(
+     *     path="/despatch/xml",
+     *     tags={"despatch"},
+     *     summary="Generar el XML de una Guía de Remisión",
+     *     description="Retorna el XML",
+     *     operationId="getDespatchXml",
+     *     @OA\RequestBody(required=true, description="Comprobante",
+     *         @OA\JsonContent(ref="#/components/schemas/Despatch")),
+     *     @OA\Response(response=200, description="Operacion exitosa"),
+     *     @OA\Response(response=400, description="Error de Validación")
+     * )
+     *
      * @return Response
      */
     public function xml(): Response
@@ -75,6 +102,18 @@ class DespatchController extends AbstractController
     /**
      * @Route("/pdf", methods={"POST"})
      *
+     * @OA\Post(
+     *     path="/despatch/pdf",
+     *     tags={"despatch"},
+     *     summary="Generar el Pdf de una Guía de Remisión",
+     *     description="Retorna el Pdf",
+     *     operationId="getDespatchPdf",
+     *     @OA\RequestBody(required=true, description="Comprobante",
+     *         @OA\JsonContent(ref="#/components/schemas/Despatch")),
+     *     @OA\Response(response=200, description="Operacion exitosa"),
+     *     @OA\Response(response=400, description="Error de Validación")
+     * )
+     *
      * @return Response
      */
     public function pdf(): Response
@@ -84,6 +123,18 @@ class DespatchController extends AbstractController
 
     /**
      * @Route("/status", methods={"GET"})
+     *
+     * @OA\Get(
+     *     path="/despatch/status",
+     *     tags={"despatch"},
+     *     summary="Obtiene el estado del ticket",
+     *     description="Retorna el CDR",
+     *     operationId="getDespatchStatus",
+     *     @OA\Parameter(name="ticket", in="query", description="Ticket del comprobante", @OA\Schema(type="string")),
+     *     @OA\Parameter(name="ruc", in="query", required=false, description="RUC de empresa (Multiples Empresas)", @OA\Schema(type="string")),
+     *     @OA\Response(response=200, description="Operacion exitosa",
+     *         @OA\JsonContent(ref="#/components/schemas/StatusResult"))
+     * )
      *
      * @param Request $request
      * @param SeeApiFactory $factory

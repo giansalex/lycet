@@ -141,6 +141,36 @@ docker run -d -p 8000:8000  -v ./data:/var/www/html/data --name lycet_app lycet
 
 Abrir el navegador, y dirígete a http://localhost:8000/
 
+### Documentación OpenAPI (Swagger)
+
+La especificación `public/swagger.yaml` **se genera automáticamente** a partir de
+las anotaciones `@OA\...` presentes en el código (controladores en `src/Controller`
+y esquemas en `src/OpenApi`). Esto mantiene la documentación sincronizada con la API:
+al agregar o modificar un endpoint solo hay que actualizar sus anotaciones y regenerar
+el archivo.
+
+Regenerar el swagger:
+```
+php bin/console app:swagger:generate
+```
+
+La opción `--output` (o `-o`) permite escribir en otra ruta, por ejemplo a un archivo
+temporal (esto es lo que usa el CI para comparar sin sobrescribir el commit realizado):
+```
+php bin/console app:swagger:generate --output=swagger.generated.yaml
+```
+
+Flujo recomendado al cambiar la API:
+1. Anota el endpoint con `@OA\Get` / `@OA\Post` junto a su `@Route`.
+   > Cada controlador con anotaciones `@OA` debe incluir `use OpenApi\Annotations as OA;`.
+2. Ejecuta `php bin/console app:swagger:generate`.
+3. Realiza un commit del `public/swagger.yaml` actualizado.
+
+El workflow de GitHub Actions incluye el job `swagger-sync`, que regenera la
+especificación y falla si `public/swagger.yaml` quedó desactualizado respecto a las
+anotaciones. Si el CI falla por este motivo, ejecuta el comando de generación y
+realiza un commit del resultado.
+
 ### Docs
 
 - [Conectando lycet desde nodejs](https://github.com/giansalex/lycet-demo-js)

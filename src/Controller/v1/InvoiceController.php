@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use OpenApi\Annotations as OA;
 
 /**
  * Class InvoiceController.
@@ -49,6 +50,20 @@ class InvoiceController extends AbstractController
     /**
      * @Route("/send", methods={"POST"})
      *
+     * @OA\Post(
+     *     path="/invoice/send",
+     *     tags={"invoice"},
+     *     summary="Enviar una Factura o Boleta",
+     *     description="Retorna la respuesta de SUNAT y el XML firmado",
+     *     operationId="sendInvoice",
+     *     @OA\RequestBody(required=true, description="Comprobante",
+     *         @OA\JsonContent(ref="#/components/schemas/Invoice")),
+     *     @OA\Response(response=200, description="Operacion exitosa",
+     *         @OA\JsonContent(ref="#/components/schemas/DocumentResponse")),
+     *     @OA\Response(response=400, description="Error de Validación",
+     *         @OA\JsonContent(type="array", @OA\Items(ref="#/components/schemas/ValidationResponse")))
+     * )
+     *
      * @return Response
      */
     public function send(): Response
@@ -58,6 +73,18 @@ class InvoiceController extends AbstractController
 
     /**
      * @Route("/xml", methods={"POST"})
+     *
+     * @OA\Post(
+     *     path="/invoice/xml",
+     *     tags={"invoice"},
+     *     summary="Generar el XML de una factura o boleta",
+     *     description="Retorna el XML",
+     *     operationId="getInvoiceXml",
+     *     @OA\RequestBody(required=true, description="Comprobante",
+     *         @OA\JsonContent(ref="#/components/schemas/Invoice")),
+     *     @OA\Response(response=200, description="Operacion exitosa"),
+     *     @OA\Response(response=400, description="Error de Validación")
+     * )
      *
      * @return Response
      */
@@ -69,6 +96,18 @@ class InvoiceController extends AbstractController
     /**
      * @Route("/pdf", methods={"POST"})
      *
+     * @OA\Post(
+     *     path="/invoice/pdf",
+     *     tags={"invoice"},
+     *     summary="Generar el PDF de una factura o boleta",
+     *     description="Retorna el Pdf",
+     *     operationId="getInvoicePdf",
+     *     @OA\RequestBody(required=true, description="Comprobante",
+     *         @OA\JsonContent(ref="#/components/schemas/Invoice")),
+     *     @OA\Response(response=200, description="Operacion exitosa"),
+     *     @OA\Response(response=400, description="Error de Validación")
+     * )
+     *
      * @return Response
      */
     public function pdf(): Response
@@ -78,6 +117,20 @@ class InvoiceController extends AbstractController
 
     /**
      * @Route("/status", methods={"GET"})
+     *
+     * @OA\Get(
+     *     path="/invoice/status",
+     *     tags={"invoice"},
+     *     summary="Obtiene el estado del CDR de una Factura o Boleta",
+     *     description="Retorna el CDR desde SUNAT",
+     *     operationId="getInvoiceStatus",
+     *     @OA\Parameter(name="tipo", in="query", required=true, description="Tipo de comprobante (Ej. 01, 03)", @OA\Schema(type="string")),
+     *     @OA\Parameter(name="serie", in="query", required=true, description="Serie del comprobante (Ej. F001)", @OA\Schema(type="string")),
+     *     @OA\Parameter(name="numero", in="query", required=true, description="Número correlativo del comprobante", @OA\Schema(type="string")),
+     *     @OA\Parameter(name="ruc", in="query", required=false, description="RUC de empresa (Múltiples Empresas)", @OA\Schema(type="string")),
+     *     @OA\Response(response=200, description="Operacion exitosa",
+     *         @OA\JsonContent(ref="#/components/schemas/StatusResult"))
+     * )
      *
      * @param Request $request
      * @param ConsultCdrServiceFactory $factory

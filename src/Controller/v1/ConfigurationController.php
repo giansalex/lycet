@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use OpenApi\Annotations as OA;
 
 /**
  * Class ConfigurationController
@@ -45,6 +46,17 @@ class ConfigurationController extends AbstractController
     /**
      * @Route("/", methods={"POST"})
      *
+     * @OA\Post(
+     *     path="/configuration/",
+     *     tags={"configuration"},
+     *     summary="Guarda el certificado y logo",
+     *     description="Guarda archivos de configuración",
+     *     operationId="saveConfiguration",
+     *     @OA\RequestBody(required=true, description="archivos en base64",
+     *         @OA\JsonContent(ref="#/components/schemas/FilesData")),
+     *     @OA\Response(response=200, description="Operacion exitosa")
+     * )
+     *
      * @param Request $request
      * @return Response
      */
@@ -66,6 +78,26 @@ class ConfigurationController extends AbstractController
 
     /**
      * @Route("/company/{ruc}", methods={"PUT"})
+     *
+     * @OA\Put(
+     *     path="/configuration/company/{ruc}",
+     *     tags={"configuration"},
+     *     summary="Registrar o actualizar empresa",
+     *     description="Registra o actualiza la configuración de una empresa para facturación electrónica.",
+     *     operationId="saveCompanyConfiguration",
+     *     @OA\Parameter(name="ruc", in="path", required=true, description="RUC de la empresa", @OA\Schema(type="string")),
+     *     @OA\Parameter(name="token", in="query", required=true, description="Token de autenticación", @OA\Schema(type="string")),
+     *     @OA\RequestBody(required=true,
+     *         @OA\JsonContent(
+     *             required={"SOL_USER", "SOL_PASS", "certificate", "FE_URL"},
+     *             @OA\Property(property="SOL_USER", type="string", example="20000000001MODDATOS"),
+     *             @OA\Property(property="SOL_PASS", type="string", example="moddatos"),
+     *             @OA\Property(property="certificate", type="string", description="Certificado .pem codificado en base64", example="<certificado .pem en base64>"),
+     *             @OA\Property(property="FE_URL", type="string", example="https://e-factura.sunat.gob.pe/ol-ti-itcpfegem/billService")
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="Empresa registrada o actualizada correctamente")
+     * )
      *
      * @param string $ruc
      * @param Request $request
@@ -120,6 +152,23 @@ class ConfigurationController extends AbstractController
 
     /**
      * @Route("/company/{ruc}/logo", methods={"PUT"})
+     *
+     * @OA\Put(
+     *     path="/configuration/company/{ruc}/logo",
+     *     tags={"configuration"},
+     *     summary="Subir logo de empresa",
+     *     description="Sube o actualiza el logo de una empresa en base64.",
+     *     operationId="saveCompanyLogo",
+     *     @OA\Parameter(name="ruc", in="path", required=true, description="RUC de la empresa", @OA\Schema(type="string")),
+     *     @OA\Parameter(name="token", in="query", required=true, description="Token de autenticación", @OA\Schema(type="string")),
+     *     @OA\RequestBody(required=true,
+     *         @OA\JsonContent(
+     *             required={"logo"},
+     *             @OA\Property(property="logo", type="string", description="Logo codificado en base64", example="<logo en base64>")
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="Logo registrado o actualizado correctamente")
+     * )
      *
      * @param string $ruc
      * @param Request $request
@@ -176,6 +225,17 @@ class ConfigurationController extends AbstractController
     /**
      * @Route("/company/{ruc}/logo", methods={"DELETE"})
      *
+     * @OA\Delete(
+     *     path="/configuration/company/{ruc}/logo",
+     *     tags={"configuration"},
+     *     summary="Eliminar logo de empresa",
+     *     description="Elimina el logo registrado de una empresa.",
+     *     operationId="deleteCompanyLogo",
+     *     @OA\Parameter(name="ruc", in="path", required=true, description="RUC de la empresa", @OA\Schema(type="string")),
+     *     @OA\Parameter(name="token", in="query", required=true, description="Token de autenticación", @OA\Schema(type="string")),
+     *     @OA\Response(response=200, description="Logo eliminado correctamente")
+     * )
+     *
      * @param string $ruc
      * @return Response
      */
@@ -204,6 +264,17 @@ class ConfigurationController extends AbstractController
 
     /**
      * @Route("/company/{ruc}", methods={"DELETE"})
+     *
+     * @OA\Delete(
+     *     path="/configuration/company/{ruc}",
+     *     tags={"configuration"},
+     *     summary="Eliminar empresa",
+     *     description="Elimina la configuración registrada de una empresa.",
+     *     operationId="deleteCompanyConfiguration",
+     *     @OA\Parameter(name="ruc", in="path", required=true, description="RUC de la empresa", @OA\Schema(type="string")),
+     *     @OA\Parameter(name="token", in="query", required=true, description="Token de autenticación", @OA\Schema(type="string")),
+     *     @OA\Response(response=200, description="Empresa eliminada correctamente")
+     * )
      *
      * @param string $ruc
      * @return Response

@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use OpenApi\Annotations as OA;
 
 /**
  * Class ReversionController.
@@ -48,6 +49,20 @@ class ReversionController extends AbstractController
     /**
      * @Route("/send", methods={"POST"})
      *
+     * @OA\Post(
+     *     path="/reversion/send",
+     *     tags={"reversion"},
+     *     summary="Enviar un Resumen de Reversiones",
+     *     description="Retorna la respuesta de SUNAT y el XML firmado",
+     *     operationId="sendReversion",
+     *     @OA\RequestBody(required=true, description="Comprobante",
+     *         @OA\JsonContent(ref="#/components/schemas/Reversion")),
+     *     @OA\Response(response=200, description="Operacion exitosa",
+     *         @OA\JsonContent(ref="#/components/schemas/SummaryResponse")),
+     *     @OA\Response(response=400, description="Error de Validación",
+     *         @OA\JsonContent(type="array", @OA\Items(ref="#/components/schemas/ValidationResponse")))
+     * )
+     *
      * @return Response
      */
     public function send(): Response
@@ -57,6 +72,18 @@ class ReversionController extends AbstractController
 
     /**
      * @Route("/xml", methods={"POST"})
+     *
+     * @OA\Post(
+     *     path="/reversion/xml",
+     *     tags={"reversion"},
+     *     summary="Generar el XML de un Resumen de Reversiones",
+     *     description="Retorna el XML",
+     *     operationId="getReversionXml",
+     *     @OA\RequestBody(required=true, description="Comprobante",
+     *         @OA\JsonContent(ref="#/components/schemas/Reversion")),
+     *     @OA\Response(response=200, description="Operacion exitosa"),
+     *     @OA\Response(response=400, description="Error de Validación")
+     * )
      *
      * @return Response
      */
@@ -68,6 +95,18 @@ class ReversionController extends AbstractController
     /**
      * @Route("/pdf", methods={"POST"})
      *
+     * @OA\Post(
+     *     path="/reversion/pdf",
+     *     tags={"reversion"},
+     *     summary="Generar el pdf de un Resumen de Reversiones",
+     *     description="Retorna el pdf",
+     *     operationId="getReversionPdf",
+     *     @OA\RequestBody(required=true, description="Comprobante",
+     *         @OA\JsonContent(ref="#/components/schemas/Reversion")),
+     *     @OA\Response(response=200, description="Operacion exitosa"),
+     *     @OA\Response(response=400, description="Error de Validación")
+     * )
+     *
      * @return Response
      */
     public function pdf(): Response
@@ -77,6 +116,18 @@ class ReversionController extends AbstractController
 
     /**
      * @Route("/status", methods={"GET"})
+     *
+     * @OA\Get(
+     *     path="/reversion/status",
+     *     tags={"reversion"},
+     *     summary="Obtiene el estado del ticket",
+     *     description="Retorna el XML",
+     *     operationId="getReversionStatus",
+     *     @OA\Parameter(name="ticket", in="query", description="Ticket de Resumen de Reversiones", @OA\Schema(type="string")),
+     *     @OA\Parameter(name="ruc", in="query", required=false, description="RUC de empresa (Multiples Empresas)", @OA\Schema(type="string")),
+     *     @OA\Response(response=200, description="Operacion exitosa",
+     *         @OA\JsonContent(ref="#/components/schemas/StatusResult"))
+     * )
      *
      * @param Request $request
      * @param SeeFactory $factory
