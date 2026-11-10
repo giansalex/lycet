@@ -1619,6 +1619,8 @@ components:
         fecha:
           type: string
           format: date-time
+        numero:
+          type: integer
     Exchange:
       type: object
       properties:
@@ -1688,6 +1690,8 @@ components:
           type: number
           format: float
         observacion:
+          type: string
+        indExcepcional:
           type: string
         details:
           type: array

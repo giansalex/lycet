@@ -6,3 +6,5 @@ Greenter\Model\Retention\Payment:
             type: float
         fecha:
             type: DateTime
+        numero:
+            type: int

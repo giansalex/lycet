@@ -20,6 +20,8 @@ Greenter\Model\Perception\Perception:
             type: float
         observacion:
             type: string
+        indExcepcional:
+            type: string
         details:
             type: array<Greenter\Model\Perception\PerceptionDetail>
         name:
