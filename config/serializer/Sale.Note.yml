@@ -82,3 +82,9 @@ Greenter\Model\Sale\Note:
             type: array<Greenter\Model\Sale\Cuota>
         name:
             type: string
+        contrato:
+            type: Greenter\Model\Sale\Contrato
+        participantes:
+            type: array<Greenter\Model\Client\Client>
+        detraccion:
+            type: Greenter\Model\Sale\Detraction

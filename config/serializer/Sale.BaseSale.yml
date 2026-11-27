@@ -68,3 +68,7 @@ Greenter\Model\Sale\BaseSale:
             type: array<Greenter\Model\Sale\Cuota>
         name:
             type: string
+        contrato:
+            type: Greenter\Model\Sale\Contrato
+        participantes:
+            type: array<Greenter\Model\Client\Client>

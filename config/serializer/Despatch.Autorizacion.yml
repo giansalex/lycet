@@ -1,0 +1,6 @@
+Greenter\Model\Despatch\Autorizacion:
+    properties:
+        numero:
+            type: string
+        codEmisor:
+            type: string

@@ -949,6 +949,8 @@ components:
           type: string
         telephone:
           type: string
+        nombreComercial:
+          type: string
     Company:
       type: object
       properties:
@@ -995,6 +997,14 @@ components:
           format: date-time
         duracion:
           type: integer
+        horaInicio:
+          type: string
+          format: date-time
+        cantidad:
+          type: number
+          format: float
+        unidad:
+          type: string
     SaleDetail:
       type: object
       properties:
@@ -1078,6 +1088,8 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/DetailAttribute"
+        transporteCarga:
+          $ref: '#/components/schemas/TransporteCarga'
     Legend:
       type: object
       properties:
@@ -1120,6 +1132,12 @@ components:
           type: string
         ruc:
           type: string
+        latitud:
+          type: number
+          format: float
+        longitud:
+          type: number
+          format: float
     EmbededDespatch:
       type: object
       properties:
@@ -1322,6 +1340,20 @@ components:
           format: float
         name:
           type: string
+        contrato:
+          $ref: '#/components/schemas/Contrato'
+        participantes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Client'
+        direccionDestino:
+          $ref: '#/components/schemas/Address'
+        incoterm:
+          type: string
+        agenteVentas:
+          $ref: '#/components/schemas/Client'
+        medioPago:
+          $ref: '#/components/schemas/MedioPago'
     Note:
       type: object
       properties:
@@ -1438,6 +1470,14 @@ components:
           format: float
         name:
           type: string
+        contrato:
+          $ref: '#/components/schemas/Contrato'
+        participantes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Client'
+        detraccion:
+          $ref: '#/components/schemas/Detraction'
     PaymentTerms:
       type: object
       properties:
@@ -1532,6 +1572,10 @@ components:
         mtoOtrosTributos:
           type: number
           format: float
+        clienteNombre:
+          type: string
+        gratuitas:
+          $ref: '#/components/schemas/SummaryGratuitas'
     Summary:
       type: object
       properties:
@@ -1699,6 +1743,9 @@ components:
             $ref: "#/components/schemas/PerceptionDetail"
         name:
           type: string
+        redondeo:
+          type: number
+          format: float
     RetentionDetail:
       type: object
       properties:
@@ -1762,6 +1809,9 @@ components:
             $ref: "#/components/schemas/RetentionDetail"
         name:
           type: string
+        redondeo:
+          type: number
+          format: float
     Puerto:
       type: object
       properties:
@@ -1786,6 +1836,8 @@ components:
           type: string
         choferDoc:
           type: string
+        autorizacion:
+          $ref: '#/components/schemas/Autorizacion'
     Vehicle:
       type: object
       properties:
@@ -1850,8 +1902,11 @@ components:
           type: string
         contenedores:
           type: array
+          description: Cada elemento puede ser un Contenedor {numero, precinto} o un string (precinto, formato anterior).
           items:
-            type: string
+            oneOf:
+              - type: string
+              - $ref: '#/components/schemas/Contenedor'
         codPuerto:
           type: string
         puerto:
@@ -1870,6 +1925,8 @@ components:
           $ref: '#/components/schemas/Direction'
         partida:
           $ref: '#/components/schemas/Direction'
+        autorizacion:
+          $ref: '#/components/schemas/Autorizacion'
     AdditionalDoc:
       type: object
       properties:
@@ -1899,6 +1956,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DetailAttribute'
+        codProdGS1:
+          type: string
     Despatch:
       type: object
       properties:
@@ -1938,6 +1997,116 @@ components:
           items:
             $ref: '#/components/schemas/DespatchDetail'
         name:
+          type: string
+    Contrato:
+      type: object
+      properties:
+        tipo:
+          type: string
+        numero:
+          type: string
+        descripcion:
+          type: string
+        porcentaje:
+          type: number
+          format: float
+    MedioPago:
+      type: object
+      properties:
+        codigo:
+          type: string
+        autorizacion:
+          type: string
+    TransporteCarga:
+      type: object
+      properties:
+        origen:
+          $ref: '#/components/schemas/Address'
+        destino:
+          $ref: '#/components/schemas/Address'
+        detalleViaje:
+          type: string
+        valorReferencial:
+          type: number
+          format: float
+        valorCargaEfectiva:
+          type: number
+          format: float
+        valorCargaUtil:
+          type: number
+          format: float
+        tramos:
+          type: array
+          items:
+            $ref: '#/components/schemas/TramoTransporte'
+    TramoTransporte:
+      type: object
+      properties:
+        id:
+          type: string
+        ubigeoOrigen:
+          type: string
+        ubigeoDestino:
+          type: string
+        descripcion:
+          type: string
+        valorCargaEfectiva:
+          type: number
+          format: float
+        valorCargaNominal:
+          type: number
+          format: float
+        vehiculos:
+          type: array
+          items:
+            $ref: '#/components/schemas/VehiculoTransporte'
+    VehiculoTransporte:
+      type: object
+      properties:
+        configuracion:
+          type: string
+        cargaUtil:
+          type: number
+          format: float
+        cargaEfectiva:
+          type: number
+          format: float
+        valorReferencialTm:
+          type: number
+          format: float
+        retornoVacio:
+          type: boolean
+    SummaryGratuitas:
+      type: object
+      properties:
+        mtoGravadas:
+          type: number
+          format: float
+        mtoExoneradas:
+          type: number
+          format: float
+        mtoInafectas:
+          type: number
+          format: float
+        mtoExportacion:
+          type: number
+          format: float
+        mtoIgv:
+          type: number
+          format: float
+    Autorizacion:
+      type: object
+      properties:
+        numero:
+          type: string
+        codEmisor:
+          type: string
+    Contenedor:
+      type: object
+      properties:
+        numero:
+          type: string
+        precinto:
           type: string
     Error:
       type: object

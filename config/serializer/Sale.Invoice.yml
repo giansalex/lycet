@@ -104,3 +104,15 @@ Greenter\Model\Sale\Invoice:
             type: array<Greenter\Model\Sale\Cuota>
         name:
             type: string
+        contrato:
+            type: Greenter\Model\Sale\Contrato
+        participantes:
+            type: array<Greenter\Model\Client\Client>
+        direccionDestino:
+            type: Greenter\Model\Company\Address
+        incoterm:
+            type: string
+        agenteVentas:
+            type: Greenter\Model\Client\Client
+        medioPago:
+            type: Greenter\Model\Sale\MedioPago

@@ -1,0 +1,10 @@
+Greenter\Model\Sale\Contrato:
+    properties:
+        tipo:
+            type: string
+        numero:
+            type: string
+        descripcion:
+            type: string
+        porcentaje:
+            type: float

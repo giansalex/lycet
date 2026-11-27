@@ -8,3 +8,7 @@ Greenter\Model\Despatch\Direction:
             type: string
         ruc:
             type: string
+        latitud:
+            type: float
+        longitud:
+            type: float
