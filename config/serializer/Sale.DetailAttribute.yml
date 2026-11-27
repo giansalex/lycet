@@ -12,3 +12,9 @@ Greenter\Model\Sale\DetailAttribute:
             type: DateTime
         duracion:
             type: int
+        horaInicio:
+            type: DateTime
+        cantidad:
+            type: float
+        unidad:
+            type: string

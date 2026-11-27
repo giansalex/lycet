@@ -56,3 +56,5 @@ Greenter\Model\Sale\SaleDetail:
             type: float
         atributos:
             type: array<Greenter\Model\Sale\DetailAttribute>
+        transporteCarga:
+            type: Greenter\Model\Sale\TransporteCarga

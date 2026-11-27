@@ -1,0 +1,6 @@
+Greenter\Model\Despatch\Contenedor:
+    properties:
+        numero:
+            type: string
+        precinto:
+            type: string

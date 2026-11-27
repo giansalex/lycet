@@ -1,0 +1,16 @@
+Greenter\Model\Sale\TransporteCarga:
+    properties:
+        origen:
+            type: Greenter\Model\Company\Address
+        destino:
+            type: Greenter\Model\Company\Address
+        detalleViaje:
+            type: string
+        valorReferencial:
+            type: float
+        valorCargaEfectiva:
+            type: float
+        valorCargaUtil:
+            type: float
+        tramos:
+            type: array<Greenter\Model\Sale\TramoTransporte>

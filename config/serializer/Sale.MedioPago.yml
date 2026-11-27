@@ -1,0 +1,6 @@
+Greenter\Model\Sale\MedioPago:
+    properties:
+        codigo:
+            type: string
+        autorizacion:
+            type: string

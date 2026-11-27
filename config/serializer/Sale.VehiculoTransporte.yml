@@ -1,0 +1,12 @@
+Greenter\Model\Sale\VehiculoTransporte:
+    properties:
+        configuracion:
+            type: string
+        cargaUtil:
+            type: float
+        cargaEfectiva:
+            type: float
+        valorReferencialTm:
+            type: float
+        retornoVacio:
+            type: bool

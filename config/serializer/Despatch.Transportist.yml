@@ -14,3 +14,5 @@ Greenter\Model\Despatch\Transportist:
             type: string
         choferDoc:
             type: string
+        autorizacion:
+            type: Greenter\Model\Despatch\Autorizacion

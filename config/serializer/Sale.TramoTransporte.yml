@@ -1,0 +1,16 @@
+Greenter\Model\Sale\TramoTransporte:
+    properties:
+        id:
+            type: string
+        ubigeoOrigen:
+            type: string
+        ubigeoDestino:
+            type: string
+        descripcion:
+            type: string
+        valorCargaEfectiva:
+            type: float
+        valorCargaNominal:
+            type: float
+        vehiculos:
+            type: array<Greenter\Model\Sale\VehiculoTransporte>

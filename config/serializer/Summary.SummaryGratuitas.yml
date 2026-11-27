@@ -1,0 +1,12 @@
+Greenter\Model\Summary\SummaryGratuitas:
+    properties:
+        mtoGravadas:
+            type: float
+        mtoExoneradas:
+            type: float
+        mtoInafectas:
+            type: float
+        mtoExportacion:
+            type: float
+        mtoIgv:
+            type: float

@@ -26,3 +26,5 @@ Greenter\Model\Perception\Perception:
             type: array<Greenter\Model\Perception\PerceptionDetail>
         name:
             type: string
+        redondeo:
+            type: float

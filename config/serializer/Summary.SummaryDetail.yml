@@ -40,3 +40,7 @@ Greenter\Model\Summary\SummaryDetail:
             type: float
         mtoIcbper:
             type: float
+        clienteNombre:
+            type: string
+        gratuitas:
+            type: Greenter\Model\Summary\SummaryGratuitas

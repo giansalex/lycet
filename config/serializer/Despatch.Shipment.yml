@@ -27,7 +27,7 @@ Greenter\Model\Despatch\Shipment:
         numContenedor:
             type: string
         contenedores:
-            type: array<string>
+            type: ContenedorList
         codPuerto:
             type: string
         puerto:
@@ -44,3 +44,5 @@ Greenter\Model\Despatch\Shipment:
             type: Greenter\Model\Despatch\Direction
         partida:
             type: Greenter\Model\Despatch\Direction
+        autorizacion:
+            type: Greenter\Model\Despatch\Autorizacion

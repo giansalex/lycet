@@ -24,3 +24,5 @@ Greenter\Model\Retention\Retention:
             type: array<Greenter\Model\Retention\RetentionDetail>
         name:
             type: string
+        redondeo:
+            type: float

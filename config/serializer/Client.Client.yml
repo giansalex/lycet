@@ -12,3 +12,5 @@ Greenter\Model\Client\Client:
             type: string
         telephone:
             type: string
+        nombreComercial:
+            type: string

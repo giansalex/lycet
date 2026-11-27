@@ -63,7 +63,7 @@ class DocumentRequest implements DocumentRequestInterface
         $result = $see->send($document);
 
         $this->toBase64Zip($result);
-        $xml = $see->getFactory()->getLastXml();
+        $xml = $see->getLastXml();
 
         $data = [
             'xml' => $xml,
